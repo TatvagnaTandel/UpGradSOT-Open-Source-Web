@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>upGrad School of Technology — Open Source Events | Event Tracker & Hub</title>
+  <meta name="description" content="Official event tracking, open-source programs, hackathons, and community portal of the upGrad School of Technology Open Source Events. Track countdowns, RSVP, and earn Dev XP.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css?v=20260919v5">
+  <link rel="stylesheet" href="css/components.css?v=20260919v5">
+  <link rel="stylesheet" href="css/admin.css?v=20260919v5">
+</head>
+<body>
+
+  <!-- Floating Toast Notification -->
+  <div id="toast-notification" class="toast" role="alert" aria-live="polite">
+    <span class="toast-icon">⚡</span>
+    <span class="toast-message">Welcome to UGSOT Open Source Events</span>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="brand-wrapper" onclick="window.adminDashboard.close()">
+        <img src="assets/upgrad_sot_official.png" alt="upGrad School of Technology" class="brand-logo-img">
+        <div class="brand-text-col">
+          <div class="brand-title-row">
+            <span class="brand-club-name">Open Source Events</span>
+            <span class="brand-badge-pill">UGSOT CHAPTER</span>
+          </div>
+          <span class="brand-sub-name">upGrad School of Technology</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#countdown-section" class="nav-link">⏱️ Countdown</a></li>
+          <li><a href="#events-section" class="nav-link">🚀 Events</a></li>
+          <li><a href="#manifesto-section" class="nav-link">💡 About</a></li>
+          <li><a href="#leaderboard-section" class="nav-link">🏆 Leaderboard</a></li>
+          <li id="nav-admin-link" style="display: none;">
+            <button class="nav-link admin-tab-link" onclick="window.adminDashboard.open()">
+              👑 Admin Command
+            </button>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="nav-right-actions">
+        <div id="nav-user-area">
+          <!-- Populated by auth.js -->
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content-view">
+    
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero-section">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-pill-badge">
+            <span>⚡</span> Official Student Chapter • upGrad School of Technology
+          </div>
+          
+          <h1 class="hero-title">
+            Where Next-Gen Engineers<br>
+            <span class="text-highlight">Build & Ship</span> Real-World Web Tech
+          </h1>
+          
+          <p class="hero-description" id="hero-main-desc">
+            The premier campus community for full-stack developers, UI architects, and AI builders. Track live event countdowns, join high-stakes hackathons, and score verified digital Hacker Passes.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#countdown-section" class="btn btn-primary">
+              ⏱️ View Live Countdown
+            </a>
+            <a href="#events-section" class="btn btn-outline">
+              Explore All Events & Sprints
+            </a>
+            <button class="btn btn-ghost" onclick="window.authManager.openAuthModal('signup')">
+              Join as Member (+100 XP) →
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Tech Marquee Ticker -->
+      <div class="tech-marquee-wrapper">
+        <div class="marquee-track">
+          <div class="marquee-item"><span>⚡ Next.js 15</span></div>
+          <div class="marquee-item"><span>⚛️ React 19</span></div>
+          <div class="marquee-item"><span>🦀 Rust WebAssembly</span></div>
+          <div class="marquee-item"><span>🤖 Autonomous AI Agents</span></div>
+          <div class="marquee-item"><span>🌐 Decentralized Web3</span></div>
+          <div class="marquee-item"><span>📦 Docker & Kubernetes</span></div>
+          <div class="marquee-item"><span>💎 Tailwind & CSS Tricks</span></div>
+          <div class="marquee-item"><span>🔥 Vector Databases</span></div>
+          <div class="marquee-item"><span>🚀 Serverless Edge</span></div>
+          <!-- Repeat for smooth infinite scroll -->
+          <div class="marquee-item"><span>⚡ Next.js 15</span></div>
+          <div class="marquee-item"><span>⚛️ React 19</span></div>
+          <div class="marquee-item"><span>🦀 Rust WebAssembly</span></div>
+          <div class="marquee-item"><span>🤖 Autonomous AI Agents</span></div>
+          <div class="marquee-item"><span>🌐 Decentralized Web3</span></div>
+          <div class="marquee-item"><span>📦 Docker & Kubernetes</span></div>
+          <div class="marquee-item"><span>💎 Tailwind & CSS Tricks</span></div>
+          <div class="marquee-item"><span>🔥 Vector Databases</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIVE FLAGSHIP EVENT COUNTDOWN SECTION -->
+    <section class="section-wrapper" id="countdown-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">REAL-TIME TRACKER</span>
+          <h2 class="section-header-title">Ongoing Flagship Event Live Countdown</h2>
+          <p class="section-header-sub">Hacktoberfest 2026 is officially live! Track active contribution days, hours, and seconds remaining.</p>
+        </div>
+
+        <div class="countdown-container-card">
+          <div class="countdown-layout">
+            <!-- Left Info Side -->
+            <div class="countdown-info-side">
+              <span id="countdown-live-badge" class="badge-live-pulse">🔴 ONGOING EVENT</span>
+              <h3 id="countdown-event-title" class="countdown-event-title">Hacktoberfest 2026: Month-Long Open Source Celebration</h3>
+              <p id="countdown-event-subtitle" class="countdown-event-subtitle">
+                The largest global open-source celebration by DigitalOcean, Cloudflare & GitHub. Complete pull requests, earn verified digital rewards, and contribute to worldwide open-source ecosystems.
+              </p>
+
+              <div class="countdown-meta-row">
+                <div class="countdown-meta-item">
+                  <span>📅</span>
+                  <strong id="countdown-event-date">Oct 1 – 31, 2026</strong>
+                </div>
+                <div class="countdown-meta-item" id="countdown-event-venue">
+                  <span>📍</span> Global Online & UGSOT Open Source Lab
+                </div>
+              </div>
+
+              <div style="margin-top: 14px; display: flex; gap: 12px; flex-wrap: wrap;">
+                <button id="countdown-rsvp-btn" class="btn btn-glow-primary">
+                  ⚡ Claim Your Spot Now
+                </button>
+                <button class="btn btn-outline" onclick="window.eventsManager.openDetailsModal(window.countdownEngine.targetEvent.id)">
+                  View Roadmap & Agenda
+                </button>
+              </div>
+            </div>
+
+            <!-- Right Countdown Clock Display -->
+            <div class="countdown-timer-side">
+              <div class="timer-units-row">
+                <div class="timer-unit-box">
+                  <span class="timer-digit text-cyan" id="timer-weeks">00</span>
+                  <span class="timer-label">Weeks</span>
+                </div>
+                <div class="timer-unit-box">
+                  <span class="timer-digit text-purple" id="timer-days">00</span>
+                  <span class="timer-label">Days</span>
+                </div>
+                <div class="timer-unit-box">
+                  <span class="timer-digit text-cyan" id="timer-hours">00</span>
+                  <span class="timer-label">Hours</span>
+                </div>
+                <div class="timer-unit-box">
+                  <span class="timer-digit text-purple" id="timer-minutes">00</span>
+                  <span class="timer-label">Minutes</span>
+                </div>
+                <div class="timer-unit-box">
+                  <span class="timer-digit text-gradient" id="timer-seconds">00</span>
+                  <span class="timer-label">Seconds</span>
+                </div>
+              </div>
+              <p class="text-muted small" style="text-align: center; font-size: 0.78rem;">
+                💡 Tip: Click the ⏱️ icon on any event below to pin it to this live countdown timer!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EVENTS & SPRINT DIRECTORY SECTION -->
+    <section class="section-wrapper" id="events-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">MARK YOUR CALENDAR</span>
+          <h2 class="section-header-title">Open Source Events You'll Take Part In</h2>
+          <p class="section-header-sub">The official 15-event open source and fellowship roadmap for upGrad School of Technology builders. Filter by track, inspect verified timelines and stipends, claim your hacker pass, or pin any event to the live countdown.</p>
+        </div>
+
+        <!-- Filter Controls Bar -->
+        <div class="events-filter-bar">
+          <div class="filter-pills-group">
+            <button class="filter-pill active" data-category="all">All Events (15)</button>
+            <button class="filter-pill" data-category="opensource">Open Source</button>
+            <button class="filter-pill" data-category="fellowship">Fellowships & Grants</button>
+            <button class="filter-pill" data-category="winterofcode">Winter of Code</button>
+            <button class="filter-pill" data-category="mentorship">Mentorships</button>
+          </div>
+
+          <div class="filter-controls-right">
+            <!-- Search -->
+            <div class="search-box">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="event-search-input" class="search-input" placeholder="Search events, topics, tech...">
+            </div>
+
+            <!-- Ongoing vs Upcoming vs Past -->
+            <div class="status-toggle-group">
+              <button class="status-toggle-btn active" data-status="all">All Events</button>
+              <button class="status-toggle-btn" data-status="ongoing">🔴 Ongoing</button>
+              <button class="status-toggle-btn" data-status="upcoming">⚡ Upcoming</button>
+              <button class="status-toggle-btn" data-status="past">📁 Archives</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Events Grid -->
+        <div id="events-grid-container" class="events-grid">
+          <!-- Populated by events.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- MANIFESTO & BENTO SHOWCASE SECTION -->
+    <section class="section-wrapper" id="manifesto-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">THE CULTURE</span>
+          <h2 class="section-header-title">The Gen Z Developer Playground</h2>
+          <p class="section-header-sub">Built for builders who care more about shipping code than sitting through passive slide presentations.</p>
+        </div>
+
+        <div class="bento-manifesto-grid">
+          <div class="bento-box span-2">
+            <div class="bento-icon">⚡</div>
+            <h3>Zero Fluff. 100% Production Code.</h3>
+            <p>Every single workshop and hackathon at upGrad School of Technology focuses on deploying real projects to production. From vector search pipelines to high-throughput web apps, you'll leave every event with a live URL on your portfolio.</p>
+          </div>
+
+          <div class="bento-box">
+            <div class="bento-icon">🏆</div>
+            <h3>$10,000+ Prize Pools & Bounties</h3>
+            <p>Compete in collegiate hackathons with real cash prizes, free cloud credits, and direct fast-track interviews with top tech firms.</p>
+          </div>
+
+          <div class="bento-box">
+            <div class="bento-icon">🎟️</div>
+            <h3>Verified Digital Hacker Passes</h3>
+            <p>Instant ticket generation with dynamic QR codes for campus lab entry, swag collection, and verifiable attendance proof.</p>
+          </div>
+
+          <!-- Interactive Terminal Easter Egg Bento Box -->
+          <div class="bento-box span-2" style="padding: 16px;">
+            <div class="terminal-card">
+              <div class="terminal-header">
+                <span class="terminal-dot dot-red"></span>
+                <span class="terminal-dot dot-yellow"></span>
+                <span class="terminal-dot dot-green"></span>
+                <span class="terminal-title">ust-devclub-terminal v2.4 (Try typing: "help", "events", "countdown")</span>
+              </div>
+              <div class="terminal-body" id="terminal-output">
+                <div class="term-line">Connected to upGrad School of Technology Dev Node. Type <strong style="color:#00f0ff;">help</strong> for command list.</div>
+              </div>
+              <div class="terminal-input-row">
+                <span class="term-prompt">ust@webdev:~$</span>
+                <input type="text" id="terminal-input" class="terminal-input" placeholder="Type command here..." autocomplete="off">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEADERBOARD & DEV XP SECTION -->
+    <section class="section-wrapper" id="leaderboard-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">COMMUNITY RANKS</span>
+          <h2 class="section-header-title">Dev XP Club Leaderboard</h2>
+          <p class="section-header-sub">Earn XP by participating in workshops (+150 XP), winning hackathons (+500 XP), and submitting open-source pull requests.</p>
+        </div>
+
+        <div class="leaderboard-wrapper">
+          <div id="leaderboard-list-container">
+            <!-- Rendered by app.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLUB FAQ SECTION -->
+    <section class="section-wrapper" id="faq-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">COMMONLY ASKED</span>
+          <h2 class="section-header-title">Frequently Asked Questions</h2>
+          <p class="section-header-sub">Everything you need to know about participating in UGSOT Open Source Events.</p>
+        </div>
+
+        <div class="bento-manifesto-grid" style="grid-template-columns: 1fr 1fr;">
+          <div class="bento-box">
+            <h4>Who can attend the events?</h4>
+            <p style="margin-top:8px;">All students of upGrad School of Technology and affiliated college programs are welcome! We have beginner-friendly tracks alongside advanced hacker challenges.</p>
+          </div>
+          <div class="bento-box">
+            <h4>How do the Digital Hacker Passes work?</h4>
+            <p style="margin-top:8px;">When you RSVP to an event, an official UGSOT Hacker Pass is generated with your name, student ID, and unique scan code. Show it at the venue entrance to check in.</p>
+          </div>
+          <div class="bento-box">
+            <h4>Can I participate online or hybrid?</h4>
+            <p style="margin-top:8px;">Yes! Almost all of our workshops and hackathon keynotes are streamed live on Discord and Zoom with interactive breakout rooms.</p>
+          </div>
+          <div class="bento-box">
+            <h4>How do I become an Admin or Club Lead?</h4>
+            <p style="margin-top:8px;">Active contributors who maintain high Dev XP, mentor juniors, or build club tools are invited to join the Core Lead team each semester.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="admin-dashboard-view" class="admin-view-wrapper container hidden">
+    <div class="admin-top-bar">
+      <div>
+        <span class="badge badge-flagship">ADMINISTRATOR VIEW</span>
+        <h2 class="admin-header-title">👑 Club Lead Command Center</h2>
+        <p class="text-muted">Manage live events, modify website sections, and manage student registrations.</p>
+      </div>
+
+      <div style="display: flex; gap: 10px;">
+        <button class="btn btn-outline" onclick="window.adminDashboard.close()">
+          ← Back to Main Website
+        </button>
+        <button class="btn btn-danger-ghost" onclick="window.adminDashboard.resetAllData()" title="Reset to sample data">
+          Reset Sample Data
+        </button>
+      </div>
+    </div>
+
+    <!-- Live Metrics Grid -->
+    <div class="admin-metrics-grid">
+      <div class="metric-card">
+        <div class="metric-label">Total Registered Students</div>
+        <div class="metric-val" id="stat-total-members">0</div>
+        <div class="metric-sub">Active UGSOT students in roster</div>
+      </div>
+      <div class="metric-card purple">
+        <div class="metric-label">Upcoming Events</div>
+        <div class="metric-val" id="stat-upcoming-events">0</div>
+        <div class="metric-sub">Scheduled on live tracker</div>
+      </div>
+      <div class="metric-card emerald">
+        <div class="metric-label">Total Event RSVPs</div>
+        <div class="metric-val" id="stat-total-rsvps">0</div>
+        <div class="metric-sub">Digital tickets issued</div>
+      </div>
+      <div class="metric-card amber">
+        <div class="metric-label">Average Capacity Filled</div>
+        <div class="metric-val" id="stat-avg-capacity">0%</div>
+        <div class="metric-sub">Across all active events</div>
+      </div>
+    </div>
+
+    <!-- Admin Navigation Tabs -->
+    <div class="admin-nav-tabs">
+      <button class="admin-nav-item active" data-tab="events">
+        📅 Events CMS
+      </button>
+      <button class="admin-nav-item" data-tab="sections">
+        🎨 Section & Content Manager
+      </button>
+      <button class="admin-nav-item" data-tab="students">
+        👥 Student Database & RSVPs
+      </button>
+    </div>
+
+    <!-- TAB 1: EVENTS CMS -->
+    <div id="admin-pane-events" class="admin-tab-pane">
+      <div class="table-toolbar">
+        <div class="table-toolbar-left">
+          <h3>Manage Live Club Events</h3>
+        </div>
+        <div class="table-toolbar-right">
+          <button class="btn btn-primary" onclick="window.adminDashboard.openCreateEventModal()">
+            + Create New Event
+          </button>
+        </div>
+      </div>
+
+      <div class="table-responsive-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Event Title & Venue</th>
+              <th>Date & Time</th>
+              <th>Capacity</th>
+              <th>Type</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="admin-events-tbody">
+            <!-- Rendered by admin.js -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAB 2: SECTIONS CMS -->
+    <div id="admin-pane-sections" class="admin-tab-pane hidden">
+      <div class="table-toolbar">
+        <div class="table-toolbar-left">
+          <h3>Website Section Customization</h3>
+          <p class="text-muted small">Enable, disable, and rename sections displayed on the live website.</p>
+        </div>
+      </div>
+
+      <div class="admin-sections-grid" id="admin-sections-list">
+        <!-- Rendered by admin.js -->
+      </div>
+    </div>
+
+    <!-- TAB 3: STUDENT DATABASE -->
+    <div id="admin-pane-students" class="admin-tab-pane hidden">
+      <div class="table-toolbar">
+        <div class="table-toolbar-left">
+          <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="admin-student-search" class="search-input" placeholder="Search student by name, ID...">
+          </div>
+          <select id="admin-student-event-filter" class="select" style="width: auto;">
+            <option value="all">Filter by RSVP (All Events)</option>
+          </select>
+        </div>
+        <div class="table-toolbar-right">
+          <button class="btn btn-outline" onclick="window.adminDashboard.exportStudentsCsv()">
+            📥 Export to CSV
+          </button>
+          <button class="btn btn-primary" onclick="window.adminDashboard.openAddStudentModal()">
+            + Add Student Member
+          </button>
+        </div>
+      </div>
+
+      <div class="table-responsive-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Student</th>
+              <th>Student ID</th>
+              <th>Academic Year</th>
+              <th>Dev XP & Level</th>
+              <th>RSVPs</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="admin-students-tbody">
+            <!-- Rendered by admin.js -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer style="padding: 50px 0 100px; border-top: 1px solid var(--border-subtle); background: #06090e; margin-top: 60px;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <img src="assets/upgrad_sot_official.png" alt="UGSOT" style="width: 38px; height: 38px; border-radius: 50%; object-fit: contain; background: #fff; padding: 3px;">
+        <div>
+          <div style="font-weight: 700;">upGrad School of Technology — Open Source Events</div>
+          <div class="text-muted small">Empowering collegiate builders to write open source software.</div>
+        </div>
+      </div>
+      <div class="text-muted small">
+        © 2026 UGSOT Open Source Events. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modals -->
+  <div id="event-details-modal" class="modal">
+    <div class="modal-dialog modal-lg">
+      <button class="modal-close-btn" aria-label="Close modal">✕</button>
+      <div id="event-details-content">
+        <!-- Rendered by events.js -->
+      </div>
+    </div>
+  </div>
+
+  <div id="hacker-pass-modal" class="modal">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" aria-label="Close modal">✕</button>
+      <div style="padding: 24px;">
+        <h3 style="font-family: var(--font-heading); margin-bottom: 6px;">🎟️ Your Official UGSOT Hacker Pass</h3>
+        <p class="text-muted small" style="margin-bottom: 20px;">Present this digital badge at the check-in desk or campus lab.</p>
+        <div id="hacker-pass-render">
+          <!-- Rendered by events.js -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="auth-modal" class="modal">
+    <div class="modal-dialog" style="max-width: 460px; padding: 28px;">
+      <button class="modal-close-btn" aria-label="Close modal">✕</button>
+
+      <div class="auth-tabs-row">
+        <button class="auth-tab-btn active" data-mode="login">Sign In</button>
+        <button class="auth-tab-btn" data-mode="signup">Join Club (Sign Up)</button>
+      </div>
+
+      <!-- Login Form -->
+      <div id="auth-login-section">
+        <form id="login-form">
+          <div class="form-group">
+            <label for="login-email">Student Email Address</label>
+            <input type="email" id="login-email" class="input" placeholder="e.g. aryan.s@tech.upgrad.edu" required>
+          </div>
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" class="input" placeholder="••••••••" required>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; font-size: 0.82rem;">
+            <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+              <input type="checkbox" checked> Remember this device
+            </label>
+            <a href="#" class="text-cyan" onclick="window.app.showToast('Demo mode: any password works for existing accounts!', 'info')">Forgot password?</a>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">
+            Sign In to Club Portal 🚀
+          </button>
+        </form>
+
+        <div style="margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--border-subtle); text-align: center;">
+          <span class="text-muted small">Demo credentials:</span>
+          <div style="display: flex; gap: 8px; justify-content: center; margin-top: 8px;">
+            <button type="button" class="btn btn-sm btn-outline" style="padding: 4px 10px; font-size: 0.78rem;" onclick="document.getElementById('login-email').value='aryan.s@tech.upgrad.edu'; document.getElementById('login-password').value='student123';">
+              Student (Aryan)
+            </button>
+            <button type="button" class="btn btn-sm btn-outline" style="padding: 4px 10px; font-size: 0.78rem;" onclick="document.getElementById('login-email').value='admin@ugsot.upgrad.edu'; document.getElementById('login-password').value='admin123';">
+              Admin (Tanya)
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sign Up Form -->
+      <div id="auth-signup-section" class="hidden">
+        <form id="signup-form">
+          <div class="form-group">
+            <label for="signup-name">Full Name</label>
+            <input type="text" id="signup-name" class="input" placeholder="e.g. Aryan Sharma" required>
+          </div>
+          <div class="form-group">
+            <label for="signup-email">University Email</label>
+            <input type="email" id="signup-email" class="input" placeholder="e.g. yourname@tech.upgrad.edu" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="signup-studentid">Student ID / USN</label>
+              <input type="text" id="signup-studentid" class="input" placeholder="UGSOT-2024-xxx" required>
+            </div>
+            <div class="form-group">
+              <label for="signup-year">Academic Year</label>
+              <select id="signup-year" class="select">
+                <option value="1st Year">1st Year</option>
+                <option value="2nd Year">2nd Year</option>
+                <option value="3rd Year">3rd Year</option>
+                <option value="4th Year">4th Year (Final Year)</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="signup-password">Create Password</label>
+            <input type="password" id="signup-password" class="input" placeholder="Minimum 6 characters" required>
+            <div class="pwd-meter-box">
+              <div class="pwd-meter-bar">
+                <div id="pwd-strength-bar" class="pwd-fill"></div>
+              </div>
+              <span id="pwd-strength-text" class="pwd-text">Password strength</span>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" style="margin-top: 10px;">
+            Create Student Account (+100 XP) ⚡
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. STUDENT PROFILE MODAL -->
+  <div id="user-profile-modal" class="modal">
+    <div class="modal-dialog" style="max-width: 580px; padding: 26px;">
+      <button class="modal-close-btn" aria-label="Close modal">✕</button>
+      <div id="user-profile-content">
+        <!-- Rendered by auth.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. ADMIN CREATE/EDIT EVENT MODAL -->
+  <div id="admin-event-modal" class="modal">
+    <div class="modal-dialog" style="max-width: 650px; padding: 26px;">
+      <button class="modal-close-btn" aria-label="Close modal">✕</button>
+      <h3 id="admin-event-modal-title" style="margin-bottom: 16px;">Create New Club Event</h3>
+      <form id="admin-create-event-form">
+        <input type="hidden" id="admin-event-id">
+        <div class="form-group">
+          <label for="admin-evt-title">Event Title</label>
+          <input type="text" id="admin-evt-title" class="input" placeholder="e.g. CYBERHACK 2026" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="admin-evt-category">Category</label>
+            <select id="admin-evt-category" class="select">
+              <option value="opensource">Open Source</option>
+              <option value="fellowship">Fellowship & Grants</option>
+              <option value="winterofcode">Winter of Code</option>
+              <option value="mentorship">Mentorship</option>
+              <option value="hackathon">Hackathon</option>
+              <option value="workshop">Workshop</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="admin-evt-date">Target Date & Time</label>
+            <input type="datetime-local" id="admin-evt-date" class="input" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="admin-evt-venue">Venue / Location</label>
+            <input type="text" id="admin-evt-venue" class="input" placeholder="e.g. Lab 402, UGSOT Campus" required>
+          </div>
+          <div class="form-group">
+            <label for="admin-evt-mode">Mode</label>
+            <select id="admin-evt-mode" class="select">
+              <option value="Hybrid">Hybrid</option>
+              <option value="In-Person">In-Person</option>
+              <option value="Virtual">Virtual</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="admin-evt-spots">Total Spot Capacity</label>
+            <input type="number" id="admin-evt-spots" class="input" value="100" min="10" required>
+          </div>
+          <div class="form-group">
+            <label for="admin-evt-prize">Prize Pool / Perk</label>
+            <input type="text" id="admin-evt-prize" class="input" placeholder="e.g. $5,000 + Swag">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="admin-evt-tags">Tags (comma separated)</label>
+          <input type="text" id="admin-evt-tags" class="input" placeholder="Next.js, AI, Hackathon, Web3">
+        </div>
+        <div class="form-group">
+          <label for="admin-evt-desc">Event Description</label>
+          <textarea id="admin-evt-desc" class="textarea" placeholder="Detailed outline of what students will learn or build..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="admin-evt-banner">Banner Image Path (Optional)</label>
+          <input type="text" id="admin-evt-banner" class="input" placeholder="assets/flagship_banner.jpg or custom URL">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" style="margin-top: 10px;">
+          Save & Publish Event 🚀
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div id="admin-student-modal" class="modal">
+    <div class="modal-dialog" style="max-width: 480px; padding: 26px;">
+      <button class="modal-close-btn" aria-label="Close modal">✕</button>
+      <h3 style="margin-bottom: 16px;">Add Student to Database</h3>
+      <form id="admin-create-student-form">
+        <div class="form-group">
+          <label for="new-std-name">Full Name</label>
+          <input type="text" id="new-std-name" class="input" placeholder="e.g. Rahul Sen" required>
+        </div>
+        <div class="form-group">
+          <label for="new-std-email">University Email</label>
+          <input type="email" id="new-std-email" class="input" placeholder="rahul.s@tech.upgrad.edu" required>
+        </div>
+        <div class="form-group">
+          <label for="new-std-id">Student ID</label>
+          <input type="text" id="new-std-id" class="input" placeholder="UGSOT-2025-xxx">
+        </div>
+        <div class="form-group">
+          <label for="new-std-year">Academic Year</label>
+          <select id="new-std-year" class="select">
+            <option value="1st Year">1st Year</option>
+            <option value="2nd Year">2nd Year</option>
+            <option value="3rd Year">3rd Year</option>
+            <option value="4th Year">4th Year (Final Year)</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" style="margin-top: 10px;">
+          Add to Student Roster
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/store.js?v=20260919v7"></script>
+  <script src="js/countdown.js?v=20260919v7"></script>
+  <script src="js/events.js?v=20260919v7"></script>
+  <script src="js/auth.js?v=20260919v7"></script>
+  <script src="js/admin.js?v=20260919v7"></script>
+  <script src="js/app.js?v=20260919v7"></script>
+</body>
+</html>
