@@ -44,8 +44,9 @@
 
       <nav>
         <ul class="nav-links">
-          <li><a href="#countdown-section" class="nav-link">⏱️ Countdown</a></li>
-          <li><a href="#events-section" class="nav-link">🚀 Events</a></li>
+          <li><a href="#countdown-section" class="nav-link">⏱️ Live Timer</a></li>
+          <li><a href="#hacktoberfest-fests-section" class="nav-link">🎃 Regional Fests</a></li>
+          <li><a href="#events-section" class="nav-link">🚀 Programs</a></li>
           <li><a href="#manifesto-section" class="nav-link">💡 About</a></li>
           <li><a href="#leaderboard-section" class="nav-link">🏆 Leaderboard</a></li>
           <li id="nav-admin-link" style="display: none;">
@@ -127,27 +128,27 @@
       <div class="container">
         <div class="section-header">
           <span class="section-tag">REAL-TIME TRACKER</span>
-          <h2 class="section-header-title">Ongoing Flagship Event Live Countdown</h2>
-          <p class="section-header-sub">Hacktoberfest 2026 is officially live! Track active contribution days, hours, and seconds remaining.</p>
+          <h2 class="section-header-title">Flagship Event Live Countdown Tracker</h2>
+          <p class="section-header-sub">Tracking Hacktoberfest Hack Day Pune x OSS AIT (Army Institute of Technology, Pune). Pin any Fest or open-source program below to this high-precision clock!</p>
         </div>
 
         <div class="countdown-container-card">
           <div class="countdown-layout">
             <!-- Left Info Side -->
             <div class="countdown-info-side">
-              <span id="countdown-live-badge" class="badge-live-pulse">🔴 ONGOING EVENT</span>
-              <h3 id="countdown-event-title" class="countdown-event-title">Hacktoberfest 2026: Month-Long Open Source Celebration</h3>
+              <span id="countdown-live-badge" class="badge-upcoming">⚡ NEXT UPCOMING EVENT</span>
+              <h3 id="countdown-event-title" class="countdown-event-title">Hacktoberfest Hack Day Pune x OSS AIT</h3>
               <p id="countdown-event-subtitle" class="countdown-event-subtitle">
-                The largest global open-source celebration by DigitalOcean, Cloudflare & GitHub. Complete pull requests, earn verified digital rewards, and contribute to worldwide open-source ecosystems.
+                Official In-Person Hacktoberfest 2026 Fest at Army Institute of Technology, Pune. Join hands-on open-source sprints, Git/GitHub workshops, mentors, lunch & developer swag distribution!
               </p>
 
               <div class="countdown-meta-row">
                 <div class="countdown-meta-item">
                   <span>📅</span>
-                  <strong id="countdown-event-date">Oct 1 – 31, 2026</strong>
+                  <strong id="countdown-event-date">Saturday, Oct 17, 2026 • 10:30 AM – 6:30 PM IST</strong>
                 </div>
                 <div class="countdown-meta-item" id="countdown-event-venue">
-                  <span>📍</span> Global Online & UGSOT Open Source Lab
+                  <span>📍</span> Army Institute Of Technology (AIT), Dighi Hills, Alandi Road, Pune 411015
                 </div>
               </div>
 
@@ -158,6 +159,9 @@
                 <button class="btn btn-outline" onclick="window.eventsManager.openDetailsModal(window.countdownEngine.targetEvent.id)">
                   View Roadmap & Agenda
                 </button>
+                <a id="countdown-official-link" href="https://events.mlh.io/events/15130-hacktoberfest-hack-day-pune-x-oss-ait/register" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="text-decoration: underline;">
+                  Official MLH Registration ↗
+                </a>
               </div>
             </div>
 
@@ -190,6 +194,76 @@
               </p>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HACKTOBERFEST REGIONAL FESTS SECTION (PUNE & NEARBY STATES) -->
+    <section class="section-wrapper" id="hacktoberfest-fests-section">
+      <div class="container">
+        <div class="section-header">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 12px;">
+            <span class="section-tag" style="background: #ffd166; margin-bottom: 0;">🌐 OFFICIAL MLH HACKTOBERFEST API</span>
+            <a href="https://hacktoberfest.com/fests/?q=pune" target="_blank" rel="noopener noreferrer" class="api-sync-link">
+              🔗 Open hacktoberfest.com/fests/?q=pune ↗
+            </a>
+          </div>
+          <h2 class="section-header-title">Hacktoberfest 2026 Fests Near Pune & Neighboring States</h2>
+          <p class="section-header-sub">
+            Directly synced from the official Hacktoberfest API (<a href="https://hacktoberfest-api.mlh.com/api/events" target="_blank" rel="noopener noreferrer" style="text-decoration: underline; font-weight: 700;">api/events</a>). Discover 22 in-person Fests, meetups, and live hack days across Pune, Maharashtra, and neighboring states. Pin any Fest to the live timer above!
+          </p>
+        </div>
+
+        <!-- Metric Cards Row -->
+        <div class="fests-metrics-row">
+          <div class="fest-metric-box">
+            <span class="fest-metric-num text-highlight">2</span>
+            <span class="fest-metric-label">📍 Pune Host Fests</span>
+          </div>
+          <div class="fest-metric-box">
+            <span class="fest-metric-num text-highlight-yellow">7</span>
+            <span class="fest-metric-label">🏙️ Maharashtra Hubs</span>
+          </div>
+          <div class="fest-metric-box">
+            <span class="fest-metric-num" style="background: var(--bg-card-cyan); padding: 2px 8px; border: 2px solid #121212; box-shadow: var(--shadow-sm); display: inline-block;">13</span>
+            <span class="fest-metric-label">🗺️ Neighboring State Hubs</span>
+          </div>
+          <div class="fest-metric-box">
+            <span class="fest-metric-num" style="background: var(--bg-card-mint); padding: 2px 8px; border: 2px solid #121212; box-shadow: var(--shadow-sm); display: inline-block;">100%</span>
+            <span class="fest-metric-label">🎓 Free Student Access</span>
+          </div>
+        </div>
+
+        <!-- Regional Tabs & Search Bar -->
+        <div class="fests-controls-bar">
+          <div class="fests-tabs-group" id="fests-region-tabs">
+            <button class="fest-tab active" data-region="all">All Regions (22)</button>
+            <button class="fest-tab" data-region="pune">📍 Pune (2)</button>
+            <button class="fest-tab" data-region="maharashtra">🏙️ Maharashtra (7)</button>
+            <button class="fest-tab" data-region="karnataka">🗺️ Karnataka (4)</button>
+            <button class="fest-tab" data-region="telangana">🗺️ Telangana (3)</button>
+            <button class="fest-tab" data-region="gujarat">🗺️ Gujarat (1)</button>
+            <button class="fest-tab" data-region="madhyapradesh">🗺️ Madhya Pradesh (5)</button>
+          </div>
+
+          <div class="fests-search-wrap">
+            <div class="search-box">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="fest-search-input" class="search-input" placeholder="Search by city, college, tech (e.g. Pune, AIT, React)...">
+            </div>
+            <div class="format-select-wrap">
+              <select id="fest-format-select" class="fest-format-select">
+                <option value="all">All Formats</option>
+                <option value="hackday">⚡ Hack Days Only</option>
+                <option value="meetup">🤝 Meetups Only</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Regional Fests Grid -->
+        <div id="hacktoberfest-fests-grid" class="fests-grid">
+          <!-- Populated by js/hacktoberfest-fests.js -->
         </div>
       </div>
     </section>
@@ -718,11 +792,12 @@
     </div>
   </div>
 
-  <script src="js/store.js?v=20260919v7"></script>
-  <script src="js/countdown.js?v=20260919v7"></script>
-  <script src="js/events.js?v=20260919v7"></script>
-  <script src="js/auth.js?v=20260919v7"></script>
-  <script src="js/admin.js?v=20260919v7"></script>
-  <script src="js/app.js?v=20260919v7"></script>
+  <script src="js/store.js?v=20260923v2"></script>
+  <script src="js/countdown.js?v=20260923v2"></script>
+  <script src="js/events.js?v=20260923v2"></script>
+  <script src="js/hacktoberfest-fests.js?v=20260923v2"></script>
+  <script src="js/auth.js?v=20260923v2"></script>
+  <script src="js/admin.js?v=20260923v2"></script>
+  <script src="js/app.js?v=20260923v2"></script>
 </body>
 </html>

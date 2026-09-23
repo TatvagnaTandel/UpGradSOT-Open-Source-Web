@@ -75,6 +75,18 @@ class CountdownEngine {
         }
       };
     }
+
+    const officialLinkEl = document.getElementById('countdown-official-link');
+    if (officialLinkEl) {
+      const targetUrl = this.targetEvent.registrationUrl || this.targetEvent.officialUrl;
+      if (targetUrl) {
+        officialLinkEl.href = targetUrl;
+        officialLinkEl.style.display = 'inline-flex';
+        officialLinkEl.textContent = this.targetEvent.registrationUrl ? 'Official MLH Registration ↗' : 'Official Program Site ↗';
+      } else {
+        officialLinkEl.style.display = 'none';
+      }
+    }
   }
 
   start() {

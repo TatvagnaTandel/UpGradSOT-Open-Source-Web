@@ -1061,3 +1061,318 @@
   .countdown-layout, .modal-body-grid, .bento-manifesto-grid { grid-template-columns: 1fr; }
   .bento-box.span-2 { grid-column: span 1; }
 }
+
+/* =========================================================
+   HACKTOBERFEST REGIONAL FESTS SECTION (PUNE & NEARBY)
+   ========================================================= */
+.fests-metrics-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.fest-metric-box {
+  background: #ffffff;
+  border: var(--border-width) solid var(--border-black);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.fest-metric-num {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.fest-metric-label {
+  font-weight: 800;
+  font-size: 0.92rem;
+  color: var(--text-main);
+}
+
+.api-sync-link {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--text-main);
+  background: #ffffff;
+  padding: 6px 14px;
+  border: 2px solid var(--border-black);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.api-sync-link:hover {
+  background: var(--bg-card-yellow);
+  transform: translate(-1.5px, -1.5px);
+  box-shadow: var(--shadow-md);
+}
+
+.fests-controls-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.fests-tabs-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.fest-tab {
+  font-weight: 800;
+  font-size: 0.85rem;
+  padding: 8px 16px;
+  border: 2px solid var(--border-black);
+  border-radius: var(--radius-full);
+  background: #ffffff;
+  color: var(--text-main);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.15s ease;
+}
+
+.fest-tab:hover {
+  background: var(--bg-card-yellow);
+  transform: translate(-1px, -1px);
+  box-shadow: var(--shadow-md);
+}
+
+.fest-tab.active {
+  background: #121212;
+  color: #ffffff;
+  box-shadow: var(--shadow-md);
+}
+
+.fests-search-wrap {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.fests-search-wrap .search-box {
+  flex: 1;
+  min-width: 280px;
+}
+
+.fest-format-select {
+  padding: 10px 16px;
+  border: 2.5px solid var(--border-black);
+  border-radius: var(--radius-md);
+  background: #ffffff;
+  font-weight: 800;
+  font-size: 0.88rem;
+  color: var(--text-main);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  height: 44px;
+}
+
+.fest-format-select:focus {
+  outline: none;
+  border-color: var(--brand-red);
+}
+
+.fests-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 22px;
+}
+
+.fest-card {
+  background: #ffffff;
+  border: var(--border-width) solid var(--border-black);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  position: relative;
+}
+
+.fest-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--shadow-hover);
+}
+
+.fest-card-pune-glow {
+  border-color: var(--brand-red);
+  border-width: 3px;
+  background: #fffdf8;
+  position: relative;
+}
+
+.fest-card-pune-glow::before {
+  content: 'HOST CITY FLAGSHIP';
+  position: absolute;
+  top: -12px;
+  right: 18px;
+  background: var(--brand-red);
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 900;
+  padding: 2px 8px;
+  border: 1.5px solid var(--border-black);
+  border-radius: var(--radius-full);
+  box-shadow: 1.5px 1.5px 0px var(--border-black);
+  letter-spacing: 0.04em;
+}
+
+.fest-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.fest-badges-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.fest-region-pill {
+  font-size: 0.76rem;
+  font-weight: 800;
+  padding: 3px 10px;
+  border: 1.5px solid var(--border-black);
+  border-radius: var(--radius-full);
+  background: var(--bg-card-cyan);
+  color: var(--text-main);
+  box-shadow: 1.5px 1.5px 0px var(--border-black);
+}
+
+.fest-region-pill.pill-pune {
+  background: var(--bg-card-yellow);
+  color: var(--text-main);
+  font-weight: 900;
+}
+
+.fest-format-pill {
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border-black);
+}
+
+.fest-format-pill.fmt-hackday {
+  background: var(--bg-card-mint);
+  color: var(--text-main);
+}
+
+.fest-format-pill.fmt-meetup {
+  background: var(--bg-card-purple);
+  color: #ffffff;
+}
+
+.fest-countdown-pill {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  background: #f4f4f5;
+  border: 1.5px solid var(--border-black);
+  color: var(--text-main);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.fest-card-title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
+  line-height: 1.35;
+  margin-bottom: 10px;
+  color: var(--text-main);
+}
+
+.fest-meta-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.83rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.fest-meta-item .meta-icon {
+  flex-shrink: 0;
+  font-size: 0.95rem;
+}
+
+.fest-meta-item .meta-val {
+  color: var(--text-main);
+  font-weight: 700;
+}
+
+.fest-card-desc {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  line-height: 1.48;
+  margin: 10px 0 16px;
+  flex-grow: 1;
+}
+
+.fest-card-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 14px;
+  border-top: 2px dashed rgba(18, 18, 18, 0.15);
+}
+
+.fest-reg-btn {
+  flex: 1;
+  text-align: center;
+}
+
+.empty-fests-state {
+  text-align: center;
+  padding: 60px 24px;
+  background: #ffffff;
+  border: var(--border-width) solid var(--border-black);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  grid-column: 1 / -1;
+}
+
+.empty-fests-state .empty-icon {
+  font-size: 3rem;
+  margin-bottom: 12px;
+}
+
+.empty-fests-state h3 {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.empty-fests-state p {
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+

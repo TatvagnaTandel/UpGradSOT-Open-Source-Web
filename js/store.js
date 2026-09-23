@@ -24,40 +24,86 @@ const addDays = (d, days, hours = 0, minutes = 0) => {
 const DEFAULT_EVENTS = [
   {
     id: 'evt-hacktoberfest-2026',
-    title: 'Hacktoberfest 2026',
-    subtitle: 'The premier global celebration of open source software',
+    title: 'Hacktoberfest Hack Day Pune x OSS AIT',
+    subtitle: 'Official In-Person Hacktoberfest 2026 Fest at Army Institute of Technology, Pune',
     category: 'opensource',
     isFlagship: true,
-    isOngoing: true,
-    status: 'ongoing',
-    dateBadge: 'Oct 1–31, 2026',
-    startDate: '2026-09-01T00:00:00+05:30',
-    targetDate: '2026-10-31T23:59:59+05:30',
-    endDate: '2026-10-31T23:59:59+05:30',
-    venue: 'Online / global',
-    mode: 'Online / global',
-    banner: 'assets/flagship_banner.jpg',
-    description: 'The month-long global celebration of open source software organized by DigitalOcean, Major League Hacking (MLH), and DEV. Active registration and community warmup sprints are live right now! Complete quality pull requests and participate in virtual Fests to earn official badges, plant trees, and win exclusive developer swag.',
-    prizePool: 'Official Digital Badges, Tree Planted & Developer Swag',
-    stipend: 'Digital Badges & Tree Planted',
-    officialUrl: 'https://hacktoberfest.com',
-    spotsTotal: 500,
-    spotsFilled: 382,
-    tags: ['Open Source', 'Flagship', 'Global', 'Hacktoberfest', 'GitHub', 'MLH', 'UGSOT'],
+    isOngoing: false,
+    status: 'upcoming',
+    dateBadge: 'Saturday, Oct 17, 2026 • 10:30 AM – 6:30 PM IST',
+    startDate: '2026-10-17T05:00:00.000Z',
+    targetDate: '2026-10-17T05:00:00.000Z',
+    endDate: '2026-10-17T13:00:00.000Z',
+    venue: 'Army Institute Of Technology (AIT), Dighi Hills, Alandi Road, Pune 411015',
+    mode: 'In-Person Fest (Pune, Maharashtra)',
+    banner: 'https://mlhusercontent.com/backgrounds/events/01a0b6b1-9c97-b056-fa2e-02e02678d624/hacktoberfest-hack-day-pune-x-ossc-ait_ccb0a599f60d.png',
+    logoUrl: 'https://mlhusercontent.com/logos/events/01a0b6b1-9c97-b056-fa2e-02e02678d624/hacktoberfest-hack-day-pune-x-ossc-ait_10acedd784a8.png',
+    description: 'Join us this Hacktoberfest for a day of open-source, coding, and collaboration in Pune! Whether making your first contribution or already experienced with PRs, come find projects, learn Git/GitHub, build with university peers, enjoy sponsored lunch, and collect official MLH swag & developer rewards.',
+    prizePool: 'MLH Badges, Exclusive Swag Packs, Tree Planting & Hackathon Goodies',
+    stipend: 'Official Swag Kits & Goodies',
+    officialUrl: 'https://events.mlh.io/events/15130-hacktoberfest-hack-day-pune-x-oss-ait',
+    registrationUrl: 'https://events.mlh.io/events/15130-hacktoberfest-hack-day-pune-x-oss-ait/register',
+    spotsTotal: 300,
+    spotsFilled: 218,
+    tags: ['Hacktoberfest', 'Pune', 'AIT', 'In-Person Fest', 'Open Source', 'MLH', 'GitHub', 'UGSOT'],
     timelineInfo: {
-      registration: 'September 2026 (Live now)',
-      activePhase: 'October 1 – October 31, 2026',
-      reviewPhase: 'November 1 – November 15, 2026'
+      registration: 'Open now on MLH Events (Student - University pass)',
+      activePhase: 'Saturday, October 17, 2026 • 10:30 AM – 6:30 PM IST',
+      reviewPhase: 'October 17–31, 2026 (PR verification & swag distribution)'
     },
     speakers: [
-      { name: 'UGSOT Open Source Mentors', role: 'GitHub Campus Experts', avatar: 'OS' },
+      { name: 'OSS AIT Technical Lead', role: 'Campus Open Source Society', avatar: 'AIT' },
+      { name: 'GitHub Campus Experts', role: 'Technical Mentors', avatar: 'GH' },
       { name: 'Dr. Kabir Nair', role: 'Dean of Tech, upGrad', avatar: 'KN' }
     ],
     agenda: [
-      'Sep 15 - Oct 1: Global Kickoff & UGSOT Repository Onboarding',
-      'Oct 5-15: Speed PRs, First-timer Issues & Mentor Reviews',
-      'Oct 20: Hacktoberfest Mid-way Sprint & AI Fest',
-      'Oct 31: 4 PRs Verified & Swag Submission Desk'
+      '10:00 AM: Check-in & Registration',
+      '10:30 AM – 12:30 PM: Speaker Session & Git/GitHub Best Practices',
+      '12:30 PM – 1:30 PM: Lunch & Networking with Maintainers',
+      '1:30 PM – 4:00 PM: Hands-on Open Source Contribution Session',
+      '4:00 PM – 4:30 PM: Snacks & Networking',
+      '4:30 PM – 5:00 PM: Prizes & Goodies Distribution',
+      '5:00 PM – 5:30 PM: Q&A Session & Open Discussion',
+      '5:30 PM: Wrap-up & Closing 🎉'
+    ]
+  },
+  {
+    id: 'evt-hacktoberfest-pune-cloudnative',
+    title: 'Hacktoberfest Hack Day Pune x Cloud Native Pune',
+    subtitle: 'Cloud Native Open Source Fest at Gaia Apex, Viman Nagar, Pune',
+    category: 'opensource',
+    isFlagship: false,
+    status: 'upcoming',
+    dateBadge: 'Saturday, Oct 24, 2026 • 10:00 AM – 5:00 PM IST',
+    startDate: '2026-10-24T04:30:00.000Z',
+    targetDate: '2026-10-24T04:30:00.000Z',
+    endDate: '2026-10-24T11:30:00.000Z',
+    venue: 'No. 33, 3rd Floor, Gaia Apex, S, 2D, Viman Nagar, Pune 411014',
+    mode: 'In-Person Fest (Viman Nagar, Pune)',
+    banner: 'https://mlhusercontent.com/backgrounds/events/01a07d81-9f8b-e908-cfd4-d680f9ef8ff2/hacktoberfest-hack-day-pune-x-cloud-native-pune_3cf371a01d52.png',
+    logoUrl: 'https://mlhusercontent.com/logos/events/01a07d81-9f8b-e908-cfd4-d680f9ef8ff2/hacktoberfest-hack-day-pune-x-cloud-native-pune_a5171d239fad.png',
+    description: 'Official Hacktoberfest Pune Hack Day hosted with Cloud Native Pune community. Focuses on Kubernetes, containers, microservices, cloud tooling, and open-source contributions with community mentors.',
+    prizePool: 'Cloud Native Swag, Official Badges & Certificates',
+    stipend: 'Community Swag & Badges',
+    officialUrl: 'https://events.mlh.io/events/14885-hacktoberfest-hack-day-pune-x-cloud-native-pune',
+    registrationUrl: 'https://events.mlh.io/events/14885-hacktoberfest-hack-day-pune-x-cloud-native-pune/register',
+    spotsTotal: 150,
+    spotsFilled: 112,
+    tags: ['Hacktoberfest', 'Pune', 'Cloud Native', 'Kubernetes', 'Viman Nagar', 'MLH'],
+    timelineInfo: {
+      registration: 'Open now on MLH Events',
+      activePhase: 'Saturday, October 24, 2026 • 10:00 AM – 5:00 PM IST',
+      reviewPhase: 'October 24–31, 2026'
+    },
+    speakers: [
+      { name: 'Cloud Native Pune Organizers', role: 'CNCF Community Leaders', avatar: 'CN' }
+    ],
+    agenda: [
+      '10:00 AM: Registration & Keynote: Cloud Native Open Source',
+      '11:00 AM – 1:00 PM: Contributing to Kubernetes & Cloud Native Repos',
+      '1:00 PM – 2:00 PM: Networking Lunch',
+      '2:00 PM – 4:30 PM: Code Sprint & Live Pull Requests',
+      '4:30 PM – 5:00 PM: Swag Distribution & Closing'
     ]
   },
   {
@@ -544,10 +590,18 @@ const DEFAULT_SECTIONS = [
   {
     id: 'countdown',
     name: 'Ongoing Flagship Event Live Countdown',
-    title: 'Ongoing Flagship Event Live Countdown',
-    subtitle: 'Clock is ticking. Contribute pull requests, track active sprints, and earn open source credentials.',
+    title: 'Flagship Event Live Countdown Tracker',
+    subtitle: 'Clock is ticking. Track active sprints, pin local Hacktoberfest Fests, and claim your verified hacker pass.',
     enabled: true,
     order: 2
+  },
+  {
+    id: 'hacktoberfest-fests',
+    name: 'Hacktoberfest 2026 Regional Fests',
+    title: 'Hacktoberfest 2026 Fests Near Pune & Neighboring States',
+    subtitle: 'Official in-person community Hack Days and meetups from the MLH Hacktoberfest network.',
+    enabled: true,
+    order: 3
   },
   {
     id: 'events',
@@ -555,7 +609,7 @@ const DEFAULT_SECTIONS = [
     title: 'Open Source Events You\'ll Take Part In',
     subtitle: 'Mark your calendar for global open source programs, winter of codes, and developer fellowships.',
     enabled: true,
-    order: 3
+    order: 4
   },
   {
     id: 'manifesto',
@@ -658,7 +712,7 @@ const DEFAULT_STUDENTS = [
   }
 ];
 
-const STORE_DATA_VERSION = 'ugsot_v2026_09_19_07';
+const STORE_DATA_VERSION = 'ugsot_v2026_09_23_02';
 
 class ClubStore {
   constructor() {

@@ -13,6 +13,7 @@ class App {
 
     if (window.countdownEngine) window.countdownEngine.init();
     if (window.eventsManager) window.eventsManager.init();
+    if (window.hacktoberfestFestsManager) window.hacktoberfestFestsManager.init();
     if (window.authManager) window.authManager.init();
     if (window.adminDashboard) window.adminDashboard.init();
 
