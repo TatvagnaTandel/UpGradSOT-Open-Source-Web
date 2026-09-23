@@ -10,17 +10,18 @@ const HACKTOBERFEST_FESTS_DATA = [
     "id": "evt-hf-hacktoberfest-hack-day-pune-x-ossc-ait",
     "apiId": "01a0b6b1-9c97-b056-fa2e-02e02678d624",
     "title": "Hacktoberfest Hack Day Pune x OSS AIT",
-    "subtitle": "Official Hacktoberfest 2026 Hackday in PUNE, Pune",
+    "subtitle": "Official Hacktoberfest 2026 Hackday in Pune, Maharashtra",
     "category": "opensource",
     "format": "hackday",
     "formatLabel": "\u26a1 HACK DAY",
     "regionGroup": "pune",
-    "regionLabel": "Pune",
-    "city": "PUNE",
+    "regionLabel": "Maharashtra",
+    "city": "Pune",
     "state": "Maharashtra",
     "country": "IN",
-    "venue": "Army Institute Of Technology, Dighi Hills, Alandi, Road, alandi road, PUNE, Maharashtra, 411015",
-    "shortVenue": "Army Institute Of Technology, Di..., PUNE",
+    "venue": "Army Institute Of Technology, Dighi Hills, Alandi, Road, alandi road, Pune, Maharashtra, 411015",
+    "shortVenue": "Army Institute of Technology (AIT), Pune",
+    "isFlagship": true,
     "targetDate": "2026-10-17T05:00:00.000Z",
     "endDate": "2026-10-17T13:00:00.000Z",
     "timezone": "Asia/Kolkata",
@@ -35,8 +36,8 @@ const HACKTOBERFEST_FESTS_DATA = [
     "stipend": "Official Swag Kits & Badges",
     "tags": [
       "Hacktoberfest",
+      "Maharashtra",
       "Pune",
-      "PUNE",
       "MLH",
       "Open Source",
       "Hackday"
@@ -46,17 +47,18 @@ const HACKTOBERFEST_FESTS_DATA = [
     "id": "evt-hf-hacktoberfest-hack-day-pune-x-cloud-native",
     "apiId": "01a07d81-9f8b-e908-cfd4-d680f9ef8ff2",
     "title": "Hacktoberfest Hack Day Pune x Cloud Native Pune",
-    "subtitle": "Official Hacktoberfest 2026 Hackday in Pune, Pune",
+    "subtitle": "Official Hacktoberfest 2026 Hackday in Pune, Maharashtra",
     "category": "opensource",
     "format": "hackday",
     "formatLabel": "\u26a1 HACK DAY",
     "regionGroup": "pune",
-    "regionLabel": "Pune",
+    "regionLabel": "Maharashtra",
     "city": "Pune",
     "state": "Maharashtra",
     "country": "IN",
     "venue": "No. 33, 3rd Floor, Gaia Apex, S, 2D, Viman Nagar, Pune, Maharashtra, 411014",
-    "shortVenue": "No. 33, 3rd Floor, Gaia Apex, S,..., Pune",
+    "shortVenue": "Gaia Apex, Viman Nagar, Pune",
+    "isFlagship": false,
     "targetDate": "2026-10-24T04:30:00.000Z",
     "endDate": "2026-10-24T11:30:00.000Z",
     "timezone": "Asia/Kolkata",
@@ -71,7 +73,7 @@ const HACKTOBERFEST_FESTS_DATA = [
     "stipend": "Official Swag Kits & Badges",
     "tags": [
       "Hacktoberfest",
-      "Pune",
+      "Maharashtra",
       "Pune",
       "MLH",
       "Open Source",
@@ -82,17 +84,18 @@ const HACKTOBERFEST_FESTS_DATA = [
     "id": "evt-hf-hacktoberfest-meet-up-chhatrapati-sambhaji",
     "apiId": "01a0a22b-bcb6-a95e-bc8e-a68f473e545d",
     "title": "Hacktoberfest Meetup <Chhatrapati Sambhajinagar> ",
-    "subtitle": "Official Hacktoberfest 2026 Hackday in Chhatrapati Sambhajinagar, Maharashtra",
+    "subtitle": "Official Hacktoberfest 2026 Hackday in Sambhajinagar, Maharashtra",
     "category": "opensource",
     "format": "hackday",
     "formatLabel": "\u26a1 HACK DAY",
     "regionGroup": "maharashtra",
     "regionLabel": "Maharashtra",
-    "city": "Chhatrapati Sambhajinagar",
+    "city": "Sambhajinagar",
     "state": "Maharashtra",
     "country": "IN",
-    "venue": "Jalna road,Chhatrapati Sambhajinagar, Maharashtra, plotno-31, Chhatrapati Sambhajinagar, Maharashtra, 431001",
-    "shortVenue": "Jalna road,Chhatrapati Sambhajin..., Chhatrapati Sambhajinagar",
+    "venue": "Jalna road,Chhatrapati Sambhajinagar, Maharashtra, plotno-31, Sambhajinagar, Maharashtra, 431001",
+    "shortVenue": "Jalna Road, Chhatrapati Sambhajinagar",
+    "isFlagship": false,
     "targetDate": "2026-10-01T13:30:00.000Z",
     "endDate": "2026-10-01T19:30:00.000Z",
     "timezone": "UTC",
@@ -108,7 +111,7 @@ const HACKTOBERFEST_FESTS_DATA = [
     "tags": [
       "Hacktoberfest",
       "Maharashtra",
-      "Chhatrapati Sambhajinagar",
+      "Sambhajinagar",
       "MLH",
       "Open Source",
       "Hackday"
@@ -128,7 +131,8 @@ const HACKTOBERFEST_FESTS_DATA = [
     "state": "Maharashtra",
     "country": "IN",
     "venue": "Nagpur, Nagpur, Maharashtra, 440001",
-    "shortVenue": "Nagpur, Nagpur",
+    "shortVenue": "GDGC Campus, Nagpur",
+    "isFlagship": false,
     "targetDate": "2026-10-03T04:30:00.000Z",
     "endDate": "2026-10-03T09:00:00.000Z",
     "timezone": "Asia/Kolkata",
@@ -164,7 +168,8 @@ const HACKTOBERFEST_FESTS_DATA = [
     "state": "Maharashtra",
     "country": "IN",
     "venue": "D-24, Near KIA Workshop, NICE Area, MIDC, Satpur Colony, Nashik, Maharashtra, 422007",
-    "shortVenue": "D-24, Near KIA Workshop, NICE Ar..., Nashik",
+    "shortVenue": "NICE Area, MIDC Satpur, Nashik",
+    "isFlagship": false,
     "targetDate": "2026-10-04T04:40:00.000Z",
     "endDate": "2026-10-04T11:30:00.000Z",
     "timezone": "Asia/Kolkata",
@@ -200,7 +205,8 @@ const HACKTOBERFEST_FESTS_DATA = [
     "state": "Maharashtra",
     "country": "IN",
     "venue": "Plot No 90, Balaji Multiplex, Sector 8, Navi Mumbai, Maharashtra, 400709",
-    "shortVenue": "Plot No 90, Balaji Multiplex, Navi Mumbai",
+    "shortVenue": "Balaji Multiplex, Navi Mumbai",
+    "isFlagship": false,
     "targetDate": "2026-10-04T07:00:00.000Z",
     "endDate": "2026-10-04T11:00:00.000Z",
     "timezone": "Asia/Kolkata",
@@ -236,7 +242,8 @@ const HACKTOBERFEST_FESTS_DATA = [
     "state": "Maharashtra",
     "country": "IN",
     "venue": "Indian Institute of Information Technology, Nagpur, Nagpur, Maharashtra, 441108",
-    "shortVenue": "Indian Institute of Information ..., Nagpur",
+    "shortVenue": "IIIT Nagpur Campus, Nagpur",
+    "isFlagship": false,
     "targetDate": "2026-10-10T03:30:00.000Z",
     "endDate": "2026-10-10T13:30:00.000Z",
     "timezone": "Asia/Kolkata",
@@ -273,6 +280,7 @@ const HACKTOBERFEST_FESTS_DATA = [
     "country": "IN",
     "venue": "Wardha Road, 2nd Floor, JP Nagar, Nagpur, Maharashtra, 440025",
     "shortVenue": "Wardha Road, Nagpur",
+    "isFlagship": false,
     "targetDate": "2026-10-10T05:30:00.000Z",
     "endDate": "2026-10-10T08:30:00.000Z",
     "timezone": "Asia/Kolkata",
@@ -309,6 +317,7 @@ const HACKTOBERFEST_FESTS_DATA = [
     "country": "IN",
     "venue": "Waterstones Corporate Park, Paytm, Unit No. 3 & 4A, 3rd Floor,, Mumbai, Maharashtra, 400059",
     "shortVenue": "Waterstones Corporate Park, Mumbai",
+    "isFlagship": false,
     "targetDate": "2026-10-17T04:30:00.000Z",
     "endDate": "2026-10-17T09:30:00.000Z",
     "timezone": "Asia/Kolkata",
@@ -344,7 +353,8 @@ const HACKTOBERFEST_FESTS_DATA = [
     "state": "Madhya Pradesh",
     "country": "IN",
     "venue": "AB Rd, Rajendra Nagar,  Bijalpur, Indore, Madhya Pradesh, 452012",
-    "shortVenue": "AB Rd, Rajendra Nagar, Indore",
+    "shortVenue": "Rajendra Nagar, Indore",
+    "isFlagship": false,
     "targetDate": "2026-10-01T05:30:00.000Z",
     "endDate": "2026-10-01T10:30:00.000Z",
     "timezone": "Asia/Kolkata",
@@ -380,7 +390,8 @@ const HACKTOBERFEST_FESTS_DATA = [
     "state": "Karnataka",
     "country": "IN",
     "venue": " 25th Main Rd, 1st Sector, , 784, Bengaluru, Karnataka, 560102",
-    "shortVenue": " 25th Main Rd, 1st Sector, , Bengaluru",
+    "shortVenue": "HSR Layout, Bengaluru",
+    "isFlagship": false,
     "targetDate": "2026-10-01T11:00:00.000Z",
     "endDate": "2026-10-01T14:00:00.000Z",
     "timezone": "Asia/Kolkata",
@@ -416,7 +427,8 @@ const HACKTOBERFEST_FESTS_DATA = [
     "state": "Telangana",
     "country": "IN",
     "venue": "Rajapushpa Summit 2-58, Sy.No.115, 4th Floor, Hyderabad, Telangana, 500032",
-    "shortVenue": "Rajapushpa Summit 2-58, Sy.No.11..., Hyderabad",
+    "shortVenue": "Rajapushpa Summit, Hyderabad",
+    "isFlagship": false,
     "targetDate": "2026-10-03T04:30:00.000Z",
     "endDate": "2026-10-03T09:30:00.000Z",
     "timezone": "Asia/Kolkata",
@@ -452,7 +464,8 @@ const HACKTOBERFEST_FESTS_DATA = [
     "state": "Gujarat",
     "country": "IN",
     "venue": " 4PJ9+R64, Near Malvan Mandir Via Magdalla Port, Dumas Rd, Surat, Gujarat, 395007",
-    "shortVenue": " 4PJ9+R64, Near Malvan Mandir Vi..., Surat",
+    "shortVenue": "Dumas Road, Surat",
+    "isFlagship": false,
     "targetDate": "2026-10-03T05:00:00.000Z",
     "endDate": "2026-10-03T09:30:00.000Z",
     "timezone": "Asia/Kolkata",
@@ -488,7 +501,8 @@ const HACKTOBERFEST_FESTS_DATA = [
     "state": "Madhya Pradesh",
     "country": "IN",
     "venue": "Anand Nagar, Post Piplani, Opposite Hataikheda Dam, BHEL, Bhopal - 462021, Madhya Pradesh, India, TIT Campus, Excellence Building, 2nd floor, AIML Department, Bhopal, Madhya Pradesh, 462022",
-    "shortVenue": "Anand Nagar, Post Piplani, Oppos..., Bhopal",
+    "shortVenue": "TIT Campus, Anand Nagar, Bhopal",
+    "isFlagship": false,
     "targetDate": "2026-10-03T05:30:00.000Z",
     "endDate": "2026-10-03T10:30:00.000Z",
     "timezone": "Asia/Kolkata",
@@ -514,17 +528,18 @@ const HACKTOBERFEST_FESTS_DATA = [
     "id": "evt-hf-hacktoberfest-hack-day-bhopal-x-apex-campu",
     "apiId": "01a08864-69a8-ee19-624f-fea2739fe195",
     "title": "Hacktoberfest Hack Day Bhopal x Apex Campus Connect",
-    "subtitle": "Official Hacktoberfest 2026 Hackday in bhopal, Madhya Pradesh",
+    "subtitle": "Official Hacktoberfest 2026 Hackday in Bhopal, Madhya Pradesh",
     "category": "opensource",
     "format": "hackday",
     "formatLabel": "\u26a1 HACK DAY",
     "regionGroup": "neighboring",
     "regionLabel": "Madhya Pradesh",
-    "city": "bhopal",
+    "city": "Bhopal",
     "state": "Madhya Pradesh",
     "country": "IN",
-    "venue": "Anand Nagar, BHEL Opposite Hathaikheda Dam, Bhopal, Madhya Pradesh, bhopal, Madhya Pradesh, 462022",
-    "shortVenue": "Anand Nagar, BHEL Opposite Hatha..., bhopal",
+    "venue": "Anand Nagar, BHEL Opposite Hathaikheda Dam, Bhopal, Madhya Pradesh, Bhopal, Madhya Pradesh, 462022",
+    "shortVenue": "Apex Campus, Anand Nagar, Bhopal",
+    "isFlagship": false,
     "targetDate": "2026-10-03T05:30:00.000Z",
     "endDate": "2026-10-03T11:00:00.000Z",
     "timezone": "Asia/Kolkata",
@@ -540,7 +555,7 @@ const HACKTOBERFEST_FESTS_DATA = [
     "tags": [
       "Hacktoberfest",
       "Madhya Pradesh",
-      "bhopal",
+      "Bhopal",
       "MLH",
       "Open Source",
       "Hackday"
@@ -560,7 +575,8 @@ const HACKTOBERFEST_FESTS_DATA = [
     "state": "Karnataka",
     "country": "IN",
     "venue": "UV House, 780, 19th Main Rd, Vanganahalli, 1st Sector, HSR Layout, 1st Floor, Bengaluru, Karnataka, 560102",
-    "shortVenue": "UV House, 780, 19th Main Rd, Van..., Bengaluru",
+    "shortVenue": "UV House, HSR Layout, Bengaluru",
+    "isFlagship": false,
     "targetDate": "2026-10-04T04:30:00.000Z",
     "endDate": "2026-10-04T14:30:00.000Z",
     "timezone": "Asia/Kolkata",
@@ -596,7 +612,8 @@ const HACKTOBERFEST_FESTS_DATA = [
     "state": "Madhya Pradesh",
     "country": "IN",
     "venue": "Scheme No 54, Indore, Madhya Pradesh 452011, WalkOver, 5th floor, Top LIC Tower PU - 03, Wing B, Indore, Madhya Pradesh, 452011",
-    "shortVenue": "Scheme No 54, Indore, Madhya Pra..., Indore",
+    "shortVenue": "Scheme No 54, Indore",
+    "isFlagship": false,
     "targetDate": "2026-10-04T05:00:00.000Z",
     "endDate": "2026-10-04T12:00:00.000Z",
     "timezone": "Asia/Kolkata",
@@ -632,7 +649,8 @@ const HACKTOBERFEST_FESTS_DATA = [
     "state": "Telangana",
     "country": "IN",
     "venue": "Dundigal, Institute of Aeronautical Engineering (IARE), Hyderabad, Telangana, 500043",
-    "shortVenue": "Dundigal, Hyderabad",
+    "shortVenue": "IARE Campus, Dundigal, Hyderabad",
+    "isFlagship": false,
     "targetDate": "2026-10-10T04:30:00.000Z",
     "endDate": "2026-10-10T10:30:00.000Z",
     "timezone": "Asia/Kolkata",
@@ -668,7 +686,8 @@ const HACKTOBERFEST_FESTS_DATA = [
     "state": "Karnataka",
     "country": "IN",
     "venue": "National Institute of Technology Karnataka, NH 66, Srinivasnagar, Surathkal, Karnataka, 575025",
-    "shortVenue": "National Institute of Technology..., Surathkal",
+    "shortVenue": "NITK Surathkal Campus, Surathkal",
+    "isFlagship": false,
     "targetDate": "2026-10-11T03:30:00.000Z",
     "endDate": "2026-10-11T15:00:00.000Z",
     "timezone": "Asia/Kolkata",
@@ -694,17 +713,18 @@ const HACKTOBERFEST_FESTS_DATA = [
     "id": "evt-hf-hacktoberfest-hack-day-vidisha-x-htb-hackc",
     "apiId": "01a07803-9761-64b8-a5df-615b2968542b",
     "title": "Hacktoberfest Hack Day Vidisha x HTB HACKCLUB",
-    "subtitle": "Official Hacktoberfest 2026 Hackday in vidisha, Madhya Pradesh",
+    "subtitle": "Official Hacktoberfest 2026 Hackday in Vidisha, Madhya Pradesh",
     "category": "opensource",
     "format": "hackday",
     "formatLabel": "\u26a1 HACK DAY",
     "regionGroup": "neighboring",
     "regionLabel": "Madhya Pradesh",
-    "city": "vidisha",
+    "city": "Vidisha",
     "state": "Madhya Pradesh",
     "country": "IN",
-    "venue": "Magdham Vidyapeeth School,Teelakhedi,Vidisha , Near Aashish mangal vatika, vidisha, Madhya Pradesh, 464001",
-    "shortVenue": "Magdham Vidyapeeth School,Teelak..., vidisha",
+    "venue": "Magdham Vidyapeeth School,Teelakhedi,Vidisha , Near Aashish mangal vatika, Vidisha, Madhya Pradesh, 464001",
+    "shortVenue": "Magdham Vidyapeeth, Vidisha",
+    "isFlagship": false,
     "targetDate": "2026-10-25T04:00:00.000Z",
     "endDate": "2026-10-25T13:30:00.000Z",
     "timezone": "Asia/Kolkata",
@@ -720,7 +740,7 @@ const HACKTOBERFEST_FESTS_DATA = [
     "tags": [
       "Hacktoberfest",
       "Madhya Pradesh",
-      "vidisha",
+      "Vidisha",
       "MLH",
       "Open Source",
       "Hackday"
@@ -740,7 +760,8 @@ const HACKTOBERFEST_FESTS_DATA = [
     "state": "Telangana",
     "country": "IN",
     "venue": "4th Floor, Purva Summit, Kondapur, Whitefields, HITEC City, Hyderabad, Telangana, 500081",
-    "shortVenue": "4th Floor, Purva Summit, Kondapu..., Hyderabad",
+    "shortVenue": "Purva Summit, HITEC City, Hyderabad",
+    "isFlagship": false,
     "targetDate": "2026-10-25T04:30:00.000Z",
     "endDate": "2026-10-25T12:30:00.000Z",
     "timezone": "Asia/Kolkata",
@@ -776,7 +797,8 @@ const HACKTOBERFEST_FESTS_DATA = [
     "state": "Karnataka",
     "country": "IN",
     "venue": "RV Vidyanikethan Post, 8th Mile, Mysuru Road, B-Block, 2nd Floor, Bengaluru, Karnataka, 560059",
-    "shortVenue": "RV Vidyanikethan Post, 8th Mile,..., Bengaluru",
+    "shortVenue": "RV University Campus, Bengaluru",
+    "isFlagship": false,
     "targetDate": "2026-10-30T04:30:00.000Z",
     "endDate": "2026-10-30T11:30:00.000Z",
     "timezone": "Asia/Kolkata",
@@ -825,7 +847,7 @@ class HacktoberfestFestsManager {
       if (!existingIds.has(evt.id)) {
         existingEvents.push({
           ...evt,
-          isFlagship: evt.id.includes('pune-x-ossc-ait'),
+          isFlagship: Boolean(evt.isFlagship),
           status: 'upcoming',
           dateBadge: this.formatDateBadge(evt.targetDate, evt.endDate),
           timelineInfo: {
@@ -834,7 +856,7 @@ class HacktoberfestFestsManager {
             reviewPhase: 'October 2026'
           },
           speakers: [
-            { name: evt.regionLabel + ' Open Source Leads', role: 'Community Mentors', avatar: 'MLH' }
+            { name: evt.city + ' Community Mentors', role: 'GitHub & MLH Mentors', avatar: 'MLH' }
           ],
           agenda: [
             'Check-in & Welcome Session',
@@ -880,17 +902,17 @@ class HacktoberfestFestsManager {
 
   getFilteredEvents() {
     return this.events.filter(evt => {
-      // Region
+      // Region filter
       if (this.currentRegion !== 'all') {
         if (this.currentRegion === 'pune' && evt.regionGroup !== 'pune') return false;
         if (this.currentRegion === 'maharashtra' && evt.regionGroup !== 'maharashtra') return false;
-        if (this.currentRegion === 'karnataka' && !evt.regionLabel.toLowerCase().includes('karnataka')) return false;
-        if (this.currentRegion === 'telangana' && !evt.regionLabel.toLowerCase().includes('telangana')) return false;
-        if (this.currentRegion === 'gujarat' && !evt.regionLabel.toLowerCase().includes('gujarat')) return false;
-        if (this.currentRegion === 'madhyapradesh' && !evt.regionLabel.toLowerCase().includes('madhya pradesh')) return false;
+        if (this.currentRegion === 'karnataka' && !evt.state.toLowerCase().includes('karnataka')) return false;
+        if (this.currentRegion === 'telangana' && !evt.state.toLowerCase().includes('telangana')) return false;
+        if (this.currentRegion === 'gujarat' && !evt.state.toLowerCase().includes('gujarat')) return false;
+        if (this.currentRegion === 'madhyapradesh' && !evt.state.toLowerCase().includes('madhya pradesh')) return false;
       }
 
-      // Format
+      // Format filter
       if (this.currentFormat !== 'all' && evt.format !== this.currentFormat) {
         return false;
       }
@@ -900,7 +922,7 @@ class HacktoberfestFestsManager {
         const titleMatch = evt.title.toLowerCase().includes(this.searchQuery);
         const cityMatch = evt.city.toLowerCase().includes(this.searchQuery);
         const stateMatch = evt.state.toLowerCase().includes(this.searchQuery);
-        const venueMatch = (evt.venue || '').toLowerCase().includes(this.searchQuery);
+        const venueMatch = (evt.shortVenue || evt.venue || '').toLowerCase().includes(this.searchQuery);
         const descMatch = (evt.description || '').toLowerCase().includes(this.searchQuery);
         if (!titleMatch && !cityMatch && !stateMatch && !venueMatch && !descMatch) {
           return false;
@@ -908,7 +930,12 @@ class HacktoberfestFestsManager {
       }
 
       return true;
-    }).sort((a, b) => new Date(a.targetDate) - new Date(b.targetDate));
+    }).sort((a, b) => {
+      // Pin flagship to top, then chronological
+      if (a.isFlagship) return -1;
+      if (b.isFlagship) return 1;
+      return new Date(a.targetDate) - new Date(b.targetDate);
+    });
   }
 
   formatDateBadge(startDateStr, endDateStr) {
@@ -952,12 +979,12 @@ class HacktoberfestFestsManager {
     const days = Math.floor(totalSeconds / 86400);
     const hours = Math.floor((totalSeconds % 86400) / 3600);
     const mins = Math.floor((totalSeconds % 3600) / 60);
-    const secs = totalSeconds % 60;
 
     if (days > 0) {
-      return { label: `⏳ Starts in ${days}d ${hours}h ${mins}m`, isLive: false };
+      return { label: `Starts in ${days}d ${hours}h ${mins}m`, isLive: false };
     } else {
-      return { label: `⚡ Starts in ${hours}h ${mins}m ${secs}s`, isLive: false };
+      const secs = totalSeconds % 60;
+      return { label: `Starts in ${hours}h ${mins}m ${secs}s`, isLive: false };
     }
   }
 
@@ -968,7 +995,12 @@ class HacktoberfestFestsManager {
         const targetDate = el.dataset.targetDate;
         if (targetDate) {
           const res = this.formatRelativeCountdown(targetDate);
-          el.textContent = res.label;
+          const textEl = el.querySelector('.fest-countdown-text');
+          if (textEl) {
+            textEl.textContent = res.label;
+          } else {
+            el.textContent = res.label;
+          }
           if (res.isLive) el.classList.add('badge-ongoing-pulse');
         }
       });
@@ -999,6 +1031,13 @@ class HacktoberfestFestsManager {
     }
   }
 
+  truncateWords(str, maxLen = 135) {
+    if (!str || str.length <= maxLen) return str || '';
+    const sub = str.slice(0, maxLen);
+    const lastSpace = sub.lastIndexOf(' ');
+    return (lastSpace > 0 ? sub.slice(0, lastSpace) : sub) + '...';
+  }
+
   render() {
     const container = document.getElementById('hacktoberfest-fests-grid');
     if (!container) return;
@@ -1020,18 +1059,25 @@ class HacktoberfestFestsManager {
     container.innerHTML = filtered.map(evt => {
       const countdownInfo = this.formatRelativeCountdown(evt.targetDate);
       const isPune = evt.regionGroup === 'pune';
+      const isFlagship = Boolean(evt.isFlagship);
       const formattedTime = this.formatDateBadge(evt.targetDate, evt.endDate);
+      const cardClass = isFlagship ? 'fest-card-flagship' : (isPune ? 'fest-card-pune-glow' : '');
 
       return `
-        <div class="fest-card bento-card ${isPune ? 'fest-card-pune-glow' : ''}">
+        <div class="fest-card bento-card ${cardClass}">
           <div class="fest-card-header">
             <div class="fest-badges-row">
-              <span class="fest-region-pill ${isPune ? 'pill-pune' : ''}">📍 ${evt.city}, ${evt.regionLabel}</span>
-              <span class="fest-format-pill ${evt.format === 'hackday' ? 'fmt-hackday' : 'fmt-meetup'}">${evt.formatLabel}</span>
+              <span class="fest-region-pill ${isPune ? 'pill-pune' : ''}">📍 ${evt.city}, ${evt.state}</span>
+              <div style="display: flex; gap: 6px; align-items: center;">
+                ${isFlagship ? '<span class="fest-flagship-pill">⭐ FLAGSHIP</span>' : ''}
+                <span class="fest-format-pill ${evt.format === 'hackday' ? 'fmt-hackday' : 'fmt-meetup'}">${evt.formatLabel}</span>
+              </div>
             </div>
-            <span class="fest-countdown-pill ${countdownInfo.isLive ? 'badge-ongoing-pulse' : ''}" data-target-date="${evt.targetDate}">
-              ${countdownInfo.label}
-            </span>
+
+            <div class="fest-countdown-pill ${countdownInfo.isLive ? 'badge-ongoing-pulse' : ''}" data-target-date="${evt.targetDate}">
+              <span>⏳</span>
+              <span class="fest-countdown-text">${countdownInfo.label}</span>
+            </div>
           </div>
 
           <div class="fest-card-body">
@@ -1048,7 +1094,7 @@ class HacktoberfestFestsManager {
             </div>
 
             <p class="fest-card-desc">
-              ${evt.description ? evt.description.slice(0, 130) + (evt.description.length > 130 ? '...' : '') : 'Official in-person Hacktoberfest Fest with hands-on coding, mentoring, and swag.'}
+              ${this.truncateWords(evt.description, 135)}
             </p>
           </div>
 

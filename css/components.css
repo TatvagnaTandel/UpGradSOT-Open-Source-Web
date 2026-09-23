@@ -1210,26 +1210,27 @@
 }
 
 .fest-card-pune-glow {
+  border-color: var(--border-black);
+  border-width: 2.5px;
+  background: #fffdf5;
+}
+
+.fest-card-flagship {
   border-color: var(--brand-red);
   border-width: 3px;
   background: #fffdf8;
-  position: relative;
 }
 
-.fest-card-pune-glow::before {
-  content: 'HOST CITY FLAGSHIP';
-  position: absolute;
-  top: -12px;
-  right: 18px;
+.fest-flagship-pill {
+  font-size: 0.72rem;
+  font-weight: 900;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border-black);
   background: var(--brand-red);
   color: #ffffff;
-  font-size: 0.68rem;
-  font-weight: 900;
-  padding: 2px 8px;
-  border: 1.5px solid var(--border-black);
-  border-radius: var(--radius-full);
   box-shadow: 1.5px 1.5px 0px var(--border-black);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
 }
 
 .fest-card-header {
@@ -1284,16 +1285,19 @@
 
 .fest-countdown-pill {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.82rem;
   font-weight: 800;
-  padding: 4px 10px;
+  padding: 8px 12px;
   border-radius: var(--radius-sm);
-  background: #f4f4f5;
-  border: 1.5px solid var(--border-black);
+  background: #ffffff;
+  border: 2px solid var(--border-black);
+  box-shadow: 2px 2px 0px var(--border-black);
   color: var(--text-main);
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 4px;
+  justify-content: center;
+  gap: 6px;
+  letter-spacing: -0.01em;
 }
 
 .fest-card-title {
