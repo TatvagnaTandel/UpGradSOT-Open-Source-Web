@@ -61,6 +61,27 @@
         <div id="nav-user-area">
           <!-- Populated by auth.js -->
         </div>
+        <button id="mobile-menu-toggle" class="mobile-menu-btn" aria-label="Toggle navigation menu">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Nav Drawer -->
+    <div id="mobile-nav-drawer" class="mobile-nav-drawer">
+      <div class="mobile-nav-links">
+        <a href="#countdown-section" class="mobile-nav-link" onclick="window.app.closeMobileNav()">⏱️ Live Countdown Timer</a>
+        <a href="#hacktoberfest-fests-section" class="mobile-nav-link" onclick="window.app.closeMobileNav()">🎃 Hacktoberfest Regional Fests</a>
+        <a href="#events-section" class="mobile-nav-link" onclick="window.app.closeMobileNav()">🚀 Open Source Programs</a>
+        <a href="#manifesto-section" class="mobile-nav-link" onclick="window.app.closeMobileNav()">💡 About & Culture</a>
+        <a href="#leaderboard-section" class="mobile-nav-link" onclick="window.app.closeMobileNav()">🏆 Dev XP Leaderboard</a>
+        <div id="mobile-admin-link-wrapper" style="display: none; padding-top: 6px;">
+          <button class="btn btn-block btn-secondary" onclick="window.adminDashboard.open(); window.app.closeMobileNav();">
+            👑 Admin Command Center
+          </button>
+        </div>
       </div>
     </div>
   </header>

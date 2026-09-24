@@ -1380,3 +1380,382 @@
   margin-right: auto;
 }
 
+/* =========================================================
+   COMPREHENSIVE MOBILE & TABLET RESPONSIVE RULES
+   ========================================================= */
+
+@media (max-width: 860px) {
+  .countdown-container-card {
+    padding: 24px 18px;
+  }
+
+  .countdown-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .modal-dialog {
+    max-width: 95% !important;
+  }
+
+  .modal-body-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px 16px;
+  }
+
+  .bento-manifesto-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bento-box.span-2 {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .btn-glow-primary {
+    padding: 12px 22px;
+    font-size: 0.95rem;
+  }
+
+  /* Regional Fests Section */
+  .fests-metrics-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+
+  .fest-metric-box {
+    padding: 12px 14px;
+    gap: 10px;
+  }
+
+  .fest-metric-num {
+    font-size: 1.35rem;
+  }
+
+  .fest-metric-label {
+    font-size: 0.82rem;
+  }
+
+  .fests-tabs-group {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    width: 100%;
+  }
+
+  .fests-tabs-group::-webkit-scrollbar {
+    display: none;
+  }
+
+  .fest-tab {
+    flex-shrink: 0;
+    white-space: nowrap;
+    font-size: 0.82rem;
+    padding: 7px 14px;
+  }
+
+  .fests-search-wrap {
+    flex-direction: column;
+    width: 100%;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .fests-search-wrap .search-box {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .fests-search-wrap .search-input {
+    width: 100% !important;
+  }
+
+  .fest-format-select {
+    width: 100%;
+  }
+
+  .fests-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  /* Main Events Filter Bar */
+  .events-filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+
+  .filter-pills-group {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    width: 100%;
+  }
+
+  .filter-pills-group::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-pill {
+    flex-shrink: 0;
+    white-space: nowrap;
+    font-size: 0.82rem;
+    padding: 7px 14px;
+  }
+
+  .filter-controls-right {
+    flex-direction: column;
+    width: 100%;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .filter-controls-right .search-box {
+    width: 100%;
+  }
+
+  .filter-controls-right .search-input {
+    width: 100% !important;
+  }
+
+  .status-toggle-group {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .status-toggle-btn {
+    flex: 1;
+    text-align: center;
+    padding: 7px 4px;
+    font-size: 0.74rem;
+  }
+
+  .events-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .event-card-media {
+    height: 150px;
+  }
+
+  .event-card-content {
+    padding: 18px 16px;
+  }
+
+  .card-actions {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .card-actions .btn {
+    flex: 1 1 auto;
+    min-width: 120px;
+  }
+
+  /* Terminal Card */
+  .terminal-card {
+    padding: 10px;
+  }
+
+  .terminal-title {
+    font-size: 0.72rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .terminal-body {
+    max-height: 190px;
+    font-size: 0.76rem;
+    overflow-x: auto;
+  }
+
+  .terminal-input-row {
+    font-size: 0.76rem;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Countdown Timer Row */
+  .timer-units-row {
+    gap: 5px;
+    width: 100%;
+  }
+
+  .timer-unit-box {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 2px;
+    box-shadow: 2px 2px 0px var(--border-black);
+  }
+
+  .timer-digit {
+    font-size: clamp(1.2rem, 4.4vw, 1.55rem);
+    margin-bottom: 2px;
+  }
+
+  .timer-label {
+    font-size: clamp(0.58rem, 2.1vw, 0.7rem);
+    letter-spacing: -0.02em;
+  }
+
+  .countdown-event-title {
+    font-size: 1.45rem;
+  }
+
+  .countdown-meta-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .countdown-meta-item {
+    width: 100%;
+    font-size: 0.84rem;
+  }
+
+  .countdown-info-side div[style*="display: flex"] {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px !important;
+  }
+
+  .countdown-info-side .btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* Leaderboard */
+  .leaderboard-item {
+    padding: 12px 14px;
+    gap: 10px;
+  }
+
+  .lb-badges {
+    display: none;
+  }
+
+  .lb-rank {
+    font-size: 1.1rem;
+    min-width: 26px;
+  }
+
+  .user-avatar-circle.small {
+    width: 32px;
+    height: 32px;
+    font-size: 0.78rem;
+  }
+
+  .xp-val {
+    font-size: 1.05rem;
+  }
+
+  /* Modals */
+  .modal {
+    padding: 10px 8px;
+  }
+
+  .modal-dialog {
+    max-width: 100% !important;
+    max-height: 94vh;
+    border-radius: var(--radius-md);
+    box-shadow: 4px 4px 0px var(--border-black);
+  }
+
+  .modal-event-hero {
+    height: 150px;
+  }
+
+  .modal-hero-overlay {
+    padding: 14px;
+  }
+
+  .modal-hero-overlay h2 {
+    font-size: 1.25rem;
+  }
+
+  .modal-body-grid {
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .modal-close-btn {
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  input, select, textarea {
+    font-size: 16px !important; /* Prevents auto-zoom on iOS */
+  }
+
+  /* Toast Notification */
+  .toast {
+    top: 75px;
+    left: 14px;
+    right: 14px;
+    font-size: 0.85rem;
+    padding: 10px 16px;
+    justify-content: center;
+  }
+
+  /* Fest Cards */
+  .fest-card {
+    padding: 16px;
+  }
+
+  .fest-card-title {
+    font-size: 1.08rem;
+  }
+
+  .fest-card-footer {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .fest-card-footer .fest-reg-btn {
+    flex: 1 1 auto;
+    min-width: 130px;
+  }
+}
+
+@media (max-width: 380px) {
+  .fests-metrics-row {
+    grid-template-columns: 1fr;
+  }
+
+  .timer-units-row {
+    gap: 3px;
+  }
+
+  .timer-unit-box {
+    padding: 8px 1px;
+  }
+
+  .timer-digit {
+    font-size: 1.05rem;
+  }
+
+  .timer-label {
+    font-size: 0.55rem;
+  }
+}
+

@@ -21,6 +21,7 @@ class App {
     this.bindGlobalModals();
     this.initTerminal();
     this.initSoundFX();
+    this.initMobileNav();
   }
 
   renderSections() {
@@ -229,6 +230,47 @@ class App {
   updateHeaderUser() {
     if (window.authManager) window.authManager.updateUserUI();
     this.renderLeaderboard();
+    this.syncMobileAdmin();
+  }
+
+  initMobileNav() {
+    const toggleBtn = document.getElementById('mobile-menu-toggle');
+    const drawer = document.getElementById('mobile-nav-drawer');
+    if (!toggleBtn || !drawer) return;
+
+    toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = drawer.classList.toggle('open');
+      toggleBtn.classList.toggle('active', isOpen);
+    });
+
+    document.addEventListener('click', (e) => {
+      if (drawer.classList.contains('open') && !drawer.contains(e.target) && !toggleBtn.contains(e.target)) {
+        this.closeMobileNav();
+      }
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && drawer.classList.contains('open')) {
+        this.closeMobileNav();
+      }
+    });
+
+    this.syncMobileAdmin();
+  }
+
+  syncMobileAdmin() {
+    const mobileAdminWrapper = document.getElementById('mobile-admin-link-wrapper');
+    if (!mobileAdminWrapper || !window.clubStore) return;
+    const user = window.clubStore.getCurrentUser();
+    mobileAdminWrapper.style.display = (user && user.role === 'admin') ? 'block' : 'none';
+  }
+
+  closeMobileNav() {
+    const toggleBtn = document.getElementById('mobile-menu-toggle');
+    const drawer = document.getElementById('mobile-nav-drawer');
+    if (toggleBtn) toggleBtn.classList.remove('active');
+    if (drawer) drawer.classList.remove('open');
   }
 }
 
