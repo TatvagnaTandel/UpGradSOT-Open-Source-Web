@@ -68,6 +68,46 @@ const DEFAULT_EVENTS = [
     ]
   },
   {
+    id: 'evt-hacktoberfest-pune-cloudclub',
+    title: 'Hacktoberfest Hack Day Pune x Cloud Computing Club',
+    subtitle: 'Open-Source AI & Cloud Hack Day at MIT ADT University, Pune',
+    category: 'opensource',
+    isFlagship: false,
+    status: 'upcoming',
+    dateBadge: 'Monday, Oct 13, 2026 • 9:00 AM – 3:30 PM IST',
+    startDate: '2026-10-13T03:30:00.000Z',
+    targetDate: '2026-10-13T03:30:00.000Z',
+    endDate: '2026-10-13T10:00:00.000Z',
+    venue: 'MIT ADT University, Rajbaug, Loni Kalbhor, IT Building, 3rd Floor, Pune 412201',
+    mode: 'In-Person Fest (Loni Kalbhor, Pune)',
+    banner: 'https://mlhusercontent.com/backgrounds/events/01a0b6b0-a1ac-82af-a804-d6f836c99202/hacktoberfest-hack-day-pune-x-cloud-computing-club_db23c1dcf9a1.jpeg',
+    logoUrl: 'https://mlhusercontent.com/logos/events/01a0b6b0-a1ac-82af-a804-d6f836c99202/hacktoberfest-hack-day-pune-x-cloud-computing-club_252fb32395dd.png',
+    description: 'Join Cloud Computing Club for Hackstorm, a one-day in-person Hacktoberfest event where participants build with open-source or open-weight AI, submit through OrganizerHQ Challenges, and compete in the Best Open-Source AI Project challenge.',
+    prizePool: 'Best Open-Source AI Project Awards, Official MLH Badges & Goodies',
+    stipend: 'Official MLH Badges & Swag',
+    officialUrl: 'https://events.mlh.io/events/15124-hacktoberfest-hack-day-pune-x-cloud-computing-club',
+    registrationUrl: 'https://events.mlh.io/events/15124-hacktoberfest-hack-day-pune-x-cloud-computing-club/register',
+    spotsTotal: 200,
+    spotsFilled: 135,
+    tags: ['Hacktoberfest', 'Pune', 'MIT ADT', 'Cloud Computing', 'Open Source AI', 'MLH', 'UGSOT'],
+    timelineInfo: {
+      registration: 'Open now on MLH Events',
+      activePhase: 'Monday, October 13, 2026 • 9:00 AM – 3:30 PM IST',
+      reviewPhase: 'October 13–20, 2026'
+    },
+    speakers: [
+      { name: 'Cloud Computing Club Leads', role: 'Student Organizers', avatar: 'CC' },
+      { name: 'Open-Source AI Mentors', role: 'Technical Mentors', avatar: 'AI' }
+    ],
+    agenda: [
+      '9:00 AM: Check-in & Orientation',
+      '9:30 AM – 11:30 AM: Open-Source AI Architecture Workshop',
+      '11:30 AM – 1:30 PM: Hands-on AI Hackathon Sprint',
+      '1:30 PM – 2:30 PM: Lunch & Project Reviews',
+      '2:30 PM – 3:30 PM: Awards & Swag Distribution'
+    ]
+  },
+  {
     id: 'evt-hacktoberfest-pune-cloudnative',
     title: 'Hacktoberfest Hack Day Pune x Cloud Native Pune',
     subtitle: 'Cloud Native Open Source Fest at Gaia Apex, Viman Nagar, Pune',
@@ -81,7 +121,7 @@ const DEFAULT_EVENTS = [
     venue: 'No. 33, 3rd Floor, Gaia Apex, S, 2D, Viman Nagar, Pune 411014',
     mode: 'In-Person Fest (Viman Nagar, Pune)',
     banner: 'https://mlhusercontent.com/backgrounds/events/01a07d81-9f8b-e908-cfd4-d680f9ef8ff2/hacktoberfest-hack-day-pune-x-cloud-native-pune_3cf371a01d52.png',
-    logoUrl: 'https://mlhusercontent.com/logos/events/01a07d81-9f8b-e908-cfd4-d680f9ef8ff2/hacktoberfest-hack-day-pune-x-cloud-native-pune_a5171d239fad.png',
+    logoUrl: 'https://mlhusercontent.com/logos/events/01a07d81-9f8b-e908-cfd4-d680f9ef8ff2/hacktoberfest-hack-day-pune-x-cloud-native-pune_e0261cc97199.png',
     description: 'Official Hacktoberfest Pune Hack Day hosted with Cloud Native Pune community. Focuses on Kubernetes, containers, microservices, cloud tooling, and open-source contributions with community mentors.',
     prizePool: 'Cloud Native Swag, Official Badges & Certificates',
     stipend: 'Community Swag & Badges',
@@ -104,6 +144,47 @@ const DEFAULT_EVENTS = [
       '1:00 PM – 2:00 PM: Networking Lunch',
       '2:00 PM – 4:30 PM: Code Sprint & Live Pull Requests',
       '4:30 PM – 5:00 PM: Swag Distribution & Closing'
+    ]
+  },
+  {
+    id: 'evt-hacktoberfest-pune-nstadypu',
+    title: 'Hacktoberfest Hack Day Pune x NST ADYPU',
+    subtitle: 'Overnight Open Source Community Hackathon at Ajeenkya DY Patil University, Pune',
+    category: 'opensource',
+    isFlagship: false,
+    status: 'upcoming',
+    dateBadge: 'Saturday, Oct 24, 2026 • 3:00 PM – 2:00 AM IST',
+    startDate: '2026-10-24T09:30:00.000Z',
+    targetDate: '2026-10-24T09:30:00.000Z',
+    endDate: '2026-10-24T20:30:00.000Z',
+    venue: 'Newton School of Technology, 4th Floor, Ajeenkya DY Patil University, Lohegaon, Pune 412105',
+    mode: 'In-Person Fest (Lohegaon, Pune)',
+    banner: 'https://mlhusercontent.com/backgrounds/events/01a0b6b0-6189-433e-609d-f6154893b512/hacktoberfest-hack-day-pune-x-nst-adypu_a20dc586cc34.png',
+    logoUrl: 'https://mlhusercontent.com/logos/events/01a0b6b0-6189-433e-609d-f6154893b512/hacktoberfest-hack-day-pune-x-nst-adypu_279c34b577de.png',
+    description: 'Hacktoberfest 2026 at Pune is an Open Source community event hosted by Newton School of Technology at ADYPU University. The event brings together students, developers, and Open Source enthusiasts for an evening of learning, collaboration, and building followed by an overnight Hackathon where teams build, experiment, and collaborate.',
+    prizePool: 'Overnight Hackathon Prizes, MLH Swag & Developer Kit',
+    stipend: 'Official Goodies & MLH Badges',
+    officialUrl: 'https://events.mlh.io/events/15121-hacktoberfest-hack-day-pune-x-nst-adypu',
+    registrationUrl: 'https://events.mlh.io/events/15121-hacktoberfest-hack-day-pune-x-nst-adypu/register',
+    spotsTotal: 250,
+    spotsFilled: 180,
+    tags: ['Hacktoberfest', 'Pune', 'NST', 'ADYPU', 'Overnight Hackathon', 'Open Source', 'MLH', 'UGSOT'],
+    timelineInfo: {
+      registration: 'Open now on MLH Events',
+      activePhase: 'Saturday, October 24, 2026 • 3:00 PM – 2:00 AM IST',
+      reviewPhase: 'October 24–31, 2026'
+    },
+    speakers: [
+      { name: 'NST Student Leads', role: 'Newton School of Technology', avatar: 'NST' },
+      { name: 'ADYPU Campus Mentors', role: 'Faculty & Mentors', avatar: 'AD' }
+    ],
+    agenda: [
+      '3:00 PM: Check-in & Registrations',
+      '4:00 PM – 6:00 PM: Open Source & Git Deep-Dive Keynote',
+      '6:00 PM – 8:00 PM: Team Formation & Problem Statements',
+      '8:00 PM – 9:00 PM: Dinner & Refreshments',
+      '9:00 PM – 1:00 AM: Overnight Hackathon Sprint',
+      '1:00 AM – 2:00 AM: Demos, Voting & Wrap-up'
     ]
   },
   {
@@ -712,11 +793,11 @@ const DEFAULT_STUDENTS = [
   }
 ];
 
-const STORE_DATA_VERSION = 'ugsot_v2026_09_23_02';
+const STORE_DATA_VERSION = 'ugsot_v2026_09_28_01';
 
 class ClubStore {
   constructor() {
-    // Force cache bust: if stored version is older, reset events and sections to default 15 open source events
+    // Force cache bust: if stored version is older, reset events and sections to default 17 open source events
     const storedVersion = localStorage.getItem('ust_store_data_version');
     if (storedVersion !== STORE_DATA_VERSION) {
       localStorage.setItem(STORAGE_KEYS.EVENTS, JSON.stringify(DEFAULT_EVENTS));
@@ -728,9 +809,10 @@ class ClubStore {
     this.sections = this.load(STORAGE_KEYS.SECTIONS, DEFAULT_SECTIONS);
     this.students = this.load(STORAGE_KEYS.STUDENTS, DEFAULT_STUDENTS);
     
-    // Auto-migrate events: ensure 15 verified open source events are loaded
+    // Auto-migrate events: ensure all 17 verified open source events (including 4 Pune Fests) are loaded
     const hasHacktoberfest = this.events && this.events.some(e => e.id === 'evt-hacktoberfest-2026' && e.timelineInfo);
-    if (!hasHacktoberfest || this.events.length < 15) {
+    const hasCloudClubPune = this.events && this.events.some(e => e.id === 'evt-hacktoberfest-pune-cloudclub');
+    if (!hasHacktoberfest || !hasCloudClubPune || this.events.length < 17) {
       this.events = DEFAULT_EVENTS;
       this.save(STORAGE_KEYS.EVENTS, this.events);
     }

@@ -56,6 +56,7 @@ open http://localhost:8080
 ├── index.html            # Main application layout & modals
 ├── .nojekyll             # Static deployment configuration for GitHub Pages
 ├── assets/               # Branding assets, event banners, and logos
+├── data/                 # Synced Hacktoberfest API datasets (Pune, Maharashtra, Neighboring)
 ├── css/
 │   ├── style.css         # Core design tokens, typography, and reset
 │   ├── components.css    # Cards, countdown widgets, buttons, and badges
@@ -63,10 +64,11 @@ open http://localhost:8080
 └── js/
     ├── store.js          # Seed dataset & localStorage persistence
     ├── countdown.js      # Precision ticker countdown engine
+    ├── hacktoberfest-fests.js # Synced regional fests engine (4 Pune hosts, 47 total regional hubs)
     ├── events.js         # Event filtering, modal views & QR generator
     ├── auth.js           # Student authentication & profile manager
     ├── admin.js          # Admin dashboard & student roster manager
-    └── app.js            # Main bootstrap & terminal component
+    └── app.js            # Main bootstrap & mobile navigation drawer
 ```
 
 ---
