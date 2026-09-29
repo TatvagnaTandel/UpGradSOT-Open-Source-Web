@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dev XP Club Leaderboard | upGrad School of Technology</title>
+  <meta name="description" content="Official student rankings, Dev XP standings, and verified open-source contributor roster at upGrad School of Technology.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css?v=20260929v1">
+  <link rel="stylesheet" href="css/components.css?v=20260929v1">
+  <link rel="stylesheet" href="css/admin.css?v=20260929v1">
+</head>
+<body class="page-leaderboard">
+
+  <!-- Floating Toast Notification -->
+  <div id="toast-notification" class="toast" role="alert" aria-live="polite">
+    <span class="toast-icon">⚡</span>
+    <span class="toast-message">Leaderboard loaded</span>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-wrapper">
+        <img src="assets/upgrad_sot_official.png" alt="upGrad School of Technology" class="brand-logo-img">
+        <div class="brand-text-col">
+          <div class="brand-title-row">
+            <span class="brand-club-name">Open Source Events</span>
+            <span class="brand-badge-pill">UGSOT CHAPTER</span>
+          </div>
+          <span class="brand-sub-name">upGrad School of Technology</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">🏠 Home</a></li>
+          <li><a href="index.html#countdown-section" class="nav-link">⏱️ Live Timer</a></li>
+          <li><a href="fests.html" class="nav-link">🎃 Regional Fests</a></li>
+          <li><a href="events.html" class="nav-link">🚀 Programs</a></li>
+          <li><a href="leaderboard.html" class="nav-link active">🏆 Leaderboard</a></li>
+          <li><a href="admin.html" class="nav-link admin-tab-link">👑 Admin</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-right-actions">
+        <div id="nav-user-area">
+          <!-- Populated by auth.js -->
+        </div>
+        <button id="mobile-menu-toggle" class="mobile-menu-btn" aria-label="Toggle navigation menu">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Nav Drawer -->
+    <div id="mobile-nav-drawer" class="mobile-nav-drawer">
+      <div class="mobile-nav-links">
+        <a href="index.html" class="mobile-nav-link" onclick="window.app.closeMobileNav()">🏠 Home Portal</a>
+        <a href="index.html#countdown-section" class="mobile-nav-link" onclick="window.app.closeMobileNav()">⏱️ Live Countdown Timer</a>
+        <a href="fests.html" class="mobile-nav-link" onclick="window.app.closeMobileNav()">🎃 Hacktoberfest Regional Fests</a>
+        <a href="events.html" class="mobile-nav-link" onclick="window.app.closeMobileNav()">🚀 Open Source Programs</a>
+        <a href="leaderboard.html" class="mobile-nav-link active" onclick="window.app.closeMobileNav()">🏆 Dev XP Leaderboard</a>
+        <a href="admin.html" class="mobile-nav-link" onclick="window.app.closeMobileNav()">👑 Admin Command Center</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content-view">
+    <section class="section-wrapper" id="leaderboard-section" style="padding-top: 40px;">
+      <div class="container">
+        <a href="index.html" class="page-back-link">← Back to Main Portal</a>
+
+        <div class="section-header" style="margin-top: 10px;">
+          <span class="section-tag" style="background: #ffd166;">COMMUNITY RANKS</span>
+          <h1 class="section-header-title" style="font-size: 2.2rem;">Dev XP Club Leaderboard & Student Roster</h1>
+          <p class="section-header-sub">
+            Real-time standings of upGrad School of Technology developers. Earn XP by contributing to open source, attending workshops (+150 XP), winning hackathons (+500 XP), and claiming verified passes.
+          </p>
+        </div>
+
+        <!-- Top 3 Podium -->
+        <div id="leaderboard-podium-container" class="podium-grid">
+          <!-- Populated by js/app.js -->
+        </div>
+
+        <!-- Table Toolbar Controls -->
+        <div class="table-toolbar" style="margin-top: 20px; background: #ffffff; padding: 16px; border: var(--border-width) solid var(--border-black); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
+          <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap; flex: 1 1 auto;">
+            <div class="search-box" style="max-width: 320px; margin-bottom: 0;">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="leaderboard-search-input" class="search-input" placeholder="Search by name, student ID, email...">
+            </div>
+            <select id="leaderboard-year-filter" class="select" style="width: auto; padding: 10px 14px;">
+              <option value="all">All Academic Years</option>
+              <option value="1st Year">1st Year</option>
+              <option value="2nd Year">2nd Year</option>
+              <option value="3rd Year">3rd Year</option>
+              <option value="4th Year">4th Year (Final Year)</option>
+            </select>
+          </div>
+          <div>
+            <span id="total-hackers-count" class="tag-pill" style="font-size: 0.85rem; font-weight: 800; background: var(--bg-card-yellow);">Calculating rankings...</span>
+          </div>
+        </div>
+
+        <!-- Full Roster Table -->
+        <div class="table-responsive-container" style="background: #ffffff; border: var(--border-width) solid var(--border-black); border-radius: var(--radius-md); box-shadow: var(--shadow-md); margin-top: 14px;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Developer Profile</th>
+                <th>Student ID</th>
+                <th>Year</th>
+                <th>Dev XP & Level</th>
+                <th>RSVPs</th>
+                <th>Earned Badges</th>
+              </tr>
+            </thead>
+            <tbody id="full-leaderboard-tbody">
+              <!-- Populated by js/app.js -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- How XP is Earned Guide -->
+        <div class="bento-manifesto-grid" style="grid-template-columns: repeat(3, 1fr); margin-top: 40px;">
+          <div class="bento-box">
+            <div class="bento-icon">⚡</div>
+            <h4>Hands-on Workshops</h4>
+            <p>Attend campus Git/GitHub sprints, Next.js intensives, or AI hack workshops to earn <strong>+150 XP</strong> per session.</p>
+          </div>
+          <div class="bento-box">
+            <div class="bento-icon">🏆</div>
+            <h4>Hackathon Wins</h4>
+            <p>Place on the podium in regional hackathons or internal code sprints to score <strong>+500 XP</strong> and official club honors.</p>
+          </div>
+          <div class="bento-box">
+            <div class="bento-icon">🌐</div>
+            <h4>Open Source Pull Requests</h4>
+            <p>Get a PR merged into Hacktoberfest, GSoC, or club repositories to earn <strong>+200 XP</strong> and exclusive digital badges.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer style="padding: 50px 0 100px; border-top: 2.5px solid var(--border-black); background: #ffffff; margin-top: 60px;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <img src="assets/upgrad_sot_official.png" alt="UGSOT" style="width: 38px; height: 38px; border-radius: 50%; object-fit: contain; background: #fff; padding: 3px;">
+        <div>
+          <div style="font-weight: 700;">upGrad School of Technology — Open Source Events</div>
+          <div class="text-muted small">Empowering collegiate builders to write open source software.</div>
+        </div>
+      </div>
+      <div class="text-muted small">
+        © 2026 UGSOT Open Source Events. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Auth Modal -->
+  <div id="auth-modal" class="modal">
+    <div class="modal-dialog" style="max-width: 440px;">
+      <button class="modal-close-btn" aria-label="Close modal">✕</button>
+      <div id="auth-modal-content">
+        <!-- Rendered by auth.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/store.js?v=20260929v1"></script>
+  <script src="js/countdown.js?v=20260929v1"></script>
+  <script src="js/events.js?v=20260929v1"></script>
+  <script src="js/hacktoberfest-fests.js?v=20260929v1"></script>
+  <script src="js/auth.js?v=20260929v1"></script>
+  <script src="js/admin.js?v=20260929v1"></script>
+  <script src="js/app.js?v=20260929v1"></script>
+</body>
+</html>

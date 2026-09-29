@@ -54,19 +54,24 @@ class AdminDashboard {
   }
 
   open() {
+    const adminView = document.getElementById('admin-dashboard-view');
+    if (!adminView) {
+      window.location.href = 'admin.html';
+      return;
+    }
+
     const user = window.clubStore.getCurrentUser();
     if (!user || user.role !== 'admin') {
       window.app.showToast('Admin Lead credentials required. Switching to Admin view for demo.', 'warning');
       window.authManager.quickSwitch('admin');
     }
 
-    const adminView = document.getElementById('admin-dashboard-view');
     const mainView = document.getElementById('main-content-view');
-    if (adminView && mainView) {
+    if (mainView) {
       mainView.classList.add('hidden');
-      adminView.classList.remove('hidden');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+    adminView.classList.remove('hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 
     this.renderStats();
     this.switchTab(this.currentTab);

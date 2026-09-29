@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open Source Programs & Fellowships Directory | upGrad School of Technology</title>
+  <meta name="description" content="Explore verified timelines, stipends, digital hacker passes, and roadmaps for 19 open source events, fellowships, and Winter of Code programs.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css?v=20260929v1">
+  <link rel="stylesheet" href="css/components.css?v=20260929v1">
+  <link rel="stylesheet" href="css/admin.css?v=20260929v1">
+</head>
+<body class="page-events">
+
+  <!-- Floating Toast Notification -->
+  <div id="toast-notification" class="toast" role="alert" aria-live="polite">
+    <span class="toast-icon">⚡</span>
+    <span class="toast-message">Open Source Programs loaded</span>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-wrapper">
+        <img src="assets/upgrad_sot_official.png" alt="upGrad School of Technology" class="brand-logo-img">
+        <div class="brand-text-col">
+          <div class="brand-title-row">
+            <span class="brand-club-name">Open Source Events</span>
+            <span class="brand-badge-pill">UGSOT CHAPTER</span>
+          </div>
+          <span class="brand-sub-name">upGrad School of Technology</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">🏠 Home</a></li>
+          <li><a href="index.html#countdown-section" class="nav-link">⏱️ Live Timer</a></li>
+          <li><a href="fests.html" class="nav-link">🎃 Regional Fests</a></li>
+          <li><a href="events.html" class="nav-link active">🚀 Programs</a></li>
+          <li><a href="leaderboard.html" class="nav-link">🏆 Leaderboard</a></li>
+          <li><a href="admin.html" class="nav-link admin-tab-link">👑 Admin</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-right-actions">
+        <div id="nav-user-area">
+          <!-- Populated by auth.js -->
+        </div>
+        <button id="mobile-menu-toggle" class="mobile-menu-btn" aria-label="Toggle navigation menu">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Nav Drawer -->
+    <div id="mobile-nav-drawer" class="mobile-nav-drawer">
+      <div class="mobile-nav-links">
+        <a href="index.html" class="mobile-nav-link" onclick="window.app.closeMobileNav()">🏠 Home Portal</a>
+        <a href="index.html#countdown-section" class="mobile-nav-link" onclick="window.app.closeMobileNav()">⏱️ Live Countdown Timer</a>
+        <a href="fests.html" class="mobile-nav-link" onclick="window.app.closeMobileNav()">🎃 Hacktoberfest Regional Fests</a>
+        <a href="events.html" class="mobile-nav-link active" onclick="window.app.closeMobileNav()">🚀 Open Source Programs</a>
+        <a href="leaderboard.html" class="mobile-nav-link" onclick="window.app.closeMobileNav()">🏆 Dev XP Leaderboard</a>
+        <a href="admin.html" class="mobile-nav-link" onclick="window.app.closeMobileNav()">👑 Admin Command Center</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content-view">
+    <!-- EVENTS & SPRINT DIRECTORY SECTION -->
+    <section class="section-wrapper" id="events-section" style="padding-top: 40px;">
+      <div class="container">
+        <a href="index.html" class="page-back-link">← Back to Main Portal</a>
+
+        <div class="section-header" style="margin-top: 10px;">
+          <span class="section-tag">MARK YOUR CALENDAR</span>
+          <h1 class="section-header-title" style="font-size: 2.2rem;">Open Source Programs & Fellowships Directory</h1>
+          <p class="section-header-sub">
+            The official open-source and fellowship roadmap for upGrad School of Technology builders. Filter by track, inspect verified timelines and stipends, claim your hacker pass, or pin any event to the live countdown.
+          </p>
+        </div>
+
+        <!-- Filter Controls Bar -->
+        <div class="events-filter-bar">
+          <div class="filter-pills-group">
+            <button class="filter-pill active" data-category="all">All Programs</button>
+            <button class="filter-pill" data-category="opensource">Open Source</button>
+            <button class="filter-pill" data-category="fellowship">Fellowships & Grants</button>
+            <button class="filter-pill" data-category="winterofcode">Winter of Code</button>
+            <button class="filter-pill" data-category="mentorship">Mentorships</button>
+          </div>
+
+          <div class="filter-controls-right">
+            <!-- Search -->
+            <div class="search-box">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="event-search-input" class="search-input" placeholder="Search events, topics, tech...">
+            </div>
+
+            <!-- Ongoing vs Upcoming vs Past -->
+            <div class="status-toggle-group">
+              <button class="status-toggle-btn active" data-status="all">All Status</button>
+              <button class="status-toggle-btn" data-status="ongoing">🔴 Ongoing</button>
+              <button class="status-toggle-btn" data-status="upcoming">⚡ Upcoming</button>
+              <button class="status-toggle-btn" data-status="past">📁 Archives</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Events Grid -->
+        <div id="events-grid-container" class="events-grid">
+          <!-- Populated by js/events.js -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer style="padding: 50px 0 100px; border-top: 2.5px solid var(--border-black); background: #ffffff; margin-top: 60px;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <img src="assets/upgrad_sot_official.png" alt="UGSOT" style="width: 38px; height: 38px; border-radius: 50%; object-fit: contain; background: #fff; padding: 3px;">
+        <div>
+          <div style="font-weight: 700;">upGrad School of Technology — Open Source Events</div>
+          <div class="text-muted small">Empowering collegiate builders to write open source software.</div>
+        </div>
+      </div>
+      <div class="text-muted small">
+        © 2026 UGSOT Open Source Events. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modals -->
+  <div id="event-details-modal" class="modal">
+    <div class="modal-dialog modal-lg">
+      <button class="modal-close-btn" aria-label="Close modal">✕</button>
+      <div id="event-details-content">
+        <!-- Rendered by events.js -->
+      </div>
+    </div>
+  </div>
+
+  <div id="rsvp-modal" class="modal">
+    <div class="modal-dialog" style="max-width: 520px;">
+      <button class="modal-close-btn" aria-label="Close modal">✕</button>
+      <div id="rsvp-modal-content">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <div id="hacker-pass-modal" class="modal">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" aria-label="Close modal">✕</button>
+      <div style="padding: 24px;">
+        <h3 style="font-family: var(--font-heading); margin-bottom: 6px;">🎟️ Your Official UGSOT Hacker Pass</h3>
+        <p class="text-muted small" style="margin-bottom: 20px;">Present this digital badge at the check-in desk or campus lab.</p>
+        <div id="hacker-pass-render">
+          <!-- Rendered by events.js -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="auth-modal" class="modal">
+    <div class="modal-dialog" style="max-width: 440px;">
+      <button class="modal-close-btn" aria-label="Close modal">✕</button>
+      <div id="auth-modal-content">
+        <!-- Rendered by auth.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/store.js?v=20260929v1"></script>
+  <script src="js/countdown.js?v=20260929v1"></script>
+  <script src="js/events.js?v=20260929v1"></script>
+  <script src="js/hacktoberfest-fests.js?v=20260929v1"></script>
+  <script src="js/auth.js?v=20260929v1"></script>
+  <script src="js/admin.js?v=20260929v1"></script>
+  <script src="js/app.js?v=20260929v1"></script>
+</body>
+</html>
