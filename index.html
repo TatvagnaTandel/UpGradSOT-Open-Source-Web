@@ -16,9 +16,9 @@
   <meta http-equiv="Expires" content="0">
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/style.css?v=20260919v5">
-  <link rel="stylesheet" href="css/components.css?v=20260919v5">
-  <link rel="stylesheet" href="css/admin.css?v=20260919v5">
+  <link rel="stylesheet" href="css/style.css?v=20260929v1">
+  <link rel="stylesheet" href="css/components.css?v=20260929v1">
+  <link rel="stylesheet" href="css/admin.css?v=20260929v1">
 </head>
 <body>
 
@@ -177,7 +177,7 @@
                 <button id="countdown-rsvp-btn" class="btn btn-glow-primary">
                   ⚡ Claim Your Spot Now
                 </button>
-                <button class="btn btn-outline" onclick="window.eventsManager.openDetailsModal(window.countdownEngine.targetEvent.id)">
+                <button class="btn btn-outline" onclick="if(window.countdownEngine && window.countdownEngine.targetEvent) window.eventsManager.openDetailsModal(window.countdownEngine.targetEvent.id)">
                   View Roadmap & Agenda
                 </button>
                 <a id="countdown-official-link" href="https://events.mlh.io/events/15130-hacktoberfest-hack-day-pune-x-oss-ait/register" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="text-decoration: underline;">
@@ -231,14 +231,14 @@
           </div>
           <h2 class="section-header-title">Hacktoberfest 2026 Fests Near Pune & Neighboring States</h2>
           <p class="section-header-sub">
-            Directly synced from the official Hacktoberfest API (<a href="https://hacktoberfest-api.mlh.com/api/events" target="_blank" rel="noopener noreferrer" style="text-decoration: underline; font-weight: 700;">api/events</a>). Discover 47 in-person Fests, meetups, and live hack days across Pune (4 active hosts!), Maharashtra, and neighboring states. Pin any Fest to the live timer above!
+            Directly synced from the official Hacktoberfest API (<a href="https://hacktoberfest-api.mlh.com/api/events" target="_blank" rel="noopener noreferrer" style="text-decoration: underline; font-weight: 700;">api/events</a>). Discover 50 in-person Fests, meetups, and live hack days across Pune (5 active hosts!), Maharashtra, and neighboring states. Pin any Fest to the live timer above!
           </p>
         </div>
 
         <!-- Metric Cards Row -->
         <div class="fests-metrics-row">
           <div class="fest-metric-box">
-            <span class="fest-metric-num text-highlight">4</span>
+            <span class="fest-metric-num text-highlight">5</span>
             <span class="fest-metric-label">📍 Pune Host Fests</span>
           </div>
           <div class="fest-metric-box">
@@ -246,7 +246,7 @@
             <span class="fest-metric-label">🏙️ Maharashtra Hubs</span>
           </div>
           <div class="fest-metric-box">
-            <span class="fest-metric-num" style="background: var(--bg-card-cyan); padding: 2px 8px; border: 2px solid #121212; box-shadow: var(--shadow-sm); display: inline-block;">31</span>
+            <span class="fest-metric-num" style="background: var(--bg-card-cyan); padding: 2px 8px; border: 2px solid #121212; box-shadow: var(--shadow-sm); display: inline-block;">33</span>
             <span class="fest-metric-label">🗺️ Neighboring State Hubs</span>
           </div>
           <div class="fest-metric-box">
@@ -258,13 +258,13 @@
         <!-- Regional Tabs & Search Bar -->
         <div class="fests-controls-bar">
           <div class="fests-tabs-group" id="fests-region-tabs">
-            <button class="fest-tab active" data-region="all">All Regions (47)</button>
-            <button class="fest-tab" data-region="pune">📍 Pune (4)</button>
+            <button class="fest-tab active" data-region="all">All Regions (50)</button>
+            <button class="fest-tab" data-region="pune">📍 Pune (5)</button>
             <button class="fest-tab" data-region="maharashtra">🏙️ Maharashtra (12)</button>
-            <button class="fest-tab" data-region="karnataka">🗺️ Karnataka (12)</button>
+            <button class="fest-tab" data-region="karnataka">🗺️ Karnataka (13)</button>
             <button class="fest-tab" data-region="madhyapradesh">🗺️ Madhya Pradesh (11)</button>
             <button class="fest-tab" data-region="telangana">🗺️ Telangana (6)</button>
-            <button class="fest-tab" data-region="gujarat">🗺️ Gujarat & Nearby (2)</button>
+            <button class="fest-tab" data-region="gujarat">🗺️ Gujarat & Nearby (3)</button>
           </div>
 
           <div class="fests-search-wrap">
@@ -573,7 +573,7 @@
   </div>
 
   <!-- Footer -->
-  <footer style="padding: 50px 0 100px; border-top: 1px solid var(--border-subtle); background: #06090e; margin-top: 60px;">
+  <footer style="padding: 50px 0 100px; border-top: 2.5px solid var(--border-black); background: #ffffff; margin-top: 60px;">
     <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
       <div style="display: flex; align-items: center; gap: 12px;">
         <img src="assets/upgrad_sot_official.png" alt="UGSOT" style="width: 38px; height: 38px; border-radius: 50%; object-fit: contain; background: #fff; padding: 3px;">
@@ -813,12 +813,12 @@
     </div>
   </div>
 
-  <script src="js/store.js?v=20260928v1"></script>
-  <script src="js/countdown.js?v=20260928v1"></script>
-  <script src="js/events.js?v=20260928v1"></script>
-  <script src="js/hacktoberfest-fests.js?v=20260928v1"></script>
-  <script src="js/auth.js?v=20260928v1"></script>
-  <script src="js/admin.js?v=20260928v1"></script>
-  <script src="js/app.js?v=20260928v1"></script>
+  <script src="js/store.js?v=20260929v1"></script>
+  <script src="js/countdown.js?v=20260929v1"></script>
+  <script src="js/events.js?v=20260929v1"></script>
+  <script src="js/hacktoberfest-fests.js?v=20260929v1"></script>
+  <script src="js/auth.js?v=20260929v1"></script>
+  <script src="js/admin.js?v=20260929v1"></script>
+  <script src="js/app.js?v=20260929v1"></script>
 </body>
 </html>

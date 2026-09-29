@@ -3,10 +3,10 @@
   "referenceUrl": "https://hacktoberfest.com/fests/?q=pune",
   "lastSynced": "2026-09-28T11:57:38+05:30",
   "counts": {
-    "pune": 4,
+    "pune": 5,
     "maharashtra": 12,
-    "neighboring": 31,
-    "total": 47
+    "neighboring": 33,
+    "total": 50
   },
   "pune": [
     {
@@ -22,8 +22,8 @@
       "description": "Join Cloud Computing Club for Hackstorm, a one-day, in-person Hacktoberfest event where participants will build with open-source or open-weight AI, submit through OrganizerHQ Challenges, and compete in the Best Open-Source AI Project challenge. Bring your laptop and your curiosity!",
       "websiteUrl": "https://events.mlh.io/events/15124-hacktoberfest-hack-day-pune-x-cloud-computing-club",
       "registrationUrl": "https://events.mlh.io/events/15124-hacktoberfest-hack-day-pune-x-cloud-computing-club/register",
-      "logoUrl": "https://mlhusercontent.com/logos/events/01a0b6b0-a1ac-82af-a804-d6f836c99202/hacktoberfest-hack-day-pune-x-cloud-computing-club_252fb32395dd.png",
-      "backgroundUrl": "https://mlhusercontent.com/backgrounds/events/01a0b6b0-a1ac-82af-a804-d6f836c99202/hacktoberfest-hack-day-pune-x-cloud-computing-club_db23c1dcf9a1.jpeg",
+      "logoUrl": "https://mlhusercontent.com/logos/events/01a0b6b0-a1ac-82af-a804-d6f836c99202/hacktoberfest-hack-day-pune-x-cloud-computing-club_a0730e1e5609.png",
+      "backgroundUrl": "https://mlhusercontent.com/backgrounds/events/01a0b6b0-a1ac-82af-a804-d6f836c99202/hacktoberfest-hack-day-pune-x-cloud-computing-club_5804d9f0af9c.jpeg",
       "seriesId": "01a0119b-f0f8-6572-18d9-df72fa74f9c3",
       "seasonIdentifier": null,
       "eventApplicationId": null,
@@ -39,6 +39,8 @@
         "latitude": 18.491911,
         "longitude": 74.023716
       },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "pune"
     },
     {
@@ -71,6 +73,8 @@
         "latitude": 18.6069264,
         "longitude": 73.8750865
       },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "pune"
     },
     {
@@ -103,6 +107,8 @@
         "latitude": 18.5606368,
         "longitude": 73.9141424
       },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "pune"
     },
     {
@@ -135,6 +141,42 @@
         "latitude": 18.6370677,
         "longitude": 73.9079428
       },
+      "featured": false,
+      "homepagePinned": false,
+      "regionGroup": "pune"
+    },
+    {
+      "id": "01a0b6b2-8524-c7b7-cfab-97f894bea47c",
+      "name": "Hacktoberfest Hack Day Pune x AIDN",
+      "slug": "hacktoberfest-hack-day-pune-x-aidn",
+      "format": "hackday",
+      "status": "pending",
+      "kind": "fest",
+      "startsAt": "2026-10-31T03:30:00.000Z",
+      "endsAt": "2026-10-31T12:30:00.000Z",
+      "timeZone": "Asia/Kolkata",
+      "description": "ONE MONTH.\r\nENDLESS WAYS TO CONTRIBUTE.\r\n\r\nHACKTOBERFEST\r\nEvery October, developers around the world come together to celebrate open source \u2014 contributing to projects, collaborating with fellow developers, learning new skills, and building in public. From online contributions to community-led events, Hacktoberfest is about making open source more accessible and more collaborative.\r\n\r\nAND THIS OCTOBER, WE'RE BRINGING THAT SPIRIT TO PUNE.\r\n\r\nAIDN HACK DAY\r\nA community-focused developer hack day built around open-source contributions, collaboration, and networking. Bring your ideas, find projects to work on, contribute with your peers, and spend a day building alongside the Pune developer community.",
+      "websiteUrl": "https://events.mlh.io/events/15141-hacktoberfest-hack-day-pune-x-aidn",
+      "registrationUrl": "https://events.mlh.io/events/15141-hacktoberfest-hack-day-pune-x-aidn/register",
+      "logoUrl": "https://mlhusercontent.com/logos/events/01a0b6b2-8524-c7b7-cfab-97f894bea47c/hacktoberfest-hack-day-pune-x-aidn_f56dc519c757.png",
+      "backgroundUrl": "https://mlhusercontent.com/backgrounds/events/01a0b6b2-8524-c7b7-cfab-97f894bea47c/hacktoberfest-hack-day-pune-x-aidn_373f95bad01a.png",
+      "seriesId": "01a0119b-f0f8-6572-18d9-df72fa74f9c3",
+      "seasonIdentifier": null,
+      "eventApplicationId": null,
+      "ohqId": null,
+      "address": {
+        "line1": "Orville Business Port, West Ave, opp. KONARK CAMPUS",
+        "line2": "Office No 411, 4th Floor, ",
+        "line3": null,
+        "city": "Pune",
+        "state": "Maharashtra",
+        "postalCode": "411014",
+        "country": "IN",
+        "latitude": 18.5700898,
+        "longitude": 73.91154879999999
+      },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "pune"
     }
   ],
@@ -169,6 +211,8 @@
         "latitude": 19.8756265,
         "longitude": 75.3394476
       },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "maharashtra"
     },
     {
@@ -201,6 +245,8 @@
         "latitude": 21.1583917,
         "longitude": 79.0673302
       },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "maharashtra"
     },
     {
@@ -213,11 +259,11 @@
       "startsAt": "2026-10-04T04:40:00.000Z",
       "endsAt": "2026-10-04T11:30:00.000Z",
       "timeZone": "Asia/Kolkata",
-      "description": null,
+      "description": "\ud83d\ude80 Hacktoberfest Hack Day \u2014 Nashik\r\n\r\nThis is a hands-on 4-hour hackathon, not a workshop or regular meetup. Participants will work individually or in teams to build a project, submit it, and present it for judging.\r\n\r\n\ud83d\udccc Guidelines\r\n\r\n1. \ud83d\udc65 Team Size\r\nYou can participate solo or in a team of up to 3 members.\r\n\r\n2. \ud83d\udcdd Registration\r\nEvery team member must register individually through the official registration link. Unregistered team members will not be allowed to participate.\r\n\r\n3. \ud83d\udcbb Build & Submit\r\nParticipants will get a dedicated hacking period to build their project. A project submission/link must be submitted before the announced deadline.\r\n\r\n4. \ud83c\udfc6 Judging & Recognition\r\nProjects will be judged based on factors such as innovation, technical implementation, functionality, impact, and presentation. Selected participants may receive Hacktoberfest/MLH swag and local recognition.\r\n\r\n5. \ud83c\udf0d Hacktoberfest Selection\r\nEligible project submissions may also be considered for further/global-level recognition according to the official Hacktoberfest/program rules.\r\n\r\n6. \ud83d\udcbb Bring Your Own Setup\r\nBring your own laptop, charger, and required development tools. Wi-Fi and basic venue support will be provided.\r\n\r\n7. \ud83c\udf54 Food & Beverages\r\nFood and beverages are not provided by the organizers. Participants are responsible for arranging their own food and drinks.\r\n\r\n8. \ud83e\udd1d Code of Conduct\r\nParticipants must maintain a respectful, inclusive, and collaborative environment and follow the instructions of the organizers and venue team.\r\n\r\n\ud83d\udd25 Build. Collaborate. Contribute. Grow.\r\n\r\nCome with an idea. Leave with something you built.",
       "websiteUrl": "https://events.mlh.io/events/14889-hacktoberfest-hack-day-nashik-x-hustler-hive",
       "registrationUrl": "https://events.mlh.io/events/14889-hacktoberfest-hack-day-nashik-x-hustler-hive/register",
-      "logoUrl": "https://mlhusercontent.com/logos/events/01a07d82-24fe-09fb-aed5-82a03c23b602/hacktoberfest-hack-day-nashik-x-hustler-hive_fe2f309daecf.png",
-      "backgroundUrl": "https://mlhusercontent.com/backgrounds/events/01a07d82-24fe-09fb-aed5-82a03c23b602/hacktoberfest-hack-day-nashik-x-hustler-hive_e7683b70abd6.jpeg",
+      "logoUrl": "https://mlhusercontent.com/logos/events/01a07d82-24fe-09fb-aed5-82a03c23b602/hacktoberfest-hack-day-nashik-x-hustler-hive_3de382c0c47c.png",
+      "backgroundUrl": "https://mlhusercontent.com/backgrounds/events/01a07d82-24fe-09fb-aed5-82a03c23b602/hacktoberfest-hack-day-nashik-x-hustler-hive_032e88a0f2e8.jpeg",
       "seriesId": "01a0119b-f0f8-6572-18d9-df72fa74f9c3",
       "seasonIdentifier": null,
       "eventApplicationId": null,
@@ -233,6 +279,8 @@
         "latitude": 19.9988624,
         "longitude": 73.7492567
       },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "maharashtra"
     },
     {
@@ -265,6 +313,8 @@
         "latitude": 19.1010224,
         "longitude": 73.01035499999999
       },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "maharashtra"
     },
     {
@@ -297,6 +347,8 @@
         "latitude": 19.1057096,
         "longitude": 73.0072481
       },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "maharashtra"
     },
     {
@@ -329,6 +381,8 @@
         "latitude": 20.0140866,
         "longitude": 73.7651316
       },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "maharashtra"
     },
     {
@@ -341,11 +395,11 @@
       "startsAt": "2026-10-10T03:30:00.000Z",
       "endsAt": "2026-10-10T13:30:00.000Z",
       "timeZone": "Asia/Kolkata",
-      "description": "Hacktoberfest Hack Day \u00d7 Elevate IIITN\r\n\r\nCode. Collaborate. Create. Contribute.\r\n\r\nThis Hacktoberfest, Elevate IIITN is bringing you a day packed with open-source energy, hands-on hacking, and the thrill of building something that actually matters.\r\n\r\nWhether you're an open-source veteran or making your **first-ever contribution**, this is your chance to dive into real projects, work with fellow developers, learn from the community, and turn your ideas into code.\r\n\r\nWhat\u2019s waiting for you?\r\n\r\n\u2022 Hands-on hacking and building\r\n\u2022 Open-source contributions\r\n\u2022 Collaboration with fellow tech enthusiasts\r\n\u2022 Learn, experiment, and level up\r\n\u2022 A community that loves to build\r\n\r\nIMPORTANT: Every team member must register individually for the event, the participants can claim their teams on the event day during check in. Also every team member must join the whatsapp group provided below. Teams can be of upto 5 members. Problem statement will be disclosed on 9th October, 2026.\r\n\r\nRegistrations open uptil 8th October!!!\r\n\r\nNOTE: There will be a qualifier round for shortlisting the teams, qualifying round will start on 3rd October and will end on 8th October, and only top 12 to 14 teams will get selected for the offline finals here at IIIT Nagpur.\r\n\r\nBring your laptop, your ideas, and your appetite for breaking things (and fixing them).\r\n\r\nOne day. One community. Countless lines of code.\r\n\r\nHack hard. Contribute harder.\r\nHacktoberfest \u00d7 Elevate IIITN \u2014 Let\u2019s build in public.\r\n",
+      "description": "Hacktoberfest Hack Day \u00d7 Elevate IIITN\r\n\r\nCode. Collaborate. Create. Contribute.\r\n\r\nThis Hacktoberfest, Elevate IIITN is bringing you a day packed with open-source energy, hands-on hacking, and the thrill of building something that actually matters.\r\n\r\nWhether you're an open-source veteran or making your **first-ever contribution**, this is your chance to dive into real projects, work with fellow developers, learn from the community, and turn your ideas into code.\r\n\r\nWhat\u2019s waiting for you?\r\n\r\n\u2022 Hands-on hacking and building\r\n\u2022 Open-source contributions\r\n\u2022 Collaboration with fellow tech enthusiasts\r\n\u2022 Learn, experiment, and level up\r\n\u2022 A community that loves to build\r\n\r\nIMPORTANT: Every team member must register individually for the event, the participants can claim their teams on the event day during check in. Also every team member must join the whatsapp group provided below. Teams can be of upto 4 members. Problem statement will be disclosed on 9th October, 2026.\r\n\r\nRegistrations open uptil 8th October!!!\r\n\r\nNOTE: There will be a qualifier round for shortlisting the teams, qualifying round will start on 3rd October and will end on 8th October, and only top 12 to 14 teams will get selected for the offline finals here at IIIT Nagpur.\r\n\r\nBring your laptop, your ideas, and your appetite for breaking things (and fixing them).\r\n\r\nOne day. One community. Countless lines of code.\r\n\r\nHack hard. Contribute harder.\r\nHacktoberfest \u00d7 Elevate IIITN \u2014 Let\u2019s build in public.\r\n",
       "websiteUrl": "https://events.mlh.io/events/15002-hacktoberfest-hack-day-nagpur-x-elevate-iiitn",
       "registrationUrl": "https://events.mlh.io/events/15002-hacktoberfest-hack-day-nagpur-x-elevate-iiitn/register",
-      "logoUrl": "https://mlhusercontent.com/logos/events/01a0a182-6366-6043-a9fb-18558be43dc8/hacktoberfest-hack-day-nagpur-x-elevate-iiitn_2839ce1d688a.png",
-      "backgroundUrl": "https://mlhusercontent.com/backgrounds/events/01a0a182-6366-6043-a9fb-18558be43dc8/hacktoberfest-hack-day-nagpur-x-elevate-iiitn_e53704a0b5ce.jpeg",
+      "logoUrl": "https://mlhusercontent.com/logos/events/01a0a182-6366-6043-a9fb-18558be43dc8/hacktoberfest-hack-day-nagpur-x-elevate-iiitn_f7a69ed80591.png",
+      "backgroundUrl": "https://mlhusercontent.com/backgrounds/events/01a0a182-6366-6043-a9fb-18558be43dc8/hacktoberfest-hack-day-nagpur-x-elevate-iiitn_a0589608579d.jpeg",
       "seriesId": "01a0119b-f0f8-6572-18d9-df72fa74f9c3",
       "seasonIdentifier": null,
       "eventApplicationId": null,
@@ -361,6 +415,8 @@
         "latitude": 20.9501354,
         "longitude": 79.0269046
       },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "maharashtra"
     },
     {
@@ -373,26 +429,28 @@
       "startsAt": "2026-10-10T05:30:00.000Z",
       "endsAt": "2026-10-10T08:30:00.000Z",
       "timeZone": "Asia/Kolkata",
-      "description": "Hacktoberfest events are happening all month long so you can join your friends day or night, from dusk to dawn, as you work to complete your pull/merge requests. Whether your event is physical, digital or a combination of both, make sure you let the community know about it! [Set up and share your Hacktoberfest event with the community](https://organize.mlh.io/host/hacktoberfest-2026).\r\n\r\nVisit [hacktoberfest.com/events](http://hacktoberfest.com/events) for more information about how to run and promote your event. Be sure to share pics and screenshots of your event with the community and tag #Hacktoberfest !\r\n\r\nHappy hacking :)",
+      "description": "Hacktoberfest 2026 \ud83d\ude80\r\n\r\nAn open, community-driven build session focused on experimentation, creativity, and practical learning.\r\n\r\nJoin us at Ramdeobaba University, Nagpur, and work individually on a project of your choice. Explore Open Source, AI, Web, automation, or any technology you\u2019re curious about.\r\n\r\nThere is no fixed agenda and no team formation \u2014 just an opportunity to build, experiment, collaborate, and grow.\r\n\r\nExpect random quizzes, interactive activities, and exciting swags throughout the session. \ud83c\udf81\r\n\r\n\ud83d\udcc5 October 10, 2026  \r\n\u23f0 11:00 AM \u2013 2:00 PM  \r\n\ud83d\udccd Ramdeobaba University, Nagpur\r\n\r\nIMPORTANT: Due to limited seating and venue capacity, only 50 participants will be selected randomly from the registrations. Registering does not guarantee participation.\r\n\r\nBring your laptop. Bring your ideas.\r\n\r\nBuild something. Learn something. Grow. \ud83d\ude80",
       "websiteUrl": "https://events.mlh.io/events/15049-hacktoberfest-meetup-nagpur",
       "registrationUrl": "https://events.mlh.io/events/15049-hacktoberfest-meetup-nagpur/register",
-      "logoUrl": "https://mlhusercontent.com/logos/events/01a0a87e-ddc7-9212-bc22-018e3fe85078/hacktoberfest-meet-up-nagpur-x-cncg-nagpur_7849957d8baf.png",
-      "backgroundUrl": "https://mlhusercontent.com/backgrounds/events/01a0a87e-ddc7-9212-bc22-018e3fe85078/hacktoberfest-meet-up-nagpur-x-cncg-nagpur_87fa5185cd12.png",
+      "logoUrl": "https://mlhusercontent.com/logos/events/01a0a87e-ddc7-9212-bc22-018e3fe85078/hacktoberfest-meet-up-nagpur-x-cncg-nagpur_07b00fb9a2f3.png",
+      "backgroundUrl": "https://mlhusercontent.com/backgrounds/events/01a0a87e-ddc7-9212-bc22-018e3fe85078/hacktoberfest-meet-up-nagpur-x-cncg-nagpur_20fe04071691.png",
       "seriesId": "01a0119b-f0f8-6572-18d9-df72fa74f9c3",
       "seasonIdentifier": null,
       "eventApplicationId": null,
       "ohqId": null,
       "address": {
-        "line1": "Wardha Road",
+        "line1": "Ramdeobaba University",
         "line2": "2nd Floor, JP Nagar",
         "line3": null,
         "city": "Nagpur",
         "state": "Maharashtra",
-        "postalCode": "440025",
+        "postalCode": "440013",
         "country": "IN",
-        "latitude": 21.0953931,
-        "longitude": 79.0662427
+        "latitude": 21.1766214,
+        "longitude": 79.0616223
       },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "maharashtra"
     },
     {
@@ -425,6 +483,8 @@
         "latitude": 19.104692,
         "longitude": 72.8771118
       },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "maharashtra"
     },
     {
@@ -457,6 +517,8 @@
         "latitude": 20.87052741244704,
         "longitude": 74.76851796441787
       },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "maharashtra"
     },
     {
@@ -489,6 +551,8 @@
         "latitude": 19.104692,
         "longitude": 72.8771118
       },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "maharashtra"
     },
     {
@@ -521,6 +585,8 @@
         "latitude": 19.016476,
         "longitude": 73.10472299999999
       },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "maharashtra"
     }
   ],
@@ -555,6 +621,8 @@
         "latitude": 22.6686362,
         "longitude": 75.8307967
       },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "neighboring"
     },
     {
@@ -587,38 +655,8 @@
         "latitude": 23.2002514,
         "longitude": 79.90666689999999
       },
-      "regionGroup": "neighboring"
-    },
-    {
-      "id": "01a0a182-c24a-8da3-6863-1eaa6cf94b4f",
-      "name": "Hacktoberfest Hack Day Hyderabad <> React Hyderabad",
-      "slug": "react-hyderabad-hack-day",
-      "format": "hackday",
-      "status": "pending",
-      "kind": "fest",
-      "startsAt": "2026-10-03T04:30:00.000Z",
-      "endsAt": "2026-10-03T09:30:00.000Z",
-      "timeZone": "Asia/Kolkata",
-      "description": "[React Hyderabad](https://www.linkedin.com/company/reacthyderabad/) is pleased to announce the first ever partnership with MLH to bring together the amazing \"Hack Day\" to Hyderabad.\r\n\r\nAs part of our ongoing effort to make open source more approachable and encourage developers to learn by building and contributing, join us for a full day of Open source and knowledge sharing!\r\n\r\nWhether you\u2019re making your first open-source contribution or already have experience contributing, you\u2019ll get the opportunity to collaborate with fellow developers, learn from mentors, explore projects, and contribute together.\r\n\r\n#MLH #Hacktoberfest #Hacktoberfest2026 #OpenSource #ReactHyderabad",
-      "websiteUrl": "https://events.mlh.io/events/15004-hacktoberfest-hack-day-hyderabad-react-hyderabad",
-      "registrationUrl": "https://events.mlh.io/events/15004-hacktoberfest-hack-day-hyderabad-react-hyderabad/register",
-      "logoUrl": "https://mlhusercontent.com/logos/events/01a0a182-c24a-8da3-6863-1eaa6cf94b4f/react-hyderabad-hack-day_50af89294962.png",
-      "backgroundUrl": "https://mlhusercontent.com/backgrounds/events/01a0a182-c24a-8da3-6863-1eaa6cf94b4f/react-hyderabad-hack-day_b263595b17f8.png",
-      "seriesId": "01a0119b-f0f8-6572-18d9-df72fa74f9c3",
-      "seasonIdentifier": null,
-      "eventApplicationId": null,
-      "ohqId": null,
-      "address": {
-        "line1": "Rajapushpa Summit 2-58, Sy.No.115",
-        "line2": "4th Floor",
-        "line3": null,
-        "city": "Hyderabad",
-        "state": "Telangana",
-        "postalCode": "500032",
-        "country": "IN",
-        "latitude": 17.4229905,
-        "longitude": 78.3391644
-      },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "neighboring"
     },
     {
@@ -651,6 +689,42 @@
         "latitude": 22.6703989,
         "longitude": 75.8807351
       },
+      "featured": false,
+      "homepagePinned": false,
+      "regionGroup": "neighboring"
+    },
+    {
+      "id": "01a0a182-c24a-8da3-6863-1eaa6cf94b4f",
+      "name": "Hacktoberfest Hack Day Hyderabad <> React Hyderabad",
+      "slug": "react-hyderabad-hack-day",
+      "format": "hackday",
+      "status": "pending",
+      "kind": "fest",
+      "startsAt": "2026-10-03T04:30:00.000Z",
+      "endsAt": "2026-10-03T09:30:00.000Z",
+      "timeZone": "Asia/Kolkata",
+      "description": "[React Hyderabad](https://www.linkedin.com/company/reacthyderabad/) is pleased to announce the first ever partnership with MLH to bring together the amazing \"Hack Day\" to Hyderabad.\r\n\r\nAs part of our ongoing effort to make open source more approachable and encourage developers to learn by building and contributing, join us for a full day of Open source and knowledge sharing!\r\n\r\nWhether you\u2019re making your first open-source contribution or already have experience contributing, you\u2019ll get the opportunity to collaborate with fellow developers, learn from mentors, explore projects, and contribute together.\r\n\r\n#MLH #Hacktoberfest #Hacktoberfest2026 #OpenSource #ReactHyderabad",
+      "websiteUrl": "https://events.mlh.io/events/15004-hacktoberfest-hack-day-hyderabad-react-hyderabad",
+      "registrationUrl": "https://events.mlh.io/events/15004-hacktoberfest-hack-day-hyderabad-react-hyderabad/register",
+      "logoUrl": "https://mlhusercontent.com/logos/events/01a0a182-c24a-8da3-6863-1eaa6cf94b4f/react-hyderabad-hack-day_4dc85f6ea8f9.png",
+      "backgroundUrl": "https://mlhusercontent.com/backgrounds/events/01a0a182-c24a-8da3-6863-1eaa6cf94b4f/react-hyderabad-hack-day_e14c35a4f551.png",
+      "seriesId": "01a0119b-f0f8-6572-18d9-df72fa74f9c3",
+      "seasonIdentifier": null,
+      "eventApplicationId": null,
+      "ohqId": null,
+      "address": {
+        "line1": "Rajapushpa Summit 2-58, Sy.No.115",
+        "line2": "4th Floor",
+        "line3": null,
+        "city": "Hyderabad",
+        "state": "Telangana",
+        "postalCode": "500032",
+        "country": "IN",
+        "latitude": 17.4229905,
+        "longitude": 78.3391644
+      },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "neighboring"
     },
     {
@@ -666,8 +740,8 @@
       "description": "Welcome to Hacktoberfest Hack Day Surat 2026! \r\n\r\nJoin us for an official in-person mini-hackathon held at D2 Seminar Hall (Room 207), CK Pithawala College of Engineering and Technology (CKPCET), supported by Major League Hacking (MLH) and DigitalOcean.\r\n\r\nWhether you are a seasoned open-source contributor or a beginner exploring AI, this Hack Day is an energetic building sprint focused on open-source tools, collaborative development, and shipping real projects.\r\n\r\n### How Team Registration Works:\r\n* **Strictly Individual Registrations:** MLH requires every participant to have their own individual ticket for check-in verification, safety waivers, and swag accounting.\r\n* **Forming Your Squad:** Have each of your teammates (solo or teams of 2\u20134) register using their own email. \r\n* **Team Finalization:** You will sit together and register your official team name during the on-site check-in session on October 3.\r\n\r\n\r\n###  Hackathon Tracks & Themes:\r\nRather than a rigid single problem statement, this is an open-track sprint. Teams can build any prototype fitting under one of these 3 tracks:\r\n1. **Open-Source AI & Autonomous Agents (Main Track):** Build smart tools, assistants, or autonomous agents using open-weight models (like Google Gemma) or AI APIs.\r\n2. **Developer Tooling & Workflows:** Build practical utilities, CLIs, Git integrations, or developer productivity tools.\r\n3. **Campus & Social Good:** Build solutions addressing student workflow, campus navigation, or community challenges.\r\n\r\n\r\n###  Do You Need a PPT?\r\n* **No pitch decks or PPTs required.**\r\n* Hackathons are about shipping working software. Judging is based on a **2-minute live demo of your working code** on the projector, paired with a public GitHub repository created during the event.\r\n\r\n\r\n### \ud83d\udcbb What to Bring:\r\n* **Your Laptop & Charger (BYOD):** This is strictly a Bring-Your-Own-Device event.\r\n* **Active GitHub Account:** To create and push your project repository.\r\n* **Extension Board (Optional but recommended):** We provide main power strips, but having a compact 2\u20133 socket extension in your bag is always helpful.\r\n\r\n* **All Attendees:** Exciting developer goodies & official swag, plus refreshments & snacks.",
       "websiteUrl": "https://events.mlh.io/events/15031-hacktoberfest-hack-day-surat",
       "registrationUrl": "https://events.mlh.io/events/15031-hacktoberfest-hack-day-surat/register",
-      "logoUrl": "https://mlhusercontent.com/logos/events/01a0a22c-8b37-d95f-6630-53b244a0b4e3/hacktoberfest-hack-day-surat-x-surat-open-source-community_ce1fde7de3b8.png",
-      "backgroundUrl": "https://mlhusercontent.com/backgrounds/events/01a0a22c-8b37-d95f-6630-53b244a0b4e3/hacktoberfest-hack-day-surat-x-surat-open-source-community_4204163bf70e.png",
+      "logoUrl": "https://mlhusercontent.com/logos/events/01a0a22c-8b37-d95f-6630-53b244a0b4e3/hacktoberfest-hack-day-surat-x-surat-open-source-community_0b338b917069.png",
+      "backgroundUrl": "https://mlhusercontent.com/backgrounds/events/01a0a22c-8b37-d95f-6630-53b244a0b4e3/hacktoberfest-hack-day-surat-x-surat-open-source-community_fcc712f06d13.png",
       "seriesId": "01a0119b-f0f8-6572-18d9-df72fa74f9c3",
       "seasonIdentifier": null,
       "eventApplicationId": null,
@@ -683,38 +757,8 @@
         "latitude": 21.1406249,
         "longitude": 72.7540697
       },
-      "regionGroup": "neighboring"
-    },
-    {
-      "id": "01a08864-69a8-ee19-624f-fea2739fe195",
-      "name": "Hacktoberfest Hack Day Bhopal x Apex Campus Connect",
-      "slug": "hacktoberfest-hack-day-bhopal-x-apex-campus-connect",
-      "format": "hackday",
-      "status": "pending",
-      "kind": "fest",
-      "startsAt": "2026-10-03T05:30:00.000Z",
-      "endsAt": "2026-10-03T11:00:00.000Z",
-      "timeZone": "Asia/Kolkata",
-      "description": null,
-      "websiteUrl": "https://events.mlh.io/events/14926-hacktoberfest-hack-day-bhopal-x-apex-campus-connect",
-      "registrationUrl": "https://events.mlh.io/events/14926-hacktoberfest-hack-day-bhopal-x-apex-campus-connect/register",
-      "logoUrl": "https://mlhusercontent.com/logos/events/01a08864-69a8-ee19-624f-fea2739fe195/hacktoberfest-hack-day-bhopal-x-apex-campus-connect_97f4c41010ae.png",
-      "backgroundUrl": "https://mlhusercontent.com/backgrounds/events/01a08864-69a8-ee19-624f-fea2739fe195/hacktoberfest-hack-day-bhopal-x-apex-campus-connect_079de0cf653c.png",
-      "seriesId": "01a0119b-f0f8-6572-18d9-df72fa74f9c3",
-      "seasonIdentifier": null,
-      "eventApplicationId": null,
-      "ohqId": null,
-      "address": {
-        "line1": "Anand Nagar, BHEL Opposite Hathaikheda Dam, Bhopal, Madhya Pradesh",
-        "line2": null,
-        "line3": null,
-        "city": "bhopal",
-        "state": "Madhya Pradesh",
-        "postalCode": "462022",
-        "country": "IN",
-        "latitude": 23.264152,
-        "longitude": 77.4981866
-      },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "neighboring"
     },
     {
@@ -747,6 +791,42 @@
         "latitude": 23.2520103,
         "longitude": 77.4856647
       },
+      "featured": false,
+      "homepagePinned": false,
+      "regionGroup": "neighboring"
+    },
+    {
+      "id": "01a08864-69a8-ee19-624f-fea2739fe195",
+      "name": "Hacktoberfest Hack Day Bhopal x Apex Campus Connect",
+      "slug": "hacktoberfest-hack-day-bhopal-x-apex-campus-connect",
+      "format": "hackday",
+      "status": "pending",
+      "kind": "fest",
+      "startsAt": "2026-10-03T05:30:00.000Z",
+      "endsAt": "2026-10-03T11:00:00.000Z",
+      "timeZone": "Asia/Kolkata",
+      "description": null,
+      "websiteUrl": "https://events.mlh.io/events/14926-hacktoberfest-hack-day-bhopal-x-apex-campus-connect",
+      "registrationUrl": "https://events.mlh.io/events/14926-hacktoberfest-hack-day-bhopal-x-apex-campus-connect/register",
+      "logoUrl": "https://mlhusercontent.com/logos/events/01a08864-69a8-ee19-624f-fea2739fe195/hacktoberfest-hack-day-bhopal-x-apex-campus-connect_97f4c41010ae.png",
+      "backgroundUrl": "https://mlhusercontent.com/backgrounds/events/01a08864-69a8-ee19-624f-fea2739fe195/hacktoberfest-hack-day-bhopal-x-apex-campus-connect_079de0cf653c.png",
+      "seriesId": "01a0119b-f0f8-6572-18d9-df72fa74f9c3",
+      "seasonIdentifier": null,
+      "eventApplicationId": null,
+      "ohqId": null,
+      "address": {
+        "line1": "Anand Nagar, BHEL Opposite Hathaikheda Dam, Bhopal, Madhya Pradesh",
+        "line2": null,
+        "line3": null,
+        "city": "bhopal",
+        "state": "Madhya Pradesh",
+        "postalCode": "462022",
+        "country": "IN",
+        "latitude": 23.264152,
+        "longitude": 77.4981866
+      },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "neighboring"
     },
     {
@@ -779,38 +859,8 @@
         "latitude": 12.9181942,
         "longitude": 77.6498159
       },
-      "regionGroup": "neighboring"
-    },
-    {
-      "id": "01a0b6af-bf8b-ac42-59b9-2ca2b5bde216",
-      "name": "Hacktoberfest Hack Day Vidisha x Coding Club SATI",
-      "slug": "hacktoberfest-hack-day-vidisha-x-coding-club-sati",
-      "format": "hackday",
-      "status": "pending",
-      "kind": "fest",
-      "startsAt": "2026-10-04T04:30:00.000Z",
-      "endsAt": "2026-10-04T12:00:00.000Z",
-      "timeZone": "Asia/Kolkata",
-      "description": "## Hacktoberfest 2026 \u00d7 SATI Coding Club\r\n\r\nGet ready for a **6-hour hands-on hackathon** focused on **Open Source, AI, and Community Building**. Join fellow developers, students, and tech enthusiasts to build, experiment, collaborate, and contribute to the open-source ecosystem.\r\n\r\n\ud83d\udcc5 **Date:** [Event Date]\r\n\ud83d\udd59 **Time:** 10:30 AM \u2013 5:30 PM\r\n\ud83d\udccd **Venue:** SATI, Vidisha\r\n\u23f1\ufe0f **Duration:** 6 Hours\r\n\r\n### What to Expect\r\n\r\nParticipants will get a complete hands-on hacking experience, including team formation, idea development, coding, open-source contribution, project building, and final project demos. The event will begin with an introduction and briefing, followed by dedicated hacking sessions and a final showcase.\r\n\r\n### Event Schedule\r\n\r\n**10:30 AM \u2013 11:00 AM:** Registration & Check-in\r\n**11:00 AM \u2013 11:30 AM:** Opening, Introduction & Hackathon Briefing\r\n**11:30 AM \u2013 1:30 PM:** Hacking Session 1\r\n**1:30 PM \u2013 2:00 PM:** Lunch Break \ud83c\udf71\r\n**2:00 PM \u2013 4:00 PM:** Hacking Session 2\r\n**4:00 PM \u2013 4:30 PM:** Final Submission & Project Preparation\r\n**4:30 PM \u2013 5:00 PM:** Project Demos & Judging\r\n**5:00 PM \u2013 5:30 PM:** Results, Awards & Closing\r\n\r\n### What You\u2019ll Get\r\n\r\n* \ud83d\udcbb 6-hour hands-on hacking experience\r\n* \ud83e\udd1d Collaboration with fellow developers and tech enthusiasts\r\n* \ud83e\udd16 Opportunities to build with **Open-Source AI & modern technologies**\r\n* \ud83c\udf71 **Food and refreshments included**\r\n* \ud83c\udfc6 Prizes and recognition for winning projects\r\n* \ud83c\udf81 Event goodies/stickers for participants\r\n* \ud83d\udcdc Participation certificates\r\n* \ud83c\udf10 Opportunity to connect with the local developer and open-source community\r\n* \ud83d\ude80 A platform to build, learn, experiment, and showcase your work\r\n\r\n### Who Can Participate?\r\n\r\nThe hackathon is open to **students, developers, beginners, creators, and technology enthusiasts** interested in building projects and exploring open source and AI. You can participate individually or as part of a team.\r\n\r\n**No matter your experience level, come with an idea, a willingness to learn, and the motivation to build something.**\r\n\r\n### Theme\r\n\r\n**Build \u2022 Learn \u2022 Experiment with Open-Source AI**\r\n\r\nCome build something meaningful, contribute to the open-source ecosystem, meet like-minded people, and make your Hacktoberfest count. \ud83d\ude80\r\n",
-      "websiteUrl": "https://events.mlh.io/events/15113-hacktoberfest-hack-day-vidisha-x-coding-club-sati",
-      "registrationUrl": "https://events.mlh.io/events/15113-hacktoberfest-hack-day-vidisha-x-coding-club-sati/register",
-      "logoUrl": "https://mlhusercontent.com/logos/events/01a0b6af-bf8b-ac42-59b9-2ca2b5bde216/hacktoberfest-hack-day-vidisha-x-coding-club-sati_d67e0cf7e6cf.png",
-      "backgroundUrl": "https://mlhusercontent.com/backgrounds/events/01a0b6af-bf8b-ac42-59b9-2ca2b5bde216/hacktoberfest-hack-day-vidisha-x-coding-club-sati_ae4e6506bb01.png",
-      "seriesId": "01a0119b-f0f8-6572-18d9-df72fa74f9c3",
-      "seasonIdentifier": null,
-      "eventApplicationId": null,
-      "ohqId": null,
-      "address": {
-        "line1": "civil line",
-        "line2": null,
-        "line3": null,
-        "city": "vidisha",
-        "state": "Madhya Pradesh",
-        "postalCode": "464001",
-        "country": "IN",
-        "latitude": 23.5235719,
-        "longitude": 77.81397179999999
-      },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "neighboring"
     },
     {
@@ -843,6 +893,42 @@
         "latitude": 12.9127307,
         "longitude": 77.6448236
       },
+      "featured": false,
+      "homepagePinned": false,
+      "regionGroup": "neighboring"
+    },
+    {
+      "id": "01a0b6af-bf8b-ac42-59b9-2ca2b5bde216",
+      "name": "Hacktoberfest Hack Day Vidisha x Coding Club SATI",
+      "slug": "hacktoberfest-hack-day-vidisha-x-coding-club-sati",
+      "format": "hackday",
+      "status": "pending",
+      "kind": "fest",
+      "startsAt": "2026-10-04T04:30:00.000Z",
+      "endsAt": "2026-10-04T12:00:00.000Z",
+      "timeZone": "Asia/Kolkata",
+      "description": "\ud83d\ude80 Hacktoberfest 2026 \u00d7 SATI Coding Club\r\n\r\nBuild. Contribute. Collaborate. Make an Impact.\r\n\r\nGet ready for an exciting 6-hour hands-on hackathon where technology meets open source! Hacktoberfest 2026 \u00d7 SATI Coding Club brings together students, developers, creators, and tech enthusiasts for a day of building, learning, experimenting, and contributing to the open-source community.\r\n\r\nWhether you're an experienced developer or participating in your first hackathon, this event is an opportunity to turn ideas into working projects, explore Open-Source AI and modern technologies, collaborate with like-minded people, and showcase what you can build.\r\n\r\n\ud83d\udcc5 Date: 4 October 2026\r\n\ud83d\udd59 Time: 10:30 AM \u2013 5:30 PM\r\n\ud83d\udccd Venue: Samrat Ashok Technological Institute (SATI), Vidisha\r\n\u23f1\ufe0f Duration: 6 Hours\r\n\r\n\ud83d\udcbb What to Expect\r\n\r\nThe day is designed as a complete hands-on hacking experience. You'll move from idea \u2192 development \u2192 open-source contribution \u2192 final showcase, with dedicated time to collaborate, experiment, and build.\r\n\r\nThe event will include:\r\n\r\n- \ud83d\udc65 Team formation & networking\r\n- \ud83d\udca1 Idea development and problem-solving\r\n- \ud83e\udd16 Exploration of Open-Source AI & modern technologies\r\n- \ud83d\udcbb Dedicated coding and project-building sessions\r\n- \ud83c\udf10 Open-source contribution opportunities\r\n- \ud83d\udee0\ufe0f Mentorship, collaboration & peer learning\r\n- \ud83c\udfa4 Final project demonstrations\r\n- \ud83c\udfc6 Judging, recognition & awards\r\n\r\n\ud83d\uddd3\ufe0f Event Schedule\r\n\r\n10:30 AM \u2013 11:00 AM \u2192 Registration & Check-in\r\n11:00 AM \u2013 11:30 AM \u2192 Opening, Introduction & Hackathon Briefing\r\n11:30 AM \u2013 1:30 PM \u2192 \ud83d\udd25 Hacking Session 1\r\n1:30 PM \u2013 2:00 PM \u2192 \ud83c\udf71 Lunch Break\r\n2:00 PM \u2013 4:00 PM \u2192 \ud83d\ude80 Hacking Session 2\r\n4:00 PM \u2013 4:30 PM \u2192 Final Submission & Project Preparation\r\n4:30 PM \u2013 5:00 PM \u2192 \ud83c\udfa4 Project Demos & Judging\r\n5:00 PM \u2013 5:30 PM \u2192 \ud83c\udfc6 Results, Awards & Closing\r\n\r\n\ud83c\udf81 What You'll Get\r\n\r\nBy participating, you'll get more than just a hackathon experience:\r\n\r\n- \ud83d\udcbb 6 hours of hands-on building\r\n- \ud83e\udd1d Networking & collaboration with developers and tech enthusiasts\r\n- \ud83e\udd16 Experience with Open-Source AI and modern technologies\r\n- \ud83c\udf71 Food & refreshments\r\n- \ud83c\udfc6 Prizes and recognition for winning projects\r\n- \ud83c\udf81 Event goodies & stickers\r\n- \ud83d\udcdc Participation certificates\r\n- \ud83c\udf10 Connections with the local developer and open-source community\r\n- \ud83d\ude80 An opportunity to build, learn, experiment, and showcase your work\r\n\r\n\ud83d\udc68\u200d\ud83d\udcbb Who Can Participate?\r\n\r\nThis hackathon is open to:\r\n\r\n- \ud83c\udf93 Students\r\n- \ud83d\udcbb Developers\r\n- \ud83c\udf31 Beginners\r\n- \ud83c\udfa8 Creators & designers\r\n- \ud83e\udd16 AI enthusiasts\r\n- \ud83c\udf10 Open-source contributors\r\n- \ud83d\ude80 Anyone passionate about technology\r\n\r\nYou can participate individually or as part of a team.\r\n\r\nNo prior hackathon experience is required. Whether you're writing your first lines of code or already building complex projects, bring your ideas, curiosity, and willingness to learn.\r\n\r\n\ud83c\udf1f Theme\r\n\r\nBUILD \u2022 LEARN \u2022 EXPERIMENT WITH OPEN-SOURCE AI\r\n\r\nExplore new technologies. Build something meaningful. Contribute to open source. Collaborate with the community.\r\n\r\nThis Hacktoberfest, don't just watch technology evolve \u2014 build with it.\r\n\r\nJoin Hacktoberfest 2026 \u00d7 SATI Coding Club and spend a day turning ideas into projects, connecting with the community, and making your contribution to the open-source ecosystem.\r\n\r\n\ud83d\ude80 Come with an idea. Leave with something you've built.",
+      "websiteUrl": "https://events.mlh.io/events/15113-hacktoberfest-hack-day-vidisha-x-coding-club-sati",
+      "registrationUrl": "https://events.mlh.io/events/15113-hacktoberfest-hack-day-vidisha-x-coding-club-sati/register",
+      "logoUrl": "https://mlhusercontent.com/logos/events/01a0b6af-bf8b-ac42-59b9-2ca2b5bde216/hacktoberfest-hack-day-vidisha-x-coding-club-sati_885fa393d362.png",
+      "backgroundUrl": "https://mlhusercontent.com/backgrounds/events/01a0b6af-bf8b-ac42-59b9-2ca2b5bde216/hacktoberfest-hack-day-vidisha-x-coding-club-sati_f87cf403cc5e.png",
+      "seriesId": "01a0119b-f0f8-6572-18d9-df72fa74f9c3",
+      "seasonIdentifier": null,
+      "eventApplicationId": null,
+      "ohqId": null,
+      "address": {
+        "line1": "civil line",
+        "line2": null,
+        "line3": null,
+        "city": "vidisha",
+        "state": "Madhya Pradesh",
+        "postalCode": "464001",
+        "country": "IN",
+        "latitude": 23.5235719,
+        "longitude": 77.81397179999999
+      },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "neighboring"
     },
     {
@@ -858,8 +944,8 @@
       "description": "There's no overnight grind here - Hacktoberfest Hack Day Indore is a single focused day where you form a team, pick a problem, and ship a working prototype with Python and data by sundown. Open to all skill levels, from someone writing their first script to people already shipping models to production. On-site mentors from the PyData Indore community are around to unblock you fast, and the day wraps with live demos and judging.\r\n\r\nHappy hacking!",
       "websiteUrl": "https://events.mlh.io/events/14931-hacktoberfest-hack-day-indore-x-pydata-indore",
       "registrationUrl": "https://events.mlh.io/events/14931-hacktoberfest-hack-day-indore-x-pydata-indore/register",
-      "logoUrl": "https://mlhusercontent.com/logos/events/01a08864-d42d-a22f-0dc3-13750eec8dca/hacktoberfest-hack-day-indore-x-pydata-indore_666d36513e62.png",
-      "backgroundUrl": "https://mlhusercontent.com/backgrounds/events/01a08864-d42d-a22f-0dc3-13750eec8dca/hacktoberfest-hack-day-indore-x-pydata-indore_a3a26010b3ba.png",
+      "logoUrl": "https://mlhusercontent.com/logos/events/01a08864-d42d-a22f-0dc3-13750eec8dca/hacktoberfest-hack-day-indore-x-pydata-indore_1ba42d97f2b0.png",
+      "backgroundUrl": "https://mlhusercontent.com/backgrounds/events/01a08864-d42d-a22f-0dc3-13750eec8dca/hacktoberfest-hack-day-indore-x-pydata-indore_57b5762bf32f.png",
       "seriesId": "01a0119b-f0f8-6572-18d9-df72fa74f9c3",
       "seasonIdentifier": null,
       "eventApplicationId": null,
@@ -875,6 +961,8 @@
         "latitude": 22.7496812,
         "longitude": 75.8913294
       },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "neighboring"
     },
     {
@@ -907,6 +995,8 @@
         "latitude": 12.731985,
         "longitude": 77.7065486
       },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "neighboring"
     },
     {
@@ -939,6 +1029,8 @@
         "latitude": 22.818938,
         "longitude": 75.9380742
       },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "neighboring"
     },
     {
@@ -948,14 +1040,14 @@
       "format": "hackday",
       "status": "pending",
       "kind": "fest",
-      "startsAt": "2026-10-08T03:00:00.000Z",
-      "endsAt": "2026-10-08T11:00:00.000Z",
-      "timeZone": "Indian/Kerguelen",
+      "startsAt": "2026-10-08T02:30:00.000Z",
+      "endsAt": "2026-10-08T10:30:00.000Z",
+      "timeZone": "Asia/Kolkata",
       "description": "Hacktoberfest \u00d7 Kristu Jayanti University is a beginner-friendly open-source event designed to introduce students to the world of open-source development and collaboration.\r\nParticipants will learn the fundamentals of open source, Git, and GitHub, understand how developers collaborate on real-world projects, and gain hands-on experience with making open-source contributions.\r\nThe event provides an opportunity to learn, collaborate with peers, explore new technologies, and take the first steps toward becoming an active contributor to the open-source community.\r\nNo prior open-source experience is required. Bring your laptop, curiosity, and enthusiasm to learn and build together.",
       "websiteUrl": "https://events.mlh.io/events/15106-hacktoberfest-hack-day-at-kju",
       "registrationUrl": "https://events.mlh.io/events/15106-hacktoberfest-hack-day-at-kju/register",
-      "logoUrl": "https://mlhusercontent.com/logos/events/01a0b6af-3248-5732-b7e9-8be20f998dc0/hacktoberfest-2026-at-kju_955df64051c5.png",
-      "backgroundUrl": "https://mlhusercontent.com/backgrounds/events/01a0b6af-3248-5732-b7e9-8be20f998dc0/hacktoberfest-2026-at-kju_5afb0bca3005.png",
+      "logoUrl": "https://mlhusercontent.com/logos/events/01a0b6af-3248-5732-b7e9-8be20f998dc0/hacktoberfest-2026-at-kju_97f5912ded7d.png",
+      "backgroundUrl": "https://mlhusercontent.com/backgrounds/events/01a0b6af-3248-5732-b7e9-8be20f998dc0/hacktoberfest-2026-at-kju_49d0e258d992.png",
       "seriesId": "01a0119b-f0f8-6572-18d9-df72fa74f9c3",
       "seasonIdentifier": null,
       "eventApplicationId": null,
@@ -971,6 +1063,8 @@
         "latitude": 13.0849074,
         "longitude": 77.6919619
       },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "neighboring"
     },
     {
@@ -986,8 +1080,8 @@
       "description": "# Hacktoberfest Hack Day Bengaluru x IEEE CIS RIT\r\n\r\nIEEE Computational Intelligence Society (IEEE CIS), M S Ramaiah Institute of Technology, is hosting an official Hacktoberfest 2026 Hack Day in Bengaluru.\r\n\r\nJoin a free, in-person day of building, learning and showcasing projects with open-source AI tools, open-weight models and developer communities. Whether you are making your first project, exploring open source, or already building with AI, this Hack Day is designed to help you turn an idea into something real.\r\n\r\n## What to expect\r\n\r\n- Opening session and Hacktoberfest orientation\r\n- Beginner-friendly guidance on open-source AI and project building\r\n- Team formation, mentor support and a focused build sprint\r\n- Project submission, demos and recognition\r\n- Opportunities to earn official Hacktoberfest participation and challenge recognition\r\n\r\n## Who should attend\r\n\r\nThis event is open to university students and working professionals who can attend in person at the MSRIT campus in Bengaluru. Beginners are welcome; you do not need previous hackathon or open-source experience.\r\n\r\nBring your laptop, charger, college ID and curiosity. Entry is free, but registration is required and seats are limited.\r\n\r\nHosted by IEEE CIS Student Branch Chapter, M S Ramaiah Institute of Technology.\r\n",
       "websiteUrl": "https://events.mlh.io/events/15117-hacktoberfest-hack-day-bengaluru-x-ieee-cis-ritb",
       "registrationUrl": "https://events.mlh.io/events/15117-hacktoberfest-hack-day-bengaluru-x-ieee-cis-ritb/register",
-      "logoUrl": "https://mlhusercontent.com/logos/events/01a0b6b0-136e-912b-b041-85524ed1201c/hacktoberfest-hack-day-bengaluru-x-ieee-cis-ritb_bbbaef4ffee8.png",
-      "backgroundUrl": "https://mlhusercontent.com/backgrounds/events/01a0b6b0-136e-912b-b041-85524ed1201c/hacktoberfest-hack-day-bengaluru-x-ieee-cis-ritb_4a4983a2d67e.png",
+      "logoUrl": "https://mlhusercontent.com/logos/events/01a0b6b0-136e-912b-b041-85524ed1201c/hacktoberfest-hack-day-bengaluru-x-ieee-cis-ritb_c2f1bac4b5e7.png",
+      "backgroundUrl": "https://mlhusercontent.com/backgrounds/events/01a0b6b0-136e-912b-b041-85524ed1201c/hacktoberfest-hack-day-bengaluru-x-ieee-cis-ritb_47be7885edb9.png",
       "seriesId": "01a0119b-f0f8-6572-18d9-df72fa74f9c3",
       "seasonIdentifier": null,
       "eventApplicationId": null,
@@ -1003,6 +1097,8 @@
         "latitude": 13.0307823,
         "longitude": 77.5649893
       },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "neighboring"
     },
     {
@@ -1035,6 +1131,8 @@
         "latitude": 17.59994918838622,
         "longitude": 78.41779234321882
       },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "neighboring"
     },
     {
@@ -1050,8 +1148,8 @@
       "description": "The Web Enthusiasts' Club, NITK is hosting a 12-hour hackathon as part of MLH Hacktoberfest 2026, with a focus on \"Open Source AI\".\r\n\r\nNOTE: This event is exclusively for NITK students and a shortlisting will be done from the pool of registered candidates before the offline hackday on 11th October.\r\n\r\nOn October 11, we are bringing together students, developers, and AI enthusiasts to spend a day building, experimenting, and contributing to open source. The idea is simple: take an interesting problem, build a solution around it, and see how far you can take it in 12 hours.\r\n\r\nYou can work with open source AI models, LLMs, computer vision, AI agents, RAG systems, machine learning frameworks, developer tools, or anything else that fits the theme. You do not need to be an expert in AI or open source. If you have an idea you want to build, or simply want to learn by working on something with others, you're welcome to participate.\r\n\r\nAlong the way, you will get a chance to meet other developers, work in a team, explore new technologies, and learn what it actually takes to build and contribute to open source projects.\r\n\r\nDate: October 11, 2026\r\nTime: 9:00 AM to 9:00 PM\r\nVenue: NITK Surathkal\r\nTheme: Open Source AI\r\nOrganized by: Web Enthusiasts' Club, NITK\r\nPart of: MLH Hacktoberfest 2026\r\n\r\nBring your ideas, find a team, and spend the day building something you would be proud to put out into the open source community.",
       "websiteUrl": "https://events.mlh.io/events/15123-hacktoberfest-hack-day-surathkal-x-wec-nitk",
       "registrationUrl": "https://events.mlh.io/events/15123-hacktoberfest-hack-day-surathkal-x-wec-nitk/register",
-      "logoUrl": "https://mlhusercontent.com/logos/events/01a0b6b0-8dd4-06f4-1be0-a3493554562a/hacktoberfest-hack-day-surathkal-x-wec-nitk_2c03fbc8feb0.png",
-      "backgroundUrl": "https://mlhusercontent.com/backgrounds/events/01a0b6b0-8dd4-06f4-1be0-a3493554562a/hacktoberfest-hack-day-surathkal-x-wec-nitk_1ad22b6357ad.png",
+      "logoUrl": "https://mlhusercontent.com/logos/events/01a0b6b0-8dd4-06f4-1be0-a3493554562a/hacktoberfest-hack-day-surathkal-x-wec-nitk_231220e6aeaf.png",
+      "backgroundUrl": "https://mlhusercontent.com/backgrounds/events/01a0b6b0-8dd4-06f4-1be0-a3493554562a/hacktoberfest-hack-day-surathkal-x-wec-nitk_2bd02c03b69b.png",
       "seriesId": "01a0119b-f0f8-6572-18d9-df72fa74f9c3",
       "seasonIdentifier": null,
       "eventApplicationId": null,
@@ -1067,6 +1165,8 @@
         "latitude": 13.0107776,
         "longitude": 74.794309
       },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "neighboring"
     },
     {
@@ -1099,6 +1199,8 @@
         "latitude": 17.5094655,
         "longitude": 78.360698
       },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "neighboring"
     },
     {
@@ -1114,8 +1216,8 @@
       "description": "## Hacktoberfest Hack Day Hyderabad \u00d7 Computer Society of India on Campus \u2013 CVR College of Engineering\r\n\r\nJoin us for **Hacktoberfest Hack Day Hyderabad**, hosted at **CVR College of Engineering (CVRCE)** in collaboration with the **Computer Society of India (CSI) on Campus**.\r\n\r\nThis hands-on community event is designed for students and developers who want to explore **open source, Git, GitHub, and collaborative software development**. Whether you're completely new to open source or already contributing to projects, you'll get the opportunity to learn, build, contribute, and connect with fellow developers.\r\n\r\n### What to Expect\r\n\r\n* \ud83d\ude80 Introduction to Hacktoberfest and Open Source\r\n* \ud83d\udcbb Git & GitHub hands-on sessions\r\n* \ud83d\udd27 Finding and contributing to open-source projects\r\n* \ud83e\udd1d Collaboration with fellow developers\r\n* \ud83d\udee0\ufe0f Live contribution / Hack Day activities\r\n* \ud83c\udf10 Networking with the developer community\r\n\r\n\ud83d\udcc5 **Date:** 15-10-2026\r\n\u23f0 **Time:** 9:00 AM \u2013 5:00 PM\r\n\ud83d\udccd **Venue:** CVR College of Engineering (CVRCE), Hyderabad, Telangana\r\n\r\nCome with your laptop, your curiosity, and a willingness to build. **No prior open-source contribution experience is required.**\r\n\r\nLet's turn a day of coding into contributions that actually ship. \ud83d\udc9a\r\n",
       "websiteUrl": "https://events.mlh.io/events/15278-hacktoberfest-hack-day-hyderabad-x-computer-society-of-india-on-campus-cvr-college-of-engineering",
       "registrationUrl": "https://events.mlh.io/events/15278-hacktoberfest-hack-day-hyderabad-x-computer-society-of-india-on-campus-cvr-college-of-engineering/register",
-      "logoUrl": "https://mlhusercontent.com/logos/events/01a0d991-6104-9465-243f-4b3e80aa9e84/hacktoberfest-hack-day-hyderabad-x-google-developer-groups-on-campus-cvr-college-of-engineering_d0fa86b5bfc9.png",
-      "backgroundUrl": "https://mlhusercontent.com/backgrounds/events/01a0d991-6104-9465-243f-4b3e80aa9e84/hacktoberfest-hack-day-hyderabad-x-google-developer-groups-on-campus-cvr-college-of-engineering_01e6e1ca219b.png",
+      "logoUrl": "https://mlhusercontent.com/logos/events/01a0d991-6104-9465-243f-4b3e80aa9e84/hacktoberfest-hack-day-hyderabad-x-google-developer-groups-on-campus-cvr-college-of-engineering_0034b6fdd1d4.png",
+      "backgroundUrl": "https://mlhusercontent.com/backgrounds/events/01a0d991-6104-9465-243f-4b3e80aa9e84/hacktoberfest-hack-day-hyderabad-x-google-developer-groups-on-campus-cvr-college-of-engineering_933ccbc496d6.png",
       "seriesId": "01a0119b-f0f8-6572-18d9-df72fa74f9c3",
       "seasonIdentifier": null,
       "eventApplicationId": null,
@@ -1131,6 +1233,8 @@
         "latitude": 17.2102337,
         "longitude": 78.59731
       },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "neighboring"
     },
     {
@@ -1163,6 +1267,42 @@
         "latitude": 20.2657211,
         "longitude": 73.0189091
       },
+      "featured": false,
+      "homepagePinned": false,
+      "regionGroup": "neighboring"
+    },
+    {
+      "id": "01a0d937-4e3c-55c4-ea52-8ecc41ff1daa",
+      "name": "Hacktoberfest Hack Day Bengaluru x BMSCE IEEE Computer Society",
+      "slug": "hacktoberfest-2026-hack-day-bengaluru-x-bmsce-ieee-computer-society",
+      "format": "hackday",
+      "status": "pending",
+      "kind": "fest",
+      "startsAt": "2026-10-16T05:30:00.000Z",
+      "endsAt": "2026-10-16T11:30:00.000Z",
+      "timeZone": "Asia/Kolkata",
+      "description": "Hacktoberfest 2026 Hack Day Bengaluru is an official Hacktoberfest Hack Day hosted by the BMSCE IEEE Computer Society in partnership with Major League Hacking (MLH) and DEV.\r\n\r\nThe event brings together students, developers, and open source enthusiasts for a hands on experience focused on learning, experimentation, collaboration, and building with open source AI tools and open weight models.\r\n\r\nParticipants will have the opportunity to turn ideas into working projects, explore AI powered technologies, collaborate with fellow developers, and showcase their creations. The Hack Day provides an environment to learn through building, experiment with emerging technologies, and engage with the open source community.\r\n\r\nWhether you are an experienced developer or exploring AI and open source for the first time, Hacktoberfest 2026 Hack Day Bengaluru is an opportunity to learn, create, collaborate, and build something meaningful.\r\n\r\nDate: 16th October 2026\r\nTime: 11:00 AM to 5:00 PM\r\nVenue: BMS College of Engineering, Bull Temple Road, Basavanagudi, Bengaluru, Karnataka 560019\r\n\r\nHappy hacking!",
+      "websiteUrl": "https://events.mlh.io/events/15255-hacktoberfest-hack-day-bengaluru-x-bmsce-ieee-computer-society",
+      "registrationUrl": "https://events.mlh.io/events/15255-hacktoberfest-hack-day-bengaluru-x-bmsce-ieee-computer-society/register",
+      "logoUrl": "https://mlhusercontent.com/logos/events/01a0d937-4e3c-55c4-ea52-8ecc41ff1daa/hacktoberfest-2026-hack-day-bengaluru-x-bmsce-ieee-computer-society_fbb0afe8b54d.png",
+      "backgroundUrl": "https://mlhusercontent.com/backgrounds/events/01a0d937-4e3c-55c4-ea52-8ecc41ff1daa/hacktoberfest-2026-hack-day-bengaluru-x-bmsce-ieee-computer-society_8ec653b0a560.png",
+      "seriesId": "01a0119b-f0f8-6572-18d9-df72fa74f9c3",
+      "seasonIdentifier": null,
+      "eventApplicationId": null,
+      "ohqId": null,
+      "address": {
+        "line1": "P.O. Box No.: 1908, Bull Temple Road, Basavanagudi",
+        "line2": null,
+        "line3": null,
+        "city": "Bengaluru",
+        "state": "Karnataka",
+        "postalCode": "560019",
+        "country": "IN",
+        "latitude": 12.9412021,
+        "longitude": 77.5653899
+      },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "neighboring"
     },
     {
@@ -1195,6 +1335,8 @@
         "latitude": 13.1891042,
         "longitude": 74.9517165
       },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "neighboring"
     },
     {
@@ -1227,6 +1369,42 @@
         "latitude": 12.9226373,
         "longitude": 77.6174442
       },
+      "featured": false,
+      "homepagePinned": false,
+      "regionGroup": "neighboring"
+    },
+    {
+      "id": "01a0a183-d132-88c1-badb-d93bd2f5c66f",
+      "name": "Hacktoberfest Hack Day Ahmedabad x NavraCommunity",
+      "slug": "hacktoberfest-hack-day-ahmedabad-x-navracommunity",
+      "format": "hackday",
+      "status": "pending",
+      "kind": "fest",
+      "startsAt": "2026-10-18T04:00:00.000Z",
+      "endsAt": "2026-10-18T09:00:00.000Z",
+      "timeZone": "Asia/Kolkata",
+      "description": null,
+      "websiteUrl": "https://events.mlh.io/events/15010-hacktoberfest-hack-day-ahmedabad-x-navracommunity",
+      "registrationUrl": "https://events.mlh.io/events/15010-hacktoberfest-hack-day-ahmedabad-x-navracommunity/register",
+      "logoUrl": "https://mlhusercontent.com/logos/events/01a0a183-d132-88c1-badb-d93bd2f5c66f/hacktoberfest-hack-day-ahmedabad-x-navracommunity_d7320b4f2a15.png",
+      "backgroundUrl": "https://mlhusercontent.com/backgrounds/events/01a0a183-d132-88c1-badb-d93bd2f5c66f/hacktoberfest-hack-day-ahmedabad-x-navracommunity_98f7be07f7c7.png",
+      "seriesId": "01a0119b-f0f8-6572-18d9-df72fa74f9c3",
+      "seasonIdentifier": null,
+      "eventApplicationId": null,
+      "ohqId": null,
+      "address": {
+        "line1": "TBA",
+        "line2": "TBA",
+        "line3": null,
+        "city": "Ahmedabad",
+        "state": "Gujarat",
+        "postalCode": "380058",
+        "country": "IN",
+        "latitude": 23.0323442,
+        "longitude": 72.5112985
+      },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "neighboring"
     },
     {
@@ -1259,6 +1437,42 @@
         "latitude": 26.2484154,
         "longitude": 78.1721189
       },
+      "featured": false,
+      "homepagePinned": false,
+      "regionGroup": "neighboring"
+    },
+    {
+      "id": "01a0b6b2-d713-fa75-7d81-90f87dbb6462",
+      "name": "Hacktoberfest Hack Day Gwalior x HackForge",
+      "slug": "hacktoberfest-hack-day-gwalior-x-stu-itm",
+      "format": "hackday",
+      "status": "pending",
+      "kind": "fest",
+      "startsAt": "2026-10-22T04:30:00.000Z",
+      "endsAt": "2026-10-22T11:30:00.000Z",
+      "timeZone": "Asia/Kolkata",
+      "description": "HackForge is a student-led Hack Day bringing developers, students, and technology enthusiasts together in Gwalior for a full day of building, learning, collaboration, and open-source development as part of Hacktoberfest 2026.\r\nParticipants will work together to build projects, explore open-source technologies and open-weight AI models, learn from fellow developers, and showcase what they create during the event.\r\nThe Hack Day is designed to be welcoming to both experienced developers and students who are new to open source. Participants can form teams, work on challenges, receive guidance from mentors, and present their projects during the final showcase and judging.\r\nHackForge is focused on one thing: bringing the energy of the global developer and open-source community to Gwalior and giving students a place to build something real.\r\nExpect a day of coding, collaboration, workshops, project building, demos, challenges, prizes, and Hacktoberfest/MLH experiences.\r\nCome build. Come learn. Come forge.",
+      "websiteUrl": "https://events.mlh.io/events/15145-hacktoberfest-hack-day-gwalior-x-hackforge",
+      "registrationUrl": "https://events.mlh.io/events/15145-hacktoberfest-hack-day-gwalior-x-hackforge/register",
+      "logoUrl": "https://mlhusercontent.com/logos/events/01a0b6b2-d713-fa75-7d81-90f87dbb6462/hacktoberfest-hack-day-gwalior-x-stu-itm_47f24207bc84.png",
+      "backgroundUrl": "https://mlhusercontent.com/backgrounds/events/01a0b6b2-d713-fa75-7d81-90f87dbb6462/hacktoberfest-hack-day-gwalior-x-stu-itm_7ad6881b2c70.png",
+      "seriesId": "01a0119b-f0f8-6572-18d9-df72fa74f9c3",
+      "seasonIdentifier": null,
+      "eventApplicationId": null,
+      "ohqId": null,
+      "address": {
+        "line1": "ITM Campus, (Gate No. 4), Opposite Sithouli Railway Station, NH-75, Jhansi Road",
+        "line2": null,
+        "line3": null,
+        "city": "Gwalior",
+        "state": "madhya pradesh",
+        "postalCode": "475001",
+        "country": "IN",
+        "latitude": 26.1356646,
+        "longitude": 78.1977316
+      },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "neighboring"
     },
     {
@@ -1291,6 +1505,8 @@
         "latitude": 13.0324958,
         "longitude": 77.5932246
       },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "neighboring"
     },
     {
@@ -1323,6 +1539,8 @@
         "latitude": 15.7781532,
         "longitude": 74.46391299999999
       },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "neighboring"
     },
     {
@@ -1355,6 +1573,8 @@
         "latitude": 12.9205815,
         "longitude": 77.50161829999999
       },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "neighboring"
     },
     {
@@ -1387,6 +1607,8 @@
         "latitude": 23.5000098,
         "longitude": 77.8152563
       },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "neighboring"
     },
     {
@@ -1419,38 +1641,8 @@
         "latitude": 17.4537331,
         "longitude": 78.3706029
       },
-      "regionGroup": "neighboring"
-    },
-    {
-      "id": "01a0b6b2-d713-fa75-7d81-90f87dbb6462",
-      "name": "Hacktoberfest Hack Day Gwalior x HackForge",
-      "slug": "hacktoberfest-hack-day-gwalior-x-stu-itm",
-      "format": "hackday",
-      "status": "pending",
-      "kind": "fest",
-      "startsAt": "2026-10-27T04:30:00.000Z",
-      "endsAt": "2026-10-27T11:30:00.000Z",
-      "timeZone": "Asia/Kolkata",
-      "description": "HackForge is a student-led Hack Day bringing developers, students, and technology enthusiasts together in Gwalior for a full day of building, learning, collaboration, and open-source development as part of Hacktoberfest 2026.\r\nParticipants will work together to build projects, explore open-source technologies and open-weight AI models, learn from fellow developers, and showcase what they create during the event.\r\nThe Hack Day is designed to be welcoming to both experienced developers and students who are new to open source. Participants can form teams, work on challenges, receive guidance from mentors, and present their projects during the final showcase and judging.\r\nHackForge is focused on one thing: bringing the energy of the global developer and open-source community to Gwalior and giving students a place to build something real.\r\nExpect a day of coding, collaboration, workshops, project building, demos, challenges, prizes, and Hacktoberfest/MLH experiences.\r\nCome build. Come learn. Come forge.",
-      "websiteUrl": "https://events.mlh.io/events/15145-hacktoberfest-hack-day-gwalior-x-hackforge",
-      "registrationUrl": "https://events.mlh.io/events/15145-hacktoberfest-hack-day-gwalior-x-hackforge/register",
-      "logoUrl": "https://mlhusercontent.com/logos/events/01a0b6b2-d713-fa75-7d81-90f87dbb6462/hacktoberfest-hack-day-gwalior-x-stu-itm_3784fe0e241d.png",
-      "backgroundUrl": "https://mlhusercontent.com/backgrounds/events/01a0b6b2-d713-fa75-7d81-90f87dbb6462/hacktoberfest-hack-day-gwalior-x-stu-itm_3c52503216c7.png",
-      "seriesId": "01a0119b-f0f8-6572-18d9-df72fa74f9c3",
-      "seasonIdentifier": null,
-      "eventApplicationId": null,
-      "ohqId": null,
-      "address": {
-        "line1": "ITM Campus, (Gate No. 4), Opposite Sithouli Railway Station, NH-75, Jhansi Road",
-        "line2": null,
-        "line3": null,
-        "city": "Gwalior",
-        "state": "madhya pradesh",
-        "postalCode": "475001",
-        "country": "IN",
-        "latitude": 26.1356646,
-        "longitude": 78.1977316
-      },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "neighboring"
     },
     {
@@ -1483,6 +1675,8 @@
         "latitude": 12.9248111,
         "longitude": 77.49946729999999
       },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "neighboring"
     },
     {
@@ -1498,8 +1692,8 @@
       "description": "Hacktoberfest 2026 at Hyderabad is an Open Source community event hosted by Newton School of Technology at St. Mary\u2019s Rehabilitation University.\r\n\r\nThe event brings together students, developers, and Open Source enthusiasts for a day of learning, collaboration, and building. We\u2019ll kick things off with speaking sessions focused on Open Source and the developer community, followed by a Hackathon where teams will build, experiment, and collaborate.\r\n\r\nCome learn, connect with the community, contribute to Open Source, and build something together!",
       "websiteUrl": "https://events.mlh.io/events/15129-hacktoberfest-hack-day-hyderabad-x-smru",
       "registrationUrl": "https://events.mlh.io/events/15129-hacktoberfest-hack-day-hyderabad-x-smru/register",
-      "logoUrl": "https://mlhusercontent.com/logos/events/01a0b6b1-884e-2dac-469b-1370346ac20a/hacktoberfest-hack-day-hyderabad-x-smru_1b033a5ddb88.png",
-      "backgroundUrl": "https://mlhusercontent.com/backgrounds/events/01a0b6b1-884e-2dac-469b-1370346ac20a/hacktoberfest-hack-day-hyderabad-x-smru_3bb7f87050e8.png",
+      "logoUrl": "https://mlhusercontent.com/logos/events/01a0b6b1-884e-2dac-469b-1370346ac20a/hacktoberfest-hack-day-hyderabad-x-smru_718725969c0c.png",
+      "backgroundUrl": "https://mlhusercontent.com/backgrounds/events/01a0b6b1-884e-2dac-469b-1370346ac20a/hacktoberfest-hack-day-hyderabad-x-smru_97efcd55fa7c.png",
       "seriesId": "01a0119b-f0f8-6572-18d9-df72fa74f9c3",
       "seasonIdentifier": null,
       "eventApplicationId": null,
@@ -1515,6 +1709,8 @@
         "latitude": 17.3315937,
         "longitude": 78.7240692
       },
+      "featured": false,
+      "homepagePinned": false,
       "regionGroup": "neighboring"
     }
   ]

@@ -10,6 +10,7 @@ const STORAGE_KEYS = {
   USER: 'ugsot_current_user',
   RSVPS: 'ugsot_rsvps'
 };
+window.STORAGE_KEYS = STORAGE_KEYS;
 
 // Calculate dates dynamically relative to now so countdown is always fresh and realistic
 const now = new Date();
@@ -185,6 +186,47 @@ const DEFAULT_EVENTS = [
       '8:00 PM – 9:00 PM: Dinner & Refreshments',
       '9:00 PM – 1:00 AM: Overnight Hackathon Sprint',
       '1:00 AM – 2:00 AM: Demos, Voting & Wrap-up'
+    ]
+  },
+  {
+    id: 'evt-hacktoberfest-pune-aidn',
+    title: 'Hacktoberfest Hack Day Pune x AIDN',
+    subtitle: 'Developer Community Open-Source Hack Day at Orville Business Port, Viman Nagar, Pune',
+    category: 'opensource',
+    isFlagship: false,
+    status: 'upcoming',
+    dateBadge: 'Saturday, Oct 31, 2026 • 9:00 AM – 6:00 PM IST',
+    startDate: '2026-10-31T03:30:00.000Z',
+    targetDate: '2026-10-31T03:30:00.000Z',
+    endDate: '2026-10-31T12:30:00.000Z',
+    venue: 'Office No 411, 4th Floor, Orville Business Port, West Ave, Opp. Konark Campus, Viman Nagar, Pune 411014',
+    mode: 'In-Person Fest (Viman Nagar, Pune)',
+    banner: 'https://mlhusercontent.com/backgrounds/events/01a0b6b2-8524-c7b7-cfab-97f894bea47c/hacktoberfest-hack-day-pune-x-aidn_373f95bad01a.png',
+    logoUrl: 'https://mlhusercontent.com/logos/events/01a0b6b2-8524-c7b7-cfab-97f894bea47c/hacktoberfest-hack-day-pune-x-aidn_f56dc519c757.png',
+    description: 'AIDN Hack Day brings developers across Pune together for open-source contributions, peer networking, and building in public during Hacktoberfest 2026. Bring your ideas, find projects to work on, contribute with your peers, and spend a day building alongside the Pune developer community.',
+    prizePool: 'Community Hack Day Awards, Official MLH Badges & Goodies',
+    stipend: 'Official Badges & MLH Swag',
+    officialUrl: 'https://events.mlh.io/events/15141-hacktoberfest-hack-day-pune-x-aidn',
+    registrationUrl: 'https://events.mlh.io/events/15141-hacktoberfest-hack-day-pune-x-aidn/register',
+    spotsTotal: 180,
+    spotsFilled: 95,
+    tags: ['Hacktoberfest', 'Pune', 'AIDN', 'Viman Nagar', 'Hack Day', 'Open Source', 'MLH', 'UGSOT'],
+    timelineInfo: {
+      registration: 'Open now on MLH Events',
+      activePhase: 'Saturday, October 31, 2026 • 9:00 AM – 6:00 PM IST',
+      reviewPhase: 'October 31 – November 7, 2026'
+    },
+    speakers: [
+      { name: 'AIDN Community Leads', role: 'Event Organizers', avatar: 'AIDN' },
+      { name: 'Pune Tech Mentors', role: 'Technical Mentors', avatar: 'PT' }
+    ],
+    agenda: [
+      '9:00 AM: Check-in & Orientation',
+      '9:30 AM – 11:30 AM: Open-Source Code Sprint Kickoff',
+      '11:30 AM – 1:30 PM: Peer Pair-Programming & PR Reviews',
+      '1:30 PM – 2:30 PM: Networking Lunch',
+      '2:30 PM – 5:00 PM: Project Demos & Code Showcase',
+      '5:00 PM – 6:00 PM: Swag & Closing'
     ]
   },
   {
@@ -793,11 +835,11 @@ const DEFAULT_STUDENTS = [
   }
 ];
 
-const STORE_DATA_VERSION = 'ugsot_v2026_09_28_01';
+const STORE_DATA_VERSION = 'ugsot_v2026_09_29_01';
 
 class ClubStore {
   constructor() {
-    // Force cache bust: if stored version is older, reset events and sections to default 17 open source events
+    // Force cache bust: if stored version is older, reset events and sections to default 18 open source events
     const storedVersion = localStorage.getItem('ust_store_data_version');
     if (storedVersion !== STORE_DATA_VERSION) {
       localStorage.setItem(STORAGE_KEYS.EVENTS, JSON.stringify(DEFAULT_EVENTS));
@@ -809,10 +851,10 @@ class ClubStore {
     this.sections = this.load(STORAGE_KEYS.SECTIONS, DEFAULT_SECTIONS);
     this.students = this.load(STORAGE_KEYS.STUDENTS, DEFAULT_STUDENTS);
     
-    // Auto-migrate events: ensure all 17 verified open source events (including 4 Pune Fests) are loaded
+    // Auto-migrate events: ensure all 18 verified open source events (including all 5 Pune Fests) are loaded
     const hasHacktoberfest = this.events && this.events.some(e => e.id === 'evt-hacktoberfest-2026' && e.timelineInfo);
-    const hasCloudClubPune = this.events && this.events.some(e => e.id === 'evt-hacktoberfest-pune-cloudclub');
-    if (!hasHacktoberfest || !hasCloudClubPune || this.events.length < 17) {
+    const hasAidnPune = this.events && this.events.some(e => e.id === 'evt-hacktoberfest-pune-aidn');
+    if (!hasHacktoberfest || !hasAidnPune || this.events.length < 18) {
       this.events = DEFAULT_EVENTS;
       this.save(STORAGE_KEYS.EVENTS, this.events);
     }
@@ -876,21 +918,30 @@ class ClubStore {
   }
 
   getEventById(id) {
-    return this.events.find(e => e.id === id);
+    if (!id) return null;
+    return this.events.find(e => e.id === id) || 
+      (window.hacktoberfestFestsManager && window.hacktoberfestFestsManager.events.find(e => e.id === id)) || 
+      null;
+  }
+
+  getAllEvents() {
+    const festEvents = (window.hacktoberfestFestsManager && window.hacktoberfestFestsManager.events) || [];
+    const existingIds = new Set(this.events.map(e => e.id));
+    return [...this.events, ...festEvents.filter(e => !existingIds.has(e.id))];
   }
 
   getFlagshipEvent() {
-    // 1. Prioritize active ongoing flagship event
+    // 1. Prioritize designated upcoming flagship event (Hacktoberfest Pune Flagship at AIT)
+    const flagship = this.events.find(e => e.isFlagship && new Date(e.targetDate) > new Date());
+    if (flagship) return flagship;
+
+    // 2. Active ongoing flagship event
     const ongoingFlagship = this.events.find(e => e.isFlagship && (e.isOngoing || e.status === 'ongoing'));
     if (ongoingFlagship) return ongoingFlagship;
 
-    // 2. Any active ongoing event
+    // 3. Any active ongoing event
     const ongoingAny = this.events.find(e => e.isOngoing || e.status === 'ongoing');
     if (ongoingAny) return ongoingAny;
-
-    // 3. Find flagged flagship or the closest upcoming event
-    const flagship = this.events.find(e => e.isFlagship && new Date(e.targetDate) > new Date());
-    if (flagship) return flagship;
     
     // 4. Otherwise get earliest upcoming event
     const upcoming = this.events
@@ -898,6 +949,27 @@ class ClubStore {
       .sort((a, b) => new Date(a.targetDate) - new Date(b.targetDate));
       
     return upcoming.length > 0 ? upcoming[0] : this.events[0];
+  }
+
+  setFlagshipEvent(id) {
+    this.events.forEach(e => {
+      e.isFlagship = (e.id === id);
+    });
+    this.save(STORAGE_KEYS.EVENTS, this.events);
+    return this.getEventById(id);
+  }
+
+  awardStudentXp(studentId, amount = 200) {
+    const student = this.students.find(s => s.id === studentId || s.studentId === studentId);
+    if (!student) return null;
+    student.devXp = (student.devXp || 0) + amount;
+    student.level = Math.floor(student.devXp / 300) + 1;
+    this.save(STORAGE_KEYS.STUDENTS, this.students);
+    if (this.currentUser && (this.currentUser.id === student.id || this.currentUser.studentId === student.studentId)) {
+      this.currentUser = student;
+      this.save(STORAGE_KEYS.USER, this.currentUser);
+    }
+    return student;
   }
 
   addEvent(eventData) {

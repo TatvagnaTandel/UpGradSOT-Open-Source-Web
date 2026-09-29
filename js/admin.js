@@ -232,6 +232,11 @@ class AdminDashboard {
                category === 'sprint' ? 'assets/codesprint_banner.jpg' : 'assets/flagship_banner.jpg';
     }
 
+    if (!dateVal || isNaN(new Date(dateVal).getTime())) {
+      window.app.showToast('Please provide a valid event date and time.', 'error');
+      return;
+    }
+
     const tags = tagsStr ? tagsStr.split(',').map(t => t.trim()) : [category.toUpperCase(), 'UGSOT'];
     const targetDate = new Date(dateVal).toISOString();
 
@@ -271,15 +276,12 @@ class AdminDashboard {
   }
 
   setFlagship(id) {
-    const events = window.clubStore.getEvents();
-    events.forEach(e => {
-      e.isFlagship = (e.id === id);
-    });
-    window.clubStore.save(STORAGE_KEYS.EVENTS, events);
-    const updated = window.clubStore.getEventById(id);
-    window.countdownEngine.setTargetEvent(updated);
-    window.app.showToast(`"${updated.title}" set as Flagship Countdown target!`, 'success');
-    this.renderEventsTable();
+    const updated = window.clubStore.setFlagshipEvent(id);
+    if (updated && window.countdownEngine) {
+      window.countdownEngine.setTargetEvent(updated);
+      window.app.showToast(`"${updated.title}" set as Flagship Countdown target!`, 'success');
+      this.renderEventsTable();
+    }
   }
 
   // --- SECTIONS CMS ---
@@ -441,12 +443,9 @@ class AdminDashboard {
   }
 
   awardBonusXp(studentId) {
-    const student = window.clubStore.getStudents().find(s => s.id === studentId);
-    if (!student) return;
-    student.devXp = (student.devXp || 0) + 200;
-    student.level = Math.floor(student.devXp / 300) + 1;
-    window.clubStore.save(STORAGE_KEYS.STUDENTS, window.clubStore.getStudents());
-    window.app.showToast(`Awarded +200 XP to ${student.name}!`, 'success');
+    const updated = window.clubStore.awardStudentXp(studentId, 200);
+    if (!updated) return;
+    window.app.showToast(`Awarded +200 XP to ${updated.name}!`, 'success');
     this.renderStudentsTable();
   }
 

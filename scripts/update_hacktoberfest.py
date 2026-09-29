@@ -1,22 +1,39 @@
 import json, re, sys, os
 
-raw_file = 'data/raw_mlh_events.json'
-if not os.path.exists(raw_file):
-    print(f"Error: {raw_file} does not exist")
-    sys.exit(1)
+import urllib.request, ssl
 
-with open(raw_file) as f:
-    all_events = json.load(f)
+raw_file = 'data/raw_mlh_events.json'
+all_events = []
+
+if os.path.exists(raw_file):
+    with open(raw_file) as f:
+        all_events = json.load(f)
+else:
+    print("Fetching live events from https://hacktoberfest-api.mlh.com/api/events...")
+    try:
+        ctx = ssl._create_unverified_context()
+        req = urllib.request.Request('https://hacktoberfest-api.mlh.com/api/events', headers={'User-Agent': 'Mozilla/5.0'})
+        with urllib.request.urlopen(req, context=ctx, timeout=15) as resp:
+            data = json.loads(resp.read().decode('utf-8'))
+            all_events = data.get('events', [])
+            print(f"Fetched {len(all_events)} events from MLH API.")
+    except Exception as ex:
+        print(f"API fetch failed: {ex}. Falling back to data/hacktoberfest-events.json")
+        if os.path.exists('data/hacktoberfest-events.json'):
+            with open('data/hacktoberfest-events.json') as f:
+                d = json.load(f)
+                all_events = d.get('pune', []) + d.get('maharashtra', []) + d.get('neighboring', [])
 
 pune_ids = [
     '01a0b6b0-a1ac-82af-a804-d6f836c99202', # Cloud Computing Club (MIT ADT) - Oct 13
     '01a0b6b1-9c97-b056-fa2e-02e02678d624', # OSS AIT - Oct 17 (Flagship)
     '01a07d81-9f8b-e908-cfd4-d680f9ef8ff2', # Cloud Native Pune - Oct 24
-    '01a0b6b0-6189-433e-609d-f6154893b512'  # NST ADYPU - Oct 24
+    '01a0b6b0-6189-433e-609d-f6154893b512', # NST ADYPU - Oct 24
+    '01a0b6b2-8524-c7b7-cfab-97f894bea47c'  # AIDN - Oct 31
 ]
 
 CURATED_LOCATIONS = {
-    # PUNE (4 Events)
+    # PUNE (5 Events)
     '01a0b6b0-a1ac-82af-a804-d6f836c99202': {
         'city': 'Pune',
         'state': 'Maharashtra',
@@ -52,6 +69,15 @@ CURATED_LOCATIONS = {
         'isFlagship': False,
         'customId': 'evt-hacktoberfest-pune-nstadypu',
         'college': 'Ajeenkya DY Patil University (NST)'
+    },
+    '01a0b6b2-8524-c7b7-cfab-97f894bea47c': {
+        'city': 'Pune',
+        'state': 'Maharashtra',
+        'shortVenue': 'Orville Business Port, Viman Nagar, Pune',
+        'venue': 'Office No 411, 4th Floor, Orville Business Port, West Ave, Opp. Konark Campus, Viman Nagar, Pune 411014',
+        'isFlagship': False,
+        'customId': 'evt-hacktoberfest-pune-aidn',
+        'college': 'AIDN Community'
     },
     # MAHARASHTRA (12 Events)
     '01a0a22b-bcb6-a95e-bc8e-a68f473e545d': {
@@ -312,6 +338,18 @@ CURATED_LOCATIONS = {
         'state': 'Karnataka',
         'shortVenue': 'RV University Campus, Bengaluru',
         'venue': 'RV Vidyanikethan Post, 8th Mile, Mysuru Road, Bengaluru, Karnataka 560059'
+    },
+    '01a0d937-4e3c-55c4-ea52-8ecc41ff1daa': {
+        'city': 'Bengaluru',
+        'state': 'Karnataka',
+        'shortVenue': 'BMSCE Campus, Basavanagudi, Bengaluru',
+        'venue': 'BMS College of Engineering, Bull Temple Road, Basavanagudi, Bengaluru, Karnataka 560019'
+    },
+    '01a0a183-d132-88c1-badb-d93bd2f5c66f': {
+        'city': 'Ahmedabad',
+        'state': 'Gujarat',
+        'shortVenue': 'Navra Community Hub, Ahmedabad',
+        'venue': 'NavraCommunity Tech Hub, Ahmedabad, Gujarat'
     }
 }
 
@@ -388,15 +426,18 @@ for ev in combined:
     slug = ev.get("slug") or ev.get("id")
     ev_id = curated.get('customId') or ("evt-hf-" + re.sub(r"[^a-zA-Z0-9]+", "-", slug).strip("-")[:42])
     
+    raw_title = ev.get("name") or "Hacktoberfest Fest"
+    clean_title = raw_title.replace("<Chhatrapati Sambhajinagar>", "(Chhatrapati Sambhajinagar)").replace("<>", "x").strip()
+
     group = ev.get("regionGroup")
     reg_label = "Pune, Maharashtra" if group == "pune" else state
-    fmt = ev.get("format") or "hackday"
+    fmt = "meetup" if "meetup" in clean_title.lower() or ev.get("format") == "meetup" else "hackday"
     banner = ev.get("backgroundUrl") or ev.get("logoUrl") or "assets/flagship_banner.jpg"
     
     events_list.append({
         "id": ev_id,
         "apiId": api_id,
-        "title": ev.get("name"),
+        "title": clean_title,
         "subtitle": f"Official Hacktoberfest 2026 {fmt.capitalize()} in {city}, {state}",
         "category": "opensource",
         "format": fmt,
@@ -455,7 +496,8 @@ class HacktoberfestFestsManager {
     const existingEvents = window.clubStore.getEvents();
     const existingIds = new Set(existingEvents.map(e => e.id));
 
-    this.events.forEach(evt => {
+    // Ensure all 5 Pune host fests are present in the core store
+    this.events.filter(evt => evt.regionGroup === 'pune').forEach(evt => {
       if (!existingIds.has(evt.id)) {
         existingEvents.push({
           ...evt,
@@ -662,7 +704,7 @@ class HacktoberfestFestsManager {
           <div class="empty-icon">🎃</div>
           <h3>No Hacktoberfest Fests Match Your Filter</h3>
           <p>Try switching regions or clearing your search term to see other events near Pune and across India.</p>
-          <button class="btn btn-secondary" onclick="window.hacktoberfestFestsManager.resetFilters()">Show All 47 Regional Fests</button>
+          <button class="btn btn-secondary" onclick="window.hacktoberfestFestsManager.resetFilters()">Show All 50 Regional Fests</button>
         </div>
       `;
       return;

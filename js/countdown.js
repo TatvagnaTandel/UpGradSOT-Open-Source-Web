@@ -46,7 +46,7 @@ class CountdownEngine {
     }
 
     if (titleEl) titleEl.textContent = this.targetEvent.title;
-    if (subtitleEl) subtitleEl.textContent = this.targetEvent.description || this.targetEvent.subtitle;
+    if (subtitleEl) subtitleEl.textContent = this.targetEvent.subtitle || this.targetEvent.description;
     if (venueEl) venueEl.innerHTML = `<span class="icon">📍</span> ${this.targetEvent.venue}`;
     
     if (dateBadgeEl) {

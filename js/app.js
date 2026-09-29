@@ -157,10 +157,31 @@ class App {
       case 'help':
         appendLine(`Available commands:<br>
           • <strong>events</strong>: list all live UGSOT open source events<br>
+          • <strong>pune</strong>: list all 5 official Hacktoberfest Pune host campuses<br>
+          • <strong>fests</strong>: show regional Hacktoberfest hubs breakdown (50 fests)<br>
           • <strong>countdown</strong>: show remaining time to flagship event<br>
           • <strong>whoami</strong>: display active authenticated session<br>
           • <strong>matrix</strong>: trigger neon matrix pulse<br>
           • <strong>clear</strong>: clear the terminal console`);
+        break;
+      case 'pune':
+        const puneFests = (window.hacktoberfestFestsManager ? window.hacktoberfestFestsManager.events : [])
+          .filter(e => e.regionGroup === 'pune');
+        appendLine(`📍 <strong>${puneFests.length} Hacktoberfest Fests in Pune, Maharashtra:</strong><br>` +
+          puneFests.map(f => `• <strong>${f.title}</strong><br>&nbsp;&nbsp;📅 ${new Date(f.targetDate).toLocaleDateString()} | 📍 ${f.shortVenue}`).join('<br>')
+        );
+        break;
+      case 'fests':
+        const allFests = window.hacktoberfestFestsManager ? window.hacktoberfestFestsManager.events : [];
+        const puneCount = allFests.filter(e => e.regionGroup === 'pune').length;
+        const mhCount = allFests.filter(e => e.regionGroup === 'maharashtra').length;
+        const otherCount = allFests.length - puneCount - mhCount;
+        appendLine(`🌐 <strong>Hacktoberfest Regional Fests Hub:</strong><br>
+          • Total Synced Hubs: <strong>${allFests.length}</strong><br>
+          • Pune Hosts: <strong>${puneCount}</strong> (MIT ADT, AIT, Gaia Apex, NST ADYPU, AIDN)<br>
+          • Maharashtra Hubs: <strong>${mhCount}</strong> (Mumbai, Nagpur, Nashik, Sambhajinagar)<br>
+          • Neighboring States: <strong>${otherCount}</strong> (Karnataka, MP, Telangana, Gujarat)<br>
+          <em>Click the ⏱️ pin icon on any fest card to lock it to the live countdown timer!</em>`);
         break;
       case 'events':
         const events = window.clubStore.getEvents();
