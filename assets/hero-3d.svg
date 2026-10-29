@@ -1,0 +1,322 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" width="100%" height="100%">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f1117" />
+      <stop offset="50%" stop-color="#161b22" />
+      <stop offset="100%" stop-color="#0a0c10" />
+    </linearGradient>
+
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff3366" />
+      <stop offset="100%" stop-color="#ff6b4a" />
+    </linearGradient>
+
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f0ff" />
+      <stop offset="100%" stop-color="#7000ff" />
+    </linearGradient>
+
+    <linearGradient id="yellowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffe600" />
+      <stop offset="100%" stop-color="#ff9900" />
+    </linearGradient>
+
+    <linearGradient id="mintGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05ffa1" />
+      <stop offset="100%" stop-color="#00b4d8" />
+    </linearGradient>
+
+    <linearGradient id="screenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e2430" />
+      <stop offset="100%" stop-color="#0f1319" />
+    </linearGradient>
+
+    <!-- Drop Shadow Filters -->
+    <filter id="brutalShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="8" dy="8" stdDeviation="0" flood-color="#000000" flood-opacity="0.9" />
+    </filter>
+    <filter id="brutalShadowSm" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="4" dy="4" stdDeviation="0" flood-color="#000000" flood-opacity="0.9" />
+    </filter>
+    <filter id="glowPink" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="10" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <filter id="glowCyan" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- Grid Pattern -->
+    <pattern id="cyberGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#252c38" stroke-width="1" stroke-opacity="0.4" />
+    </pattern>
+
+    <!-- CSS Keyframe Animations -->
+    <style>
+      @keyframes floatSlow {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-16px) rotate(1.5deg); }
+      }
+      @keyframes floatRev {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(14px) rotate(-1.5deg); }
+      }
+      @keyframes floatFast {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+      }
+      @keyframes pulseBeam {
+        0%, 100% { opacity: 0.2; }
+        50% { opacity: 0.75; }
+      }
+      @keyframes scanSweep {
+        0% { transform: translateY(-20px); opacity: 0; }
+        20% { opacity: 0.8; }
+        80% { opacity: 0.8; }
+        100% { transform: translateY(140px); opacity: 0; }
+      }
+      @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.2; }
+      }
+      @keyframes spinSlow {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      @keyframes radarWave {
+        0% { r: 5; opacity: 1; stroke-width: 3; }
+        100% { r: 42; opacity: 0; stroke-width: 0.5; }
+      }
+
+      .floating-hero { animation: floatSlow 5s ease-in-out infinite; transform-origin: center; }
+      .floating-left { animation: floatRev 4.2s ease-in-out infinite; transform-origin: center; }
+      .floating-right { animation: floatSlow 4.8s ease-in-out infinite 0.5s; transform-origin: center; }
+      .floating-cube-1 { animation: floatFast 3.5s ease-in-out infinite 0.2s; }
+      .floating-cube-2 { animation: floatRev 3.8s ease-in-out infinite 0.8s; }
+      .floating-cube-3 { animation: floatSlow 4.5s ease-in-out infinite 1.2s; }
+      .pulse-dot { animation: blink 1.2s infinite ease-in-out; }
+      .scan-line { animation: scanSweep 3s linear infinite; }
+      .radar-wave-1 { animation: radarWave 2.4s cubic-bezier(0.2, 0.8, 0.4, 1) infinite; }
+      .radar-wave-2 { animation: radarWave 2.4s cubic-bezier(0.2, 0.8, 0.4, 1) infinite 0.8s; }
+      .wireframe-spin { animation: spinSlow 20s linear infinite; transform-origin: 600px 80px; }
+    </style>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1200" height="520" fill="url(#bgGrad)" />
+  <rect width="1200" height="520" fill="url(#cyberGrid)" />
+
+  <!-- Neo-Brutalist Border Frame -->
+  <rect x="12" y="12" width="1176" height="496" fill="none" stroke="#ff3366" stroke-width="2.5" opacity="0.6" />
+  <rect x="18" y="18" width="1164" height="484" fill="none" stroke="#252c38" stroke-width="1.5" />
+
+  <!-- Ambient Glow Blobs -->
+  <circle cx="280" cy="240" r="160" fill="#ff3366" opacity="0.12" filter="url(#glowPink)" />
+  <circle cx="920" cy="260" r="180" fill="#00f0ff" opacity="0.12" filter="url(#glowCyan)" />
+  <circle cx="600" cy="280" r="220" fill="#7000ff" opacity="0.08" filter="url(#glowCyan)" />
+
+  <!-- Perspective Floor Grid (Isometric Plane) -->
+  <g opacity="0.45" transform="translate(600, 380)">
+    <line x1="-500" y1="90" x2="500" y2="90" stroke="#ff3366" stroke-width="1" opacity="0.3" />
+    <line x1="-420" y1="60" x2="420" y2="60" stroke="#00f0ff" stroke-width="1" opacity="0.4" />
+    <line x1="-340" y1="30" x2="340" y2="30" stroke="#252c38" stroke-width="1" />
+    <line x1="-240" y1="0" x2="240" y2="0" stroke="#252c38" stroke-width="1" />
+    <!-- Diagonal isometric lines -->
+    <line x1="-400" y1="120" x2="-100" y2="-40" stroke="#252c38" stroke-width="1" />
+    <line x1="-240" y1="120" x2="60" y2="-40" stroke="#252c38" stroke-width="1" />
+    <line x1="-80" y1="120" x2="220" y2="-40" stroke="#252c38" stroke-width="1" />
+    <line x1="80" y1="120" x2="380" y2="-40" stroke="#252c38" stroke-width="1" />
+    <line x1="240" y1="120" x2="540" y2="-40" stroke="#252c38" stroke-width="1" />
+  </g>
+
+  <!-- Ambient Top 3D Wireframe Icosahedron/Rings -->
+  <g class="wireframe-spin" opacity="0.35">
+    <polygon points="600,50 635,70 635,110 600,130 565,110 565,70" fill="none" stroke="#00f0ff" stroke-width="1.5" />
+    <polygon points="600,50 600,130 565,70 635,110" fill="none" stroke="#ff3366" stroke-width="1" />
+    <circle cx="600" cy="80" r="45" fill="none" stroke="#ffe600" stroke-width="1" stroke-dasharray="4,4" />
+  </g>
+
+  <!-- ==================== 3D FLOATING OBJECTS ==================== -->
+
+  <!-- 1. LEFT 3D OBJECT: LIVE COUNTDOWN TICKER & CALENDAR BLOCK -->
+  <g class="floating-left" transform="translate(140, 160)">
+    <!-- Base 3D Isometric Cube -->
+    <!-- Top Face -->
+    <polygon points="120,40 220,95 120,150 20,95" fill="#2d3748" stroke="#000" stroke-width="3" filter="url(#brutalShadow)" />
+    <!-- Left Face -->
+    <polygon points="20,95 120,150 120,230 20,175" fill="#1a202c" stroke="#000" stroke-width="3" />
+    <!-- Right Face -->
+    <polygon points="120,150 220,95 220,175 120,230" fill="#0f131a" stroke="#000" stroke-width="3" />
+
+    <!-- Pop Card on Top -->
+    <g transform="translate(25, 10)">
+      <rect x="20" y="20" width="160" height="95" rx="8" fill="#ffe600" stroke="#000" stroke-width="3" filter="url(#brutalShadowSm)" />
+      <!-- Neo Header Bar -->
+      <rect x="20" y="20" width="160" height="24" rx="6" fill="#000" />
+      <text x="32" y="37" fill="#ffe600" font-family="'Courier New', monospace" font-size="11" font-weight="900">⏱️ LIVE TICKER</text>
+      <circle cx="165" cy="32" r="4" fill="#ff3366" class="pulse-dot" />
+
+      <!-- Digital Numbers -->
+      <text x="32" y="66" fill="#000" font-family="'Impact', 'Arial Black', sans-serif" font-size="24" letter-spacing="1">02 : 14 : 38</text>
+      <text x="32" y="82" fill="#333" font-family="'Courier New', monospace" font-size="9" font-weight="800">DAYS   HRS   MINS</text>
+      <!-- Sub Tag -->
+      <rect x="30" y="90" width="140" height="16" rx="4" fill="#ff3366" stroke="#000" stroke-width="1.5" />
+      <text x="40" y="102" fill="#fff" font-family="sans-serif" font-size="8.5" font-weight="900">⚡ HACKTOBER AIDN FINALE</text>
+    </g>
+
+    <!-- Radar Pulse Beacon on Top Left -->
+    <circle cx="45" cy="50" r="6" fill="#05ffa1" />
+    <circle cx="45" cy="50" class="radar-wave-1" fill="none" stroke="#05ffa1" />
+    <circle cx="45" cy="50" class="radar-wave-2" fill="none" stroke="#05ffa1" />
+  </g>
+
+  <!-- 2. CENTER 3D HERO: ISOMETRIC WORKSTATION / PORTAL CONSOLE -->
+  <g class="floating-hero" transform="translate(450, 110)">
+    <!-- Base Platform Shadow -->
+    <polygon points="150,220 330,310 150,400 -30,310" fill="#05070a" opacity="0.8" />
+
+    <!-- Isometric Laptop Base -->
+    <polygon points="150,200 310,280 150,360 -10,280" fill="#1f2937" stroke="#000" stroke-width="3.5" filter="url(#brutalShadow)" />
+    <!-- Keyboard Inset -->
+    <polygon points="150,218 285,285 150,345 15,278" fill="#111827" stroke="#00f0ff" stroke-width="1.5" />
+    <!-- Glowing Trackpad -->
+    <polygon points="150,315 185,332 150,350 115,332" fill="#374151" stroke="#000" stroke-width="1.5" />
+
+    <!-- Upright Isometric Screen -->
+    <g transform="translate(20, -30)">
+      <!-- Screen Outer Frame -->
+      <polygon points="130,50 300,135 300,285 130,200" fill="#111827" stroke="#000" stroke-width="3.5" filter="url(#brutalShadow)" />
+      <!-- Display Panel -->
+      <polygon points="138,62 292,139 292,273 138,196" fill="url(#screenGrad)" stroke="#ff3366" stroke-width="2" />
+
+      <!-- Screen Content (Terminal Code & UI) -->
+      <!-- Terminal Header Dots -->
+      <circle cx="152" cy="85" r="3" fill="#ff5f56" />
+      <circle cx="162" cy="90" r="3" fill="#ffbd2e" />
+      <circle cx="172" cy="95" r="3" fill="#27c93f" />
+
+      <text x="186" y="104" fill="#00f0ff" font-family="'Courier New', monospace" font-size="10" font-weight="900">ugsot-events ~ $</text>
+
+      <!-- Code Lines -->
+      <text x="150" y="128" fill="#ffe600" font-family="'Courier New', monospace" font-size="9">&gt; git clone sot-open-source</text>
+      <text x="152" y="146" fill="#05ffa1" font-family="'Courier New', monospace" font-size="9">✓ Loaded 27 Programs</text>
+      <text x="154" y="164" fill="#fff" font-family="'Courier New', monospace" font-size="9">✓ 50 Regional Fests Sync</text>
+      <text x="156" y="182" fill="#ff3366" font-family="'Courier New', monospace" font-size="9">⚡ Auto-Archive: ACTIVE</text>
+      <text x="158" y="200" fill="#00f0ff" font-family="'Courier New', monospace" font-size="9">🎟️ Pass Generator: READY</text>
+      <text x="160" y="222" fill="#ffe600" font-family="'Courier New', monospace" font-size="11" font-weight="900">&gt; npm run hack_</text>
+
+      <!-- Scanning Laser Line across Screen -->
+      <line x1="138" y1="120" x2="292" y2="197" stroke="#00f0ff" stroke-width="2" opacity="0.75" class="scan-line" />
+    </g>
+
+    <!-- Floating Neon Portal Ring around Centerpiece -->
+    <ellipse cx="150" cy="270" rx="190" ry="70" fill="none" stroke="#ff3366" stroke-width="3" stroke-dasharray="16,8" opacity="0.8" />
+    <ellipse cx="150" cy="270" rx="205" ry="76" fill="none" stroke="#00f0ff" stroke-width="1.5" stroke-dasharray="6,6" opacity="0.6" />
+  </g>
+
+  <!-- 3. RIGHT 3D OBJECT: VERIFIED HACKER PASS (3D HOLOGRAPHIC BADGE) -->
+  <g class="floating-right" transform="translate(850, 150)">
+    <!-- 3D Card Angled -->
+    <!-- Card Back Shadow -->
+    <polygon points="110,30 230,90 130,280 10,220" fill="#000" opacity="0.7" transform="translate(10, 12)" />
+    <!-- Card Body -->
+    <polygon points="110,30 230,90 130,280 10,220" fill="#ffffff" stroke="#000" stroke-width="3.5" filter="url(#brutalShadow)" />
+    <!-- Card Top Banner -->
+    <polygon points="110,30 230,90 205,138 85,78" fill="url(#primaryGrad)" stroke="#000" stroke-width="2" />
+    <text x="110" y="74" fill="#ffffff" font-family="'Impact', sans-serif" font-size="14" transform="rotate(26, 110, 74)">HACKER PASS</text>
+
+    <!-- Holographic QR Code Mesh -->
+    <g transform="translate(42, 105) rotate(26)">
+      <rect x="0" y="0" width="62" height="62" fill="#000" rx="4" />
+      <!-- Mini QR Finder Patterns -->
+      <rect x="6" y="6" width="16" height="16" fill="#00f0ff" />
+      <rect x="10" y="10" width="8" height="8" fill="#000" />
+      <rect x="40" y="6" width="16" height="16" fill="#00f0ff" />
+      <rect x="44" y="10" width="8" height="8" fill="#000" />
+      <rect x="6" y="40" width="16" height="16" fill="#00f0ff" />
+      <rect x="10" y="44" width="8" height="8" fill="#000" />
+      <!-- QR Matrix Dots -->
+      <rect x="26" y="8" width="6" height="6" fill="#ffe600" />
+      <rect x="30" y="24" width="8" height="8" fill="#05ffa1" />
+      <rect x="12" y="28" width="8" height="6" fill="#ff3366" />
+      <rect x="40" y="38" width="12" height="6" fill="#fff" />
+    </g>
+
+    <!-- Badge Info Details -->
+    <g transform="translate(75, 175) rotate(26)">
+      <rect x="0" y="0" width="95" height="18" rx="4" fill="#ffe600" stroke="#000" stroke-width="1.5" />
+      <text x="6" y="13" fill="#000" font-family="'Courier New', monospace" font-size="9" font-weight="900">VERIFIED PASS</text>
+      <text x="0" y="32" fill="#000" font-family="sans-serif" font-size="11" font-weight="900">UGSOT-2026</text>
+      <text x="0" y="45" fill="#555" font-family="'Courier New', monospace" font-size="8">HASH: 8f4a..c91d</text>
+    </g>
+
+    <!-- Lanyard Clasp Top -->
+    <rect x="95" y="12" width="30" height="12" rx="3" fill="#4a5568" stroke="#000" stroke-width="2" />
+    <circle cx="110" cy="18" r="4" fill="#1a202c" />
+  </g>
+
+  <!-- 4. FLOATING 3D SATELLITE CUBES & ICONS -->
+  <!-- Floating Cube Top-Left (Git Branch) -->
+  <g class="floating-cube-1" transform="translate(320, 80)">
+    <polygon points="35,0 70,20 35,40 0,20" fill="#05ffa1" stroke="#000" stroke-width="2" filter="url(#brutalShadowSm)" />
+    <polygon points="0,20 35,40 35,75 0,55" fill="#00b4d8" stroke="#000" stroke-width="2" />
+    <polygon points="35,40 70,20 70,55 35,75" fill="#0077b6" stroke="#000" stroke-width="2" />
+    <text x="26" y="42" font-family="sans-serif" font-size="18" font-weight="bold" fill="#000">⌥</text>
+  </g>
+
+  <!-- Floating Cube Top-Right (Dev XP Trophy) -->
+  <g class="floating-cube-2" transform="translate(790, 70)">
+    <polygon points="35,0 70,20 35,40 0,20" fill="#ffe600" stroke="#000" stroke-width="2" filter="url(#brutalShadowSm)" />
+    <polygon points="0,20 35,40 35,75 0,55" fill="#f59e0b" stroke="#000" stroke-width="2" />
+    <polygon points="35,40 70,20 70,55 35,75" fill="#b45309" stroke="#000" stroke-width="2" />
+    <text x="25" y="42" font-family="sans-serif" font-size="16" fill="#000">🏆</text>
+  </g>
+
+  <!-- Floating Cube Far Left Bottom (Open Source Heart) -->
+  <g class="floating-cube-3" transform="translate(80, 360)">
+    <polygon points="30,0 60,16 30,32 0,16" fill="#ff3366" stroke="#000" stroke-width="2" filter="url(#brutalShadowSm)" />
+    <polygon points="0,16 30,32 30,60 0,44" fill="#e11d48" stroke="#000" stroke-width="2" />
+    <polygon points="30,32 60,16 60,44 30,60" fill="#9f1239" stroke="#000" stroke-width="2" />
+    <text x="21" y="34" font-family="sans-serif" font-size="16" fill="#fff">♥</text>
+  </g>
+
+  <!-- Floating Cube Far Right Bottom (Web3 / ETH) -->
+  <g class="floating-cube-1" transform="translate(1080, 330)">
+    <polygon points="30,0 60,16 30,32 0,16" fill="#00f0ff" stroke="#000" stroke-width="2" filter="url(#brutalShadowSm)" />
+    <polygon points="0,16 30,32 30,60 0,44" fill="#7000ff" stroke="#000" stroke-width="2" />
+    <polygon points="30,32 60,16 60,44 30,60" fill="#4c1d95" stroke="#000" stroke-width="2" />
+    <text x="23" y="33" font-family="sans-serif" font-size="15" font-weight="900" fill="#000">◆</text>
+  </g>
+
+  <!-- ==================== HEADER TYPOGRAPHY & NEO-BRUTALIST BADGES ==================== -->
+
+  <!-- Top Pill Badge -->
+  <g transform="translate(600, 48)">
+    <rect x="-185" y="-16" width="370" height="32" rx="16" fill="#121212" stroke="#00f0ff" stroke-width="2" filter="url(#brutalShadowSm)" />
+    <circle cx="-160" cy="0" r="5" fill="#05ffa1" class="pulse-dot" />
+    <text x="-144" y="5" fill="#ffffff" font-family="'Courier New', monospace" font-size="11" font-weight="800" letter-spacing="1.2">
+      UPGRAD SCHOOL OF TECHNOLOGY • OPEN SOURCE
+    </text>
+  </g>
+
+  <!-- Main Hero Title Bar at Bottom -->
+  <g transform="translate(60, 430)">
+    <!-- Title Background Box -->
+    <rect x="0" y="0" width="1080" height="58" rx="10" fill="#ffffff" stroke="#000000" stroke-width="3.5" filter="url(#brutalShadow)" />
+    
+    <!-- Red Accent Left Block -->
+    <rect x="0" y="0" width="22" height="58" rx="8" fill="#ff3366" stroke="#000000" stroke-width="3" />
+    
+    <!-- Title Text -->
+    <text x="40" y="38" fill="#121212" font-family="'Impact', 'Arial Black', sans-serif" font-size="28" letter-spacing="0.5">
+      UGSOT OPEN SOURCE EVENTS PORTAL
+    </text>
+
+    <!-- Subtitle Meta -->
+    <text x="610" y="36" fill="#4a5568" font-family="'Courier New', monospace" font-size="12" font-weight="800">
+      [ 27 GLOBAL PROGRAMS • 50 REGIONAL FESTS • CANVAS PASSES ]
+    </text>
+  </g>
+</svg>

@@ -1,0 +1,185 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgArchGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c0e14" />
+      <stop offset="50%" stop-color="#141822" />
+      <stop offset="100%" stop-color="#090b10" />
+    </linearGradient>
+
+    <linearGradient id="layerTopGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff3366" />
+      <stop offset="100%" stop-color="#7000ff" />
+    </linearGradient>
+
+    <linearGradient id="layerMidGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f0ff" />
+      <stop offset="100%" stop-color="#05ffa1" />
+    </linearGradient>
+
+    <linearGradient id="layerBotGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffe600" />
+      <stop offset="100%" stop-color="#ff6b4a" />
+    </linearGradient>
+
+    <filter id="shadowArch" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="6" dy="6" stdDeviation="0" flood-color="#000000" flood-opacity="0.95" />
+    </filter>
+
+    <style>
+      @keyframes floatLayerTop {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-8px); }
+      }
+      @keyframes floatLayerMid {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-4px); }
+      }
+      @keyframes pulseData {
+        0% { cy: 110; opacity: 1; r: 5; }
+        50% { opacity: 0.8; }
+        100% { cy: 370; opacity: 0.2; r: 3; }
+      }
+      @keyframes pulseDataUp {
+        0% { cy: 370; opacity: 1; r: 5; }
+        50% { opacity: 0.8; }
+        100% { cy: 110; opacity: 0.2; r: 3; }
+      }
+
+      .layer-top { animation: floatLayerTop 4s ease-in-out infinite; }
+      .layer-mid { animation: floatLayerMid 4s ease-in-out infinite 0.5s; }
+      .data-packet-1 { animation: pulseData 2.8s linear infinite; }
+      .data-packet-2 { animation: pulseData 2.8s linear infinite 1.4s; }
+      .data-packet-up { animation: pulseDataUp 3.2s linear infinite 0.7s; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1000" height="480" fill="url(#bgArchGrad)" />
+  <rect x="10" y="10" width="980" height="460" fill="none" stroke="#252c38" stroke-width="1.5" />
+  <rect x="16" y="16" width="968" height="448" fill="none" stroke="#ff3366" stroke-width="2" opacity="0.4" />
+
+  <!-- Vertical Data Buses (Isometric Lines Connecting 3 Tiers) -->
+  <g opacity="0.6">
+    <line x1="280" y1="120" x2="280" y2="380" stroke="#00f0ff" stroke-width="2" stroke-dasharray="4,4" />
+    <line x1="500" y1="120" x2="500" y2="380" stroke="#ff3366" stroke-width="2" stroke-dasharray="4,4" />
+    <line x1="720" y1="120" x2="720" y2="380" stroke="#05ffa1" stroke-width="2" stroke-dasharray="4,4" />
+
+    <!-- Animated Data Pulses -->
+    <circle cx="280" cy="110" r="5" fill="#00f0ff" class="data-packet-1" />
+    <circle cx="500" cy="110" r="5" fill="#ff3366" class="data-packet-2" />
+    <circle cx="720" cy="370" r="5" fill="#05ffa1" class="data-packet-up" />
+  </g>
+
+  <!-- ==================== LAYER 1: BOTTOM (DATA & PROTOCOLS) ==================== -->
+  <g transform="translate(100, 310)">
+    <!-- Isometric Slab Base -->
+    <polygon points="400,0 780,75 400,150 20,75" fill="#141a24" stroke="#000" stroke-width="3" filter="url(#shadowArch)" />
+    <!-- Slab Thickness -->
+    <polygon points="20,75 400,150 400,172 20,97" fill="#0d1117" stroke="#000" stroke-width="3" />
+    <polygon points="400,150 780,75 780,97 400,172" fill="#080a0f" stroke="#000" stroke-width="3" />
+    <!-- Slab Top Face -->
+    <polygon points="400,0 780,75 400,150 20,75" fill="#161f2c" stroke="#ffe600" stroke-width="2" />
+
+    <!-- Layer Tag Badge -->
+    <g transform="translate(40, 20)">
+      <rect x="0" y="0" width="220" height="26" rx="4" fill="#ffe600" stroke="#000" stroke-width="2" />
+      <text x="10" y="18" fill="#000" font-family="'Courier New', monospace" font-size="11" font-weight="900">TIER 1 • DATA PERSISTENCE</text>
+    </g>
+
+    <!-- Sub-blocks on Tier 1 -->
+    <g transform="translate(150, 48)">
+      <rect x="0" y="0" width="130" height="36" rx="6" fill="#1f2937" stroke="#ffe600" stroke-width="1.5" />
+      <text x="12" y="22" fill="#fff" font-family="sans-serif" font-size="11" font-weight="bold">💾 ClubStore (LS)</text>
+    </g>
+    <g transform="translate(310, 52)">
+      <rect x="0" y="0" width="150" height="36" rx="6" fill="#1f2937" stroke="#ffe600" stroke-width="1.5" />
+      <text x="12" y="22" fill="#fff" font-family="sans-serif" font-size="11" font-weight="bold">🌐 MLH Events API</text>
+    </g>
+    <g transform="translate(490, 56)">
+      <rect x="0" y="0" width="140" height="36" rx="6" fill="#1f2937" stroke="#ffe600" stroke-width="1.5" />
+      <text x="12" y="22" fill="#fff" font-family="sans-serif" font-size="11" font-weight="bold">📅 RFC-5545 (.ics)</text>
+    </g>
+  </g>
+
+  <!-- ==================== LAYER 2: MIDDLE (REACTIVE ENGINES) ==================== -->
+  <g class="layer-mid" transform="translate(100, 185)">
+    <!-- Isometric Slab Base -->
+    <polygon points="400,0 780,75 400,150 20,75" fill="#141a24" stroke="#000" stroke-width="3" filter="url(#shadowArch)" />
+    <!-- Slab Thickness -->
+    <polygon points="20,75 400,150 400,172 20,97" fill="#0d1117" stroke="#000" stroke-width="3" />
+    <polygon points="400,150 780,75 780,97 400,172" fill="#080a0f" stroke="#000" stroke-width="3" />
+    <!-- Slab Top Face -->
+    <polygon points="400,0 780,75 400,150 20,75" fill="#1a2333" stroke="#00f0ff" stroke-width="2" />
+
+    <!-- Layer Tag Badge -->
+    <g transform="translate(40, 20)">
+      <rect x="0" y="0" width="220" height="26" rx="4" fill="#00f0ff" stroke="#000" stroke-width="2" />
+      <text x="10" y="18" fill="#000" font-family="'Courier New', monospace" font-size="11" font-weight="900">TIER 2 • REACTIVE ENGINES</text>
+    </g>
+
+    <!-- Sub-blocks on Tier 2 -->
+    <g transform="translate(120, 50)">
+      <rect x="0" y="0" width="140" height="36" rx="6" fill="#111827" stroke="#00f0ff" stroke-width="1.5" />
+      <text x="10" y="22" fill="#fff" font-family="sans-serif" font-size="11" font-weight="bold">⏱️ CountdownEngine</text>
+    </g>
+    <g transform="translate(280, 54)">
+      <rect x="0" y="0" width="135" height="36" rx="6" fill="#111827" stroke="#00f0ff" stroke-width="1.5" />
+      <text x="10" y="22" fill="#fff" font-family="sans-serif" font-size="11" font-weight="bold">⚡ EventsManager</text>
+    </g>
+    <g transform="translate(435, 58)">
+      <rect x="0" y="0" width="145" height="36" rx="6" fill="#111827" stroke="#05ffa1" stroke-width="1.5" />
+      <text x="10" y="22" fill="#fff" font-family="sans-serif" font-size="11" font-weight="bold">🎟️ Canvas QR Pass</text>
+    </g>
+    <g transform="translate(600, 62)">
+      <rect x="0" y="0" width="130" height="36" rx="6" fill="#111827" stroke="#05ffa1" stroke-width="1.5" />
+      <text x="10" y="22" fill="#fff" font-family="sans-serif" font-size="11" font-weight="bold">🔊 WebAudio Synth</text>
+    </g>
+  </g>
+
+  <!-- ==================== LAYER 3: TOP (VIEWPORTS & HUBS) ==================== -->
+  <g class="layer-top" transform="translate(100, 60)">
+    <!-- Isometric Slab Base -->
+    <polygon points="400,0 780,75 400,150 20,75" fill="#182232" stroke="#000" stroke-width="3" filter="url(#shadowArch)" />
+    <!-- Slab Thickness -->
+    <polygon points="20,75 400,150 400,172 20,97" fill="#101722" stroke="#000" stroke-width="3" />
+    <polygon points="400,150 780,75 780,97 400,172" fill="#090d14" stroke="#000" stroke-width="3" />
+    <!-- Slab Top Face -->
+    <polygon points="400,0 780,75 400,150 20,75" fill="#202c40" stroke="#ff3366" stroke-width="2.5" />
+
+    <!-- Layer Tag Badge -->
+    <g transform="translate(40, 20)">
+      <rect x="0" y="0" width="220" height="26" rx="4" fill="#ff3366" stroke="#000" stroke-width="2" />
+      <text x="10" y="18" fill="#fff" font-family="'Courier New', monospace" font-size="11" font-weight="900">TIER 3 • CLIENT VIEWPORTS</text>
+    </g>
+
+    <!-- Sub-blocks on Tier 3 (Directory Portals) -->
+    <g transform="translate(120, 48)">
+      <rect x="0" y="0" width="115" height="36" rx="6" fill="#ff3366" stroke="#000" stroke-width="1.5" />
+      <text x="12" y="22" fill="#fff" font-family="sans-serif" font-size="11" font-weight="900">🏠 index.html</text>
+    </g>
+    <g transform="translate(250, 52)">
+      <rect x="0" y="0" width="120" height="36" rx="6" fill="#ffe600" stroke="#000" stroke-width="1.5" />
+      <text x="10" y="22" fill="#000" font-family="sans-serif" font-size="11" font-weight="900">🎃 fests.html</text>
+    </g>
+    <g transform="translate(385, 56)">
+      <rect x="0" y="0" width="125" height="36" rx="6" fill="#00f0ff" stroke="#000" stroke-width="1.5" />
+      <text x="10" y="22" fill="#000" font-family="sans-serif" font-size="11" font-weight="900">🚀 events.html</text>
+    </g>
+    <g transform="translate(525, 60)">
+      <rect x="0" y="0" width="135" height="36" rx="6" fill="#05ffa1" stroke="#000" stroke-width="1.5" />
+      <text x="10" y="22" fill="#000" font-family="sans-serif" font-size="11" font-weight="900">🏆 leaderboard</text>
+    </g>
+    <g transform="translate(675, 64)">
+      <rect x="0" y="0" width="110" height="36" rx="6" fill="#c084fc" stroke="#000" stroke-width="1.5" />
+      <text x="10" y="22" fill="#000" font-family="sans-serif" font-size="11" font-weight="900">👑 admin.html</text>
+    </g>
+  </g>
+
+  <!-- Bottom Title Tag -->
+  <g transform="translate(500, 452)">
+    <rect x="-240" y="-14" width="480" height="28" rx="14" fill="#121212" stroke="#00f0ff" stroke-width="1.5" />
+    <text x="0" y="4" text-anchor="middle" fill="#ffffff" font-family="'Courier New', monospace" font-size="10.5" font-weight="bold" letter-spacing="1">
+      3-TIER ISOMETRIC ARCHITECTURE • ZERO DEPENDENCIES
+    </text>
+  </g>
+</svg>

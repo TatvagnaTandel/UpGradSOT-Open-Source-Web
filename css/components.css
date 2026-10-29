@@ -462,6 +462,14 @@
   box-shadow: 2px 2px 0px var(--border-black) !important;
 }
 
+.badge-pinned {
+  background: #00f0ff !important;
+  color: #121212 !important;
+  border: 2px solid var(--border-black) !important;
+  box-shadow: 2px 2px 0px var(--border-black) !important;
+  font-weight: 900 !important;
+}
+
 /* Category Badges */
 .category-badge {
   font-size: 0.72rem;

@@ -46,7 +46,7 @@
         <ul class="nav-links">
           <li><a href="index.html" class="nav-link active">🏠 Home</a></li>
           <li><a href="#countdown-section" class="nav-link">⏱️ Live Timer</a></li>
-          <li><a href="fests.html" class="nav-link">🎃 Regional Fests</a></li>
+          <li data-hacktoberfest-element="nav"><a href="fests.html" class="nav-link">🎃 Regional Fests</a></li>
           <li><a href="events.html" class="nav-link">🚀 Programs</a></li>
           <li><a href="leaderboard.html" class="nav-link">🏆 Leaderboard</a></li>
           <li><a href="admin.html" class="nav-link admin-tab-link">👑 Admin</a></li>
@@ -70,7 +70,7 @@
       <div class="mobile-nav-links">
         <a href="index.html" class="mobile-nav-link active" onclick="window.app.closeMobileNav()">🏠 Home Portal</a>
         <a href="#countdown-section" class="mobile-nav-link" onclick="window.app.closeMobileNav()">⏱️ Live Countdown Timer</a>
-        <a href="fests.html" class="mobile-nav-link" onclick="window.app.closeMobileNav()">🎃 Hacktoberfest Regional Fests</a>
+        <a href="fests.html" class="mobile-nav-link" data-hacktoberfest-element="nav" onclick="window.app.closeMobileNav()">🎃 Hacktoberfest Regional Fests</a>
         <a href="events.html" class="mobile-nav-link" onclick="window.app.closeMobileNav()">🚀 Open Source Programs</a>
         <a href="leaderboard.html" class="mobile-nav-link" onclick="window.app.closeMobileNav()">🏆 Dev XP Leaderboard</a>
         <a href="admin.html" class="mobile-nav-link" onclick="window.app.closeMobileNav()">👑 Admin Command Center</a>
@@ -98,7 +98,7 @@
           </p>
 
           <div class="hero-cta-group">
-            <a href="fests.html" class="btn btn-primary">
+            <a href="fests.html" class="btn btn-primary" id="hero-fests-btn" data-hacktoberfest-element="hero">
               🎃 Regional Fests (50 Hubs) →
             </a>
             <a href="events.html" class="btn btn-outline">
@@ -175,7 +175,10 @@
                 <button class="btn btn-outline" onclick="if(window.countdownEngine && window.countdownEngine.targetEvent) window.eventsManager.openDetailsModal(window.countdownEngine.targetEvent.id)">
                   View Roadmap & Agenda
                 </button>
-                <a href="fests.html" class="btn btn-outline">
+                <button id="countdown-unpin-btn" class="btn btn-outline" style="display: none; background: #fff1f2; border-color: #ff3366;" onclick="window.countdownEngine.unpinEvent()">
+                  ✕ Unpin (Show Flagship)
+                </button>
+                <a href="fests.html" class="btn btn-outline" data-hacktoberfest-element="countdown">
                   Explore All 50 Regional Fests →
                 </a>
                 <a id="countdown-official-link" href="https://events.mlh.io/events/15141-hacktoberfest-hack-day-pune-x-aidn/register" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="text-decoration: underline;">
@@ -228,7 +231,7 @@
 
         <div class="gateways-grid">
           <!-- Gateway 1: Hacktoberfest Fests Hub -->
-          <div class="gateway-card" style="border-top: 6px solid #ff70a6;">
+          <div class="gateway-card" data-hacktoberfest-element="gateway" style="border-top: 6px solid #ff70a6;">
             <div class="gateway-badge" style="background: #ffd166;">🎃 OFFICIAL MLH SYNC</div>
             <h3 class="gateway-title">Hacktoberfest 2026 Regional Fests Hub</h3>
             <p class="gateway-desc">
@@ -288,7 +291,7 @@
     </section>
 
     <!-- PUNE HOST CAMPUSES SPOTLIGHT -->
-    <section class="section-wrapper" id="pune-hosts-spotlight">
+    <section class="section-wrapper" id="pune-hosts-spotlight" data-hacktoberfest-element="spotlight">
       <div class="container">
         <div class="section-header">
           <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 8px;">

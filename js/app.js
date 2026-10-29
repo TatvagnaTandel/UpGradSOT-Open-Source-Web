@@ -22,6 +22,18 @@ class App {
     this.initTerminal();
     this.initSoundFX();
     this.initMobileNav();
+    this.syncHacktoberfestVisibility();
+
+    // Check for cross-page toast notification (e.g. redirected from events.html or fests.html after pinning an event)
+    try {
+      const queuedToast = sessionStorage.getItem('ugsot_toast');
+      if (queuedToast) {
+        sessionStorage.removeItem('ugsot_toast');
+        setTimeout(() => {
+          this.showToast(queuedToast, 'success');
+        }, 350);
+      }
+    } catch (e) {}
   }
 
   renderSections() {
@@ -225,6 +237,31 @@ class App {
 
   closeAllModals() {
     document.querySelectorAll('.modal').forEach(m => m.classList.remove('active'));
+  }
+
+  syncHacktoberfestVisibility() {
+    const isEnded = window.clubStore ? !window.clubStore.isHacktoberfestActive() : (Date.now() >= new Date('2026-11-01T00:00:00+05:30').getTime());
+
+    if (isEnded) {
+      document.body.classList.add('hacktoberfest-ended');
+
+      // Hide all elements marked specifically for Hacktoberfest directory
+      document.querySelectorAll('[data-hacktoberfest-element]').forEach(el => {
+        el.style.display = 'none';
+      });
+
+      // Update hero CTA button if pointing to fests
+      const heroFestsBtn = document.getElementById('hero-fests-btn');
+      if (heroFestsBtn) {
+        heroFestsBtn.style.display = 'none';
+      }
+
+      // If user is currently on fests.html, display the official season concluded archive view
+      const festsArchivedNotice = document.getElementById('fests-archived-notice');
+      if (festsArchivedNotice) {
+        festsArchivedNotice.style.display = 'block';
+      }
+    }
   }
 
   showToast(message, type = 'info') {

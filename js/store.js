@@ -8,7 +8,8 @@ const STORAGE_KEYS = {
   SECTIONS: 'ugsot_sections',
   STUDENTS: 'ugsot_students',
   USER: 'ugsot_current_user',
-  RSVPS: 'ugsot_rsvps'
+  RSVPS: 'ugsot_rsvps',
+  PINNED_EVENT: 'ugsot_pinned_event_id'
 };
 window.STORAGE_KEYS = STORAGE_KEYS;
 
@@ -1263,9 +1264,49 @@ class ClubStore {
 
   getEventById(id) {
     if (!id) return null;
-    return this.events.find(e => e.id === id) || 
-      (window.hacktoberfestFestsManager && window.hacktoberfestFestsManager.events.find(e => e.id === id)) || 
-      null;
+    if (this.events) {
+      const found = this.events.find(e => e.id === id);
+      if (found) return found;
+    }
+    if (typeof HACKTOBERFEST_FESTS_DATA !== 'undefined' && Array.isArray(HACKTOBERFEST_FESTS_DATA)) {
+      const foundFest = HACKTOBERFEST_FESTS_DATA.find(e => e.id === id);
+      if (foundFest) return foundFest;
+    }
+    if (window.hacktoberfestFestsManager && window.hacktoberfestFestsManager.events) {
+      const foundFest = window.hacktoberfestFestsManager.events.find(e => e.id === id);
+      if (foundFest) return foundFest;
+    }
+    return null;
+  }
+
+  // Pinned Event State Persistence
+  getPinnedEventId() {
+    return localStorage.getItem(STORAGE_KEYS.PINNED_EVENT);
+  }
+
+  setPinnedEventId(id) {
+    if (!id) return;
+    localStorage.setItem(STORAGE_KEYS.PINNED_EVENT, id);
+  }
+
+  clearPinnedEventId() {
+    localStorage.removeItem(STORAGE_KEYS.PINNED_EVENT);
+  }
+
+  getPinnedEvent() {
+    const id = this.getPinnedEventId();
+    if (!id) return null;
+    const event = this.getEventById(id);
+    if (!event) {
+      this.clearPinnedEventId();
+      return null;
+    }
+    // If the pinned event has expired, auto-clear it
+    if (this.isEventPast(event)) {
+      this.clearPinnedEventId();
+      return null;
+    }
+    return event;
   }
 
   getAllEvents() {
@@ -1278,6 +1319,12 @@ class ClubStore {
    * Universal dynamic event lifecycle evaluator
    * Evaluates real-time expiration without manual database edits
    */
+  isHacktoberfestActive(now = new Date()) {
+    // Hacktoberfest concludes on Nov 1, 2026 00:00:00 IST
+    const hfEndMs = new Date('2026-11-01T00:00:00+05:30').getTime();
+    return now.getTime() < hfEndMs;
+  }
+
   isEventPast(evt, now = new Date()) {
     if (!evt) return true;
     if (evt.status === 'past') return true;

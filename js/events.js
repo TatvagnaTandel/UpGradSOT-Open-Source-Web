@@ -235,14 +235,28 @@ class EventsManager {
   pinToTimer(eventId) {
     const event = window.clubStore.getEventById(eventId);
     if (!event) return;
-    window.countdownEngine.setTargetEvent(event);
+    
+    if (window.clubStore) {
+      window.clubStore.setPinnedEventId(eventId);
+    }
+    if (window.countdownEngine) {
+      window.countdownEngine.setTargetEvent(event, true);
+    }
 
-    // Scroll smoothly to countdown section
+    // Scroll smoothly to countdown section if present on current page
     const countdownSec = document.getElementById('countdown-section');
     if (countdownSec) {
-      countdownSec.scrollIntoView({ behavior: 'smooth' });
+      countdownSec.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      if (window.app && window.app.showToast) {
+        window.app.showToast(`📌 Pinned "${event.title.slice(0, 25)}..." to live countdown timer!`, 'success');
+      }
+    } else {
+      // We are in events.html (dedicated directory) -> store notification & redirect to index.html#countdown-section
+      try {
+        sessionStorage.setItem('ugsot_toast', `📌 Pinned "${event.title.slice(0, 30)}" to live countdown tracker!`);
+      } catch (e) {}
+      window.location.href = 'index.html#countdown-section';
     }
-    window.app.showToast(`Now tracking "${event.title.slice(0, 25)}..." on live timer!`, 'info');
   }
 
   handleRsvpClick(eventId) {

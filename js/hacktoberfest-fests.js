@@ -1870,6 +1870,11 @@ class HacktoberfestFestsManager {
   }
 
   init() {
+    if (window.clubStore && !window.clubStore.isHacktoberfestActive()) {
+      this.currentStatus = 'all';
+      const statusSelect = document.getElementById('fest-status-select');
+      if (statusSelect) statusSelect.value = 'all';
+    }
     this.registerEventsInStore();
     this.bindEvents();
     this.render();
@@ -2082,17 +2087,26 @@ class HacktoberfestFestsManager {
     const event = this.events.find(e => e.id === eventId) || (window.clubStore && window.clubStore.getEventById(eventId));
     if (!event) return;
 
-    if (window.countdownEngine) {
-      window.countdownEngine.setTargetEvent(event);
-      
-      const countdownSection = document.getElementById('countdown-section');
-      if (countdownSection) {
-        countdownSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
+    if (window.clubStore) {
+      window.clubStore.setPinnedEventId(eventId);
+    }
 
+    if (window.countdownEngine) {
+      window.countdownEngine.setTargetEvent(event, true);
+    }
+    
+    const countdownSection = document.getElementById('countdown-section');
+    if (countdownSection) {
+      countdownSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
       if (window.app && window.app.showToast) {
-        window.app.showToast(`⏱️ Pinned "${event.title}" to live countdown timer!`, 'success');
+        window.app.showToast(`📌 Pinned "${event.title}" to live countdown timer!`, 'success');
       }
+    } else {
+      // We are in fests.html (dedicated directory) -> store notification & redirect to index.html#countdown-section
+      try {
+        sessionStorage.setItem('ugsot_toast', `📌 Pinned "${event.title.slice(0, 30)}" to live countdown tracker!`);
+      } catch (e) {}
+      window.location.href = 'index.html#countdown-section';
     }
   }
 

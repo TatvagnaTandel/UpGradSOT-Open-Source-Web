@@ -46,7 +46,7 @@
         <ul class="nav-links">
           <li><a href="index.html" class="nav-link">🏠 Home</a></li>
           <li><a href="index.html#countdown-section" class="nav-link">⏱️ Live Timer</a></li>
-          <li><a href="fests.html" class="nav-link active">🎃 Regional Fests</a></li>
+          <li data-hacktoberfest-element="nav"><a href="fests.html" class="nav-link active">🎃 Regional Fests</a></li>
           <li><a href="events.html" class="nav-link">🚀 Programs</a></li>
           <li><a href="leaderboard.html" class="nav-link">🏆 Leaderboard</a></li>
           <li><a href="admin.html" class="nav-link admin-tab-link">👑 Admin</a></li>
@@ -70,7 +70,7 @@
       <div class="mobile-nav-links">
         <a href="index.html" class="mobile-nav-link" onclick="window.app.closeMobileNav()">🏠 Home Portal</a>
         <a href="index.html#countdown-section" class="mobile-nav-link" onclick="window.app.closeMobileNav()">⏱️ Live Countdown Timer</a>
-        <a href="fests.html" class="mobile-nav-link active" onclick="window.app.closeMobileNav()">🎃 Hacktoberfest Regional Fests</a>
+        <a href="fests.html" class="mobile-nav-link active" data-hacktoberfest-element="nav" onclick="window.app.closeMobileNav()">🎃 Hacktoberfest Regional Fests</a>
         <a href="events.html" class="mobile-nav-link" onclick="window.app.closeMobileNav()">🚀 Open Source Programs</a>
         <a href="leaderboard.html" class="mobile-nav-link" onclick="window.app.closeMobileNav()">🏆 Dev XP Leaderboard</a>
         <a href="admin.html" class="mobile-nav-link" onclick="window.app.closeMobileNav()">👑 Admin Command Center</a>
@@ -83,6 +83,20 @@
     <section class="section-wrapper" id="hacktoberfest-fests-section" style="padding-top: 40px;">
       <div class="container">
         <a href="index.html" class="page-back-link">← Back to Main Portal</a>
+
+        <!-- Concluded / Archived Season Banner (automatically activates on Nov 1st) -->
+        <div id="fests-archived-notice" style="display: none; background: #fffbe6; border: 3px solid #121212; box-shadow: 4px 4px 0px #121212; border-radius: 8px; padding: 20px; margin-top: 14px; margin-bottom: 24px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;">
+            <div>
+              <span class="section-tag" style="background: #ff3838; color: #fff; margin-bottom: 6px;">📁 HACKTOBERFEST 2026 CONCLUDED</span>
+              <h3 style="margin: 4px 0; font-size: 1.3rem;">Hacktoberfest Season Has Concluded & Moved to Archives</h3>
+              <p style="margin: 0; color: #555; font-size: 0.95rem;">All regional fests have now concluded for this year. You can still browse the historic archives below, or jump to our active year-round Open Source Programs & Fellowships directory.</p>
+            </div>
+            <a href="events.html" class="btn btn-primary" style="white-space: nowrap;">
+              🚀 View Active Programs & Fellowships →
+            </a>
+          </div>
+        </div>
 
         <div class="section-header" style="margin-top: 10px;">
           <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 12px;">

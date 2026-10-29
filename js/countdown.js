@@ -12,16 +12,32 @@ class CountdownEngine {
   }
 
   init() {
-    this.targetEvent = window.clubStore.getFlagshipEvent();
+    const pinned = window.clubStore ? window.clubStore.getPinnedEvent() : null;
+    this.targetEvent = pinned || (window.clubStore ? window.clubStore.getFlagshipEvent() : null);
     this.renderEventBannerDetails();
     this.start();
   }
 
-  setTargetEvent(event) {
+  setTargetEvent(event, isUserPin = true) {
     if (!event) return;
     this.targetEvent = event;
+    if (isUserPin && window.clubStore) {
+      window.clubStore.setPinnedEventId(event.id);
+    }
     this.renderEventBannerDetails();
     this.update();
+  }
+
+  unpinEvent() {
+    if (window.clubStore) {
+      window.clubStore.clearPinnedEventId();
+      this.targetEvent = window.clubStore.getFlagshipEvent();
+      this.renderEventBannerDetails();
+      this.update();
+      if (window.app && window.app.showToast) {
+        window.app.showToast('📌 Unpinned event. Returned to flagship countdown!', 'info');
+      }
+    }
   }
 
   renderEventBannerDetails() {
@@ -33,22 +49,33 @@ class CountdownEngine {
     const dateBadgeEl = document.getElementById('countdown-event-date');
     const rsvpBtn = document.getElementById('countdown-rsvp-btn');
     const liveBadge = document.getElementById('countdown-live-badge');
+    const unpinBtn = document.getElementById('countdown-unpin-btn');
 
     const now = new Date();
     const isPast = window.clubStore ? window.clubStore.isEventPast(this.targetEvent, now) : false;
     const isOngoing = window.clubStore ? window.clubStore.isEventOngoing(this.targetEvent, now) : Boolean(this.targetEvent.isOngoing || this.targetEvent.status === 'ongoing');
 
+    const pinnedId = window.clubStore ? window.clubStore.getPinnedEventId() : null;
+    const isPinned = Boolean(pinnedId && this.targetEvent && this.targetEvent.id === pinnedId);
+
     if (liveBadge) {
       if (isPast) {
-        liveBadge.textContent = '🏁 CONCLUDED & ARCHIVED';
+        liveBadge.textContent = isPinned ? '📌 PINNED (CONCLUDED)' : '🏁 CONCLUDED & ARCHIVED';
         liveBadge.className = 'badge-past';
       } else if (isOngoing) {
-        liveBadge.textContent = '🔴 LIVE & ONGOING NOW';
+        liveBadge.textContent = isPinned ? '📌 PINNED • 🔴 LIVE & ONGOING' : '🔴 LIVE & ONGOING NOW';
         liveBadge.className = 'badge-live-pulse';
+      } else if (isPinned) {
+        liveBadge.textContent = '📌 PINNED EVENT TRACKER';
+        liveBadge.className = 'badge-pinned';
       } else {
         liveBadge.textContent = '⚡ NEXT UPCOMING EVENT';
         liveBadge.className = 'badge-upcoming';
       }
+    }
+
+    if (unpinBtn) {
+      unpinBtn.style.display = isPinned ? 'inline-flex' : 'none';
     }
 
     if (titleEl) titleEl.textContent = this.targetEvent.title;
@@ -121,9 +148,12 @@ class CountdownEngine {
     // Universal auto-archive & rollover:
     // If the tracked event has concluded, auto-advance to next flagship/upcoming program!
     if (window.clubStore && window.clubStore.isEventPast(this.targetEvent, now)) {
+      if (window.clubStore.getPinnedEventId() === this.targetEvent.id) {
+        window.clubStore.clearPinnedEventId();
+      }
       const nextEvent = window.clubStore.getFlagshipEvent();
       if (nextEvent && nextEvent.id !== this.targetEvent.id) {
-        this.setTargetEvent(nextEvent);
+        this.setTargetEvent(nextEvent, false);
         if (window.eventsManager) {
           window.eventsManager.renderEvents();
         }
@@ -151,9 +181,12 @@ class CountdownEngine {
     if (diff <= 0) {
       // Re-evaluate if event has concluded and roll over
       if (window.clubStore && window.clubStore.isEventPast(this.targetEvent, now)) {
+        if (window.clubStore.getPinnedEventId() === this.targetEvent.id) {
+          window.clubStore.clearPinnedEventId();
+        }
         const nextEvent = window.clubStore.getFlagshipEvent();
         if (nextEvent && nextEvent.id !== this.targetEvent.id) {
-          this.setTargetEvent(nextEvent);
+          this.setTargetEvent(nextEvent, false);
           if (window.eventsManager) {
             window.eventsManager.renderEvents();
           }
