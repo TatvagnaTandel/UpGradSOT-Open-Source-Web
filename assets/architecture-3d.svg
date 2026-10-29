@@ -118,21 +118,21 @@
     </g>
 
     <!-- Sub-blocks on Tier 2 -->
-    <g transform="translate(120, 50)">
+    <g transform="translate(100, 50)">
+      <rect x="0" y="0" width="145" height="36" rx="6" fill="#111827" stroke="#00f0ff" stroke-width="1.5" />
+      <text x="12" y="22" fill="#fff" font-family="'Courier New', monospace" font-size="10" font-weight="bold">Three.js 3D Scene</text>
+    </g>
+    <g transform="translate(265, 54)">
       <rect x="0" y="0" width="140" height="36" rx="6" fill="#111827" stroke="#00f0ff" stroke-width="1.5" />
-      <text x="12" y="22" fill="#fff" font-family="'Courier New', monospace" font-size="10" font-weight="bold">CountdownEngine</text>
+      <text x="12" y="22" fill="#fff" font-family="'Courier New', monospace" font-size="10" font-weight="bold">WebGL 2.0 Engine</text>
     </g>
-    <g transform="translate(280, 54)">
-      <rect x="0" y="0" width="135" height="36" rx="6" fill="#111827" stroke="#00f0ff" stroke-width="1.5" />
-      <text x="12" y="22" fill="#fff" font-family="'Courier New', monospace" font-size="10" font-weight="bold">EventsManager</text>
-    </g>
-    <g transform="translate(435, 58)">
+    <g transform="translate(425, 58)">
       <rect x="0" y="0" width="145" height="36" rx="6" fill="#111827" stroke="#05ffa1" stroke-width="1.5" />
-      <text x="12" y="22" fill="#fff" font-family="'Courier New', monospace" font-size="10" font-weight="bold">Canvas QR Pass</text>
+      <text x="12" y="22" fill="#fff" font-family="'Courier New', monospace" font-size="10" font-weight="bold">GSAP 3 Timelines</text>
     </g>
-    <g transform="translate(600, 62)">
-      <rect x="0" y="0" width="135" height="36" rx="6" fill="#111827" stroke="#05ffa1" stroke-width="1.5" />
-      <text x="12" y="22" fill="#fff" font-family="'Courier New', monospace" font-size="10" font-weight="bold">WebAudio Synth</text>
+    <g transform="translate(590, 62)">
+      <rect x="0" y="0" width="145" height="36" rx="6" fill="#111827" stroke="#ffe600" stroke-width="1.5" />
+      <text x="12" y="22" fill="#fff" font-family="'Courier New', monospace" font-size="10" font-weight="bold">CountdownEngine</text>
     </g>
   </g>
 
@@ -177,9 +177,9 @@
 
   <!-- Bottom Title Tag -->
   <g transform="translate(500, 452)">
-    <rect x="-240" y="-14" width="480" height="28" rx="14" fill="#121212" stroke="#00f0ff" stroke-width="1.5" />
+    <rect x="-270" y="-14" width="540" height="28" rx="14" fill="#121212" stroke="#00f0ff" stroke-width="1.5" />
     <text x="0" y="4" text-anchor="middle" fill="#ffffff" font-family="'Courier New', monospace" font-size="10.5" font-weight="bold" letter-spacing="1">
-      3-TIER ISOMETRIC ARCHITECTURE • ZERO DEPENDENCIES
+      3-TIER ISOMETRIC ARCHITECTURE • THREE.JS, WEBGL &amp; GSAP
     </text>
   </g>
 </svg>

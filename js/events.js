@@ -417,6 +417,9 @@ class EventsManager {
     const event = window.clubStore.getEventById(eventId);
     if (!event || !user) return;
 
+    this.currentPassEvent = event;
+    this.currentPassUser = user;
+
     const modal = document.getElementById('hacker-pass-modal');
     const container = document.getElementById('hacker-pass-render');
     if (!modal || !container) return;
@@ -425,6 +428,20 @@ class EventsManager {
     const ticketHash = 'UGSOT-' + Math.abs(event.id.split('').reduce((a, b) => { a = ((a << 5) - a) + b.charCodeAt(0); return a & a; }, 0)).toString(16).toUpperCase().padStart(6, 'X');
 
     container.innerHTML = `
+      <div class="pass-view-switch-bar">
+        <button id="btn-view-2d" class="pass-view-switch-btn active" onclick="window.eventsManager.switchPassView('2d')">
+          2D Printable Ticket
+        </button>
+        <button id="btn-view-3d" class="pass-view-switch-btn" onclick="window.eventsManager.switchPassView('3d')">
+          ⚡ 3D WebGL Hologram (Three.js)
+        </button>
+      </div>
+
+      <div id="pass-3d-viewport">
+        <canvas id="pass-3d-canvas"></canvas>
+        <div class="pass-3d-controls-hint">DRAG TO ROTATE 3D PASS • FULL 360° WEBGL VIEW</div>
+      </div>
+
       <div class="hacker-ticket-badge" id="printable-ticket">
         <div class="ticket-header">
           <div class="ticket-brand">
@@ -584,6 +601,32 @@ class EventsManager {
     link.click();
     document.body.removeChild(link);
     window.app.showToast('Calendar invite (.ics) downloaded!', 'success');
+  }
+
+  switchPassView(view) {
+    const printable = document.getElementById('printable-ticket');
+    const viewport3d = document.getElementById('pass-3d-viewport');
+    const btn2d = document.getElementById('btn-view-2d');
+    const btn3d = document.getElementById('btn-view-3d');
+    if (!printable || !viewport3d) return;
+
+    if (view === '3d') {
+      printable.style.display = 'none';
+      viewport3d.classList.add('active');
+      if (btn2d) btn2d.classList.remove('active');
+      if (btn3d) btn3d.classList.add('active');
+      if (window.threePassViewer && this.currentPassEvent && this.currentPassUser) {
+        window.threePassViewer.render3dPass(this.currentPassEvent, this.currentPassUser);
+      }
+    } else {
+      printable.style.display = 'block';
+      viewport3d.classList.remove('active');
+      if (btn2d) btn2d.classList.add('active');
+      if (btn3d) btn3d.classList.remove('active');
+      if (window.threePassViewer) {
+        window.threePassViewer.destroy();
+      }
+    }
   }
 }
 

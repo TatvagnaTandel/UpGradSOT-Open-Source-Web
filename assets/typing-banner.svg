@@ -25,13 +25,13 @@
   <!-- Terminal Prompt -->
   <text x="24" y="30" fill="#00f0ff" font-family="'Fira Code', 'Courier New', monospace" font-size="14" font-weight="900">ugsot:~$</text>
 
-  <!-- Cycling Text Messages -->
-  <g font-family="'Fira Code', 'Courier New', monospace" font-size="14" font-weight="700">
-    <text x="110" y="30" fill="#ff3366" class="line-1">Precision Countdown Engine with Dynamic Event Lifecycle<tspan class="cursor" fill="#00f0ff">_</tspan></text>
-    <text x="110" y="30" fill="#ffe600" class="line-2">50+ Regional Hacktoberfest Fests Synced Live via MLH API<tspan class="cursor" fill="#00f0ff">_</tspan></text>
-    <text x="110" y="30" fill="#05ffa1" class="line-3">Instant Canvas-Rendered Cryptographic Hacker Passes<tspan class="cursor" fill="#00f0ff">_</tspan></text>
-    <text x="110" y="30" fill="#00f0ff" class="line-4">Dev XP Gamification and Campus Developer Rankings<tspan class="cursor" fill="#00f0ff">_</tspan></text>
-    <text x="110" y="30" fill="#ff70a6" class="line-5">27 Verified 2026-2027 Global Open-Source Programs<tspan class="cursor" fill="#00f0ff">_</tspan></text>
-    <text x="110" y="30" fill="#c084fc" class="line-6">Persistent Event Pinning Across All Portal Routes<tspan class="cursor" fill="#00f0ff">_</tspan></text>
+  <!-- Cycling Text Messages Featuring Three.js, WebGL & GSAP -->
+  <g font-family="'Fira Code', 'Courier New', monospace" font-size="13.5" font-weight="700">
+    <text x="110" y="30" fill="#ff3366" class="line-1">Three.js r128 Interactive 3D WebGL Canvas Scene<tspan class="cursor" fill="#00f0ff">_</tspan></text>
+    <text x="110" y="30" fill="#05ffa1" class="line-2">GSAP 3.12 Physics, 3D Perspective Card Tilt and Motion<tspan class="cursor" fill="#00f0ff">_</tspan></text>
+    <text x="110" y="30" fill="#00f0ff" class="line-3">Interactive 3D Holographic Hacker Pass Viewer in WebGL<tspan class="cursor" fill="#00f0ff">_</tspan></text>
+    <text x="110" y="30" fill="#ffe600" class="line-4">Precision Countdown Engine with Dynamic Event Lifecycle<tspan class="cursor" fill="#00f0ff">_</tspan></text>
+    <text x="110" y="30" fill="#ff70a6" class="line-5">50+ Regional Hacktoberfest Fests Synced Live via MLH API<tspan class="cursor" fill="#00f0ff">_</tspan></text>
+    <text x="110" y="30" fill="#c084fc" class="line-6">27 Verified 2026-2027 Global Open-Source Programs<tspan class="cursor" fill="#00f0ff">_</tspan></text>
   </g>
 </svg>

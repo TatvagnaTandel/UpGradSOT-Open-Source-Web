@@ -31,12 +31,14 @@
   </p>
 
   <p align="center">
+    <img src="https://img.shields.io/badge/3D_Engine-Three.js_r128-black?style=flat-square&logo=three.js&logoColor=white" />
+    <img src="https://img.shields.io/badge/Rendering-WebGL_2.0-red?style=flat-square&logo=webgl&logoColor=white" />
+    <img src="https://img.shields.io/badge/Motion-GSAP_3.12-88ce02?style=flat-square&logo=greensock&logoColor=white" />
     <img src="https://img.shields.io/badge/Architecture-Vanilla_ES6+-yellow?style=flat-square&logo=javascript&logoColor=black" />
     <img src="https://img.shields.io/badge/Design_System-Neo--Brutalist_CSS3-ff70a6?style=flat-square&logo=css3&logoColor=white" />
     <img src="https://img.shields.io/badge/QR_Engine-HTML5_Canvas-00f0ff?style=flat-square" />
-    <img src="https://img.shields.io/badge/Audio-Web_Audio_API-05ffa1?style=flat-square" />
     <img src="https://img.shields.io/badge/Calendar-RFC--5545_.ics-c084fc?style=flat-square" />
-    <img src="https://img.shields.io/badge/Dependencies-0_External_Libs-success?style=flat-square" />
+    <img src="https://img.shields.io/badge/Dependencies-0_Build_Steps-success?style=flat-square" />
   </p>
 
   <p align="center">
@@ -45,8 +47,9 @@
 
   <p align="center">
     <a href="#quick-tour--multi-page-directory"><b>Explore Portals</b></a> &bull;
+    <a href="#threejs-webgl--gsap-motion-architecture"><b>3D WebGL &amp; GSAP</b></a> &bull;
     <a href="#core-innovations"><b>Core Innovations</b></a> &bull;
-    <a href="#3d-system-architecture"><b>3D Architecture</b></a> &bull;
+    <a href="#3d-system-architecture"><b>Architecture</b></a> &bull;
     <a href="#20262027-open-source-calendar"><b>2026-2027 Calendar</b></a> &bull;
     <a href="#local-setup"><b>Quickstart</b></a>
   </p>
@@ -57,11 +60,13 @@
 
 ## Executive Summary
 
-The **upGrad School of Technology (UGSOT) Open Source Events Portal** is a production-grade, zero-dependency campus web platform designed for developer community organizing. Built with pure web standards (Semantic HTML5, Neo-Brutalist CSS3, and modern vanilla ES6+ controllers), it enables university builders to:
+The **upGrad School of Technology (UGSOT) Open Source Events Portal** is a production-grade, zero-dependency campus web platform designed for developer community organizing. Built with pure web standards (Semantic HTML5, Neo-Brutalist CSS3, Three.js r128, WebGL 2.0, GSAP 3.12, and modern vanilla ES6+ controllers), it enables university builders to:
 
+* **Interactive 3D WebGL Viewport**: Engage with a real-time, hardware-accelerated 3D coordinate hero scene powered by Three.js and WebGL 2.0, complete with raycasting hover physics, orbital rings, and cyber plane geometry.
+* **Physics-Driven Motion**: Experience GSAP 3.12 3D perspective card tilt with specular glare, spring-ticking countdown digit transitions, and coordinated viewport entrance choreographies.
+* **Holographic 3D Pass Viewer**: Inspect digital credentials in full 360-degree WebGL rotation with dynamic HTML5 Canvas textures, holographic iridescent specular lighting, and cryptographic SHA-256 validation.
 * **Flagship Tracking**: Track ongoing and upcoming flagship hackathons with a multi-unit, millisecond-accurate countdown engine.
 * **Persistent Pinning**: Pin any event or fest to the live clock across dedicated portal routes with persistent `localStorage` synchronization.
-* **Digital Passes**: Generate cryptographic, verified digital Hacker Passes rendered dynamically on client-side HTML5 Canvas.
 * **Regional Hubs**: Discover 50 official Hacktoberfest in-person Fests across Pune (5 host campuses), Maharashtra, and neighboring tech hubs.
 * **Dynamic Auto-Archival**: Universal lifecycle evaluation transitions events to archives the moment their deadline passes, auto-advancing the ticker to the next upcoming program.
 * **Dev XP Progression**: Earn Dev XP and climb collegiate ranks through hackathon registrations, Git pull requests, and leadership achievements.
@@ -74,11 +79,50 @@ To eliminate landing page clutter, the portal is partitioned into specialized ga
 
 | Route | Portal Name | Description | Key Capabilities |
 | :--- | :--- | :--- | :--- |
-| [`index.html`](index.html) | **Main Flagship Portal** | High-energy Neo-Brutalist hero, real-time live clock, gateway cards & manifesto | Real-time ticker, event pin receiver, Dev XP leaderboard preview |
+| [`index.html`](index.html) | **Main Flagship Portal** | Interactive Three.js WebGL hero, live clock, 3D lab, gateway cards & manifesto | Real-time 3D ticker, event pin receiver, Dev XP leaderboard preview |
 | [`fests.html`](fests.html) | **Regional Fests Hub** | Dedicated directory of 50 in-person Hacktoberfest fests (5 Pune host campuses) | MLH API sync, regional tabs (Pune, MH, KA, MP, TS, GJ), 1-click Pin |
 | [`events.html`](events.html) | **Open Source Programs** | 27 verified global open-source initiatives (GSoC, SWoC, LFX, ETHIndia, etc.) | Track filters, live/upcoming/archive status, modal agendas, `.ics` export |
 | [`leaderboard.html`](leaderboard.html) | **Dev XP Leaderboard** | Real-time student developer rankings & milestone progression | XP badges, tier progression (Maintainer, Core, Lead), audit trails |
 | [`admin.html`](admin.html) | **Chapter CMS Console** | Lead organizer dashboard for campus roster, event scheduling & CSV export | Full CRUD on events & students, toggle sections, export roster CSV |
+
+---
+
+## Three.js, WebGL & GSAP Motion Architecture
+
+The portal pairs high-contrast Neo-Brutalist graphic identity with modern GPU-accelerated graphics and physics-driven motion pipelines:
+
+### 1. Hardware-Accelerated Hero Viewport (`js/three-hero.js`)
+* **Three.js r128 & WebGL 2.0 Scene Graph**:
+  * **Centerpiece Compound**: A dual-shell rotating structure combining an outer wireframe Icosahedron (`THREE.IcosahedronGeometry(2.1)`), an inner faceted core (`THREE.MeshPhongMaterial` with flat shading), and an active pulsating Dev XP seed.
+  * **Neo-Brutalist Satellite Cubes**: 6 floating cubes with bold face colors (`#ffe600`, `#ff3366`, `#00f0ff`, `#05ffa1`, `#c084fc`, `#ff6b4a`) outlined with high-contrast black edges (`THREE.EdgesGeometry` + `THREE.LineBasicMaterial`).
+  * **Cyber Grid Plane**: An undulating 3D coordinate floor (`THREE.GridHelper`) responding dynamically to scene lighting.
+  * **Particle Constellation**: 180 floating node particles with custom vertex color buffers drifting in 3D WebGL space.
+* **Interactive Physics & Raycasting**:
+  * Mouse coordinate normalization translates cursor position into smooth camera parallax damping (`lerp`).
+  * Raycasting detects cursor intersection over floating 3D cubes, triggering a GSAP spring expansion and updating HUD status telemetry in real-time.
+  * Energy-conserving `IntersectionObserver` automatically halts the render loop when the hero viewport is scrolled off-screen or the browser tab is hidden.
+
+### 2. GSAP 3.12 Physics & 3D Perspective Card Tilt (`js/gsap-effects.js`)
+* **Euler / Quaternion 3D Card Tilt**:
+  * Cards (`.countdown-container-card`, `.gateway-card`, `.event-card`, `.fest-card`) track local cursor offsets and map coordinates to dynamic `rotateY` and `rotateX` values under `transformPerspective: 1000`.
+  * Dynamic specular glare layers (`.card-glare-overlay`) shift radial gradients in real time with the virtual light angle.
+  * Elastic ease (`elastic.out(1, 0.4)`) snaps cards back into baseline equilibrium on mouse leave.
+* **Countdown Digit Spring Physics**:
+  * DOM MutationObservers detect unit updates on `#timer-seconds`, `#timer-minutes`, `#timer-hours`, and `#timer-weeks`, firing `gsap.fromTo(el, { scale: 1.25, color: '#ff3366' }, { scale: 1, duration: 0.35, ease: 'back.out(2)' })`.
+* **Staggered Viewport Entrance**:
+  * Smooth page-load sequence coordinates hero badge, split title, call-to-action buttons, and the Three.js viewport into a single cohesive entrance timeline.
+
+### 3. Interactive 3D Holographic Hacker Pass Viewer (`js/three-pass-viewer.js`)
+* **Dynamic WebGL Texture Mapping**:
+  * Generates a high-resolution 512x740 off-screen canvas rendering attendee identity, dynamic QR code matrix, and cryptographic SHA-256 verification token.
+  * Maps the canvas onto the front face of a 3D extruded lanyard card (`THREE.BoxGeometry(2.2, 3.2, 0.06)`).
+* **Metallic Holographic Specular Shading**:
+  * Dual colored directional lights (neon cyan `#00f0ff` and neon magenta `#ff3366`) create iridescent reflections as the badge tilts.
+  * Reverse face displays a brushed dark metallic finish with the collegiate chapter security seal.
+  * Interactive 360-degree drag rotation with inertia damping allows attendees to inspect their pass from every angle in full 3D.
+
+### 4. Interactive 3D WebGL Lab Viewport (`js/three-lab.js`)
+* Real-time geometry inspection viewport allowing collegiate hackers to toggle between complex geometries (Torus Knot, Dodecahedron Trophy, Icosahedron Wireframe) with GSAP scale bursts and vertex lighting.
 
 ---
 
@@ -109,6 +153,7 @@ To eliminate landing page clutter, the portal is partitioned into specialized ga
   <img src="assets/badge-3d-pass.svg" alt="Verified Hacker Pass Showcase" width="90%" />
 </div>
 
+* **Interactive 3D WebGL & 2D Pass Modes**: Attendees can switch between printable high-resolution 2D tickets and full 360-degree interactive Three.js 3D Holographic passes.
 * **Pure Canvas QR Generator**: Generates clean, scannable QR matrices locally inside the browser with zero external image APIs or tracking cookies.
 * **Verification Hash**: Encodes a SHA-256 derived verification token linking student identity, event ID, academic year, and entry timestamp.
 * **Dev XP Gamification**: RSVPing instantly awards **+150 Dev XP** to the student profile and increments collegiate standings.
@@ -147,9 +192,9 @@ The application is structured into a clean 3-tier decoupled architecture:
                                         │ Events & Action Dispatches
 ┌───────────────────────────────────────▼─────────────────────────────────────┐
 │                       TIER 2: REACTIVE ENGINES                              │
-│  CountdownEngine    EventsManager    HacktoberfestFestsManager   AuthManager│
-│  [Ticker & Rollover][Filters & Modals] [50 Hub Sync & Clock]   [Session & XP]
-│  Canvas QR Engine   Web Audio Synth   RFC-5545 ICS Pipeline    Sound FX     │
+│  Three.js 3D Scene  WebGL 2.0 Engine  GSAP 3 Timelines  CountdownEngine     │
+│  [Hero & 3D Lab]    [Hardware Shaders][Card Tilt & Pop] [Ticker & Rollover] │
+│  Canvas QR Engine   Web Audio Synth   RFC-5545 ICS      Auth & XP Manager   │
 └───────────────────────────────────────┬─────────────────────────────────────┘
                                         │ State Reads / Writes
 ┌───────────────────────────────────────▼─────────────────────────────────────┐
@@ -199,7 +244,7 @@ The application is structured into a clean 3-tier decoupled architecture:
 
 ## Local Setup
 
-Because the platform relies on pure native browser capabilities, **no `npm install` or node build steps are required**.
+Because the platform relies on pure native browser capabilities with bundled vendor runtimes, **no `npm install` or node build steps are required**.
 
 ### Quick Run (Zero Prerequisites)
 
@@ -246,8 +291,10 @@ The portal features an authentic retro terminal mode powered by the Web Audio AP
 ┌─────────────────┬───────────────────────────────────────────────────────────┐
 │ Layer           │ Implementation Details                                    │
 ├─────────────────┼───────────────────────────────────────────────────────────┤
+│ 3D Rendering    │ Three.js r128, WebGL 2.0 context, custom Phong materials  │
+│ Motion & Physics│ GSAP 3.12 (Timelines, 3D Perspective Tilt, Elastic Ease)  │
 │ Markup          │ Semantic HTML5, accessible ARIA roles, responsive dialogs │
-│ Styling         │ Neo-Brutalist design tokens, 6px solid borders, zero CSS libs│
+│ Styling         │ Neo-Brutalist design tokens, 6px solid borders, CSS3 vars │
 │ Programming     │ Vanilla ECMAScript 2022 (Classes, Modules, LocalStorage) │
 │ Sound FX        │ Web Audio API (OscillatorNode, custom synthesized beeps)  │
 │ QR Engine       │ HTML5 Canvas 2D context with Reed-Solomon error correction │

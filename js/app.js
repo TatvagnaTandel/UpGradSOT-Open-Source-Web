@@ -237,6 +237,9 @@ class App {
 
   closeAllModals() {
     document.querySelectorAll('.modal').forEach(m => m.classList.remove('active'));
+    if (window.threePassViewer && typeof window.threePassViewer.destroy === 'function') {
+      window.threePassViewer.destroy();
+    }
   }
 
   syncHacktoberfestVisibility() {

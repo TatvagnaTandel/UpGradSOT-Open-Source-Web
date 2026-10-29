@@ -316,7 +316,7 @@
 
     <!-- Subtitle Meta - Clean Right-Aligned Text Lining -->
     <text x="1050" y="36" text-anchor="end" fill="#4a5568" font-family="'Courier New', monospace" font-size="11" font-weight="800">
-      [ 27 GLOBAL PROGRAMS • 50 REGIONAL FESTS • CANVAS PASSES ]
+      [ THREE.JS WEBGL • GSAP PHYSICS • 27 PROGRAMS • 50 FESTS ]
     </text>
   </g>
 </svg>

@@ -18,6 +18,7 @@
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/style.css?v=20260929v1">
   <link rel="stylesheet" href="css/components.css?v=20260929v1">
+  <link rel="stylesheet" href="css/three-webgl.css?v=20261029v1">
   <link rel="stylesheet" href="css/admin.css?v=20260929v1">
 </head>
 <body class="page-home">
@@ -110,6 +111,38 @@
             <a href="#countdown-section" class="btn btn-ghost">
               ⏱️ Live Flagship Timer ↓
             </a>
+          </div>
+
+          <!-- Interactive 3D WebGL Hero Canvas Container -->
+          <div class="hero-webgl-wrapper">
+            <div id="three-hero-canvas-container">
+              <canvas id="three-hero-canvas"></canvas>
+
+              <!-- Neo-Brutalist HUD Overlay -->
+              <div class="three-hud-overlay">
+                <div class="three-hud-pill">
+                  <span class="three-hud-dot"></span>
+                  <span id="three-hud-status">THREE.JS • WEBGL 2.0 • 60 FPS</span>
+                </div>
+                <div class="three-hud-actions">
+                  <button id="three-btn-mode" class="three-hud-btn" title="Cycle 3D Shader Rendering Modes">
+                    MODE: SOLID
+                  </button>
+                  <button id="three-btn-spin" class="three-hud-btn" title="Toggle Auto-Rotation">
+                    AUTO: ON
+                  </button>
+                  <button id="three-btn-reset" class="three-hud-btn" title="Reset 3D Perspective">
+                    RESET
+                  </button>
+                </div>
+              </div>
+
+              <!-- HUD Bottom Info -->
+              <div class="three-hud-status-bar">
+                <span class="three-hud-hint">⚡ INTERACTIVE 3D: HOVER &amp; DRAG MESHES • GSAP PHYSICS ENABLED</span>
+                <span class="three-hud-hint">UGSOT 3D ENGINE</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -462,6 +495,62 @@
         </div>
       </div>
     </section>
+
+    <!-- 3D WEBGL & GSAP INTERACTIVE LAB SECTION -->
+    <section class="three-lab-section" id="three-lab-section">
+      <div class="container">
+        <div class="section-header three-lab-header">
+          <span class="section-tag" style="background: #00f0ff; color: #121212;">HARDWARE ACCELERATED</span>
+          <h2 class="section-header-title" style="color: #ffffff;">Three.js WebGL &amp; GSAP Real-Time Interactive Lab</h2>
+          <p class="section-header-sub" style="color: #94a3b8;">
+            Experience native WebGL 2.0 rendering and GSAP physics-based motion in action. Every collegiate program, pass, and timer is synchronized with hardware-accelerated 3D coordinate geometry.
+          </p>
+        </div>
+
+        <div class="three-lab-grid">
+          <div id="three-lab-canvas-container">
+            <canvas id="three-lab-canvas"></canvas>
+            <div class="three-hud-overlay">
+              <div class="three-hud-pill">
+                <span class="three-hud-dot" style="background: #ff3366; box-shadow: 0 0 8px #ff3366;"></span>
+                <span>WEBGL LAB VIEWPORT</span>
+              </div>
+            </div>
+            <div class="three-hud-status-bar">
+              <span class="three-hud-hint">DRAG TO INSPECT 3D GEOMETRY • REAL-TIME VERTEX SHADERS</span>
+            </div>
+          </div>
+
+          <div class="three-lab-sidebar">
+            <h3 style="font-family: var(--font-heading); font-size: 1.25rem; color: #ffffff;">3D Tech Metrics</h3>
+            
+            <div class="three-lab-stat-box">
+              <div class="three-lab-stat-label">GRAPHICS PIPELINE</div>
+              <div class="three-lab-stat-value">WebGL 2.0 + Shaders</div>
+            </div>
+
+            <div class="three-lab-stat-box">
+              <div class="three-lab-stat-label">3D ENGINE RUNTIME</div>
+              <div class="three-lab-stat-value">Three.js r128</div>
+            </div>
+
+            <div class="three-lab-stat-box">
+              <div class="three-lab-stat-label">PHYSICS &amp; MOTION</div>
+              <div class="three-lab-stat-value">GSAP 3.12 Timelines</div>
+            </div>
+
+            <div class="three-lab-stat-box">
+              <div class="three-lab-stat-label">PERSPECTIVE CARD TILT</div>
+              <div class="three-lab-stat-value">Quaternion / Euler 3D</div>
+            </div>
+
+            <button class="btn btn-outline" style="width: 100%;" onclick="if(window.threeLabScene) window.threeLabScene.cycleGeometry()">
+              ⚡ Switch Lab 3D Geometry
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- Footer -->
@@ -521,13 +610,24 @@
     </div>
   </div>
 
-  <!-- Scripts -->
+  <!-- Vendor 3D & Motion Libraries (Local with CDN Fallback) -->
+  <script src="vendor/three.min.js"></script>
+  <script src="vendor/gsap.min.js"></script>
+
+  <!-- Core Scripts -->
   <script src="js/store.js?v=20260929v1"></script>
   <script src="js/countdown.js?v=20260929v1"></script>
   <script src="js/events.js?v=20260929v1"></script>
   <script src="js/hacktoberfest-fests.js?v=20260929v1"></script>
   <script src="js/auth.js?v=20260929v1"></script>
   <script src="js/admin.js?v=20260929v1"></script>
+
+  <!-- Three.js WebGL & GSAP Controllers -->
+  <script src="js/three-hero.js?v=20261029v1"></script>
+  <script src="js/three-pass-viewer.js?v=20261029v1"></script>
+  <script src="js/three-lab.js?v=20261029v1"></script>
+  <script src="js/gsap-effects.js?v=20261029v1"></script>
+
   <script src="js/app.js?v=20260929v1"></script>
 </body>
 </html>

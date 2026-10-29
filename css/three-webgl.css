@@ -1,0 +1,335 @@
+/*
+ * upGrad School of Technology — Open Source Events
+ * Three.js, WebGL & GSAP 3D Interactive Stylesheet
+ */
+
+/* Hero 3D WebGL Scene Container */
+.hero-webgl-wrapper {
+  position: relative;
+  width: 100%;
+  margin-top: 24px;
+  margin-bottom: 20px;
+}
+
+#three-hero-canvas-container {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  background: #0f131a;
+  border: var(--border-width) solid var(--border-black);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  #three-hero-canvas-container {
+    height: 300px;
+  }
+}
+
+#three-hero-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  outline: none;
+  cursor: grab;
+}
+
+#three-hero-canvas:active {
+  cursor: grabbing;
+}
+
+/* 3D Scene Neo HUD Controls */
+.three-hud-overlay {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  right: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.three-hud-pill {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: #121212;
+  border: 2px solid #00f0ff;
+  border-radius: var(--radius-full);
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8);
+}
+
+.three-hud-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #05ffa1;
+  box-shadow: 0 0 8px #05ffa1;
+  animation: pulseWebgl 1.5s infinite;
+}
+
+@keyframes pulseWebgl {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.three-hud-actions {
+  pointer-events: auto;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.three-hud-btn {
+  background: #ffffff;
+  border: 2px solid var(--border-black);
+  border-radius: var(--radius-sm);
+  padding: 5px 12px;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 900;
+  color: #121212;
+  cursor: pointer;
+  box-shadow: 2px 2px 0px var(--border-black);
+  transition: all 0.15s ease;
+}
+
+.three-hud-btn:hover {
+  background: var(--bg-card-yellow);
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px var(--border-black);
+}
+
+.three-hud-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px var(--border-black);
+}
+
+.three-hud-btn.active {
+  background: #ff3366;
+  color: #ffffff;
+}
+
+.three-hud-status-bar {
+  position: absolute;
+  bottom: 12px;
+  left: 16px;
+  right: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.three-hud-hint {
+  background: rgba(18, 18, 18, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  color: #00f0ff;
+}
+
+/* 3D Perspective Card Tilt via GSAP */
+.gsap-3d-tilt {
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: box-shadow 0.2s ease;
+}
+
+.gsap-3d-tilt-inner {
+  transform: translateZ(24px);
+  transform-style: preserve-3d;
+}
+
+/* Dynamic Glare Overlay for Cards */
+.card-glare-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0) 70%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  z-index: 5;
+}
+
+/* Interactive 3D Hacker Pass Viewer in Modal */
+.pass-view-switch-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  background: var(--bg-main);
+  padding: 8px 12px;
+  border: 2px solid var(--border-black);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.pass-view-switch-btn {
+  flex: 1;
+  padding: 8px 16px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 800;
+  background: #ffffff;
+  border: 2px solid var(--border-black);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  box-shadow: 2px 2px 0px var(--border-black);
+  transition: all 0.15s ease;
+}
+
+.pass-view-switch-btn.active {
+  background: #00f0ff;
+  color: #121212;
+  font-weight: 900;
+  box-shadow: 3px 3px 0px var(--border-black);
+  transform: translate(-1px, -1px);
+}
+
+#pass-3d-viewport {
+  width: 100%;
+  height: 380px;
+  background: #0c0e14;
+  border: 2.5px solid var(--border-black);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+  display: none;
+}
+
+#pass-3d-viewport.active {
+  display: block;
+}
+
+#pass-3d-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: grab;
+}
+
+#pass-3d-canvas:active {
+  cursor: grabbing;
+}
+
+.pass-3d-controls-hint {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(18, 18, 18, 0.9);
+  border: 1px solid #00f0ff;
+  border-radius: var(--radius-full);
+  padding: 4px 14px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #05ffa1;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* Dedicated 3D WebGL Lab Section */
+.three-lab-section {
+  background: #11151e;
+  color: #ffffff;
+  border-top: 3px solid var(--border-black);
+  border-bottom: 3px solid var(--border-black);
+  padding: 60px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.three-lab-header {
+  margin-bottom: 30px;
+}
+
+.three-lab-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+@media (max-width: 900px) {
+  .three-lab-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+#three-lab-canvas-container {
+  height: 440px;
+  background: #080a0f;
+  border: 2.5px solid #00f0ff;
+  border-radius: var(--radius-md);
+  box-shadow: 6px 6px 0px #000000;
+  position: relative;
+  overflow: hidden;
+}
+
+#three-lab-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: grab;
+}
+
+#three-lab-canvas:active {
+  cursor: grabbing;
+}
+
+.three-lab-sidebar {
+  background: #18202d;
+  border: 2.5px solid var(--border-black);
+  border-radius: var(--radius-md);
+  box-shadow: 6px 6px 0px #000000;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.three-lab-stat-box {
+  background: #0f141d;
+  border: 1.5px solid #2d3748;
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+}
+
+.three-lab-stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: #94a3b8;
+  margin-bottom: 4px;
+}
+
+.three-lab-stat-value {
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #00f0ff;
+}
+
+/* GSAP Digit Bounce Highlight */
+.timer-digit.gsap-ticking {
+  transform-origin: center center;
+}
