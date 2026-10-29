@@ -194,30 +194,31 @@ const DEFAULT_EVENTS = [
   {
     id: 'evt-hacktoberfest-pune-aidn',
     title: 'Hacktoberfest Hack Day Pune x AIDN',
-    subtitle: 'Developer Community Open-Source Hack Day at Orville Business Port, Viman Nagar, Pune',
+    subtitle: 'The Grand Finale Hacktoberfest 2026 Fest in Pune • Orville Business Port, Viman Nagar',
     category: 'opensource',
-    isFlagship: false,
+    isFlagship: true,
+    isOngoing: false,
     status: 'upcoming',
-    dateBadge: 'Saturday, Oct 31, 2026 • 9:00 AM – 6:00 PM IST',
+    dateBadge: 'Saturday, Oct 31, 2026 • 9:00 AM – 6:00 PM IST (Finale Fest!)',
     startDate: '2026-10-31T03:30:00.000Z',
     targetDate: '2026-10-31T03:30:00.000Z',
-    endDate: '2026-10-31T12:30:00.000Z',
+    endDate: '2026-10-31T18:29:59.000Z',
     venue: 'Office No 411, 4th Floor, Orville Business Port, West Ave, Opp. Konark Campus, Viman Nagar, Pune 411014',
     mode: 'In-Person Fest (Viman Nagar, Pune)',
     banner: 'assets/workshop_banner.jpg',
     logoUrl: 'assets/logo.jpg',
-    description: 'AIDN Hack Day brings developers across Pune together for open-source contributions, peer networking, and building in public during Hacktoberfest 2026. Bring your ideas, find projects to work on, contribute with your peers, and spend a day building alongside the Pune developer community.',
+    description: 'The final, culminating in-person Hacktoberfest 2026 Hack Day across Pune! Join community developers, open-source maintainers, and university hackers at Viman Nagar for a full-day code sprint, live PR reviews, sponsored networking lunch, official MLH badge collection, and tree planting before Hacktoberfest officially wraps up on November 1st.',
     prizePool: 'Community Hack Day Awards, Official MLH Badges & Goodies',
     stipend: 'Official Badges & MLH Swag',
     officialUrl: 'https://events.mlh.io/events/15141-hacktoberfest-hack-day-pune-x-aidn',
     registrationUrl: 'https://events.mlh.io/events/15141-hacktoberfest-hack-day-pune-x-aidn/register',
     spotsTotal: 180,
-    spotsFilled: 95,
+    spotsFilled: 112,
     tags: ['Hacktoberfest', 'Pune', 'AIDN', 'Viman Nagar', 'Hack Day', 'Open Source', 'MLH', 'UGSOT'],
     timelineInfo: {
-      registration: 'Open now on MLH Events',
+      registration: 'Open now on MLH Events (Final Spots)',
       activePhase: 'Saturday, October 31, 2026 • 9:00 AM – 6:00 PM IST',
-      reviewPhase: 'October 31 – November 7, 2026'
+      reviewPhase: 'Midnight Oct 31, 2026 (Hacktoberfest Concludes)'
     },
     speakers: [
       { name: 'AIDN Community Leads', role: 'Event Organizers', avatar: 'AIDN' },
@@ -238,11 +239,16 @@ const DEFAULT_EVENTS = [
     subtitle: 'Giving back to open source for the holidays',
     category: 'opensource',
     isFlagship: false,
+    isOngoing: false,
+    status: 'upcoming',
     dateBadge: 'Dec 1–24, 2026',
+    startDate: '2026-12-01T00:00:00+05:30',
     targetDate: '2026-12-01T00:00:00+05:30',
+    endDate: '2026-12-24T23:59:59+05:30',
     venue: 'Online / global',
     mode: 'Online / global',
     banner: 'assets/codesprint_banner.jpg',
+    logoUrl: 'assets/logo.jpg',
     description: 'Challenge yourself to submit 24 pull requests between December 1st and December 24th. An annual global initiative encouraging developers to give small gifts of code back to open source libraries and tools they rely on.',
     prizePool: 'Open Source Karma & Global Hall of Fame Spotlight',
     stipend: 'Community Hall of Fame',
@@ -266,86 +272,98 @@ const DEFAULT_EVENTS = [
   },
   {
     id: 'evt-iuwoc',
-    title: 'Indian University Winter of Codes',
+    title: 'Indian University Winter of Codes (KWoC / IUWoC)',
     subtitle: 'Collegiate open source mentorship across top Indian universities',
     category: 'winterofcode',
     isFlagship: false,
+    isOngoing: false,
     status: 'upcoming',
-    dateBadge: 'Dec 2026 – Feb 2027',
-    targetDate: '2026-12-15T10:00:00+05:30',
+    dateBadge: 'Dec 2026 – Jan 2027 • Mentor Call Late Nov',
+    startDate: '2026-11-25T10:00:00+05:30',
+    targetDate: '2026-12-06T10:00:00+05:30',
+    endDate: '2027-01-15T23:59:59+05:30',
     venue: 'Online (India)',
     mode: 'Online (India)',
     banner: 'assets/workshop_banner.jpg',
+    logoUrl: 'assets/logo.jpg',
     description: 'National student open-source initiative uniting university programs across India (including Kharagpur Winter of Code - KWoC, IIIT Kalyani WoC, and JWoC). Connect with university open source societies and receive mentor feedback.',
     prizePool: 'Certificates, Mentorship & University Cash Grants',
     stipend: 'Project Grants & Swag',
-    officialUrl: 'https://kwoc.kossiitkgp.in',
+    officialUrl: 'https://kwoc.kossiitkgp.org',
     spotsTotal: 300,
     spotsFilled: 198,
     tags: ['Winter of Code', 'India', 'University', 'Mentorship', 'KWoC', 'UGSOT'],
     timelineInfo: {
-      registration: 'November 25 – December 14, 2026',
-      activePhase: 'December 15, 2026 – February 15, 2027',
-      reviewPhase: 'Late February 2027'
+      registration: 'Mentor Apps: Late Nov; Student Apps: Early Dec 2026',
+      activePhase: 'December 6, 2026 – January 10, 2027',
+      reviewPhase: 'Late January 2027'
     },
     speakers: [
       { name: 'Indian Open Source Consortium', role: 'Mentorship Panel', avatar: 'IN' }
     ],
     agenda: [
-      'Dec 15: Student Applications & Project Allocation',
-      'Jan: Guided Development & Weekly PR reviews',
-      'Feb: Project Evaluations & Final Presentations'
+      'Nov 25: Mentor registrations and project submissions open',
+      'Dec 6: Student onboarding & coding sprint commences',
+      'Dec 25: Mid-term evaluation & mentor checkpoints',
+      'Jan 10: End-term project submissions & evaluations'
     ]
   },
   {
     id: 'evt-swoc-2027',
-    title: 'Social Winter of Code (SWoC)',
-    subtitle: 'Beginner-friendly open source mentorship program with gamified leaderboards',
+    title: 'Social Winter of Code (SWoC Season 7)',
+    subtitle: 'Premier open-source mentorship program with gamified leaderboards & prizes',
     category: 'winterofcode',
     isFlagship: false,
     isOngoing: true,
     status: 'ongoing',
-    dateBadge: 'Jan – Mar 2027',
-    startDate: '2026-08-20T00:00:00+05:30',
-    targetDate: '2027-01-05T10:00:00+05:30',
-    endDate: '2027-03-05T23:59:59+05:30',
+    dateBadge: 'Nov 1, 2026 – Jan 31, 2027 • Contributor Registration LIVE',
+    startDate: '2026-10-01T00:00:00+05:30',
+    targetDate: '2026-11-01T10:00:00+05:30',
+    endDate: '2027-01-31T23:59:59+05:30',
     venue: 'Online (India)',
     mode: 'Online (India)',
     banner: 'assets/flagship_banner.jpg',
-    description: 'Social Winter of Code (SWoC Season 7) is a 2-month open-source program designed to introduce university students to real-world software engineering with dedicated mentors, curated issue trails, and leaderboard bounties. Contributor registration is live right now!',
+    logoUrl: 'assets/logo.jpg',
+    description: 'Social Winter of Code (SWoC Season 7) is an open-source program designed to introduce university students to real-world software engineering with dedicated mentors, curated issue trails, and leaderboard bounties. Contributor registration is officially OPEN right now on swoc.in, with the coding sprint kicking off November 1, 2026!',
     prizePool: 'Exclusive Swag Kits, Certificates & Top Contributor Badges',
     stipend: 'Swag Packs & Top Bounties',
     officialUrl: 'https://www.swoc.in',
-    spotsTotal: 400,
-    spotsFilled: 245,
+    spotsTotal: 500,
+    spotsFilled: 310,
     tags: ['Winter of Code', 'SWoC', 'Beginner Friendly', 'Mentorship', 'India', 'UGSOT'],
     timelineInfo: {
-      registration: 'August 20 – December 25, 2026 (Live now)',
-      activePhase: 'January 5 – March 5, 2027',
-      reviewPhase: 'Mid-March 2027 (Results & Top 50 Awards)'
+      registration: 'October 1 – December 31, 2026 (Live now on swoc.in)',
+      activePhase: 'November 1, 2026 – January 31, 2027 (Coding sprint)',
+      reviewPhase: 'February 10, 2027 (Results & Top Contributor Awards)'
     },
     speakers: [
       { name: 'SWoC Core Team', role: 'Organizers', avatar: 'SW' }
     ],
     agenda: [
-      'Jan 5: Contributor Onboarding & Project matching',
-      'Jan 15 - Feb 28: Active contribution period & mentor checkpoints',
-      'Mar 10: Results & Top 50 contributor ceremony'
+      'Oct 1 – Dec 31: Contributor registrations open on swoc.in',
+      'Nov 1: Official coding period commences across participating repos',
+      'Dec 15: Midterm progress review & mentor checkpoints',
+      'Jan 31: Contribution period concludes',
+      'Feb 10: Official certificate distribution & top leaderboard awards'
     ]
   },
   {
     id: 'evt-outreachy-dec',
-    title: 'Outreachy (Dec cohort)',
-    subtitle: 'Paid remote open-source internships for underrepresented builders',
+    title: 'Outreachy (Dec 2026 Cohort)',
+    subtitle: 'Paid remote open-source internships ($7,000 USD stipend + $500 travel allowance)',
     category: 'fellowship',
     isFlagship: false,
-    status: 'upcoming',
-    dateBadge: 'Dec 2026 – Mar 2027',
-    targetDate: '2026-12-08T09:00:00+05:30',
+    isOngoing: true,
+    status: 'ongoing',
+    dateBadge: 'Dec 7, 2026 – Mar 8, 2027 • Contribution Window Closes Nov 9',
+    startDate: '2026-10-12T00:00:00.000Z',
+    targetDate: '2026-11-09T16:00:00.000Z',
+    endDate: '2027-03-08T23:59:59.000Z',
     venue: 'Online / global',
     mode: 'Online / global',
     banner: 'assets/workshop_banner.jpg',
-    description: 'Prestigious global program offering 3-month paid remote internships ($7,000 USD stipend + $500 travel allowance) to work with international mentors on Linux kernel, Mozilla, Wikimedia, and other global foundations.',
+    logoUrl: 'assets/logo.jpg',
+    description: 'Prestigious global program offering 3-month paid remote internships ($7,000 USD stipend + $500 travel allowance) to work with international mentors on Linux kernel, Mozilla, Wikimedia, and other global foundations. The open-source contribution phase is actively running right now through November 9, 2026!',
     prizePool: '$7,000 USD Stipend + $500 Travel Allowance',
     stipend: '$7,000 USD + $500 Travel',
     officialUrl: 'https://www.outreachy.org',
@@ -353,17 +371,18 @@ const DEFAULT_EVENTS = [
     spotsFilled: 112,
     tags: ['Fellowship', 'Paid Internship', 'Diversity', 'Global', '$7000 Stipend'],
     timelineInfo: {
-      registration: 'Initial Apps: Late August; Contribution: October',
-      activePhase: 'December 8, 2026 – March 8, 2027',
-      reviewPhase: 'Bi-weekly mentor milestone evaluations'
+      registration: 'Initial Apps: August; Contribution Sprint: Oct 12 – Nov 9, 2026 (Active now)',
+      activePhase: 'December 7, 2026 – March 8, 2027 (3-Month Paid Internship)',
+      reviewPhase: 'Intern selections announced: November 30, 2026'
     },
     speakers: [
       { name: 'Outreachy Mentors', role: 'Global Tech Leads', avatar: 'OR' }
     ],
     agenda: [
-      'Dec 8: Official 3-Month Internship Kickoff',
-      'Jan 15: Mid-term Progress & Code Checkpoint',
-      'Mar 8: Final Project Deliverables & Graduation'
+      'Oct 12 – Nov 9: Live contribution period on community projects',
+      'Nov 9 (4:00 PM UTC): Final contribution deadline & application close',
+      'Nov 30: Intern selections publicly announced',
+      'Dec 7, 2026 – Mar 8, 2027: Official 3-month paid internship'
     ]
   },
   {
@@ -373,11 +392,14 @@ const DEFAULT_EVENTS = [
     category: 'mentorship',
     isFlagship: false,
     status: 'upcoming',
-    dateBadge: 'Jan – Mar 2027',
+    dateBadge: 'Jan – Mar 2027 • Proposals Open Dec 2026',
+    startDate: '2026-12-01T10:00:00+05:30',
     targetDate: '2027-01-10T10:00:00+05:30',
+    endDate: '2027-03-15T23:59:59+05:30',
     venue: 'Online / global',
     mode: 'Online / global',
     banner: 'assets/codesprint_banner.jpg',
+    logoUrl: 'assets/logo.jpg',
     description: 'Season of KDE is an outreach mentorship program hosted by the KDE community, guiding students through non-trivial open source contributions in C++, Qt, desktop environments, web services, and multimedia apps.',
     prizePool: 'Official KDE Certificate of Completion & Community Swag',
     stipend: 'KDE Swag & Certificate',
@@ -406,11 +428,14 @@ const DEFAULT_EVENTS = [
     category: 'mentorship',
     isFlagship: false,
     status: 'upcoming',
-    dateBadge: 'Mar – May 2027',
+    dateBadge: 'Mar – May 2027 • Applications Mid-Jan',
+    startDate: '2027-01-15T09:00:00+05:30',
     targetDate: '2027-03-01T09:00:00+05:30',
+    endDate: '2027-05-31T23:59:59+05:30',
     venue: 'Online / global',
     mode: 'Online / global',
     banner: 'assets/flagship_banner.jpg',
+    logoUrl: 'assets/logo.jpg',
     description: 'The Linux Foundation LFX Mentorship provides paid hands-on engineering experience on vital cloud-native open source infrastructure projects including Kubernetes, Prometheus, Hyperledger, and Envoy.',
     prizePool: 'Paid Mentorship Stipend ($3,000 - $6,600 USD)',
     stipend: '$3,000 – $6,600 USD',
@@ -439,11 +464,14 @@ const DEFAULT_EVENTS = [
     category: 'fellowship',
     isFlagship: false,
     status: 'upcoming',
-    dateBadge: 'Jun – Aug 2027',
+    dateBadge: 'Jun – Aug 2027 • Applications Early Feb',
+    startDate: '2027-02-01T09:00:00+05:30',
     targetDate: '2027-06-01T09:00:00+05:30',
+    endDate: '2027-08-31T23:59:59+05:30',
     venue: 'Online / global',
     mode: 'Online / global',
     banner: 'assets/workshop_banner.jpg',
+    logoUrl: 'assets/logo.jpg',
     description: 'The summer edition of Outreachy pairing selected university developers with international mentors for 3 months of full-time, fully-remote paid software contributions. Eligible for Northern Hemisphere (including India) students.',
     prizePool: '$7,000 USD Stipend + Global Mentorship Network',
     stipend: '$7,000 USD Stipend',
@@ -467,16 +495,19 @@ const DEFAULT_EVENTS = [
   },
   {
     id: 'evt-gsoc-2027',
-    title: 'GSoC 2027',
+    title: 'GSoC 2027 (Google Summer of Code)',
     subtitle: 'Google Summer of Code — Premier Global Open-Source Fellowship',
     category: 'fellowship',
     isFlagship: false,
     status: 'upcoming',
-    dateBadge: 'May – Aug 2027',
-    targetDate: '2027-05-01T10:00:00+05:30',
+    dateBadge: 'May – Aug 2027 • Proposals Late March',
+    startDate: '2027-02-01T10:00:00+05:30',
+    targetDate: '2027-03-23T18:00:00+05:30',
+    endDate: '2027-08-31T23:59:59+05:30',
     venue: 'Online / global',
     mode: 'Online / global',
     banner: 'assets/flagship_banner.jpg',
+    logoUrl: 'assets/logo.jpg',
     description: 'The world-renowned open-source fellowship by Google. Work on a 12-to-22 week programming project with an international open-source organization under dedicated guidance, funded with a generous Google stipend.',
     prizePool: 'Google Stipend (₹1.5L - ₹3L+ INR / $1,500 - $3,000+ USD)',
     stipend: '₹1.5L – ₹3.0L+ INR ($1.5k–$3k USD)',
@@ -507,11 +538,14 @@ const DEFAULT_EVENTS = [
     category: 'fellowship',
     isFlagship: false,
     status: 'upcoming',
-    dateBadge: 'Spring – Summer 2027',
+    dateBadge: 'Spring – Summer 2027 • Applications Mid-Jan',
+    startDate: '2027-01-15T10:00:00+05:30',
     targetDate: '2027-04-15T10:00:00+05:30',
+    endDate: '2027-08-20T23:59:59+05:30',
     venue: 'Online / global',
     mode: 'Online / global',
     banner: 'assets/codesprint_banner.jpg',
+    logoUrl: 'assets/logo.jpg',
     description: 'A global summer fellowship program introducing university students to Bitcoin Core protocol development and Lightning UI/UX design, featuring direct 1:1 mentorship from top protocol maintainers.',
     prizePool: '$3,000+ USD Stipend Paid in Bitcoin + Career Offers',
     stipend: '$3,000+ USD (in Bitcoin)',
@@ -536,16 +570,19 @@ const DEFAULT_EVENTS = [
   },
   {
     id: 'evt-fossee',
-    title: 'FOSSEE Summer Fellowship',
+    title: 'FOSSEE Summer Fellowship 2027',
     subtitle: 'Educational open-source software and engineering at IIT Bombay',
     category: 'fellowship',
     isFlagship: false,
     status: 'upcoming',
-    dateBadge: 'Summer 2027',
+    dateBadge: 'Summer 2027 • Screening Tasks Late March',
+    startDate: '2027-03-15T09:00:00+05:30',
     targetDate: '2027-05-15T09:00:00+05:30',
+    endDate: '2027-07-20T23:59:59+05:30',
     venue: 'Hybrid (IIT Bombay)',
     mode: 'Hybrid (IIT Bombay)',
     banner: 'assets/workshop_banner.jpg',
+    logoUrl: 'assets/logo.jpg',
     description: 'Free and Open Source Software for Education (FOSSEE) fellowship hosted by IIT Bombay under the National Mission on Education. Work on scientific computing, Python, Scilab, and educational web tech either remotely or on-campus.',
     prizePool: 'Monthly Fellowship Stipend & Official IIT Bombay Certificate',
     stipend: 'IIT Bombay Monthly Stipend',
@@ -569,16 +606,19 @@ const DEFAULT_EVENTS = [
   },
   {
     id: 'evt-ssoc-2027',
-    title: 'SSoC 2027',
+    title: 'SSoC 2027 (Script Summer of Code)',
     subtitle: 'Script Summer of Code — 3-month open-source coding initiative',
     category: 'opensource',
     isFlagship: false,
     status: 'upcoming',
-    dateBadge: 'Jun – Aug 2027',
+    dateBadge: 'Jun – Aug 2027 • Registrations April – May',
+    startDate: '2027-04-01T10:00:00+05:30',
     targetDate: '2027-06-10T10:00:00+05:30',
+    endDate: '2027-08-25T23:59:59+05:30',
     venue: 'Online (India)',
     mode: 'Online (India)',
     banner: 'assets/codesprint_banner.jpg',
+    logoUrl: 'assets/logo.jpg',
     description: 'A 3-month open source initiative organized by Script Foundation to encourage collegiate programmers across India to get involved with open source development in web dev, AI/ML, and mobile ecosystems.',
     prizePool: 'Trophies, Cash Prizes, Swag Kits & Certificates',
     stipend: 'Cash Bounties & Swag',
@@ -602,16 +642,19 @@ const DEFAULT_EVENTS = [
   },
   {
     id: 'evt-gssoc-2027',
-    title: 'GSSoC 2027',
+    title: 'GSSoC 2027 (GirlScript Summer of Code)',
     subtitle: 'GirlScript Summer of Code — India’s premier open source and AI initiative',
     category: 'opensource',
     isFlagship: false,
     status: 'upcoming',
-    dateBadge: 'Mid/late 2027',
-    targetDate: '2027-07-01T10:00:00+05:30',
+    dateBadge: 'Mid/Late 2027 • Registrations Late March',
+    startDate: '2027-04-01T10:00:00+05:30',
+    targetDate: '2027-05-15T10:00:00+05:30',
+    endDate: '2027-08-31T23:59:59+05:30',
     venue: 'Online (India-led)',
     mode: 'Online (India-led)',
     banner: 'assets/flagship_banner.jpg',
+    logoUrl: 'assets/logo.jpg',
     description: 'GirlScript Summer of Code is one of India’s largest open source programs featuring both classic open source repository tracks and specialized AI agent tracks. Open to all genders, backgrounds, and skill levels.',
     prizePool: 'Top Performer Swag Packs, Certificates & Sponsor Bounties',
     stipend: 'Bounties & Swag Packs',
@@ -641,13 +684,14 @@ const DEFAULT_EVENTS = [
     isFlagship: false,
     isOngoing: true,
     status: 'ongoing',
-    dateBadge: 'Rolling cohorts',
+    dateBadge: 'Rolling Cohorts Year-Round • Live Now',
     startDate: '2026-09-01T00:00:00+05:30',
-    targetDate: '2026-10-15T09:00:00+05:30',
+    targetDate: '2027-01-15T09:00:00+05:30',
     endDate: '2027-12-31T23:59:59+05:30',
     venue: 'Online / global',
     mode: 'Online / global',
     banner: 'assets/workshop_banner.jpg',
+    logoUrl: 'assets/logo.jpg',
     description: 'A 12-week remote internship alternative supported by Major League Hacking. Students are placed in pods with an expert staff engineer mentor to build features for major open-source technologies used by millions worldwide. Rolling cohort applications are live!',
     prizePool: 'Educational Stipend & Real-World Production Experience',
     stipend: 'Need-based Educational Stipend',
@@ -671,16 +715,19 @@ const DEFAULT_EVENTS = [
   },
   {
     id: 'evt-c4gt',
-    title: 'C4GT (Code for GovTech)',
+    title: 'C4GT (Code for GovTech 2027)',
     subtitle: 'India’s dedicated Digital Public Infrastructure open-source fellowship',
     category: 'fellowship',
     isFlagship: false,
     status: 'upcoming',
-    dateBadge: 'Summer 2027',
+    dateBadge: 'Summer 2027 • Mentoring Applications April',
+    startDate: '2027-04-01T10:00:00+05:30',
     targetDate: '2027-05-20T10:00:00+05:30',
+    endDate: '2027-09-30T23:59:59+05:30',
     venue: 'Online (India-led)',
     mode: 'Online (India-led)',
     banner: 'assets/codesprint_banner.jpg',
+    logoUrl: 'assets/logo.jpg',
     description: 'Code for GovTech is India’s first open-source program dedicated to creating impactful Digital Public Infrastructure (DPI) products across health, education, and governance, offering 1:1 mentorship from tech leaders.',
     prizePool: '₹1,00,000 INR Stipend + Mentorship from GovTech Leaders',
     stipend: '₹1,00,000 INR Stipend',
@@ -708,14 +755,17 @@ const DEFAULT_EVENTS = [
     subtitle: 'IASc – INSA – NASI prestigious summer research fellowship in computational sciences & open research',
     category: 'fellowship',
     isFlagship: false,
-    status: 'upcoming',
-    dateBadge: 'May – July 2027 • Applications Close Nov 30, 2026',
+    isOngoing: true,
+    status: 'ongoing',
+    dateBadge: 'May – July 2027 • Applications Close Nov 30, 2026 (Live Now)',
+    startDate: '2026-10-01T00:00:00+05:30',
     targetDate: '2026-11-30T17:00:00+05:30',
+    endDate: '2027-07-31T23:59:59+05:30',
     venue: 'National Science Academies / Premier Indian Research Labs (IISc, IITs, TIFR)',
     mode: 'In-Person / Lab Fellowship (India)',
     banner: 'assets/workshop_banner.jpg',
     logoUrl: 'assets/logo.jpg',
-    description: 'Prestigious national fellowship offered jointly by Indian Academy of Sciences (IASc, Bengaluru), Indian National Science Academy (INSA, New Delhi), and The National Academy of Sciences India (NASI, Prayagraj). Work on cutting-edge computational sciences, data engineering, and open research algorithms with premier scientists and academy fellows.',
+    description: 'Prestigious national fellowship offered jointly by Indian Academy of Sciences (IASc, Bengaluru), Indian National Science Academy (INSA, New Delhi), and The National Academy of Sciences India (NASI, Prayagraj). Work on cutting-edge computational sciences, data engineering, and open research algorithms with premier scientists and academy fellows. Applications are officially open until November 30, 2026!',
     prizePool: 'Monthly Research Stipend + Roundtrip Travel + Premier Lab Placement',
     stipend: 'Monthly Research Stipend + Travel',
     officialUrl: 'https://web-japps.ias.ac.in/fellowship2027/',
@@ -741,7 +791,7 @@ const DEFAULT_EVENTS = [
     title: 'ETHIndia 2026',
     subtitle: "Asia's Largest Web3 Hackathon & Open Source BUIDL Sprint",
     category: 'hackathon',
-    isFlagship: true,
+    isFlagship: false,
     isOngoing: false,
     status: 'upcoming',
     dateBadge: 'Dec 5–7, 2026 • KTPO Bengaluru, India',
@@ -758,7 +808,7 @@ const DEFAULT_EVENTS = [
     officialUrl: 'https://ethindia.co',
     spotsTotal: 2000,
     spotsFilled: 1680,
-    tags: ['Flagship', 'Web3', 'Ethereum', 'Hackathon', 'Bengaluru', 'Global', 'In-Person', 'UGSOT'],
+    tags: ['Web3', 'Ethereum', 'Hackathon', 'Bengaluru', 'Global', 'In-Person', 'UGSOT'],
     timelineInfo: {
       registration: 'Applications open on Devfolio (Rolling selections)',
       activePhase: 'December 5 – 7, 2026 (36 Hours In-Person Hackathon)',
@@ -784,7 +834,9 @@ const DEFAULT_EVENTS = [
     isFlagship: false,
     status: 'upcoming',
     dateBadge: 'Jan – May 2027 • Global Student Competition',
+    startDate: '2027-01-15T09:00:00+05:30',
     targetDate: '2027-01-15T09:00:00+05:30',
+    endDate: '2027-05-31T23:59:59+05:30',
     venue: 'Online / Global (Google Developer Student Clubs)',
     mode: 'Online / Global',
     banner: 'assets/workshop_banner.jpg',
@@ -818,7 +870,9 @@ const DEFAULT_EVENTS = [
     isFlagship: false,
     status: 'upcoming',
     dateBadge: 'Jan – May 2027 • Global Semifinals & World Finals',
+    startDate: '2026-12-01T00:00:00+05:30',
     targetDate: '2027-01-25T10:00:00+05:30',
+    endDate: '2027-05-31T23:59:59+05:30',
     venue: 'Online & Microsoft Campus (Redmond, USA)',
     mode: 'Hybrid (Online Semifinals + Global Finals)',
     banner: 'assets/codesprint_banner.jpg',
@@ -852,7 +906,9 @@ const DEFAULT_EVENTS = [
     isFlagship: false,
     status: 'upcoming',
     dateBadge: 'Feb – Sept 2027 • Nodal Centers Across India',
+    startDate: '2027-02-20T10:00:00+05:30',
     targetDate: '2027-02-20T10:00:00+05:30',
+    endDate: '2027-09-30T23:59:59+05:30',
     venue: 'Designated Nodal Centers Across India (including Pune, Mumbai, Delhi, Bengaluru)',
     mode: 'Hybrid (Internal Collegiate Hackathons + In-Person Grand Finale)',
     banner: 'assets/flagship_banner.jpg',
@@ -887,7 +943,9 @@ const DEFAULT_EVENTS = [
     isFlagship: false,
     status: 'upcoming',
     dateBadge: 'Mar – Nov 2027 • Global Technical Writing Initiative',
+    startDate: '2027-02-15T09:00:00+05:30',
     targetDate: '2027-03-15T09:00:00+05:30',
+    endDate: '2027-11-30T23:59:59+05:30',
     venue: 'Online / Global (Google Open Source Programs Office)',
     mode: 'Online / Global',
     banner: 'assets/workshop_banner.jpg',
@@ -921,7 +979,9 @@ const DEFAULT_EVENTS = [
     isFlagship: false,
     status: 'upcoming',
     dateBadge: 'Mar – Aug 2027 • National Engineering Challenge',
+    startDate: '2027-03-01T10:00:00+05:30',
     targetDate: '2027-03-25T10:00:00+05:30',
+    endDate: '2027-08-31T23:59:59+05:30',
     venue: 'Online (Rounds 1–2) & Flipkart Headquarters Bengaluru (Grand Finale)',
     mode: 'Hybrid (Online Coding + Bengaluru Onsite Finale)',
     banner: 'assets/codesprint_banner.jpg',
@@ -955,7 +1015,9 @@ const DEFAULT_EVENTS = [
     isFlagship: false,
     status: 'upcoming',
     dateBadge: 'Apr 2027 (Pre-Season) • Oct 2027 (Global Hackathon)',
+    startDate: '2027-04-10T10:00:00+05:30',
     targetDate: '2027-04-10T10:00:00+05:30',
+    endDate: '2027-10-10T23:59:59+05:30',
     venue: 'Local Lead Centers Worldwide (including Pune & Mumbai) & Virtual',
     mode: 'Hybrid (Pune In-Person + Global Virtual)',
     banner: 'assets/workshop_banner.jpg',
@@ -1117,7 +1179,7 @@ const DEFAULT_STUDENTS = [
   }
 ];
 
-const STORE_DATA_VERSION = 'ugsot_v2026_10_29_01';
+const STORE_DATA_VERSION = 'ugsot_v2026_10_29_02';
 
 class ClubStore {
   constructor() {
@@ -1133,11 +1195,10 @@ class ClubStore {
     this.sections = this.load(STORAGE_KEYS.SECTIONS, DEFAULT_SECTIONS);
     this.students = this.load(STORAGE_KEYS.STUDENTS, DEFAULT_STUDENTS);
     
-    // Auto-migrate events: ensure all 27 verified open source events (including all 5 Pune Fests & 2026-2027 calendar programs) are loaded
-    const hasHacktoberfest = this.events && this.events.some(e => e.id === 'evt-hacktoberfest-2026' && e.timelineInfo);
-    const hasAidnPune = this.events && this.events.some(e => e.id === 'evt-hacktoberfest-pune-aidn');
-    const hasEthIndia = this.events && this.events.some(e => e.id === 'evt-ethindia-2026');
-    if (!hasHacktoberfest || !hasAidnPune || !hasEthIndia || this.events.length < 25) {
+    // Auto-migrate events: ensure all 27 verified open source events (including AIDN finale & 2026-2027 calendar programs) are loaded
+    const hasAidnPuneFlagship = this.events && this.events.some(e => e.id === 'evt-hacktoberfest-pune-aidn' && e.isFlagship);
+    const hasSwocSeason7 = this.events && this.events.some(e => e.id === 'evt-swoc-2027' && e.title.includes('Season 7'));
+    if (!hasAidnPuneFlagship || !hasSwocSeason7 || this.events.length < 27) {
       this.events = DEFAULT_EVENTS;
       this.save(STORAGE_KEYS.EVENTS, this.events);
     }
@@ -1213,25 +1274,59 @@ class ClubStore {
     return [...this.events, ...festEvents.filter(e => !existingIds.has(e.id))];
   }
 
+  /**
+   * Universal dynamic event lifecycle evaluator
+   * Evaluates real-time expiration without manual database edits
+   */
+  isEventPast(evt, now = new Date()) {
+    if (!evt) return true;
+    if (evt.status === 'past') return true;
+    const nowMs = now.getTime();
+    if (evt.endDate) {
+      return nowMs >= new Date(evt.endDate).getTime();
+    }
+    if (evt.targetDate) {
+      return nowMs >= new Date(evt.targetDate).getTime();
+    }
+    return false;
+  }
+
+  isEventOngoing(evt, now = new Date()) {
+    if (!evt || this.isEventPast(evt, now)) return false;
+    if (evt.isOngoing || evt.status === 'ongoing') return true;
+    if (evt.startDate && evt.endDate) {
+      const nowMs = now.getTime();
+      const startMs = new Date(evt.startDate).getTime();
+      const endMs = new Date(evt.endDate).getTime();
+      return nowMs >= startMs && nowMs < endMs;
+    }
+    return false;
+  }
+
+  isEventUpcoming(evt, now = new Date()) {
+    return !this.isEventPast(evt, now) && !this.isEventOngoing(evt, now);
+  }
+
   getFlagshipEvent() {
-    // 1. Prioritize designated upcoming flagship event (Hacktoberfest Pune Flagship at AIT)
-    const flagship = this.events.find(e => e.isFlagship && new Date(e.targetDate) > new Date());
+    const now = new Date();
+    // 1. Prioritize designated unexpired flagship event (e.g. AIDN Hack Day until Nov 1st)
+    const flagship = this.events.find(e => e.isFlagship && !this.isEventPast(e, now));
     if (flagship) return flagship;
 
-    // 2. Active ongoing flagship event
-    const ongoingFlagship = this.events.find(e => e.isFlagship && (e.isOngoing || e.status === 'ongoing'));
-    if (ongoingFlagship) return ongoingFlagship;
+    // 2. Fallback flagship candidate: ETHIndia 2026 takes over once Hacktoberfest ends
+    const ethindia = this.events.find(e => e.id === 'evt-ethindia-2026' && !this.isEventPast(e, now));
+    if (ethindia) return ethindia;
 
     // 3. Any active ongoing event
-    const ongoingAny = this.events.find(e => e.isOngoing || e.status === 'ongoing');
-    if (ongoingAny) return ongoingAny;
+    const ongoing = this.events.find(e => this.isEventOngoing(e, now));
+    if (ongoing) return ongoing;
     
-    // 4. Otherwise get earliest upcoming event
+    // 4. Otherwise get earliest upcoming unexpired event
     const upcoming = this.events
-      .filter(e => new Date(e.targetDate) > new Date())
+      .filter(e => !this.isEventPast(e, now))
       .sort((a, b) => new Date(a.targetDate) - new Date(b.targetDate));
       
-    return upcoming.length > 0 ? upcoming[0] : this.events[0];
+    return upcoming.length > 0 ? upcoming[0] : (this.events[0] || null);
   }
 
   setFlagshipEvent(id) {

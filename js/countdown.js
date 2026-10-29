@@ -34,10 +34,16 @@ class CountdownEngine {
     const rsvpBtn = document.getElementById('countdown-rsvp-btn');
     const liveBadge = document.getElementById('countdown-live-badge');
 
-    const isOngoing = this.targetEvent.isOngoing || this.targetEvent.status === 'ongoing';
+    const now = new Date();
+    const isPast = window.clubStore ? window.clubStore.isEventPast(this.targetEvent, now) : false;
+    const isOngoing = window.clubStore ? window.clubStore.isEventOngoing(this.targetEvent, now) : Boolean(this.targetEvent.isOngoing || this.targetEvent.status === 'ongoing');
+
     if (liveBadge) {
-      if (isOngoing) {
-        liveBadge.textContent = '🔴 ONGOING EVENT';
+      if (isPast) {
+        liveBadge.textContent = '🏁 CONCLUDED & ARCHIVED';
+        liveBadge.className = 'badge-past';
+      } else if (isOngoing) {
+        liveBadge.textContent = '🔴 LIVE & ONGOING NOW';
         liveBadge.className = 'badge-live-pulse';
       } else {
         liveBadge.textContent = '⚡ NEXT UPCOMING EVENT';
@@ -65,7 +71,7 @@ class CountdownEngine {
     }
 
     if (rsvpBtn) {
-      const user = window.clubStore.getCurrentUser();
+      const user = window.clubStore ? window.clubStore.getCurrentUser() : null;
       const isRsvpd = user && user.rsvps && user.rsvps.includes(this.targetEvent.id);
       rsvpBtn.innerHTML = isRsvpd ? `✓ You're In (Hacker Pass)` : (isOngoing ? `⚡ Register / Join Repo Now` : `⚡ Claim Your Spot Now`);
       rsvpBtn.className = isRsvpd ? 'btn btn-glow-success' : 'btn btn-glow-primary';
@@ -82,7 +88,8 @@ class CountdownEngine {
       if (targetUrl) {
         officialLinkEl.href = targetUrl;
         officialLinkEl.style.display = 'inline-flex';
-        officialLinkEl.textContent = this.targetEvent.registrationUrl ? 'Official MLH Registration ↗' : 'Official Program Site ↗';
+        const isMlh = targetUrl.includes('mlh.io');
+        officialLinkEl.textContent = isMlh ? 'Official MLH Registration ↗' : 'Official Program Site ↗';
       } else {
         officialLinkEl.style.display = 'none';
       }
@@ -100,20 +107,60 @@ class CountdownEngine {
   }
 
   update() {
+    if (!this.targetEvent) {
+      if (window.clubStore) {
+        this.targetEvent = window.clubStore.getFlagshipEvent();
+        this.renderEventBannerDetails();
+      }
+    }
     if (!this.targetEvent) return;
 
-    const isOngoing = this.targetEvent.isOngoing || this.targetEvent.status === 'ongoing';
-    // For ongoing events, countdown to conclusion (endDate), or targetDate
-    const countdownTarget = (isOngoing && this.targetEvent.endDate)
-      ? new Date(this.targetEvent.endDate).getTime()
-      : new Date(this.targetEvent.targetDate).getTime();
+    const now = new Date();
+    const nowTime = now.getTime();
 
-    const nowTime = Date.now();
+    // Universal auto-archive & rollover:
+    // If the tracked event has concluded, auto-advance to next flagship/upcoming program!
+    if (window.clubStore && window.clubStore.isEventPast(this.targetEvent, now)) {
+      const nextEvent = window.clubStore.getFlagshipEvent();
+      if (nextEvent && nextEvent.id !== this.targetEvent.id) {
+        this.setTargetEvent(nextEvent);
+        if (window.eventsManager) {
+          window.eventsManager.renderEvents();
+        }
+        return;
+      }
+    }
+
+    const isOngoing = window.clubStore ? window.clubStore.isEventOngoing(this.targetEvent, now) : Boolean(this.targetEvent.isOngoing || this.targetEvent.status === 'ongoing');
+    const startMs = this.targetEvent.startDate ? new Date(this.targetEvent.startDate).getTime() : new Date(this.targetEvent.targetDate).getTime();
+    const endMs = this.targetEvent.endDate ? new Date(this.targetEvent.endDate).getTime() : startMs;
+
+    // Determine target countdown timestamp:
+    // When event is currently ongoing (now >= startMs and now < endMs), countdown to event finale (endMs)
+    // When event is upcoming (now < startMs), countdown to event kickoff (startMs)
+    let countdownTarget;
+    if (nowTime >= startMs && nowTime < endMs) {
+      countdownTarget = endMs;
+    } else {
+      countdownTarget = startMs;
+    }
+
     const diff = countdownTarget - nowTime;
-
     const liveBadge = document.getElementById('countdown-live-badge');
 
     if (diff <= 0) {
+      // Re-evaluate if event has concluded and roll over
+      if (window.clubStore && window.clubStore.isEventPast(this.targetEvent, now)) {
+        const nextEvent = window.clubStore.getFlagshipEvent();
+        if (nextEvent && nextEvent.id !== this.targetEvent.id) {
+          this.setTargetEvent(nextEvent);
+          if (window.eventsManager) {
+            window.eventsManager.renderEvents();
+          }
+          return;
+        }
+      }
+
       this.displayZero();
       if (liveBadge) {
         liveBadge.textContent = isOngoing ? '🏁 EVENT CONCLUDED' : '🔴 LIVE RIGHT NOW';
@@ -123,8 +170,8 @@ class CountdownEngine {
     }
 
     if (liveBadge) {
-      if (isOngoing) {
-        liveBadge.textContent = '🔴 ONGOING EVENT';
+      if (isOngoing || (nowTime >= startMs && nowTime < endMs)) {
+        liveBadge.textContent = '🔴 LIVE & ONGOING RIGHT NOW';
         liveBadge.className = 'badge-live-pulse';
       } else {
         liveBadge.textContent = '⚡ NEXT UPCOMING EVENT';

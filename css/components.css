@@ -455,6 +455,13 @@
   animation: pulseBlink 1s infinite alternate;
 }
 
+.badge-past {
+  background: #e2e8f0 !important;
+  color: #475569 !important;
+  border: 2px solid var(--border-black) !important;
+  box-shadow: 2px 2px 0px var(--border-black) !important;
+}
+
 /* Category Badges */
 .category-badge {
   font-size: 0.72rem;

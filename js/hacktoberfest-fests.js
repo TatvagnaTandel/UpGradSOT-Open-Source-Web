@@ -59,7 +59,7 @@ const HACKTOBERFEST_FESTS_DATA = [
     "country": "IN",
     "venue": "Army Institute Of Technology (AIT), Dighi Hills, Alandi Road, Pune 411015",
     "shortVenue": "Army Institute of Technology (AIT), Pune",
-    "isFlagship": true,
+    "isFlagship": false,
     "targetDate": "2026-10-17T05:00:00.000Z",
     "endDate": "2026-10-17T13:00:00.000Z",
     "timezone": "Asia/Kolkata",
@@ -170,9 +170,9 @@ const HACKTOBERFEST_FESTS_DATA = [
     "country": "IN",
     "venue": "Office No 411, 4th Floor, Orville Business Port, West Ave, Opp. Konark Campus, Viman Nagar, Pune 411014",
     "shortVenue": "Orville Business Port, Viman Nagar, Pune",
-    "isFlagship": false,
+    "isFlagship": true,
     "targetDate": "2026-10-31T03:30:00.000Z",
-    "endDate": "2026-10-31T12:30:00.000Z",
+    "endDate": "2026-10-31T18:29:59.000Z",
     "timezone": "Asia/Kolkata",
     "description": "ONE MONTH. ENDLESS WAYS TO CONTRIBUTE. HACKTOBERFEST Every October, developers around the world come together to celebrate open source \u2014 contributing to projects, collaborating with fellow developers, learning new skills, and building in public. From online contributions to community-led events, Hacktoberfest is about making open source more accessible and more collaborative. AND THIS OCTOBER, WE'RE BRINGING THAT SPIRIT TO PUNE. AIDN HACK DAY A community-focused developer hack day built around open-source contributions, collaboration, and networking. Bring your ideas, find projects to work on, contribute with your peers, and spend a day building alongside the Pune developer community.",
     "officialUrl": "https://events.mlh.io/events/15141-hacktoberfest-hack-day-pune-x-aidn",
@@ -1864,6 +1864,7 @@ class HacktoberfestFestsManager {
     this.events = HACKTOBERFEST_FESTS_DATA;
     this.currentRegion = 'all';
     this.currentFormat = 'all';
+    this.currentStatus = 'active'; // Default: Clean out ended fests, show active & upcoming
     this.searchQuery = '';
     this.clockInterval = null;
   }
@@ -1936,10 +1937,29 @@ class HacktoberfestFestsManager {
         this.render();
       });
     }
+
+    // Status Select (Active vs Archived)
+    const statusSelect = document.getElementById('fest-status-select');
+    if (statusSelect) {
+      statusSelect.addEventListener('change', (e) => {
+        this.currentStatus = e.target.value;
+        this.render();
+      });
+    }
   }
 
   getFilteredEvents() {
+    const nowMs = Date.now();
+
     return this.events.filter(evt => {
+      const targetMs = new Date(evt.targetDate).getTime();
+      const endMs = evt.endDate ? new Date(evt.endDate).getTime() : (targetMs + 6 * 3600 * 1000);
+      const isPast = nowMs >= endMs;
+
+      // Status filter: In 'active' default view, do NOT show concluded events!
+      if (this.currentStatus === 'active' && isPast) return false;
+      if (this.currentStatus === 'archived' && !isPast) return false;
+
       // Region filter
       if (this.currentRegion !== 'all') {
         if (this.currentRegion === 'pune' && evt.regionGroup !== 'pune') return false;
@@ -2004,25 +2024,29 @@ class HacktoberfestFestsManager {
     return `${dateFormatted} • ${timeStart} IST`;
   }
 
-  formatRelativeCountdown(targetDateStr) {
+  formatRelativeCountdown(targetDateStr, endDateStr) {
     const target = new Date(targetDateStr).getTime();
+    const end = endDateStr ? new Date(endDateStr).getTime() : (target + 6 * 3600 * 1000);
     const now = Date.now();
-    const diff = target - now;
 
-    if (diff <= 0) {
-      return { label: '🔴 LIVE TODAY / ACTIVE', isLive: true };
+    if (now >= end) {
+      return { label: '📁 Concluded / Archived', isLive: false, isPast: true };
+    }
+    if (now >= target && now < end) {
+      return { label: '🔴 LIVE TODAY / ACTIVE', isLive: true, isPast: false };
     }
 
+    const diff = target - now;
     const totalSeconds = Math.floor(diff / 1000);
     const days = Math.floor(totalSeconds / 86400);
     const hours = Math.floor((totalSeconds % 86400) / 3600);
     const mins = Math.floor((totalSeconds % 3600) / 60);
 
     if (days > 0) {
-      return { label: `Starts in ${days}d ${hours}h ${mins}m`, isLive: false };
+      return { label: `Starts in ${days}d ${hours}h ${mins}m`, isLive: false, isPast: false };
     } else {
       const secs = totalSeconds % 60;
-      return { label: `Starts in ${hours}h ${mins}m ${secs}s`, isLive: false };
+      return { label: `Starts in ${hours}h ${mins}m ${secs}s`, isLive: false, isPast: false };
     }
   }
 
@@ -2031,15 +2055,24 @@ class HacktoberfestFestsManager {
     this.clockInterval = setInterval(() => {
       document.querySelectorAll('.fest-countdown-pill').forEach(el => {
         const targetDate = el.dataset.targetDate;
+        const endDate = el.dataset.endDate;
         if (targetDate) {
-          const res = this.formatRelativeCountdown(targetDate);
+          const res = this.formatRelativeCountdown(targetDate, endDate);
           const textEl = el.querySelector('.fest-countdown-text');
           if (textEl) {
             textEl.textContent = res.label;
           } else {
             el.textContent = res.label;
           }
-          if (res.isLive) el.classList.add('badge-ongoing-pulse');
+          if (res.isLive) {
+            el.classList.add('badge-ongoing-pulse');
+            el.classList.remove('badge-past');
+          } else if (res.isPast) {
+            el.classList.remove('badge-ongoing-pulse');
+            el.classList.add('badge-past');
+          } else {
+            el.classList.remove('badge-ongoing-pulse', 'badge-past');
+          }
         }
       });
     }, 1000);
@@ -2087,7 +2120,7 @@ class HacktoberfestFestsManager {
         <div class="empty-fests-state">
           <div class="empty-icon">🎃</div>
           <h3>No Hacktoberfest Fests Match Your Filter</h3>
-          <p>Try switching regions or clearing your search term to see other events near Pune and across India.</p>
+          <p>Try switching regions, selecting 'Show All', or clearing your search term to see other events near Pune and across India.</p>
           <button class="btn btn-secondary" onclick="window.hacktoberfestFestsManager.resetFilters()">Show All 50 Regional Fests</button>
         </div>
       `;
@@ -2095,11 +2128,12 @@ class HacktoberfestFestsManager {
     }
 
     container.innerHTML = filtered.map(evt => {
-      const countdownInfo = this.formatRelativeCountdown(evt.targetDate);
+      const countdownInfo = this.formatRelativeCountdown(evt.targetDate, evt.endDate);
       const isPune = evt.regionGroup === 'pune';
       const isFlagship = Boolean(evt.isFlagship);
       const formattedTime = this.formatDateBadge(evt.targetDate, evt.endDate);
       const cardClass = isFlagship ? 'fest-card-flagship' : (isPune ? 'fest-card-pune-glow' : '');
+      const pillClass = countdownInfo.isLive ? 'badge-ongoing-pulse' : (countdownInfo.isPast ? 'badge-past' : '');
 
       return `
         <div class="fest-card bento-card ${cardClass}">
@@ -2112,7 +2146,7 @@ class HacktoberfestFestsManager {
               </div>
             </div>
 
-            <div class="fest-countdown-pill ${countdownInfo.isLive ? 'badge-ongoing-pulse' : ''}" data-target-date="${evt.targetDate}">
+            <div class="fest-countdown-pill ${pillClass}" data-target-date="${evt.targetDate}" data-end-date="${evt.endDate || ''}">
               <span>⏳</span>
               <span class="fest-countdown-text">${countdownInfo.label}</span>
             </div>
@@ -2155,12 +2189,15 @@ class HacktoberfestFestsManager {
   resetFilters() {
     this.currentRegion = 'all';
     this.currentFormat = 'all';
+    this.currentStatus = 'active';
     this.searchQuery = '';
 
     const searchInput = document.getElementById('fest-search-input');
     if (searchInput) searchInput.value = '';
     const formatSelect = document.getElementById('fest-format-select');
     if (formatSelect) formatSelect.value = 'all';
+    const statusSelect = document.getElementById('fest-status-select');
+    if (statusSelect) statusSelect.value = 'active';
 
     const regionTabs = document.querySelectorAll('#fests-region-tabs .fest-tab');
     regionTabs.forEach(t => {

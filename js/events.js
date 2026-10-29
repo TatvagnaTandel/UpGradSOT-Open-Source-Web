@@ -47,16 +47,14 @@ class EventsManager {
 
   getFilteredEvents() {
     const all = window.clubStore.getEvents();
-    const now = new Date().getTime();
+    const now = new Date();
 
     return all.filter(event => {
-      const isOngoing = Boolean(event.isOngoing || event.status === 'ongoing');
-      const eventTime = new Date(event.targetDate).getTime();
-      const endTime = event.endDate ? new Date(event.endDate).getTime() : eventTime;
-      const isPast = !isOngoing && (endTime < now || event.status === 'past');
-      const isUpcoming = !isOngoing && !isPast;
+      const isPast = window.clubStore.isEventPast(event, now);
+      const isOngoing = window.clubStore.isEventOngoing(event, now);
+      const isUpcoming = window.clubStore.isEventUpcoming(event, now);
       
-      // Status filter: In 'all' default view, do NOT show archived events!
+      // Status filter: In 'all' (Active) default view, do NOT show archived events!
       if (this.currentStatus === 'all' && isPast) return false;
       if (this.currentStatus === 'ongoing' && !isOngoing) return false;
       if (this.currentStatus === 'upcoming' && !isUpcoming) return false;
@@ -80,8 +78,8 @@ class EventsManager {
         return new Date(b.targetDate) - new Date(a.targetDate);
       }
       // Ongoing first, then upcoming by targetDate
-      const aOngoing = a.isOngoing || a.status === 'ongoing' ? 1 : 0;
-      const bOngoing = b.isOngoing || b.status === 'ongoing' ? 1 : 0;
+      const aOngoing = window.clubStore.isEventOngoing(a, now) ? 1 : 0;
+      const bOngoing = window.clubStore.isEventOngoing(b, now) ? 1 : 0;
       if (aOngoing !== bOngoing) return bOngoing - aOngoing;
       return new Date(a.targetDate) - new Date(b.targetDate);
     });
@@ -121,16 +119,17 @@ class EventsManager {
       const targetDate = new Date(evt.targetDate);
       const isRsvpd = currentUser && currentUser.rsvps && currentUser.rsvps.includes(evt.id);
       const percentFull = Math.min(100, Math.round(((evt.spotsFilled || 0) / (evt.spotsTotal || 100)) * 100));
-      const isOngoing = Boolean(evt.isOngoing || evt.status === 'ongoing');
-      const isPast = !isOngoing && (targetDate.getTime() < Date.now() || evt.status === 'past');
+      const now = new Date();
+      const isOngoing = window.clubStore.isEventOngoing(evt, now);
+      const isPast = window.clubStore.isEventPast(evt, now);
 
       // Relative calculation
-      const daysDiff = Math.ceil((targetDate.getTime() - Date.now()) / (1000 * 60 * 60 * 24));
+      const daysDiff = Math.ceil((targetDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
       let relativeLabel = '';
       if (isOngoing) {
         relativeLabel = '🔴 LIVE & ONGOING';
       } else if (isPast) {
-        relativeLabel = 'Archived Event';
+        relativeLabel = '📁 Archived Event';
       } else if (daysDiff === 0) {
         relativeLabel = '🔥 Happening Today!';
       } else if (daysDiff === 1) {

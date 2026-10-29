@@ -135,6 +135,13 @@
               <input type="text" id="fest-search-input" class="search-input" placeholder="Search by city, college, tech (e.g. Pune, AIT, React)...">
             </div>
             <div class="format-select-wrap">
+              <select id="fest-status-select" class="fest-format-select" title="Filter by Active vs Concluded">
+                <option value="active" selected>⚡ Active & Upcoming Only</option>
+                <option value="all">Show All (Active + Concluded)</option>
+                <option value="archived">📁 Concluded / Archived Only</option>
+              </select>
+            </div>
+            <div class="format-select-wrap">
               <select id="fest-format-select" class="fest-format-select">
                 <option value="all">All Formats</option>
                 <option value="hackday">⚡ Hack Days Only</option>
