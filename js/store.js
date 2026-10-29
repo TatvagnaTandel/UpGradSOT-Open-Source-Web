@@ -28,17 +28,17 @@ const DEFAULT_EVENTS = [
     title: 'Hacktoberfest Hack Day Pune x OSS AIT',
     subtitle: 'Official In-Person Hacktoberfest 2026 Fest at Army Institute of Technology, Pune',
     category: 'opensource',
-    isFlagship: true,
+    isFlagship: false,
     isOngoing: false,
-    status: 'upcoming',
+    status: 'past',
     dateBadge: 'Saturday, Oct 17, 2026 • 10:30 AM – 6:30 PM IST',
     startDate: '2026-10-17T05:00:00.000Z',
     targetDate: '2026-10-17T05:00:00.000Z',
     endDate: '2026-10-17T13:00:00.000Z',
     venue: 'Army Institute Of Technology (AIT), Dighi Hills, Alandi Road, Pune 411015',
     mode: 'In-Person Fest (Pune, Maharashtra)',
-    banner: 'https://mlhusercontent.com/backgrounds/events/01a0b6b1-9c97-b056-fa2e-02e02678d624/hacktoberfest-hack-day-pune-x-ossc-ait_ccb0a599f60d.png',
-    logoUrl: 'https://mlhusercontent.com/logos/events/01a0b6b1-9c97-b056-fa2e-02e02678d624/hacktoberfest-hack-day-pune-x-ossc-ait_10acedd784a8.png',
+    banner: 'assets/flagship_banner.jpg',
+    logoUrl: 'assets/logo.jpg',
     description: 'Join us this Hacktoberfest for a day of open-source, coding, and collaboration in Pune! Whether making your first contribution or already experienced with PRs, come find projects, learn Git/GitHub, build with university peers, enjoy sponsored lunch, and collect official MLH swag & developer rewards.',
     prizePool: 'MLH Badges, Exclusive Swag Packs, Tree Planting & Hackathon Goodies',
     stipend: 'Official Swag Kits & Goodies',
@@ -48,7 +48,7 @@ const DEFAULT_EVENTS = [
     spotsFilled: 218,
     tags: ['Hacktoberfest', 'Pune', 'AIT', 'In-Person Fest', 'Open Source', 'MLH', 'GitHub', 'UGSOT'],
     timelineInfo: {
-      registration: 'Open now on MLH Events (Student - University pass)',
+      registration: 'Concluded on MLH Events',
       activePhase: 'Saturday, October 17, 2026 • 10:30 AM – 6:30 PM IST',
       reviewPhase: 'October 17–31, 2026 (PR verification & swag distribution)'
     },
@@ -74,15 +74,16 @@ const DEFAULT_EVENTS = [
     subtitle: 'Open-Source AI & Cloud Hack Day at MIT ADT University, Pune',
     category: 'opensource',
     isFlagship: false,
-    status: 'upcoming',
+    isOngoing: false,
+    status: 'past',
     dateBadge: 'Monday, Oct 13, 2026 • 9:00 AM – 3:30 PM IST',
     startDate: '2026-10-13T03:30:00.000Z',
     targetDate: '2026-10-13T03:30:00.000Z',
     endDate: '2026-10-13T10:00:00.000Z',
     venue: 'MIT ADT University, Rajbaug, Loni Kalbhor, IT Building, 3rd Floor, Pune 412201',
     mode: 'In-Person Fest (Loni Kalbhor, Pune)',
-    banner: 'https://mlhusercontent.com/backgrounds/events/01a0b6b0-a1ac-82af-a804-d6f836c99202/hacktoberfest-hack-day-pune-x-cloud-computing-club_db23c1dcf9a1.jpeg',
-    logoUrl: 'https://mlhusercontent.com/logos/events/01a0b6b0-a1ac-82af-a804-d6f836c99202/hacktoberfest-hack-day-pune-x-cloud-computing-club_252fb32395dd.png',
+    banner: 'assets/workshop_banner.jpg',
+    logoUrl: 'assets/logo.jpg',
     description: 'Join Cloud Computing Club for Hackstorm, a one-day in-person Hacktoberfest event where participants build with open-source or open-weight AI, submit through OrganizerHQ Challenges, and compete in the Best Open-Source AI Project challenge.',
     prizePool: 'Best Open-Source AI Project Awards, Official MLH Badges & Goodies',
     stipend: 'Official MLH Badges & Swag',
@@ -92,7 +93,7 @@ const DEFAULT_EVENTS = [
     spotsFilled: 135,
     tags: ['Hacktoberfest', 'Pune', 'MIT ADT', 'Cloud Computing', 'Open Source AI', 'MLH', 'UGSOT'],
     timelineInfo: {
-      registration: 'Open now on MLH Events',
+      registration: 'Concluded on MLH Events',
       activePhase: 'Monday, October 13, 2026 • 9:00 AM – 3:30 PM IST',
       reviewPhase: 'October 13–20, 2026'
     },
@@ -114,15 +115,16 @@ const DEFAULT_EVENTS = [
     subtitle: 'Cloud Native Open Source Fest at Gaia Apex, Viman Nagar, Pune',
     category: 'opensource',
     isFlagship: false,
-    status: 'upcoming',
+    isOngoing: false,
+    status: 'past',
     dateBadge: 'Saturday, Oct 24, 2026 • 10:00 AM – 5:00 PM IST',
     startDate: '2026-10-24T04:30:00.000Z',
     targetDate: '2026-10-24T04:30:00.000Z',
     endDate: '2026-10-24T11:30:00.000Z',
     venue: 'No. 33, 3rd Floor, Gaia Apex, S, 2D, Viman Nagar, Pune 411014',
     mode: 'In-Person Fest (Viman Nagar, Pune)',
-    banner: 'https://mlhusercontent.com/backgrounds/events/01a07d81-9f8b-e908-cfd4-d680f9ef8ff2/hacktoberfest-hack-day-pune-x-cloud-native-pune_3cf371a01d52.png',
-    logoUrl: 'https://mlhusercontent.com/logos/events/01a07d81-9f8b-e908-cfd4-d680f9ef8ff2/hacktoberfest-hack-day-pune-x-cloud-native-pune_e0261cc97199.png',
+    banner: 'assets/codesprint_banner.jpg',
+    logoUrl: 'assets/logo.jpg',
     description: 'Official Hacktoberfest Pune Hack Day hosted with Cloud Native Pune community. Focuses on Kubernetes, containers, microservices, cloud tooling, and open-source contributions with community mentors.',
     prizePool: 'Cloud Native Swag, Official Badges & Certificates',
     stipend: 'Community Swag & Badges',
@@ -132,7 +134,7 @@ const DEFAULT_EVENTS = [
     spotsFilled: 112,
     tags: ['Hacktoberfest', 'Pune', 'Cloud Native', 'Kubernetes', 'Viman Nagar', 'MLH'],
     timelineInfo: {
-      registration: 'Open now on MLH Events',
+      registration: 'Concluded on MLH Events',
       activePhase: 'Saturday, October 24, 2026 • 10:00 AM – 5:00 PM IST',
       reviewPhase: 'October 24–31, 2026'
     },
@@ -153,15 +155,16 @@ const DEFAULT_EVENTS = [
     subtitle: 'Overnight Open Source Community Hackathon at Ajeenkya DY Patil University, Pune',
     category: 'opensource',
     isFlagship: false,
-    status: 'upcoming',
+    isOngoing: false,
+    status: 'past',
     dateBadge: 'Saturday, Oct 24, 2026 • 3:00 PM – 2:00 AM IST',
     startDate: '2026-10-24T09:30:00.000Z',
     targetDate: '2026-10-24T09:30:00.000Z',
     endDate: '2026-10-24T20:30:00.000Z',
     venue: 'Newton School of Technology, 4th Floor, Ajeenkya DY Patil University, Lohegaon, Pune 412105',
     mode: 'In-Person Fest (Lohegaon, Pune)',
-    banner: 'https://mlhusercontent.com/backgrounds/events/01a0b6b0-6189-433e-609d-f6154893b512/hacktoberfest-hack-day-pune-x-nst-adypu_a20dc586cc34.png',
-    logoUrl: 'https://mlhusercontent.com/logos/events/01a0b6b0-6189-433e-609d-f6154893b512/hacktoberfest-hack-day-pune-x-nst-adypu_279c34b577de.png',
+    banner: 'assets/flagship_banner.jpg',
+    logoUrl: 'assets/logo.jpg',
     description: 'Hacktoberfest 2026 at Pune is an Open Source community event hosted by Newton School of Technology at ADYPU University. The event brings together students, developers, and Open Source enthusiasts for an evening of learning, collaboration, and building followed by an overnight Hackathon where teams build, experiment, and collaborate.',
     prizePool: 'Overnight Hackathon Prizes, MLH Swag & Developer Kit',
     stipend: 'Official Goodies & MLH Badges',
@@ -171,7 +174,7 @@ const DEFAULT_EVENTS = [
     spotsFilled: 180,
     tags: ['Hacktoberfest', 'Pune', 'NST', 'ADYPU', 'Overnight Hackathon', 'Open Source', 'MLH', 'UGSOT'],
     timelineInfo: {
-      registration: 'Open now on MLH Events',
+      registration: 'Concluded on MLH Events',
       activePhase: 'Saturday, October 24, 2026 • 3:00 PM – 2:00 AM IST',
       reviewPhase: 'October 24–31, 2026'
     },
@@ -201,8 +204,8 @@ const DEFAULT_EVENTS = [
     endDate: '2026-10-31T12:30:00.000Z',
     venue: 'Office No 411, 4th Floor, Orville Business Port, West Ave, Opp. Konark Campus, Viman Nagar, Pune 411014',
     mode: 'In-Person Fest (Viman Nagar, Pune)',
-    banner: 'https://mlhusercontent.com/backgrounds/events/01a0b6b2-8524-c7b7-cfab-97f894bea47c/hacktoberfest-hack-day-pune-x-aidn_373f95bad01a.png',
-    logoUrl: 'https://mlhusercontent.com/logos/events/01a0b6b2-8524-c7b7-cfab-97f894bea47c/hacktoberfest-hack-day-pune-x-aidn_f56dc519c757.png',
+    banner: 'assets/workshop_banner.jpg',
+    logoUrl: 'assets/logo.jpg',
     description: 'AIDN Hack Day brings developers across Pune together for open-source contributions, peer networking, and building in public during Hacktoberfest 2026. Bring your ideas, find projects to work on, contribute with your peers, and spend a day building alongside the Pune developer community.',
     prizePool: 'Community Hack Day Awards, Official MLH Badges & Goodies',
     stipend: 'Official Badges & MLH Swag',
@@ -698,6 +701,285 @@ const DEFAULT_EVENTS = [
       'Jun - Jul: Milestone reviews and mentor checkpoints',
       'Aug - Sep: Production deployment into national public infrastructure repos'
     ]
+  },
+  {
+    id: 'evt-science-academies-2027',
+    title: "Science Academies' Summer Research Fellowship (SRPF 2027)",
+    subtitle: 'IASc – INSA – NASI prestigious summer research fellowship in computational sciences & open research',
+    category: 'fellowship',
+    isFlagship: false,
+    status: 'upcoming',
+    dateBadge: 'May – July 2027 • Applications Close Nov 30, 2026',
+    targetDate: '2026-11-30T17:00:00+05:30',
+    venue: 'National Science Academies / Premier Indian Research Labs (IISc, IITs, TIFR)',
+    mode: 'In-Person / Lab Fellowship (India)',
+    banner: 'assets/workshop_banner.jpg',
+    logoUrl: 'assets/logo.jpg',
+    description: 'Prestigious national fellowship offered jointly by Indian Academy of Sciences (IASc, Bengaluru), Indian National Science Academy (INSA, New Delhi), and The National Academy of Sciences India (NASI, Prayagraj). Work on cutting-edge computational sciences, data engineering, and open research algorithms with premier scientists and academy fellows.',
+    prizePool: 'Monthly Research Stipend + Roundtrip Travel + Premier Lab Placement',
+    stipend: 'Monthly Research Stipend + Travel',
+    officialUrl: 'https://web-japps.ias.ac.in/fellowship2027/',
+    spotsTotal: 200,
+    spotsFilled: 84,
+    tags: ['Fellowship', 'Research', 'IISc', 'IITs', 'Data Science', 'India', 'UGSOT'],
+    timelineInfo: {
+      registration: 'Applications close November 30, 2026 (Live now)',
+      activePhase: 'May – July 2027 (Two months full-time research)',
+      reviewPhase: 'Results declared late February / March 2027'
+    },
+    speakers: [
+      { name: 'Academy Fellowship Committee', role: 'IASc - INSA - NASI Panel', avatar: 'IAS' }
+    ],
+    agenda: [
+      'Nov 30, 2026: Application and recommendation letter submission deadline',
+      'Mar 2027: Guide allocation & academy selection results',
+      'May 2027: Two months summer research period commences'
+    ]
+  },
+  {
+    id: 'evt-ethindia-2026',
+    title: 'ETHIndia 2026',
+    subtitle: "Asia's Largest Web3 Hackathon & Open Source BUIDL Sprint",
+    category: 'hackathon',
+    isFlagship: true,
+    isOngoing: false,
+    status: 'upcoming',
+    dateBadge: 'Dec 5–7, 2026 • KTPO Bengaluru, India',
+    startDate: '2026-12-05T09:00:00+05:30',
+    targetDate: '2026-12-05T09:00:00+05:30',
+    endDate: '2026-12-07T18:00:00+05:30',
+    venue: 'KTPO Convention Centre, Whitefield, Bengaluru, Karnataka 560066',
+    mode: 'In-Person Hackathon (Bengaluru, India)',
+    banner: 'assets/flagship_banner.jpg',
+    logoUrl: 'assets/logo.jpg',
+    description: 'ETHIndia is the premier Ethereum and Web3 open source hackathon in Asia, gathering over 2,000+ top engineers, maintainers, and builders from across the globe. 36 hours of non-stop hacking, developer workshops, world-class mentorship, sponsored bounties, and international ecosystem support.',
+    prizePool: '$100,000+ USD in Bounties, Grants & Open Source Tracks',
+    stipend: '$100k+ Prize Pool & Travel Scholarships',
+    officialUrl: 'https://ethindia.co',
+    spotsTotal: 2000,
+    spotsFilled: 1680,
+    tags: ['Flagship', 'Web3', 'Ethereum', 'Hackathon', 'Bengaluru', 'Global', 'In-Person', 'UGSOT'],
+    timelineInfo: {
+      registration: 'Applications open on Devfolio (Rolling selections)',
+      activePhase: 'December 5 – 7, 2026 (36 Hours In-Person Hackathon)',
+      reviewPhase: 'December 7, 2026 • Grand Finale & Project Showcase'
+    },
+    speakers: [
+      { name: 'Devfolio & ETHGlobal Mentors', role: 'Hackathon Leads', avatar: 'ETH' },
+      { name: 'Core Protocol Maintainers', role: 'Technical Judges', avatar: 'WEB3' }
+    ],
+    agenda: [
+      'Dec 5, 9:00 AM: Check-in, Sponsor Booths & Opening Ceremony',
+      'Dec 5, 12:00 PM: 36-Hour Open Source Hacking Begins',
+      'Dec 6: Mentor feedback checkpoints & midnight dev workshops',
+      'Dec 7, 12:00 PM: Hacking closes & judging rounds',
+      'Dec 7, 4:00 PM: Closing Ceremony, Top 10 Demos & $100k+ Awards'
+    ]
+  },
+  {
+    id: 'evt-google-solution-challenge-2027',
+    title: 'Google Solution Challenge 2027',
+    subtitle: 'Solve for one of the UN 17 Sustainable Development Goals using Google tech',
+    category: 'opensource',
+    isFlagship: false,
+    status: 'upcoming',
+    dateBadge: 'Jan – May 2027 • Global Student Competition',
+    targetDate: '2027-01-15T09:00:00+05:30',
+    venue: 'Online / Global (Google Developer Student Clubs)',
+    mode: 'Online / Global',
+    banner: 'assets/workshop_banner.jpg',
+    logoUrl: 'assets/logo.jpg',
+    description: 'The Google Solution Challenge invites university students around the world to build solutions for one or more of the United Nations 17 Sustainable Development Goals using Google products, open-source APIs, Gemini AI, Android, and Google Cloud.',
+    prizePool: '$12,000+ USD in Cash Awards, Google Mentorship & Global Showcase',
+    stipend: '$12,000+ USD Top Prizes & Mentorship',
+    officialUrl: 'https://developers.google.com/community/gdsc-solution-challenge',
+    spotsTotal: 500,
+    spotsFilled: 290,
+    tags: ['Google', 'Solution Challenge', 'UN SDGs', 'Gemini AI', 'Android', 'Cloud', 'UGSOT'],
+    timelineInfo: {
+      registration: 'Hack Pack & Project Kickoff: January 2027',
+      activePhase: 'January – March 2027 (Solution Building Sprint)',
+      reviewPhase: 'Top 100 & Top 10 Global Finalist Demo Day: April – May 2027'
+    },
+    speakers: [
+      { name: 'Google Developer Relations Leads', role: 'Google Mentors', avatar: 'GD' }
+    ],
+    agenda: [
+      'Jan 15, 2027: Global Hack Pack release & team registration opens',
+      'Mar 31, 2027: Video demo and GitHub repository submission',
+      'May 2027: Global Demo Day livestream & Top 3 winners announcement'
+    ]
+  },
+  {
+    id: 'evt-microsoft-imagine-cup-2027',
+    title: 'Microsoft Imagine Cup 2027',
+    subtitle: 'Global student AI startup competition & Microsoft Founder Hub incubator',
+    category: 'hackathon',
+    isFlagship: false,
+    status: 'upcoming',
+    dateBadge: 'Jan – May 2027 • Global Semifinals & World Finals',
+    targetDate: '2027-01-25T10:00:00+05:30',
+    venue: 'Online & Microsoft Campus (Redmond, USA)',
+    mode: 'Hybrid (Online Semifinals + Global Finals)',
+    banner: 'assets/codesprint_banner.jpg',
+    logoUrl: 'assets/logo.jpg',
+    description: "Imagine Cup is Microsoft's premier global technology and AI competition for student visionaries. Build an AI-driven venture leveraging Azure AI, GitHub, and open-source models for a chance to win $100,000 USD, Microsoft founder mentorship, and direct pitch opportunities.",
+    prizePool: '$100,000 USD Grand Prize + Azure Cloud Credits + Satya Nadella Mentorship',
+    stipend: '$100,000 USD + $50k Azure Credits',
+    officialUrl: 'https://imaginecup.microsoft.com',
+    spotsTotal: 400,
+    spotsFilled: 215,
+    tags: ['Microsoft', 'Imagine Cup', 'AI Startup', 'Azure', 'Global', 'Redmond', 'UGSOT'],
+    timelineInfo: {
+      registration: 'Qualifying Round Closes: Late January 2027',
+      activePhase: 'February – March 2027 (Semifinals & Mentorship Cohort)',
+      reviewPhase: 'World Championship at Microsoft Build: May 2027'
+    },
+    speakers: [
+      { name: 'Microsoft Cloud Advocates', role: 'AI Mentors', avatar: 'MS' }
+    ],
+    agenda: [
+      'Jan 25, 2027: Submission deadline for Prototype & Pitch Deck',
+      'Mar 2027: Imagine Cup World Semifinals',
+      'May 2027: World Championship live on stage at Microsoft Build'
+    ]
+  },
+  {
+    id: 'evt-smart-india-hackathon-2027',
+    title: 'Smart India Hackathon (SIH 2027)',
+    subtitle: "World's biggest open innovation hackathon across Government Ministries & Industry",
+    category: 'hackathon',
+    isFlagship: false,
+    status: 'upcoming',
+    dateBadge: 'Feb – Sept 2027 • Nodal Centers Across India',
+    targetDate: '2027-02-20T10:00:00+05:30',
+    venue: 'Designated Nodal Centers Across India (including Pune, Mumbai, Delhi, Bengaluru)',
+    mode: 'Hybrid (Internal Collegiate Hackathons + In-Person Grand Finale)',
+    banner: 'assets/flagship_banner.jpg',
+    logoUrl: 'assets/logo.jpg',
+    description: "Smart India Hackathon is a nationwide initiative by the Ministry of Education's Innovation Cell (MIC) and AICTE. Over 2,000 institutions tackle mission-critical challenges posed by Central Ministries, State Governments, and industry leaders across hardware, open web, AI, and cybersecurity.",
+    prizePool: '₹1,00,000 INR per problem statement winner + Central Ministry incubation',
+    stipend: '₹1,00,000 INR Per Problem Statement',
+    officialUrl: 'https://sih.gov.in',
+    spotsTotal: 600,
+    spotsFilled: 380,
+    tags: ['SIH', 'Hackathon', 'National', 'GovTech', 'Ministry of Education', 'Pune Nodal', 'UGSOT'],
+    timelineInfo: {
+      registration: 'Campus Internal Hackathon nominations: February – March 2027',
+      activePhase: 'National evaluation rounds: April – July 2027',
+      reviewPhase: '36-Hour In-Person Grand Finale: August / September 2027'
+    },
+    speakers: [
+      { name: 'MIC / AICTE Directors', role: 'Innovation Officers', avatar: 'SIH' },
+      { name: 'Ministry Chief Technologists', role: 'Problem Statement Owners', avatar: 'GOV' }
+    ],
+    agenda: [
+      'Feb 20, 2027: College SPOC registration and team selection window opens',
+      'Apr 2027: National problem statement idea submissions',
+      'Aug 2027: 36-hour non-stop in-person coding at nationwide nodal centers'
+    ]
+  },
+  {
+    id: 'evt-gsod-2027',
+    title: 'Google Season of Docs 2027 (GSoD)',
+    subtitle: 'Connecting open source organizations with technical writers to supercharge documentation',
+    category: 'mentorship',
+    isFlagship: false,
+    status: 'upcoming',
+    dateBadge: 'Mar – Nov 2027 • Global Technical Writing Initiative',
+    targetDate: '2027-03-15T09:00:00+05:30',
+    venue: 'Online / Global (Google Open Source Programs Office)',
+    mode: 'Online / Global',
+    banner: 'assets/workshop_banner.jpg',
+    logoUrl: 'assets/logo.jpg',
+    description: 'Google Season of Docs fosters collaboration between open source projects and professional technical writers or engineering contributors. Enhance documentation, onboarding roadmaps, API tutorials, and architecture diagrams for world-class open-source projects.',
+    prizePool: '$5,000 - $15,000 USD Project Grants per Selected Open-Source Org',
+    stipend: '$5,000 – $15,000 USD Org Grant / Stipend',
+    officialUrl: 'https://developers.google.com/season-of-docs',
+    spotsTotal: 100,
+    spotsFilled: 52,
+    tags: ['Google', 'GSoD', 'Technical Writing', 'Documentation', 'Open Source', 'Global'],
+    timelineInfo: {
+      registration: 'Organization Applications: February – March 2027; Contributor hiring: May 2027',
+      activePhase: 'May – November 2027 (Technical Writing & Architecture Documentation)',
+      reviewPhase: 'December 2027 (Final Project Case Studies)'
+    },
+    speakers: [
+      { name: 'Google Open Source Documentation Panel', role: 'Program Leads', avatar: 'GSO' }
+    ],
+    agenda: [
+      'Mar 15, 2027: Open source orgs submit documentation enhancement proposals',
+      'May 2027: Technical writers and student contributors matched with projects',
+      'Nov 2027: Documentation releases deployed live to project sites'
+    ]
+  },
+  {
+    id: 'evt-flipkart-grid-7',
+    title: 'Flipkart GRiD 7.0',
+    subtitle: 'Premier Engineering & Robotics Campus Challenge with pre-placement interviews (PPIs)',
+    category: 'hackathon',
+    isFlagship: false,
+    status: 'upcoming',
+    dateBadge: 'Mar – Aug 2027 • National Engineering Challenge',
+    targetDate: '2027-03-25T10:00:00+05:30',
+    venue: 'Online (Rounds 1–2) & Flipkart Headquarters Bengaluru (Grand Finale)',
+    mode: 'Hybrid (Online Coding + Bengaluru Onsite Finale)',
+    banner: 'assets/codesprint_banner.jpg',
+    logoUrl: 'assets/logo.jpg',
+    description: "Flipkart GRiD is Flipkart's flagship pan-India campus challenge testing engineers across Software Development (E-Commerce, Web3, Generative AI), Robotics, and Information Security. Offers direct SDE internship and full-time PPI opportunities.",
+    prizePool: '₹10,50,000 INR Prize Pool + Direct SDE Pre-Placement Interviews (PPIs)',
+    stipend: '₹10.5 Lakh Prize Pool + Flipkart PPIs',
+    officialUrl: 'https://unstop.com/competitions/flipkart-grid',
+    spotsTotal: 500,
+    spotsFilled: 310,
+    tags: ['Flipkart', 'GRiD', 'Campus Challenge', 'PPI', 'Software Engineering', 'India', 'UGSOT'],
+    timelineInfo: {
+      registration: 'March 2027 on Unstop',
+      activePhase: 'Round 1 (Online Quiz) & Round 2 (Coding & Proof of Concept): April – June 2027',
+      reviewPhase: 'Grand Finale & Live Demonstrations: August 2027'
+    },
+    speakers: [
+      { name: 'Flipkart Principal Engineers', role: 'Technical Panel', avatar: 'FK' }
+    ],
+    agenda: [
+      'Mar 25, 2027: Track registration opens on Unstop',
+      'May 2027: Problem Statement submission & prototype evaluation',
+      'Aug 2027: Onsite Grand Finale at Flipkart Bengaluru & PPI announcements'
+    ]
+  },
+  {
+    id: 'evt-nasa-space-apps-2027',
+    title: 'NASA International Space Apps Challenge 2027',
+    subtitle: "World's largest global hackathon using open NASA science and space data",
+    category: 'hackathon',
+    isFlagship: false,
+    status: 'upcoming',
+    dateBadge: 'Apr 2027 (Pre-Season) • Oct 2027 (Global Hackathon)',
+    targetDate: '2027-04-10T10:00:00+05:30',
+    venue: 'Local Lead Centers Worldwide (including Pune & Mumbai) & Virtual',
+    mode: 'Hybrid (Pune In-Person + Global Virtual)',
+    banner: 'assets/workshop_banner.jpg',
+    logoUrl: 'assets/logo.jpg',
+    description: 'The NASA International Space Apps Challenge is an international hackathon for coders, scientists, designers, storytellers, makers, and technologists. Teams address real-world challenges on Earth and in space using free and open data from NASA and its Space Agency Partners.',
+    prizePool: 'Global Winner Awards, Space Agency Honors & NASA Rocket Launch Invite',
+    stipend: 'Global Winner Honors & Rocket Launch Invitation',
+    officialUrl: 'https://www.spaceappschallenge.org',
+    spotsTotal: 400,
+    spotsFilled: 190,
+    tags: ['NASA', 'Space Apps', 'Open Data', 'Global Hackathon', 'Pune Local Lead', 'UGSOT'],
+    timelineInfo: {
+      registration: 'Local Lead center registration: April 2027; Hacker registration: July 2027',
+      activePhase: '48-Hour Global Hackathon Weekend (October 2027)',
+      reviewPhase: 'Global Nominee & Winner Announcements: December 2027'
+    },
+    speakers: [
+      { name: 'NASA Space Apps Global Organizing Team', role: 'Space Agency Leads', avatar: 'NASA' }
+    ],
+    agenda: [
+      'Apr 10, 2027: City Lead Applications & Hackathon Theme Reveal',
+      'Jul 2027: Participant registration & challenge briefs published',
+      'Oct 2027: 48-hour global challenge sprint with Pune local center'
+    ]
   }
 ];
 
@@ -835,11 +1117,11 @@ const DEFAULT_STUDENTS = [
   }
 ];
 
-const STORE_DATA_VERSION = 'ugsot_v2026_09_29_01';
+const STORE_DATA_VERSION = 'ugsot_v2026_10_29_01';
 
 class ClubStore {
   constructor() {
-    // Force cache bust: if stored version is older, reset events and sections to default 18 open source events
+    // Force cache bust: if stored version is older, reset events and sections to default 27 open source events
     const storedVersion = localStorage.getItem('ust_store_data_version');
     if (storedVersion !== STORE_DATA_VERSION) {
       localStorage.setItem(STORAGE_KEYS.EVENTS, JSON.stringify(DEFAULT_EVENTS));
@@ -851,10 +1133,11 @@ class ClubStore {
     this.sections = this.load(STORAGE_KEYS.SECTIONS, DEFAULT_SECTIONS);
     this.students = this.load(STORAGE_KEYS.STUDENTS, DEFAULT_STUDENTS);
     
-    // Auto-migrate events: ensure all 18 verified open source events (including all 5 Pune Fests) are loaded
+    // Auto-migrate events: ensure all 27 verified open source events (including all 5 Pune Fests & 2026-2027 calendar programs) are loaded
     const hasHacktoberfest = this.events && this.events.some(e => e.id === 'evt-hacktoberfest-2026' && e.timelineInfo);
     const hasAidnPune = this.events && this.events.some(e => e.id === 'evt-hacktoberfest-pune-aidn');
-    if (!hasHacktoberfest || !hasAidnPune || this.events.length < 18) {
+    const hasEthIndia = this.events && this.events.some(e => e.id === 'evt-ethindia-2026');
+    if (!hasHacktoberfest || !hasAidnPune || !hasEthIndia || this.events.length < 25) {
       this.events = DEFAULT_EVENTS;
       this.save(STORAGE_KEYS.EVENTS, this.events);
     }

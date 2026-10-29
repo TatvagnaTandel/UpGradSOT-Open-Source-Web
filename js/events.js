@@ -56,7 +56,8 @@ class EventsManager {
       const isPast = !isOngoing && (endTime < now || event.status === 'past');
       const isUpcoming = !isOngoing && !isPast;
       
-      // Status filter
+      // Status filter: In 'all' default view, do NOT show archived events!
+      if (this.currentStatus === 'all' && isPast) return false;
       if (this.currentStatus === 'ongoing' && !isOngoing) return false;
       if (this.currentStatus === 'upcoming' && !isUpcoming) return false;
       if (this.currentStatus === 'past' && !isPast) return false;
@@ -84,6 +85,17 @@ class EventsManager {
       if (aOngoing !== bOngoing) return bOngoing - aOngoing;
       return new Date(a.targetDate) - new Date(b.targetDate);
     });
+  }
+
+  getEventBanner(evt) {
+    if (!evt || !evt.banner) return 'assets/flagship_banner.jpg';
+    // If banner points to external CDN that blocks hotlinking or is missing, use themed local asset
+    if (evt.banner.includes('mlhusercontent.com') || evt.banner.startsWith('http')) {
+      if (evt.category === 'workshop') return 'assets/workshop_banner.jpg';
+      if (evt.category === 'sprint' || evt.category === 'winterofcode') return 'assets/codesprint_banner.jpg';
+      return 'assets/flagship_banner.jpg';
+    }
+    return evt.banner;
   }
 
   renderEvents() {
@@ -142,7 +154,7 @@ class EventsManager {
       return `
         <div class="event-card bento-card ${evt.isFlagship ? 'flagship-card-glow' : ''}">
           <div class="event-card-media">
-            <img src="${evt.banner || 'assets/flagship_banner.jpg'}" alt="${evt.title}" loading="lazy" class="event-card-img" />
+            <img src="${this.getEventBanner(evt)}" alt="${evt.title}" loading="lazy" class="event-card-img" onerror="this.onerror=null; this.src='assets/flagship_banner.jpg';" />
             <div class="media-overlay"></div>
             <div class="card-top-badges">
               <span class="category-badge cat-${evt.category}">${evt.category.toUpperCase()}</span>
@@ -277,7 +289,7 @@ class EventsManager {
 
     content.innerHTML = `
       <div class="modal-event-hero">
-        <img src="${event.banner || 'assets/flagship_banner.jpg'}" alt="${event.title}" class="modal-hero-img"/>
+        <img src="${this.getEventBanner(event)}" alt="${event.title}" class="modal-hero-img" onerror="this.onerror=null; this.src='assets/flagship_banner.jpg';"/>
         <div class="modal-hero-overlay">
           <span class="category-badge cat-${event.category}">${event.category.toUpperCase()}</span>
           <h2>${event.title}</h2>
@@ -403,7 +415,7 @@ class EventsManager {
       <div class="hacker-ticket-badge" id="printable-ticket">
         <div class="ticket-header">
           <div class="ticket-brand">
-            <img src="assets/upgrad_sot_official.png" alt="UGSOT" class="ticket-logo" />
+            <img src="assets/upgrad_sot_official.png" alt="UGSOT" class="ticket-logo" onerror="this.onerror=null; this.src='assets/logo.jpg';" />
             <div>
               <span class="ticket-school">upGrad School of Technology</span>
               <span class="ticket-club">Open Source Events • Official Pass</span>
