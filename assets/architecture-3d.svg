@@ -89,15 +89,15 @@
     <!-- Sub-blocks on Tier 1 -->
     <g transform="translate(150, 48)">
       <rect x="0" y="0" width="130" height="36" rx="6" fill="#1f2937" stroke="#ffe600" stroke-width="1.5" />
-      <text x="12" y="22" fill="#fff" font-family="sans-serif" font-size="11" font-weight="bold">💾 ClubStore (LS)</text>
+      <text x="14" y="22" fill="#fff" font-family="'Courier New', monospace" font-size="10.5" font-weight="bold">ClubStore (LS)</text>
     </g>
     <g transform="translate(310, 52)">
       <rect x="0" y="0" width="150" height="36" rx="6" fill="#1f2937" stroke="#ffe600" stroke-width="1.5" />
-      <text x="12" y="22" fill="#fff" font-family="sans-serif" font-size="11" font-weight="bold">🌐 MLH Events API</text>
+      <text x="14" y="22" fill="#fff" font-family="'Courier New', monospace" font-size="10.5" font-weight="bold">MLH Events API</text>
     </g>
     <g transform="translate(490, 56)">
       <rect x="0" y="0" width="140" height="36" rx="6" fill="#1f2937" stroke="#ffe600" stroke-width="1.5" />
-      <text x="12" y="22" fill="#fff" font-family="sans-serif" font-size="11" font-weight="bold">📅 RFC-5545 (.ics)</text>
+      <text x="14" y="22" fill="#fff" font-family="'Courier New', monospace" font-size="10.5" font-weight="bold">RFC-5545 (.ics)</text>
     </g>
   </g>
 
@@ -120,19 +120,19 @@
     <!-- Sub-blocks on Tier 2 -->
     <g transform="translate(120, 50)">
       <rect x="0" y="0" width="140" height="36" rx="6" fill="#111827" stroke="#00f0ff" stroke-width="1.5" />
-      <text x="10" y="22" fill="#fff" font-family="sans-serif" font-size="11" font-weight="bold">⏱️ CountdownEngine</text>
+      <text x="12" y="22" fill="#fff" font-family="'Courier New', monospace" font-size="10" font-weight="bold">CountdownEngine</text>
     </g>
     <g transform="translate(280, 54)">
       <rect x="0" y="0" width="135" height="36" rx="6" fill="#111827" stroke="#00f0ff" stroke-width="1.5" />
-      <text x="10" y="22" fill="#fff" font-family="sans-serif" font-size="11" font-weight="bold">⚡ EventsManager</text>
+      <text x="12" y="22" fill="#fff" font-family="'Courier New', monospace" font-size="10" font-weight="bold">EventsManager</text>
     </g>
     <g transform="translate(435, 58)">
       <rect x="0" y="0" width="145" height="36" rx="6" fill="#111827" stroke="#05ffa1" stroke-width="1.5" />
-      <text x="10" y="22" fill="#fff" font-family="sans-serif" font-size="11" font-weight="bold">🎟️ Canvas QR Pass</text>
+      <text x="12" y="22" fill="#fff" font-family="'Courier New', monospace" font-size="10" font-weight="bold">Canvas QR Pass</text>
     </g>
     <g transform="translate(600, 62)">
-      <rect x="0" y="0" width="130" height="36" rx="6" fill="#111827" stroke="#05ffa1" stroke-width="1.5" />
-      <text x="10" y="22" fill="#fff" font-family="sans-serif" font-size="11" font-weight="bold">🔊 WebAudio Synth</text>
+      <rect x="0" y="0" width="135" height="36" rx="6" fill="#111827" stroke="#05ffa1" stroke-width="1.5" />
+      <text x="12" y="22" fill="#fff" font-family="'Courier New', monospace" font-size="10" font-weight="bold">WebAudio Synth</text>
     </g>
   </g>
 
@@ -155,23 +155,23 @@
     <!-- Sub-blocks on Tier 3 (Directory Portals) -->
     <g transform="translate(120, 48)">
       <rect x="0" y="0" width="115" height="36" rx="6" fill="#ff3366" stroke="#000" stroke-width="1.5" />
-      <text x="12" y="22" fill="#fff" font-family="sans-serif" font-size="11" font-weight="900">🏠 index.html</text>
+      <text x="14" y="22" fill="#fff" font-family="'Courier New', monospace" font-size="10.5" font-weight="900">index.html</text>
     </g>
     <g transform="translate(250, 52)">
       <rect x="0" y="0" width="120" height="36" rx="6" fill="#ffe600" stroke="#000" stroke-width="1.5" />
-      <text x="10" y="22" fill="#000" font-family="sans-serif" font-size="11" font-weight="900">🎃 fests.html</text>
+      <text x="14" y="22" fill="#000" font-family="'Courier New', monospace" font-size="10.5" font-weight="900">fests.html</text>
     </g>
     <g transform="translate(385, 56)">
       <rect x="0" y="0" width="125" height="36" rx="6" fill="#00f0ff" stroke="#000" stroke-width="1.5" />
-      <text x="10" y="22" fill="#000" font-family="sans-serif" font-size="11" font-weight="900">🚀 events.html</text>
+      <text x="14" y="22" fill="#000" font-family="'Courier New', monospace" font-size="10.5" font-weight="900">events.html</text>
     </g>
     <g transform="translate(525, 60)">
       <rect x="0" y="0" width="135" height="36" rx="6" fill="#05ffa1" stroke="#000" stroke-width="1.5" />
-      <text x="10" y="22" fill="#000" font-family="sans-serif" font-size="11" font-weight="900">🏆 leaderboard</text>
+      <text x="10" y="22" fill="#000" font-family="'Courier New', monospace" font-size="10.5" font-weight="900">leaderboard</text>
     </g>
     <g transform="translate(675, 64)">
-      <rect x="0" y="0" width="110" height="36" rx="6" fill="#c084fc" stroke="#000" stroke-width="1.5" />
-      <text x="10" y="22" fill="#000" font-family="sans-serif" font-size="11" font-weight="900">👑 admin.html</text>
+      <rect x="0" y="0" width="115" height="36" rx="6" fill="#c084fc" stroke="#000" stroke-width="1.5" />
+      <text x="14" y="22" fill="#000" font-family="'Courier New', monospace" font-size="10.5" font-weight="900">admin.html</text>
     </g>
   </g>
 

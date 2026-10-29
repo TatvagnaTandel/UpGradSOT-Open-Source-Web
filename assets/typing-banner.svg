@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 48" width="850" height="48">
+  <defs>
+    <style>
+      @keyframes cycleText {
+        0%, 15% { opacity: 1; transform: translateY(0px); }
+        16.6%, 98% { opacity: 0; transform: translateY(-6px); }
+        100% { opacity: 1; transform: translateY(0px); }
+      }
+      @keyframes blinkCursor {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+      }
+      .line-1 { animation: cycleText 18s ease-in-out infinite 0s; }
+      .line-2 { animation: cycleText 18s ease-in-out infinite 3s; opacity: 0; }
+      .line-3 { animation: cycleText 18s ease-in-out infinite 6s; opacity: 0; }
+      .line-4 { animation: cycleText 18s ease-in-out infinite 9s; opacity: 0; }
+      .line-5 { animation: cycleText 18s ease-in-out infinite 12s; opacity: 0; }
+      .line-6 { animation: cycleText 18s ease-in-out infinite 15s; opacity: 0; }
+      .cursor { animation: blinkCursor 0.9s infinite; }
+    </style>
+  </defs>
+
+  <rect width="850" height="48" rx="8" fill="#121212" stroke="#252c38" stroke-width="1.5" />
+  
+  <!-- Terminal Prompt -->
+  <text x="24" y="30" fill="#00f0ff" font-family="'Fira Code', 'Courier New', monospace" font-size="14" font-weight="900">ugsot:~$</text>
+
+  <!-- Cycling Text Messages -->
+  <g font-family="'Fira Code', 'Courier New', monospace" font-size="14" font-weight="700">
+    <text x="110" y="30" fill="#ff3366" class="line-1">Precision Countdown Engine with Dynamic Event Lifecycle<tspan class="cursor" fill="#00f0ff">_</tspan></text>
+    <text x="110" y="30" fill="#ffe600" class="line-2">50+ Regional Hacktoberfest Fests Synced Live via MLH API<tspan class="cursor" fill="#00f0ff">_</tspan></text>
+    <text x="110" y="30" fill="#05ffa1" class="line-3">Instant Canvas-Rendered Cryptographic Hacker Passes<tspan class="cursor" fill="#00f0ff">_</tspan></text>
+    <text x="110" y="30" fill="#00f0ff" class="line-4">Dev XP Gamification and Campus Developer Rankings<tspan class="cursor" fill="#00f0ff">_</tspan></text>
+    <text x="110" y="30" fill="#ff70a6" class="line-5">27 Verified 2026-2027 Global Open-Source Programs<tspan class="cursor" fill="#00f0ff">_</tspan></text>
+    <text x="110" y="30" fill="#c084fc" class="line-6">Persistent Event Pinning Across All Portal Routes<tspan class="cursor" fill="#00f0ff">_</tspan></text>
+  </g>
+</svg>
