@@ -339,7 +339,7 @@ class EventsManager {
 
           ${event.timelineInfo ? `
             <div class="timeline-info-card">
-              <div class="timeline-info-title"><span>🕒</span> Verified Program Milestone Timeline</div>
+              <div class="timeline-info-title"><span>🕒</span> Program Milestone Timeline · Confirm with Organizer</div>
               <div class="timeline-info-row">
                 <div class="timeline-info-item"><span class="timeline-info-label">📝 Applications:</span><span>${event.timelineInfo.registration || 'Check official site'}</span></div>
                 <div class="timeline-info-item"><span class="timeline-info-label">🚀 Active Phase:</span><span>${event.timelineInfo.activePhase || event.dateBadge}</span></div>
@@ -430,16 +430,16 @@ class EventsManager {
     container.innerHTML = `
       <div class="pass-view-switch-bar">
         <button id="btn-view-2d" class="pass-view-switch-btn active" onclick="window.eventsManager.switchPassView('2d')">
-          2D Printable Ticket
+          2D sample pass
         </button>
         <button id="btn-view-3d" class="pass-view-switch-btn" onclick="window.eventsManager.switchPassView('3d')">
-          ⚡ 3D WebGL Hologram (Three.js)
+          3D pass preview
         </button>
       </div>
 
       <div id="pass-3d-viewport">
-        <canvas id="pass-3d-canvas"></canvas>
-        <div class="pass-3d-controls-hint">DRAG TO ROTATE 3D PASS • FULL 360° WEBGL VIEW</div>
+        <canvas id="pass-3d-canvas" tabindex="0" role="img" aria-label="Sample 3D pass. Drag or use arrow keys to rotate. Home resets."></canvas>
+        <div class="pass-3d-controls-hint">Drag or use arrow keys · Home to reset</div>
       </div>
 
       <div class="hacker-ticket-badge" id="printable-ticket">
@@ -448,10 +448,10 @@ class EventsManager {
             <img src="assets/upgrad_sot_official.png" alt="UGSOT" class="ticket-logo" onerror="this.onerror=null; this.src='assets/logo.jpg';" />
             <div>
               <span class="ticket-school">upGrad School of Technology</span>
-              <span class="ticket-club">Open Source Events • Official Pass</span>
+              <span class="ticket-club">Open Source Events • Sample Pass</span>
             </div>
           </div>
-          <div class="ticket-chip">CONFIRMED ACCESS</div>
+          <div class="ticket-chip">DEMO · NO ENTRY</div>
         </div>
 
         <div class="ticket-body">
@@ -481,9 +481,9 @@ class EventsManager {
             <canvas id="ticket-qr-canvas" width="90" height="90"></canvas>
           </div>
           <div class="ticket-barcodes">
-            <span class="t-label">TICKET HASH</span>
+            <span class="t-label">DEMO REFERENCE</span>
             <span class="barcode-font">${ticketHash}</span>
-            <span class="ticket-instruction">Scan at entrance for Dev XP verification</span>
+            <span class="ticket-instruction">Decorative code · not scannable or valid for entry</span>
           </div>
         </div>
       </div>
@@ -616,7 +616,11 @@ class EventsManager {
       if (btn2d) btn2d.classList.remove('active');
       if (btn3d) btn3d.classList.add('active');
       if (window.threePassViewer && this.currentPassEvent && this.currentPassUser) {
-        window.threePassViewer.render3dPass(this.currentPassEvent, this.currentPassUser);
+        const ready = window.threePassViewer.render3dPass(this.currentPassEvent, this.currentPassUser);
+        if (!ready) {
+          this.switchPassView('2d');
+          window.app.showToast('3D is unavailable on this device. Your 2D preview is still available.', 'info');
+        }
       }
     } else {
       printable.style.display = 'block';

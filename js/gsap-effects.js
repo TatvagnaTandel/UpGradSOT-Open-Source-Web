@@ -14,13 +14,14 @@
         return;
       }
 
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       this.init();
     }
 
     init() {
-      this.initHeroEntrance();
-      this.init3dCardTilt();
-      this.initButtonPhysics();
+      // The first viewport paints immediately, including its static 3D fallback.
+      // Content cards stay stable so links and text are easy to target.
+      // Buttons retain their position under the pointer.
       this.hookCountdownEngine();
       this.initModalTransitions();
     }

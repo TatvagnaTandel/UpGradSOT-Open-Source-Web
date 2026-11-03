@@ -1,0 +1,5 @@
+{
+  "name": "ugsot-open-source-events",
+  "private": true,
+  "scripts": { "test": "node --test", "dev": "node scripts/serve.mjs", "check": "node scripts/check.mjs" }
+}

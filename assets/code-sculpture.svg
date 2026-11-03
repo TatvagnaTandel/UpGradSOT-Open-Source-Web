@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="420" viewBox="0 0 900 420" role="img" aria-labelledby="title desc">
+<title id="title">The builder's mark</title><desc id="desc">A yellow opening bracket, a blue slash and a pink closing bracket form a solid code sculpture on a stone pedestal.</desc>
+<rect width="900" height="420" fill="#f2eee4"/>
+<ellipse cx="450" cy="354" rx="230" ry="22" fill="#d5cfbf"/>
+<path d="M220 321 Q450 270 680 321 V342 Q450 398 220 342Z" fill="#c9c0ac"/>
+<ellipse cx="450" cy="321" rx="230" ry="38" fill="#e2daca"/>
+<g stroke="#493f32" stroke-width="2" stroke-linejoin="round">
+<path d="m352 97-112 112 112 106 38-42-70-66 70-69Z" fill="#bd8f28"/>
+<path d="m330 80-112 112 112 106 38-42-70-66 70-69Z" fill="#f5c84b"/>
+<path d="m532 93 112 112-112 106-38-42 70-66-70-69Z" fill="#aa4869"/>
+<path d="m510 76 112 112-112 106-38-42 70-66-70-69Z" fill="#ed719b"/>
+<path d="m461 83 25 9-51 216-25-9Z" fill="#234b5a"/>
+<path d="m447 75 25 9-51 216-25-9Z" fill="#42758b"/>
+</g></svg>

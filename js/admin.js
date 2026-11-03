@@ -62,8 +62,8 @@ class AdminDashboard {
 
     const user = window.clubStore.getCurrentUser();
     if (!user || user.role !== 'admin') {
-      window.app.showToast('Admin Lead credentials required. Switching to Admin view for demo.', 'warning');
-      window.authManager.quickSwitch('admin');
+      window.authManager.openAuthModal();
+      return;
     }
 
     const mainView = document.getElementById('main-content-view');

@@ -52,8 +52,16 @@ class AuthManager {
   openAuthModal(mode = 'login') {
     const modal = document.getElementById('auth-modal');
     if (!modal) return;
-    this.switchMode(mode);
+    const content = document.getElementById('auth-modal-content');
+    content.innerHTML = '<h2 id="demo-auth-title">Explore the portal</h2><p class="demo-auth-copy">This preview uses sample profiles. There is no real account or password sign-in yet. Please do not enter personal information.</p><div class="demo-auth-actions"><button class="btn btn-primary" data-demo-role="student">Try student demo</button><button class="btn btn-outline" data-demo-role="admin">Try admin demo</button></div><p class="scene-footnote">All demo changes are saved only in this browser.</p>';
+    content.querySelectorAll('[data-demo-role]').forEach(button => button.addEventListener('click', () => {
+      this.quickSwitch(button.dataset.demoRole);
+      window.app.closeAllModals();
+      if (button.dataset.demoRole === 'admin') window.location.href = 'admin.html';
+    }));
+    modal.setAttribute('role', 'dialog'); modal.setAttribute('aria-modal', 'true'); modal.setAttribute('aria-labelledby', 'demo-auth-title');
     modal.classList.add('active');
+    content.querySelector('button').focus();
   }
 
   switchMode(mode) {
@@ -164,7 +172,7 @@ class AuthManager {
     window.countdownEngine.renderEventBannerDetails();
 
     if (role === 'admin') {
-      window.app.showToast('Admin Mode Enabled! Access the Admin Dashboard from the nav.', 'success');
+      window.app.showToast('Admin demo selected. Changes affect this browser only.', 'success');
     }
   }
 
@@ -193,19 +201,18 @@ class AuthManager {
       }
 
       userArea.innerHTML = `
-        <div class="user-pill-badge" onclick="window.authManager.openProfileModal()">
+        <button type="button" class="user-pill-badge" onclick="window.authManager.openProfileModal()">
           <div class="user-avatar-circle ${isAdmin ? 'admin-glow' : ''}">${initials}</div>
           <div class="user-text-meta">
             <span class="user-name">${user.name.split(' ')[0]}</span>
-            <span class="user-role-tag ${isAdmin ? 'tag-admin' : 'tag-student'}">${isAdmin ? '👑 ADMIN LEAD' : `LVL ${user.level || 1} DEV`}</span>
+            <span class="user-role-tag ${isAdmin ? 'tag-admin' : 'tag-student'}">${isAdmin ? 'ADMIN DEMO' : `STUDENT DEMO`}</span>
           </div>
-        </div>
+        </button>
       `;
     } else {
       if (adminLink) adminLink.style.display = 'none';
       userArea.innerHTML = `
-        <button class="btn btn-outline btn-sm trigger-auth-modal" data-auth-mode="login">Sign In</button>
-        <button class="btn btn-primary btn-sm trigger-auth-modal" data-auth-mode="signup">Join Club</button>
+        <button class="btn btn-outline btn-sm trigger-auth-modal" data-auth-mode="login">Explore demo</button>
       `;
       // Re-bind listeners
       userArea.querySelectorAll('.trigger-auth-modal').forEach(btn => {
@@ -283,7 +290,7 @@ class AuthManager {
 
       <div class="profile-modal-footer">
         <button class="btn btn-outline" onclick="window.authManager.quickSwitch('${user.role === 'admin' ? 'student' : 'admin'}')">
-          Switch to ${user.role === 'admin' ? 'Student View' : 'Admin View'}
+          Try ${user.role === 'admin' ? 'Student View' : 'Admin View'}
         </button>
         <button class="btn btn-danger-ghost" onclick="window.authManager.logout()">
           Sign Out

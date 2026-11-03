@@ -1059,7 +1059,7 @@ const DEFAULT_SECTIONS = [
     id: 'countdown',
     name: 'Ongoing Flagship Event Live Countdown',
     title: 'Flagship Event Live Countdown Tracker',
-    subtitle: 'Clock is ticking. Track active sprints, pin local Hacktoberfest Fests, and claim your verified hacker pass.',
+    subtitle: 'Clock is ticking. Track active sprints, pin local Hacktoberfest Fests, and explore sample event passes.',
     enabled: true,
     order: 2
   },
@@ -1194,6 +1194,9 @@ class ClubStore {
 
     this.events = this.load(STORAGE_KEYS.EVENTS, DEFAULT_EVENTS);
     this.sections = this.load(STORAGE_KEYS.SECTIONS, DEFAULT_SECTIONS);
+    this.sections.forEach(section => {
+      if (section.subtitle) section.subtitle = section.subtitle.replace('and claim your verified hacker pass.', 'and explore sample event passes.');
+    });
     this.students = this.load(STORAGE_KEYS.STUDENTS, DEFAULT_STUDENTS);
     
     // Auto-migrate events: ensure all 27 verified open source events (including AIDN finale & 2026-2027 calendar programs) are loaded
@@ -1227,7 +1230,8 @@ class ClubStore {
     });
     this.save(STORAGE_KEYS.STUDENTS, this.students);
 
-    this.currentUser = this.load(STORAGE_KEYS.USER, this.students[0]);
+    // This static site has sample profiles, not authenticated accounts.
+    this.currentUser = this.load(STORAGE_KEYS.USER, null);
     if (this.currentUser) {
       delete this.currentUser.branch;
       if (!this.currentUser.year) this.currentUser.year = '2nd Year';
@@ -1519,12 +1523,7 @@ class ClubStore {
   }
 
   login(email, password) {
-    const found = this.students.find(s => s.email.toLowerCase() === email.toLowerCase());
-    if (found) {
-      this.setCurrentUser(found);
-      return { success: true, user: found };
-    }
-    return { success: false, message: 'Account not found. Try demo accounts or sign up!' };
+    return { success: false, message: 'Real sign-in is not configured. Choose a sample profile to explore the demo.' };
   }
 
   signup(name, email, studentId, year) {
@@ -1563,7 +1562,7 @@ class ClubStore {
     this.events = DEFAULT_EVENTS;
     this.sections = DEFAULT_SECTIONS;
     this.students = DEFAULT_STUDENTS;
-    this.currentUser = DEFAULT_STUDENTS[0];
+    this.currentUser = null;
     return true;
   }
 }

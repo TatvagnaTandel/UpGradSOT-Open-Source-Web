@@ -496,3 +496,31 @@ button, input, select, textarea {
   .brand-badge-pill { display: none; }
   .section-header-title { font-size: 1.55rem; }
 }
+
+/* Layout guards for compact navigation and content-heavy directory cards. */
+body { overflow-x: clip; max-width: 100%; }
+html { max-width: 100%; }
+.nav-container, .nav-right-actions, .nav-links { flex-wrap: wrap; }
+.nav-container > *, .three-lab-grid > *, .gateway-card, .event-card { min-width: 0; }
+#nav-user-area { display: flex; flex-wrap: wrap; gap: 8px; }
+.user-pill-badge { text-align: left; font: inherit; background: #fff; }
+.text-highlight { color: #121212; }
+.hero-pill-badge { text-wrap: balance; }
+@media (max-width: 600px) {
+  .nav-container { padding-top: 10px; padding-bottom: 10px; }
+  .brand-wrapper { flex: 1 1 210px; }
+  .nav-right-actions { margin-left: auto; }
+  .hero-pill-badge { max-width: 100%; }
+}
+@media (min-width: 901px) {
+  .nav-container { gap: 12px; }
+  .nav-container > nav { margin-left: auto; }
+  .nav-links { gap: 12px; }
+  .nav-link { font-size: .8rem; padding: 6px; }
+  .brand-badge-pill { display: none; }
+  .brand-wrapper { gap: 10px; }
+}
+@media (min-width: 901px) and (max-width: 1120px) {
+  .nav-links { display: none; }
+  .mobile-menu-btn { display: flex; }
+}
