@@ -16,12 +16,13 @@
   <meta http-equiv="Expires" content="0">
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/style.css?v=20260929v1">
-  <link rel="stylesheet" href="css/components.css?v=20260929v1">
-  <link rel="stylesheet" href="css/three-webgl.css?v=20261029v1">
-  <link rel="stylesheet" href="css/admin.css?v=20260929v1">
+  <link rel="stylesheet" href="css/style.css?v=20261103v2">
+  <link rel="stylesheet" href="css/components.css?v=20261103v2">
+  <link rel="stylesheet" href="css/three-webgl.css?v=20261103v2">
+  <link rel="stylesheet" href="css/admin.css?v=20261103v2">
 </head>
 <body class="page-home">
+  <div class="demo-notice">Community portal preview · Sample profiles, rankings and passes · Changes stay in this browser.</div>
 
   <!-- Floating Toast Notification -->
   <div id="toast-notification" class="toast" role="alert" aria-live="polite">
@@ -50,7 +51,7 @@
           <li data-hacktoberfest-element="nav"><a href="fests.html" class="nav-link">🎃 Regional Fests</a></li>
           <li><a href="events.html" class="nav-link">🚀 Programs</a></li>
           <li><a href="leaderboard.html" class="nav-link">🏆 Leaderboard</a></li>
-          <li><a href="admin.html" class="nav-link admin-tab-link">👑 Admin</a></li>
+          <li><a href="admin.html" class="nav-link admin-tab-link">👑 Admin demo</a></li>
         </ul>
       </nav>
 
@@ -74,7 +75,7 @@
         <a href="fests.html" class="mobile-nav-link" data-hacktoberfest-element="nav" onclick="window.app.closeMobileNav()">🎃 Hacktoberfest Regional Fests</a>
         <a href="events.html" class="mobile-nav-link" onclick="window.app.closeMobileNav()">🚀 Open Source Programs</a>
         <a href="leaderboard.html" class="mobile-nav-link" onclick="window.app.closeMobileNav()">🏆 Dev XP Leaderboard</a>
-        <a href="admin.html" class="mobile-nav-link" onclick="window.app.closeMobileNav()">👑 Admin Command Center</a>
+        <a href="admin.html" class="mobile-nav-link" onclick="window.app.closeMobileNav()">👑 Admin demo</a>
       </div>
     </div>
   </header>
@@ -95,7 +96,7 @@
           </h1>
           
           <p class="hero-description" id="hero-main-desc">
-            The premier campus community for full-stack developers, UI architects, and AI builders. Explore 50 Hacktoberfest fests, track 27 open-source programs, and compete for verified digital Hacker Passes.
+            The premier campus community for full-stack developers, UI architects, and AI builders. Explore 50 Hacktoberfest fests, track 27 open-source programs, and try sample digital event passes.
           </p>
 
           <div class="hero-cta-group">
@@ -113,37 +114,22 @@
             </a>
           </div>
 
-          <!-- Interactive 3D WebGL Hero Canvas Container -->
-          <div class="hero-webgl-wrapper">
-            <div id="three-hero-canvas-container">
-              <canvas id="three-hero-canvas"></canvas>
-
-              <!-- Neo-Brutalist HUD Overlay -->
-              <div class="three-hud-overlay">
-                <div class="three-hud-pill">
-                  <span class="three-hud-dot"></span>
-                  <span id="three-hud-status">THREE.JS • WEBGL 2.0 • 60 FPS</span>
-                </div>
-                <div class="three-hud-actions">
-                  <button id="three-btn-mode" class="three-hud-btn" title="Cycle 3D Shader Rendering Modes">
-                    MODE: SOLID
-                  </button>
-                  <button id="three-btn-spin" class="three-hud-btn" title="Toggle Auto-Rotation">
-                    AUTO: ON
-                  </button>
-                  <button id="three-btn-reset" class="three-hud-btn" title="Reset 3D Perspective">
-                    RESET
-                  </button>
-                </div>
-              </div>
-
-              <!-- HUD Bottom Info -->
-              <div class="three-hud-status-bar">
-                <span class="three-hud-hint">⚡ INTERACTIVE 3D: HOVER &amp; DRAG MESHES • GSAP PHYSICS ENABLED</span>
-                <span class="three-hud-hint">UGSOT 3D ENGINE</span>
-              </div>
+          <figure class="hero-webgl-wrapper">
+            <div class="scene-heading"><span class="scene-eyebrow">THE BUILDER'S MARK</span><span>Code. Collaborate. Contribute.</span></div>
+            <div id="three-hero-canvas-container" class="scene-viewport">
+              <img class="scene-fallback" src="assets/code-sculpture.svg" alt="Yellow and pink code brackets on a warm stone pedestal" width="900" height="420">
+              <canvas id="three-hero-canvas" tabindex="0" role="img" aria-label="3D code sculpture. Use arrow keys to rotate; Home to reset; Space to pause." aria-describedby="hero-scene-help"></canvas>
+              <span class="scene-fallback-note">Static preview · Interactive 3D unavailable</span>
             </div>
-          </div>
+            <figcaption class="scene-toolbar">
+              <span id="hero-scene-help">Drag to explore · Arrow keys to rotate</span>
+              <div class="scene-actions">
+                <button id="three-btn-mode" class="three-hud-btn" aria-pressed="false" data-hero-control>View: solid</button>
+                <button id="three-btn-spin" class="three-hud-btn" aria-pressed="true" data-hero-control>Pause motion</button>
+                <button id="three-btn-reset" class="three-hud-btn" data-hero-control>Reset</button>
+              </div>
+            </figcaption>
+          </figure>
         </div>
       </div>
 
@@ -287,7 +273,7 @@
             <div class="gateway-badge" style="background: #4cc9f0;">🚀 27 ROADMAP PROGRAMS</div>
             <h3 class="gateway-title">Open Source Programs & Fellowships</h3>
             <p class="gateway-desc">
-              Verified timelines, stipends, and hacker passes for ETHIndia, SIH, Imagine Cup, GSoC, LFX Mentorship, SWoC, MLH Fellowship, and research fellowships. Filter by track, status, and earn Dev XP.
+              Program overviews, sample timelines and event pass previews for ETHIndia, SIH, Imagine Cup, GSoC, LFX Mentorship, SWoC, MLH Fellowship, and research fellowships. Filter by track, status, and earn Dev XP.
             </p>
             <div class="gateway-stats-row">
               <span class="gateway-stat-chip">💰 Up to $100,000 Prizes</span>
@@ -306,7 +292,7 @@
             <div class="gateway-badge" style="background: #70e000;">🏆 COMMUNITY RANKS</div>
             <h3 class="gateway-title">Student Dev XP Leaderboard</h3>
             <p class="gateway-desc">
-              Track verified open-source contributions, workshop attendance, hackathon victories, and academic year hacker standings across the upGrad School of Technology builder community.
+              Explore sample open-source contributions, workshop attendance, hackathon victories, and academic year hacker standings across the upGrad School of Technology builder community.
             </p>
             <div class="gateway-stats-row">
               <span class="gateway-stat-chip">⚡ Level 1 – Level 10</span>
@@ -414,8 +400,8 @@
 
           <div class="bento-box">
             <div class="bento-icon">🎟️</div>
-            <h3>Verified Digital Hacker Passes</h3>
-            <p>Instant ticket generation with dynamic QR codes for campus lab entry, swag collection, and verifiable attendance proof.</p>
+            <h3>Digital Event Pass Preview</h3>
+            <p>Preview an event pass in 2D or 3D. Actual admission and attendance verification require an organizer-backed registration service.</p>
           </div>
 
           <!-- Interactive Terminal Easter Egg Bento Box -->
@@ -482,7 +468,7 @@
           </div>
           <div class="bento-box">
             <h4>How do the Digital Hacker Passes work?</h4>
-            <p style="margin-top:8px;">When you RSVP to an event, an official UGSOT Hacker Pass is generated with your name, student ID, and unique scan code. Show it at the venue entrance to check in.</p>
+            <p style="margin-top:8px;">The demo generates a sample pass for the selected profile. The code is decorative; real admission requires organizer registration and server-side verification.</p>
           </div>
           <div class="bento-box">
             <h4>Can I participate online or hybrid?</h4>
@@ -500,53 +486,29 @@
     <section class="three-lab-section" id="three-lab-section">
       <div class="container">
         <div class="section-header three-lab-header">
-          <span class="section-tag" style="background: #00f0ff; color: #121212;">HARDWARE ACCELERATED</span>
-          <h2 class="section-header-title" style="color: #ffffff;">Three.js WebGL &amp; GSAP Real-Time Interactive Lab</h2>
-          <p class="section-header-sub" style="color: #94a3b8;">
-            Experience native WebGL 2.0 rendering and GSAP physics-based motion in action. Every collegiate program, pass, and timer is synchronized with hardware-accelerated 3D coordinate geometry.
-          </p>
+          <span class="section-tag">A LITTLE CREATIVE CODING</span>
+          <h2 class="section-header-title">An open playground for curious minds.</h2>
+          <p class="section-header-sub">One form, a different perspective. Explore three geometries built in the browser.</p>
         </div>
-
         <div class="three-lab-grid">
-          <div id="three-lab-canvas-container">
-            <canvas id="three-lab-canvas"></canvas>
-            <div class="three-hud-overlay">
-              <div class="three-hud-pill">
-                <span class="three-hud-dot" style="background: #ff3366; box-shadow: 0 0 8px #ff3366;"></span>
-                <span>WEBGL LAB VIEWPORT</span>
-              </div>
+          <figure class="lab-figure">
+            <div id="three-lab-canvas-container" class="scene-viewport">
+              <img class="scene-fallback" src="assets/code-sculpture.svg" alt="A static code sculpture illustration" width="900" height="420" loading="lazy">
+              <canvas id="three-lab-canvas" tabindex="0" role="img" aria-label="Geometry playground. Arrow keys rotate; Home resets; Space pauses." aria-describedby="lab-scene-help"></canvas>
+              <span class="scene-fallback-note">Static preview · Interactive 3D unavailable</span>
             </div>
-            <div class="three-hud-status-bar">
-              <span class="three-hud-hint">DRAG TO INSPECT 3D GEOMETRY • REAL-TIME VERTEX SHADERS</span>
-            </div>
-          </div>
-
+            <figcaption class="scene-toolbar"><span id="lab-geometry-name" aria-live="polite">01 / Continuous loop</span><span id="lab-scene-help">Drag or use arrow keys</span></figcaption>
+          </figure>
           <div class="three-lab-sidebar">
-            <h3 style="font-family: var(--font-heading); font-size: 1.25rem; color: #ffffff;">3D Tech Metrics</h3>
-            
-            <div class="three-lab-stat-box">
-              <div class="three-lab-stat-label">GRAPHICS PIPELINE</div>
-              <div class="three-lab-stat-value">WebGL 2.0 + Shaders</div>
+            <span class="scene-eyebrow">LOOK A LITTLE CLOSER</span>
+            <h3>Made of possibilities.</h3>
+            <p>A loop, a faceted solid, an open structure. Small experiments are where bigger ideas begin.</p>
+            <button id="lab-btn-next" class="btn btn-primary" data-lab-control>Next geometry →</button>
+            <div class="scene-actions">
+              <button id="lab-btn-spin" class="three-hud-btn" aria-pressed="true" data-lab-control>Pause motion</button>
+              <button id="lab-btn-reset" class="three-hud-btn" data-lab-control>Reset</button>
             </div>
-
-            <div class="three-lab-stat-box">
-              <div class="three-lab-stat-label">3D ENGINE RUNTIME</div>
-              <div class="three-lab-stat-value">Three.js r128</div>
-            </div>
-
-            <div class="three-lab-stat-box">
-              <div class="three-lab-stat-label">PHYSICS &amp; MOTION</div>
-              <div class="three-lab-stat-value">GSAP 3.12 Timelines</div>
-            </div>
-
-            <div class="three-lab-stat-box">
-              <div class="three-lab-stat-label">PERSPECTIVE CARD TILT</div>
-              <div class="three-lab-stat-value">Quaternion / Euler 3D</div>
-            </div>
-
-            <button class="btn btn-outline" style="width: 100%;" onclick="if(window.threeLabScene) window.threeLabScene.cycleGeometry()">
-              ⚡ Switch Lab 3D Geometry
-            </button>
+            <p class="scene-footnote">Motion respects your device preferences. Scenes pause when out of view.</p>
           </div>
         </div>
       </div>
@@ -592,8 +554,8 @@
     <div class="modal-dialog">
       <button class="modal-close-btn" aria-label="Close modal">✕</button>
       <div style="padding: 24px;">
-        <h3 style="font-family: var(--font-heading); margin-bottom: 6px;">🎟️ Your Official UGSOT Hacker Pass</h3>
-        <p class="text-muted small" style="margin-bottom: 20px;">Present this digital badge at the check-in desk or campus lab.</p>
+        <h3 style="font-family: var(--font-heading); margin-bottom: 6px;">🎟️ Your Sample UGSOT Event Pass</h3>
+        <p class="text-muted small" style="margin-bottom: 20px;">Design preview only. This sample is not valid for venue entry.</p>
         <div id="hacker-pass-render">
           <!-- Rendered by events.js -->
         </div>
@@ -615,19 +577,20 @@
   <script src="vendor/gsap.min.js"></script>
 
   <!-- Core Scripts -->
-  <script src="js/store.js?v=20260929v1"></script>
-  <script src="js/countdown.js?v=20260929v1"></script>
-  <script src="js/events.js?v=20260929v1"></script>
-  <script src="js/hacktoberfest-fests.js?v=20260929v1"></script>
-  <script src="js/auth.js?v=20260929v1"></script>
-  <script src="js/admin.js?v=20260929v1"></script>
+  <script src="js/store.js?v=20261103v2"></script>
+  <script src="js/countdown.js?v=20261103v2"></script>
+  <script src="js/events.js?v=20261103v2"></script>
+  <script src="js/hacktoberfest-fests.js?v=20261103v2"></script>
+  <script src="js/auth.js?v=20261103v2"></script>
+  <script src="js/admin.js?v=20261103v2"></script>
 
   <!-- Three.js WebGL & GSAP Controllers -->
-  <script src="js/three-hero.js?v=20261029v1"></script>
-  <script src="js/three-pass-viewer.js?v=20261029v1"></script>
-  <script src="js/three-lab.js?v=20261029v1"></script>
-  <script src="js/gsap-effects.js?v=20261029v1"></script>
+  <script src="js/three-stage.js?v=20261103v2"></script>
+  <script src="js/three-hero.js?v=20261103v2"></script>
+  <script src="js/three-pass-viewer.js?v=20261103v2"></script>
+  <script src="js/three-lab.js?v=20261103v2"></script>
+  <script src="js/gsap-effects.js?v=20261103v2"></script>
 
-  <script src="js/app.js?v=20260929v1"></script>
+  <script src="js/app.js?v=20261103v2"></script>
 </body>
 </html>

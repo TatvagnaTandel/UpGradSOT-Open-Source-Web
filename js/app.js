@@ -313,7 +313,8 @@ class App {
       outputEl.scrollTop = outputEl.scrollHeight;
     };
 
-    appendLine(`<span class="term-prompt">ugsot@opensource:~$</span> ${cmd}`);
+    const safeCmd = cmd.replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
+    appendLine(`<span class="term-prompt">ugsot@opensource:~$</span> ${safeCmd}`);
 
     switch (cmd) {
       case 'help':
@@ -322,7 +323,7 @@ class App {
           • <strong>pune</strong>: list all 5 official Hacktoberfest Pune host campuses<br>
           • <strong>fests</strong>: show regional Hacktoberfest hubs breakdown (50 fests)<br>
           • <strong>countdown</strong>: show remaining time to flagship event<br>
-          • <strong>whoami</strong>: display active authenticated session<br>
+          • <strong>whoami</strong>: display selected sample profile<br>
           • <strong>matrix</strong>: trigger neon matrix pulse<br>
           • <strong>clear</strong>: clear the terminal console`);
         break;
@@ -363,7 +364,7 @@ class App {
         if (user) {
           appendLine(`Logged in as <strong>${user.name}</strong> (${user.email}) [Role: ${user.role}] - XP: ${user.devXp}`);
         } else {
-          appendLine('No session active. Type login or click Sign In.');
+          appendLine('No sample profile selected. Click Explore demo.');
         }
         break;
       case 'matrix':
@@ -374,7 +375,7 @@ class App {
         outputEl.innerHTML = '';
         break;
       default:
-        appendLine(`command not found: "${cmd}". Type <strong>help</strong> for available commands.`, true);
+        appendLine(`command not found: "${safeCmd}". Type <strong>help</strong> for available commands.`, true);
     }
   }
 

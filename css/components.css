@@ -1958,3 +1958,6 @@
   box-shadow: var(--shadow-sm);
 }
 
+
+/* Keep white button text legible in interactive states. */
+.btn-primary:hover { background: #bd1821; }

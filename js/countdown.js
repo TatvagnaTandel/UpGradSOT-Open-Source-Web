@@ -100,7 +100,7 @@ class CountdownEngine {
     if (rsvpBtn) {
       const user = window.clubStore ? window.clubStore.getCurrentUser() : null;
       const isRsvpd = user && user.rsvps && user.rsvps.includes(this.targetEvent.id);
-      rsvpBtn.innerHTML = isRsvpd ? `✓ You're In (Hacker Pass)` : (isOngoing ? `⚡ Register / Join Repo Now` : `⚡ Claim Your Spot Now`);
+      rsvpBtn.innerHTML = isRsvpd ? `View sample pass` : `Try demo RSVP`;
       rsvpBtn.className = isRsvpd ? 'btn btn-glow-success' : 'btn btn-glow-primary';
       rsvpBtn.onclick = () => {
         if (window.eventsManager) {

@@ -16,12 +16,13 @@
   <meta http-equiv="Expires" content="0">
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/style.css?v=20260929v1">
-  <link rel="stylesheet" href="css/components.css?v=20260929v1">
-  <link rel="stylesheet" href="css/three-webgl.css?v=20261029v1">
-  <link rel="stylesheet" href="css/admin.css?v=20260929v1">
+  <link rel="stylesheet" href="css/style.css?v=20261103v2">
+  <link rel="stylesheet" href="css/components.css?v=20261103v2">
+  <link rel="stylesheet" href="css/three-webgl.css?v=20261103v2">
+  <link rel="stylesheet" href="css/admin.css?v=20261103v2">
 </head>
 <body class="page-admin">
+  <div class="demo-notice">Community portal preview · Sample profiles, rankings and passes · Changes stay in this browser.</div>
 
   <!-- Floating Toast Notification -->
   <div id="toast-notification" class="toast" role="alert" aria-live="polite">
@@ -50,7 +51,7 @@
           <li data-hacktoberfest-element="nav"><a href="fests.html" class="nav-link">🎃 Regional Fests</a></li>
           <li><a href="events.html" class="nav-link">🚀 Programs</a></li>
           <li><a href="leaderboard.html" class="nav-link">🏆 Leaderboard</a></li>
-          <li><a href="admin.html" class="nav-link admin-tab-link active">👑 Admin</a></li>
+          <li><a href="admin.html" class="nav-link admin-tab-link active">👑 Admin demo</a></li>
         </ul>
       </nav>
 
@@ -74,7 +75,7 @@
         <a href="fests.html" class="mobile-nav-link" data-hacktoberfest-element="nav" onclick="window.app.closeMobileNav()">🎃 Hacktoberfest Regional Fests</a>
         <a href="events.html" class="mobile-nav-link" onclick="window.app.closeMobileNav()">🚀 Open Source Programs</a>
         <a href="leaderboard.html" class="mobile-nav-link" onclick="window.app.closeMobileNav()">🏆 Dev XP Leaderboard</a>
-        <a href="admin.html" class="mobile-nav-link active" onclick="window.app.closeMobileNav()">👑 Admin Command Center</a>
+        <a href="admin.html" class="mobile-nav-link active" onclick="window.app.closeMobileNav()">👑 Admin demo</a>
       </div>
     </div>
   </header>
@@ -85,9 +86,9 @@
 
       <div class="admin-top-bar" style="margin-top: 10px;">
         <div>
-          <span class="badge badge-flagship">ADMINISTRATOR VIEW</span>
+          <span class="badge badge-flagship">BROWSER-LOCAL ADMIN DEMO</span>
           <h1 class="admin-header-title" style="font-size: 2.2rem;">👑 Club Lead Command Center</h1>
-          <p class="text-muted">Manage live events, modify website sections, and oversee student registrations & XP rewards.</p>
+          <p class="text-muted">Explore the CMS with sample data. Changes affect this browser only; this page is not an authenticated admin service.</p>
         </div>
 
         <div style="display: flex; gap: 10px; flex-wrap: wrap;">
@@ -356,17 +357,17 @@
   <script src="vendor/gsap.min.js"></script>
 
   <!-- Scripts -->
-  <script src="js/store.js?v=20260929v1"></script>
-  <script src="js/countdown.js?v=20260929v1"></script>
-  <script src="js/events.js?v=20260929v1"></script>
-  <script src="js/hacktoberfest-fests.js?v=20260929v1"></script>
-  <script src="js/auth.js?v=20260929v1"></script>
-  <script src="js/admin.js?v=20260929v1"></script>
+  <script src="js/store.js?v=20261103v2"></script>
+  <script src="js/countdown.js?v=20261103v2"></script>
+  <script src="js/events.js?v=20261103v2"></script>
+  <script src="js/hacktoberfest-fests.js?v=20261103v2"></script>
+  <script src="js/auth.js?v=20261103v2"></script>
+  <script src="js/admin.js?v=20261103v2"></script>
 
   <!-- GSAP Controllers -->
-  <script src="js/gsap-effects.js?v=20261029v1"></script>
+  <script src="js/gsap-effects.js?v=20261103v2"></script>
 
-  <script src="js/app.js?v=20260929v1"></script>
+  <script src="js/app.js?v=20261103v2"></script>
   <script>
     window.addEventListener('DOMContentLoaded', () => {
       // Auto-unlock admin dashboard for direct page view
