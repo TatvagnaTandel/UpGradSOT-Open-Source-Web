@@ -18,7 +18,7 @@
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/style.css?v=20261103v2">
   <link rel="stylesheet" href="css/components.css?v=20261103v2">
-  <link rel="stylesheet" href="css/three-webgl.css?v=20261103v2">
+  <link rel="stylesheet" href="css/three-webgl.css?v=20261103v3">
   <link rel="stylesheet" href="css/admin.css?v=20261103v2">
 </head>
 <body class="page-admin">
@@ -59,7 +59,7 @@
         <div id="nav-user-area">
           <!-- Populated by auth.js -->
         </div>
-        <button id="mobile-menu-toggle" class="mobile-menu-btn" aria-label="Toggle navigation menu">
+        <button id="mobile-menu-toggle" class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
           <span class="hamburger-bar"></span>
           <span class="hamburger-bar"></span>
           <span class="hamburger-bar"></span>
@@ -365,9 +365,9 @@
   <script src="js/admin.js?v=20261103v2"></script>
 
   <!-- GSAP Controllers -->
-  <script src="js/gsap-effects.js?v=20261103v2"></script>
+  <script src="js/gsap-effects.js?v=20261103v3"></script>
 
-  <script src="js/app.js?v=20261103v2"></script>
+  <script src="js/app.js?v=20261103v3"></script>
   <script>
     window.addEventListener('DOMContentLoaded', () => {
       // Auto-unlock admin dashboard for direct page view

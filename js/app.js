@@ -426,6 +426,7 @@ class App {
       e.stopPropagation();
       const isOpen = drawer.classList.toggle('open');
       toggleBtn.classList.toggle('active', isOpen);
+      toggleBtn.setAttribute('aria-expanded', String(isOpen));
     });
 
     document.addEventListener('click', (e) => {
@@ -453,7 +454,10 @@ class App {
   closeMobileNav() {
     const toggleBtn = document.getElementById('mobile-menu-toggle');
     const drawer = document.getElementById('mobile-nav-drawer');
-    if (toggleBtn) toggleBtn.classList.remove('active');
+    if (toggleBtn) {
+      toggleBtn.classList.remove('active');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+    }
     if (drawer) drawer.classList.remove('open');
   }
 }

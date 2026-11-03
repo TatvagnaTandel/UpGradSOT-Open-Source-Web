@@ -54,3 +54,48 @@
   #auth-modal-content { padding: 24px 20px; }
   .demo-auth-actions .btn { width: 100%; }
 }
+
+/* Shared motion language across home, directories, leaderboard and admin. */
+:root {
+  --motion-fast: 160ms;
+  --motion-panel: 240ms;
+  --motion-ease: cubic-bezier(.2, .7, .2, 1);
+}
+.btn, .three-hud-btn, .pass-view-switch-btn, .filter-pill, .status-toggle-btn,
+.nav-link, .mobile-nav-link, .admin-nav-item {
+  transition: transform var(--motion-fast) var(--motion-ease),
+    box-shadow var(--motion-fast) var(--motion-ease),
+    background-color var(--motion-fast) ease, color var(--motion-fast) ease,
+    border-color var(--motion-fast) ease;
+}
+.btn:active, .three-hud-btn:active, .filter-pill:active { transform: translate(1px, 1px); }
+.modal { visibility: hidden; transition: opacity var(--motion-panel) ease, visibility 0s linear var(--motion-panel); }
+.modal.active { visibility: visible; transition-delay: 0s; }
+.modal-dialog { opacity: .6; transform: translateY(14px); transition: opacity var(--motion-panel) ease, transform var(--motion-panel) var(--motion-ease); }
+.modal.active .modal-dialog { opacity: 1; transform: translateY(0); }
+.mobile-nav-drawer { position: absolute; top: 100%; left: 0; width: 100%; transition: none; }
+.mobile-nav-drawer.open .mobile-nav-links { animation: menu-arrive var(--motion-panel) var(--motion-ease) both; }
+.admin-tab-pane:not(.hidden) { animation: panel-arrive var(--motion-panel) ease both; }
+@keyframes menu-arrive { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes panel-arrive { from { opacity: 0; } to { opacity: 1; } }
+@media (hover: hover) and (pointer: fine) {
+  .gateway-card, .event-card, .fest-card, .manifesto-card {
+    transition: transform var(--motion-fast) var(--motion-ease), box-shadow var(--motion-fast) var(--motion-ease);
+  }
+  .gateway-card:hover, .event-card:hover, .fest-card:hover, .manifesto-card:hover {
+    transform: translateY(-3px); box-shadow: var(--shadow-hover);
+  }
+  .tech-marquee-wrapper:hover .marquee-track, .tech-marquee-wrapper:focus-within .marquee-track { animation-play-state: paused; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .modal-dialog, .gateway-card:hover, .event-card:hover, .fest-card:hover, .manifesto-card:hover { transform: none; }
+}
+/* Same-level page navigation cross-fades, with the header kept in place. */
+@view-transition { navigation: auto; }
+.navbar { view-transition-name: site-header; }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: 180ms; }
+::view-transition-group(site-header), ::view-transition-old(site-header), ::view-transition-new(site-header) { animation: none; }
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+}

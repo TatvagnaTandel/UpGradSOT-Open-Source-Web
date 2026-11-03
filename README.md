@@ -20,6 +20,12 @@ A student community portal for discovering open-source programs, following event
 
 Choose **Explore demo** to try a sample student or admin profile. The admin demo is publicly accessible and must never contain real student records.
 
+## Motion across the website
+
+All five pages share staggered entrances for headings, cards and rankings; on-scroll reveals; dialog, mobile menu and admin-tab transitions; button feedback; and visible-only countdown digit updates. New search/filter cards are picked up automatically. Supported browsers also cross-fade between pages while the header stays steady.
+
+Motion uses the browser animation API, cancels when keyboard focus enters a moving element, pauses in hidden tabs, and responds immediately to changes in reduced-motion preferences. Content stays accessible if JavaScript or animation support is unavailable.
+
 ## 3D with a purpose
 
 The hero uses a beveled code sculpture with warm materials, neutral lighting, and a stable pedestal. The lab presents one geometry at a time. Both support pointer dragging, keyboard rotation, reset and pause. Controls sit outside the canvas so they remain readable on phones.
