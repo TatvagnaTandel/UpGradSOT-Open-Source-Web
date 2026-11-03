@@ -1,248 +1,122 @@
-/**
- * upGrad School of Technology — Open Source Events
- * GSAP Motion & 3D Perspective Card Physics
- */
-
+/** Site-wide motion, using the browser animation API with visible-by-default content. */
 (function () {
   'use strict';
-
+  const REVEALS = [
+    '.hero-pill-badge', '.hero-title', '.hero-description', '.hero-cta-group',
+    '.section-header', '.admin-top-bar', '.events-filter-bar', '.table-toolbar',
+    '.countdown-container-card', '.gateway-card', '.event-card', '.fest-card',
+    '.manifesto-card', '.leaderboard-item', '.podium-card', '.metric-card',
+    '.faq-card', '.terminal-window', '.lab-figure', '.three-lab-sidebar',
+    '.table-responsive-container'
+  ].join(',');
   class GsapEffectsEngine {
     constructor() {
-      this.isGsapAvailable = typeof gsap !== 'undefined';
-      if (!this.isGsapAvailable) {
-        console.warn('[GsapEffectsEngine] GSAP is not loaded.');
-        return;
+      this.media = window.matchMedia('(prefers-reduced-motion: reduce)');
+      this.seen = new WeakSet();
+      this.pending = new Set();
+      this.active = new Map();
+      this.listeners = [];
+      this.observers = [];
+      if (typeof IntersectionObserver !== 'undefined') {
+        this.reveals = new IntersectionObserver(entries => {
+          let stagger = 0;
+          entries.forEach(entry => {
+            if (!entry.isIntersecting || this.media.matches || document.hidden) return;
+            this.reveal(entry.target, Math.min(stagger++ * 45, 180));
+          });
+        }, { threshold: 0.06 });
       }
-
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      this.init();
-    }
-
-    init() {
-      // The first viewport paints immediately, including its static 3D fallback.
-      // Content cards stay stable so links and text are easy to target.
-      // Buttons retain their position under the pointer.
-      this.hookCountdownEngine();
-      this.initModalTransitions();
-    }
-
-    // 1. Hero Stagger Entrance Choreography
-    initHeroEntrance() {
-      const hero = document.querySelector('.hero-section');
-      if (!hero) return;
-
-      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-
-      const badge = hero.querySelector('.hero-pill-badge');
-      const title = hero.querySelector('.hero-title');
-      const desc = hero.querySelector('.hero-description');
-      const btns = hero.querySelectorAll('.hero-cta-group .btn');
-      const canvasBox = document.getElementById('three-hero-canvas-container');
-      const marquee = document.querySelector('.tech-marquee-wrapper');
-
-      if (badge) {
-        tl.fromTo(badge, { scale: 0.8, opacity: 0, y: -20 }, { scale: 1, opacity: 1, y: 0, duration: 0.5 });
-      }
-
-      if (title) {
-        tl.fromTo(title, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, '-=0.25');
-      }
-
-      if (desc) {
-        tl.fromTo(desc, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, '-=0.3');
-      }
-
-      if (btns && btns.length) {
-        tl.fromTo(btns, { y: 15, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.08, duration: 0.45, ease: 'back.out(1.5)' }, '-=0.2');
-      }
-
-      if (canvasBox) {
-        tl.fromTo(canvasBox, { scale: 0.95, opacity: 0, y: 30 }, { scale: 1, opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, '-=0.3');
-      }
-
-      if (marquee) {
-        tl.fromTo(marquee, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 }, '-=0.4');
-      }
-    }
-
-    // 2. Physics-based 3D Perspective Card Tilt
-    init3dCardTilt() {
-      const tiltSelectors = [
-        '.countdown-container-card',
-        '.gateway-card',
-        '.event-card',
-        '.fest-card',
-        '.manifesto-card',
-        '.stat-card',
-        '.leaderboard-rank-card'
-      ];
-
-      const cards = document.querySelectorAll(tiltSelectors.join(', '));
-
-      cards.forEach((card) => {
-        // Setup card wrapper for 3D perspective
-        card.classList.add('gsap-3d-tilt');
-
-        // Add dynamic glare layer if missing
-        if (!card.querySelector('.card-glare-overlay')) {
-          const glare = document.createElement('div');
-          glare.className = 'card-glare-overlay';
-          card.style.position = 'relative';
-          card.appendChild(glare);
+      // Observe inserted cards as search/filter/admin results are rendered.
+      this.dom = new MutationObserver(records => {
+        records.forEach(record => {
+          record.addedNodes.forEach(node => { if (node.nodeType === 1) this.scan(node); });
+        });
+        for (const node of this.pending) {
+          if (!node.isConnected) { this.pending.delete(node); this.reveals?.unobserve(node); }
         }
-
-        const glare = card.querySelector('.card-glare-overlay');
-
-        // Mouse move tracking
-        const onMouseMove = (e) => {
-          const rect = card.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-
-          const normX = (x / rect.width - 0.5) * 2; // -1 to 1
-          const normY = (y / rect.height - 0.5) * 2; // -1 to 1
-
-          const maxTilt = 10; // degrees
-          const rotateY = normX * maxTilt;
-          const rotateX = -normY * maxTilt;
-
-          gsap.to(card, {
-            rotateY: rotateY,
-            rotateX: rotateX,
-            transformPerspective: 1000,
-            scale: 1.015,
-            duration: 0.25,
-            ease: 'power2.out'
-          });
-
-          if (glare) {
-            const glareX = (x / rect.width) * 100;
-            const glareY = (y / rect.height) * 100;
-            glare.style.background = `radial-gradient(circle at ${glareX}% ${glareY}%, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 65%)`;
-            glare.style.opacity = '1';
-          }
-        };
-
-        const onMouseLeave = () => {
-          gsap.to(card, {
-            rotateY: 0,
-            rotateX: 0,
-            scale: 1,
-            duration: 0.6,
-            ease: 'elastic.out(1, 0.4)'
-          });
-
-          if (glare) {
-            glare.style.opacity = '0';
-          }
-        };
-
-        card.addEventListener('mousemove', onMouseMove);
-        card.addEventListener('mouseleave', onMouseLeave);
+        for (const [node] of this.active) if (!node.isConnected) this.cancel(node);
+      });
+      this.dom.observe(document.body, { childList: true, subtree: true });
+      this.bind(this.media, 'change', () => this.syncPreference());
+      this.bind(document, 'visibilitychange', () => {
+        this.active.forEach(animation => document.hidden ? animation.pause() : animation.play());
+        if (!document.hidden) this.scan(document);
+      });
+      this.bind(document, 'focusin', event => {
+        // Never animate a control away from a keyboard user's current focus.
+        for (const [node] of this.active) if (node.contains(event.target)) this.cancel(node);
+      });
+      this.bind(window, 'pagehide', event => { if (!event.persisted) this.destroy(); });
+      this.syncPreference();
+      this.hookCountdown();
+    }
+    bind(target, type, listener) {
+      target.addEventListener(type, listener);
+      this.listeners.push(() => target.removeEventListener(type, listener));
+    }
+    syncPreference() {
+      document.documentElement.dataset.motion = this.media.matches ? 'reduced' : 'full';
+      if (this.media.matches) {
+        for (const [node] of this.active) this.cancel(node);
+        this.pending.clear(); this.reveals?.disconnect();
+      } else this.scan(document);
+    }
+    scan(root) {
+      if (this.media.matches || !this.reveals) return;
+      const nodes = [...root.querySelectorAll(REVEALS)];
+      if (root.nodeType === 1 && root.matches(REVEALS)) nodes.unshift(root);
+      nodes.forEach(node => {
+        if (!this.seen.has(node) && !this.pending.has(node)) {
+          this.pending.add(node); this.reveals.observe(node);
+        }
       });
     }
-
-    // 3. Interactive Button Physics (Subtle Magnetic Pull)
-    initButtonPhysics() {
-      const buttons = document.querySelectorAll('.btn-primary, .btn-glow-primary, .btn-outline');
-
-      buttons.forEach((btn) => {
-        btn.addEventListener('mousemove', (e) => {
-          const rect = btn.getBoundingClientRect();
-          const x = e.clientX - rect.left - rect.width / 2;
-          const y = e.clientY - rect.top - rect.height / 2;
-
-          gsap.to(btn, {
-            x: x * 0.15,
-            y: y * 0.15,
-            duration: 0.2,
-            ease: 'power1.out'
-          });
-        });
-
-        btn.addEventListener('mouseleave', () => {
-          gsap.to(btn, {
-            x: 0,
-            y: 0,
-            duration: 0.4,
-            ease: 'elastic.out(1, 0.3)'
-          });
-        });
-      });
+    reveal(node, delay = 0) {
+      if (this.seen.has(node)) return;
+      this.seen.add(node); this.pending.delete(node); this.reveals?.unobserve(node);
+      if (node.contains(document.activeElement)) return;
+      this.play(node, [
+        { opacity: 0, translate: '0 14px' },
+        { opacity: 1, translate: '0 0' }
+      ], { duration: 420, delay });
     }
-
-    // 4. Hook Countdown Engine for Digit Bounce
-    hookCountdownEngine() {
-      const prevVals = { weeks: '', days: '', hours: '', mins: '', secs: '' };
-
-      const digitIds = [
-        { id: 'timer-weeks', key: 'weeks' },
-        { id: 'timer-days', key: 'days' },
-        { id: 'timer-hours', key: 'hours' },
-        { id: 'timer-minutes', key: 'mins' },
-        { id: 'timer-seconds', key: 'secs' }
-      ];
-
-      // Mutation Observer on digit boxes
-      digitIds.forEach(({ id, key }) => {
-        const el = document.getElementById(id);
-        if (!el) return;
-
-        el.classList.add('timer-digit', 'gsap-ticking');
-
+    play(node, keyframes, options) {
+      if (this.media.matches || document.hidden || typeof node.animate !== 'function') return;
+      this.cancel(node);
+      const animation = node.animate(keyframes, {
+        easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'backwards', ...options
+      });
+      this.active.set(node, animation);
+      const clear = () => { if (this.active.get(node) === animation) this.active.delete(node); };
+      animation.addEventListener('finish', clear, { once: true });
+      animation.addEventListener('cancel', clear, { once: true });
+    }
+    cancel(node) {
+      this.active.get(node)?.cancel(); this.active.delete(node);
+    }
+    hookCountdown() {
+      document.querySelectorAll('#timer-weeks, #timer-days, #timer-hours, #timer-minutes, #timer-seconds').forEach(node => {
+        let previous = node.textContent;
         const observer = new MutationObserver(() => {
-          const currentVal = el.textContent.trim();
-          if (currentVal !== prevVals[key] && prevVals[key] !== '') {
-            this.punchDigit(el);
+          const next = node.textContent;
+          const bounds = node.getBoundingClientRect();
+          if (next !== previous && bounds.bottom > 0 && bounds.top < window.innerHeight) {
+            this.play(node, [{ opacity: 0.35, translate: '0 5px' }, { opacity: 1, translate: '0 0' }], { duration: 180 });
           }
-          prevVals[key] = currentVal;
+          previous = next;
         });
-
-        observer.observe(el, { childList: true, characterData: true, subtree: true });
+        observer.observe(node, { childList: true, characterData: true, subtree: true });
+        this.observers.push(observer);
       });
     }
-
-    punchDigit(element) {
-      if (!this.isGsapAvailable || !element) return;
-
-      gsap.fromTo(
-        element,
-        { scale: 1.25, color: '#ff3366' },
-        { scale: 1, color: '', duration: 0.35, ease: 'back.out(2)' }
-      );
-    }
-
-    // 5. Modal 3D Opening Animation
-    initModalTransitions() {
-      const modals = document.querySelectorAll('.modal');
-      modals.forEach((modal) => {
-        const dialog = modal.querySelector('.modal-dialog');
-        if (!dialog) return;
-
-        const observer = new MutationObserver((mutations) => {
-          mutations.forEach((m) => {
-            if (m.attributeName === 'class') {
-              const isActive = modal.classList.contains('active');
-              if (isActive) {
-                gsap.fromTo(
-                  dialog,
-                  { scale: 0.85, rotateX: 10, y: 30, opacity: 0 },
-                  { scale: 1, rotateX: 0, y: 0, opacity: 1, duration: 0.35, ease: 'back.out(1.4)' }
-                );
-              }
-            }
-          });
-        });
-
-        observer.observe(modal, { attributes: true });
-      });
+    destroy() {
+      for (const [node] of this.active) this.cancel(node);
+      this.reveals?.disconnect(); this.dom.disconnect();
+      this.observers.forEach(observer => observer.disconnect());
+      this.listeners.forEach(remove => remove()); this.pending.clear();
     }
   }
-
-  // Export
+  // Retain the existing global name and script URL used by every page shell.
   window.GsapEffectsEngine = GsapEffectsEngine;
-
-  document.addEventListener('DOMContentLoaded', () => {
-    window.gsapEffects = new GsapEffectsEngine();
-  });
+  document.addEventListener('DOMContentLoaded', () => { window.gsapEffects = new GsapEffectsEngine(); });
 })();

@@ -23,3 +23,9 @@ The remaining local demo CMS is intentionally public and browser-local. It is no
 ## Verification
 
 `npm test` exercises viewport framing, animation suspension, motion preferences, pointer interaction, context failure, disposal and demo sessions. `npm run check` validates JavaScript parsing, local page references and unique page IDs. Browser QA covers home, directory, sample profile/pass and admin demo, plus phone/tablet overflow and rendered SVG documentation assets.
+
+## Follow-up: motion across all pages
+
+The shared motion controller now reveals headings, directory cards, sample rankings and admin metrics as they enter the viewport. It discovers newly rendered search/filter cards, keeps keyboard-focused content still, pauses running effects in hidden tabs and cancels effects immediately when reduced motion is enabled. No CSS hides content while waiting for JavaScript. Dialogs, mobile navigation and admin tabs use short opacity/translation transitions; supporting browsers cross-fade between pages while the header stays fixed. Hover feedback is limited to devices with a fine pointer.
+
+The controller uses the native Web Animations API and does not require GSAP. Six motion regression tests cover first-entry behavior, dynamic cards, changing preferences, focus and tab visibility. Browser frame captures verify staggered opacity changes rather than merely checking that animation code exists.
