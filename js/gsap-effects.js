@@ -1,105 +1,119 @@
-/** Scroll-triggered reveals; content stays visible without motion support. */
+/** Scroll-distance choreography. No timed autoplay for content reveals. */
 (function () {
   'use strict';
-  const REVEALS = [
-    '.hero-pill-badge', '.hero-title', '.hero-description', '.hero-cta-group', '.hero-webgl-wrapper',
-    '.section-header', '.admin-top-bar', '.events-filter-bar', '.table-toolbar',
-    '.countdown-container-card', '.gateway-card', '.event-card', '.fest-card',
-    '.manifesto-card', '.leaderboard-item', '.podium-card', '.metric-card',
-    '.faq-card', '.terminal-window', '.lab-figure', '.three-lab-sidebar',
-    '.table-responsive-container'
-  ].join(',');
+  const REVEALS = window.portalRevealSelectors || '[data-scroll-reveal]';
   class GsapEffectsEngine {
     constructor() {
       this.media = window.matchMedia('(prefers-reduced-motion: reduce)');
-      this.seen = new WeakSet();
-      this.pending = new Set();
+      this.exempt = new WeakSet();
+      this.stages = new Map();
       this.active = new Map();
       this.listeners = [];
       this.observers = [];
-      if (typeof IntersectionObserver !== 'undefined') {
-        this.reveals = new IntersectionObserver(entries => {
-          let stagger = 0;
-          entries.forEach(entry => {
-            if (!entry.isIntersecting || this.media.matches || document.hidden) return;
-            this.reveal(entry.target, Math.min(stagger++ * 45, 180));
-          });
-        }, { threshold: 0.06, rootMargin: '0px 0px -6% 0px' });
-      }
-      // Observe inserted cards as search/filter/admin results are rendered.
+      this.frame = null;
+      this.destroyed = false;
+      this.needsMeasure = false;
       this.dom = new MutationObserver(records => {
-        records.forEach(record => {
-          record.addedNodes.forEach(node => { if (node.nodeType === 1) this.scan(node); });
-        });
-        for (const node of this.pending) {
-          if (!node.isConnected) this.expose(node);
+        for (const record of records) for (const node of record.addedNodes) {
+          if (node.nodeType === 1) this.scan(node);
         }
+        for (const [node] of this.stages) if (!node.isConnected) this.expose(node);
         for (const [node] of this.active) if (!node.isConnected) this.cancel(node);
+        this.schedule(true);
       });
       this.dom.observe(document.body, { childList: true, subtree: true });
+      this.bind(window, 'scroll', () => this.schedule());
+      this.bind(window, 'resize', () => this.schedule(true));
+      this.bind(window, 'load', () => this.schedule(true));
+      this.bind(document, 'click', () => this.schedule(true));
       this.bind(this.media, 'change', () => this.syncPreference());
       this.bind(document, 'visibilitychange', () => {
         this.active.forEach(animation => document.hidden ? animation.pause() : animation.play());
-        if (!document.hidden) {
-          for (const node of this.pending) {
-            const bounds = node.getBoundingClientRect();
-            if (bounds.bottom > 0 && bounds.top < window.innerHeight * 0.94) this.reveal(node);
-          }
-          this.scan(document);
-        }
+        if (!document.hidden) this.schedule(true);
       });
       this.bind(document, 'focusin', event => {
-        // Never animate a control away from a keyboard user's current focus.
-        for (const node of this.pending) if (node.contains(event.target)) this.expose(node);
+        for (const [node] of this.stages) if (node.contains(event.target)) this.expose(node);
         for (const [node] of this.active) if (node.contains(event.target)) this.cancel(node);
       });
       this.bind(window, 'pagehide', event => { if (!event.persisted) this.destroy(); });
+      this.bind(window, 'pageshow', () => this.schedule(true));
       this.syncPreference();
+      // Release pre-paint protection only after every target is staged.
+      delete document.documentElement.dataset.revealBoot;
+      document.fonts?.ready.then(() => this.schedule(true));
       this.hookCountdown();
     }
     bind(target, type, listener) {
-      target.addEventListener(type, listener);
+      target.addEventListener(type, listener, { passive: true });
       this.listeners.push(() => target.removeEventListener(type, listener));
     }
     syncPreference() {
       document.documentElement.dataset.motion = this.media.matches ? 'reduced' : 'full';
       if (this.media.matches) {
+        if (this.frame !== null) window.cancelAnimationFrame(this.frame);
+        this.frame = null;
         for (const [node] of this.active) this.cancel(node);
-        for (const node of this.pending) node.classList.remove('scroll-reveal-pending');
-        this.pending.clear(); this.reveals?.disconnect();
-      } else this.scan(document);
+        for (const [node] of this.stages) this.expose(node, false);
+      } else {
+        this.scan(document);
+        this.measure();
+        this.render();
+      }
     }
     scan(root) {
-      if (this.media.matches || !this.reveals) return;
+      if (this.media.matches || typeof window.requestAnimationFrame !== 'function') return;
       const nodes = [...root.querySelectorAll(REVEALS)];
       if (root.nodeType === 1 && root.matches(REVEALS)) nodes.unshift(root);
-      nodes.forEach(node => {
-        if (!this.seen.has(node) && !this.pending.has(node)) {
-          // Opening content, restored scroll positions and live filter results
-          // should paint immediately. Only content below the screen is staged.
-          if (node.getBoundingClientRect().top < window.innerHeight ||
-              node.contains(document.activeElement) || node.closest?.('.modal') ||
-              typeof node.animate !== 'function') {
-            this.seen.add(node);
-            return;
-          }
-          node.classList.add('scroll-reveal-pending');
-          this.pending.add(node); this.reveals.observe(node);
+      for (const node of nodes) {
+        if (this.exempt.has(node) || this.stages.has(node)) continue;
+        if (node.closest?.('.modal') || node.parentElement?.closest('.scroll-reveal')) continue;
+        const bounds = node.getBoundingClientRect();
+        // Keep the opening view and live results fully usable, without autoplay.
+        if (bounds.top < window.innerHeight || node.contains(document.activeElement)) {
+          this.exempt.add(node);
+          continue;
         }
+        this.stages.set(node, { top: bounds.top + (window.scrollY || 0), shift: 0 });
+        node.classList.add('scroll-reveal');
+      }
+      this.render();
+    }
+    measure() {
+      // Read layout before writing styles. Subtract our own translation so
+      // repeated measurements never drift an element's natural position.
+      const positions = [...this.stages].map(([node, stage]) =>
+        [stage, node.getBoundingClientRect().top - stage.shift + (window.scrollY || 0)]);
+      for (const [stage, top] of positions) stage.top = top;
+    }
+    schedule(measure = false) {
+      this.needsMeasure ||= measure;
+      if (this.destroyed || this.media.matches || document.hidden || this.frame !== null ||
+          typeof window.requestAnimationFrame !== 'function') return;
+      this.frame = window.requestAnimationFrame(() => {
+        this.frame = null;
+        if (this.needsMeasure) { this.measure(); this.needsMeasure = false; }
+        this.render();
       });
     }
-    expose(node) {
-      this.seen.add(node); this.pending.delete(node); this.reveals?.unobserve(node);
-      node.classList.remove('scroll-reveal-pending');
+    render() {
+      if (this.media.matches || document.hidden) return;
+      const height = window.innerHeight, scroll = window.scrollY || 0;
+      for (const [node, stage] of this.stages) {
+        const t = Math.max(0, Math.min(1, (scroll + height * 0.9 - stage.top) / (height * 0.35)));
+        const progress = t * t * (3 - 2 * t);
+        stage.shift = 48 * (1 - progress);
+        node.style.setProperty('--reveal-opacity', progress.toFixed(4));
+        node.style.setProperty('--reveal-shift', stage.shift.toFixed(3) + 'px');
+        node.classList.toggle('scroll-reveal-pending', progress < 1);
+      }
     }
-    reveal(node, delay = 0) {
-      if (this.seen.has(node)) return;
-      this.expose(node);
-      if (node.contains(document.activeElement)) return;
-      this.play(node, [
-        { opacity: 0, translate: '0 14px' },
-        { opacity: 1, translate: '0 0' }
-      ], { duration: 420, delay });
+    expose(node, remember = true) {
+      this.stages.delete(node);
+      if (remember) this.exempt.add(node);
+      node.classList.remove('scroll-reveal');
+      node.classList.remove('scroll-reveal-pending');
+      node.style.removeProperty('--reveal-opacity');
+      node.style.removeProperty('--reveal-shift');
     }
     play(node, keyframes, options) {
       if (this.media.matches || document.hidden || typeof node.animate !== 'function') return;
@@ -131,14 +145,17 @@
       });
     }
     destroy() {
+      this.destroyed = true;
+      if (this.frame !== null) window.cancelAnimationFrame(this.frame);
+      this.frame = null;
       for (const [node] of this.active) this.cancel(node);
-      for (const node of this.pending) node.classList.remove('scroll-reveal-pending');
-      this.reveals?.disconnect(); this.dom.disconnect();
+      for (const [node] of this.stages) this.expose(node);
+      this.dom.disconnect();
       this.observers.forEach(observer => observer.disconnect());
-      this.listeners.forEach(remove => remove()); this.pending.clear();
+      this.listeners.forEach(remove => remove());
+      delete document.documentElement.dataset.revealBoot;
     }
   }
-  // Retain the existing global name and script URL used by every page shell.
   window.GsapEffectsEngine = GsapEffectsEngine;
   document.addEventListener('DOMContentLoaded', () => { window.gsapEffects = new GsapEffectsEngine(); });
 })();

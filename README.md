@@ -34,9 +34,9 @@ Programs use 27 distinct local SVG covers and a neutral fallback, with no embedd
 
 ## Motion across the website
 
-All five pages reveal below-the-fold headings, cards, rankings and 3D panels once as they enter the viewport while scrolling. Opening content appears immediately. They also share dialog, mobile menu and admin-tab transitions; button feedback; and visible-only countdown digit updates. New search/filter cards are picked up automatically. Supported browsers also cross-fade between pages while the header stays steady.
+Below-the-fold headings, culture/FAQ cards, programs, rankings and 3D panels reveal according to scroll distance. Scroll forward to bring them up and into focus; stop scrolling to hold the exact reveal; scroll back to reverse it. These reveals have no timer or autoplay. Opening content and visible search results remain immediately available.
 
-Motion uses the browser animation API, cancels when keyboard focus enters a moving element, pauses in hidden tabs, and responds immediately to changes in reduced-motion preferences. Content stays accessible if JavaScript or animation support is unavailable. Keyboard focus exposes pending content immediately; reduced-motion and print views show all content without waiting for a scroll.
+A small head script prevents below-the-fold content from flashing before motion initializes, with a 2.5-second fail-open fallback. Scroll updates share one scheduled frame and only change opacity and translation. Keyboard focus exposes a target permanently; reduced-motion and print views show all content. The scene controls, dialogs and menus retain their existing interaction behavior.
 
 ## 3D with a purpose
 

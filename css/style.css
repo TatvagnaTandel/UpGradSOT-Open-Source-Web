@@ -524,11 +524,19 @@ html { max-width: 100%; }
   .nav-links { display: none; }
   .mobile-menu-btn { display: flex; }
 }
-/* Armed by JavaScript only for content below the current viewport.
-   Opacity keeps keyboard targets available; focus exposes them immediately. */
-html[data-motion="full"] .scroll-reveal-pending {
-  opacity: 0;
+/* Reveal progress is calculated from scroll distance, never elapsed time. */
+html[data-motion="full"] .scroll-reveal {
+  opacity: var(--reveal-opacity, 1);
+  translate: 0 var(--reveal-shift, 0px);
+}
+html[data-motion="full"] .scroll-reveal:focus-within {
+  opacity: 1;
+  translate: none;
 }
 @media (prefers-reduced-motion: reduce), print {
-  html[data-motion="full"] .scroll-reveal-pending { opacity: 1; }
+  html[data-motion="full"] .scroll-reveal,
+  html[data-reveal-boot="pending"] :is(.section-header, .bento-box, .event-card, .fest-card, .gateway-card, .hero-webgl-wrapper, .countdown-container-card, .leaderboard-item, .podium-card, .metric-card, .events-filter-bar, .table-toolbar, .lab-figure, .three-lab-sidebar, .table-responsive-container) {
+    opacity: 1 !important;
+    translate: none !important;
+  }
 }
