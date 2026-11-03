@@ -1961,3 +1961,18 @@
 
 /* Keep white button text legible in interactive states. */
 .btn-primary:hover { background: #bd1821; }
+
+/* Program artwork keeps organizer text clear of the illustration. */
+.event-card-media { height: auto; aspect-ratio: 2 / 1; background: #f5eee0; }
+.event-card-media .media-overlay { display: none; }
+.event-card-img { display: block; }
+.program-detail-hero { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); height: auto; min-height: 220px; background: var(--bg-main); }
+.program-detail-hero .modal-hero-img { display: block; height: 100%; object-fit: contain; }
+.program-detail-hero .modal-hero-overlay { position: static; background: transparent; color: var(--text-main); padding: 28px 54px 28px 24px; }
+.program-detail-hero .category-badge { align-self: flex-start; }
+.program-detail-hero h2 { margin-top: 12px; line-height: 1.25; }
+@media (max-width: 600px) {
+  .program-detail-hero { grid-template-columns: minmax(0, 1fr); min-height: 0; }
+  .program-detail-hero .modal-hero-img { display: none; }
+  .program-detail-hero .modal-hero-overlay { padding: 24px 50px 24px 20px; }
+}

@@ -86,14 +86,15 @@ class EventsManager {
   }
 
   getEventBanner(evt) {
-    if (!evt || !evt.banner) return 'assets/flagship_banner.jpg';
-    // If banner points to external CDN that blocks hotlinking or is missing, use themed local asset
-    if (evt.banner.includes('mlhusercontent.com') || evt.banner.startsWith('http')) {
-      if (evt.category === 'workshop') return 'assets/workshop_banner.jpg';
-      if (evt.category === 'sprint' || evt.category === 'winterofcode') return 'assets/codesprint_banner.jpg';
-      return 'assets/flagship_banner.jpg';
+    const fallback = 'assets/programs/program-default.svg';
+    if (!evt) return fallback;
+    const banner = typeof evt.banner === 'string' ? evt.banner : '';
+    const legacy = ['assets/flagship_banner.jpg', 'assets/workshop_banner.jpg', 'assets/codesprint_banner.jpg'];
+    if (!banner || legacy.includes(banner) || /^https?:/.test(banner)) {
+      // Refresh saved seed imagery without resetting local events or custom text.
+      return DEFAULT_EVENTS.find(program => program.id === evt.id)?.banner || fallback;
     }
-    return evt.banner;
+    return banner;
   }
 
   renderEvents() {
@@ -153,7 +154,7 @@ class EventsManager {
       return `
         <div class="event-card bento-card ${evt.isFlagship ? 'flagship-card-glow' : ''}">
           <div class="event-card-media">
-            <img src="${this.getEventBanner(evt)}" alt="${evt.title}" loading="lazy" class="event-card-img" onerror="this.onerror=null; this.src='assets/flagship_banner.jpg';" />
+            <img src="${this.getEventBanner(evt)}" alt="" loading="lazy" decoding="async" width="960" height="480" class="event-card-img" onerror="this.onerror=null; this.src='assets/programs/program-default.svg';" />
             <div class="media-overlay"></div>
             <div class="card-top-badges">
               <span class="category-badge cat-${evt.category}">${evt.category.toUpperCase()}</span>
@@ -301,8 +302,8 @@ class EventsManager {
     const targetDate = new Date(event.targetDate);
 
     content.innerHTML = `
-      <div class="modal-event-hero">
-        <img src="${this.getEventBanner(event)}" alt="${event.title}" class="modal-hero-img" onerror="this.onerror=null; this.src='assets/flagship_banner.jpg';"/>
+      <div class="modal-event-hero program-detail-hero">
+        <img src="${this.getEventBanner(event)}" alt="" decoding="async" width="960" height="480" class="modal-hero-img" onerror="this.onerror=null; this.src='assets/programs/program-default.svg';"/>
         <div class="modal-hero-overlay">
           <span class="category-badge cat-${event.category}">${event.category.toUpperCase()}</span>
           <h2>${event.title}</h2>

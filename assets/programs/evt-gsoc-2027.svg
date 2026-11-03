@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="480" viewBox="0 0 960 480" role="img" aria-labelledby="title desc">
+<title id="title">Google Summer of Code</title><desc id="desc">Original editorial program cover with a code illustration. Not an official organizer logo.</desc>
+<rect width="960" height="480" fill="#f3e8c9"/>
+<path d="M60 135h54" stroke="#896125" stroke-width="7"/>
+<g fill="#1c2726" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="60">
+<text x="60" y="220">Google Summer</text>
+<text x="60" y="288">of Code</text>
+</g>
+<text x="60" y="352" fill="#896125" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="18" letter-spacing="1">GSOC / MENTORED CONTRIBUTIONS</text>
+<g transform="translate(680 144)" stroke="#896125" stroke-width="8" fill="#dfbd73" color="#896125" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="30" width="216" height="162" rx="18"/><path d="m78 77-35 34 35 34m78-68 35 34-35 34m-28-78-20 88" fill="none"/><path d="M30 49h8m13 0h8" fill="none"/></g>
+<path d="M60 409h840" stroke="#896125" stroke-opacity=".2" stroke-width="2"/>
+<text x="60" y="445" fill="#4b5550" font-family="Arial,Helvetica,sans-serif" font-size="16" letter-spacing="2">UGSOT / PROGRAM SERIES</text>
+</svg>

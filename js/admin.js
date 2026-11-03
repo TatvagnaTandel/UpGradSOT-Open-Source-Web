@@ -233,8 +233,7 @@ class AdminDashboard {
     let banner = document.getElementById('admin-evt-banner').value.trim();
 
     if (!banner) {
-      banner = category === 'workshop' ? 'assets/workshop_banner.jpg' :
-               category === 'sprint' ? 'assets/codesprint_banner.jpg' : 'assets/flagship_banner.jpg';
+      banner = 'assets/programs/program-default.svg';
     }
 
     if (!dateVal || isNaN(new Date(dateVal).getTime())) {

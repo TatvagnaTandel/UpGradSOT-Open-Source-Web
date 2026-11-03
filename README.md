@@ -4,7 +4,7 @@
 
 A student community portal for discovering open-source programs, following event countdowns, and exploring a sample student and organizer experience.
 
-[Visit the GitHub Pages preview](https://tatvagnatandel.github.io/UpGradSOT-Open-Source-Web/) · [Production deployment plan](docs/DEPLOYMENT.md) · [Browser audit](docs/SITE-AUDIT.md)
+[Visit the GitHub Pages preview](https://tatvagnatandel.github.io/UpGradSOT-Open-Source-Web/) · [Production deployment plan](docs/DEPLOYMENT.md) · [Browser audit](docs/SITE-AUDIT.md) · [Merged-site evaluation](docs/MERGED-SITE-REVIEW.md) · [Improvement prompt](docs/IMPROVEMENT-PROMPT.md)
 
 **Current status: static demo.** Profiles, rankings, RSVPs, admin changes and passes are browser-local samples. There is no connected authentication provider or shared database. Event schedules and rewards are seed content; confirm details on organizers' official sites before applying. The demo does not collect passwords.
 
@@ -19,6 +19,10 @@ A student community portal for discovering open-source programs, following event
 | [Admin demo](admin.html) | Edit browser-local sample events, sections and roster |
 
 Choose **Explore demo** to try a sample student or admin profile. The admin demo is publicly accessible and must never contain real student records.
+
+## Program artwork
+
+Programs use 27 distinct local SVG covers and a neutral fallback, with no embedded event dates, prices or official logo claims. Existing saved stock-banner paths resolve to the new artwork without clearing local edits. See [the artwork catalog and regeneration notes](assets/programs/README.md).
 
 ## Motion across the website
 
