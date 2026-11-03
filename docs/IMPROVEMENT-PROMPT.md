@@ -1,5 +1,7 @@
 # Ready-to-use improvement prompt
 
+> Implementation status: the static-site improvements in this brief were applied on 3 November 2026. Use the current source and review follow-up as the baseline; preserve these fixes. Production authentication and shared data remain a separate deployment phase.
+
 Copy the prompt below into the coding agent working on this repository. Start from the latest main branch after the program-artwork changes have been merged, or explicitly include that branch as the base.
 
 ---

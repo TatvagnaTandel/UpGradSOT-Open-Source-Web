@@ -19,7 +19,7 @@ class CountdownEngine {
   }
 
   setTargetEvent(event, isUserPin = true) {
-    if (!event) return;
+    if (!event || (window.programCatalog && (event.verification !== 'verified' || !event.targetDate))) return;
     this.targetEvent = event;
     if (isUserPin && window.clubStore) {
       window.clubStore.setPinnedEventId(event.id);
@@ -41,8 +41,19 @@ class CountdownEngine {
   }
 
   renderEventBannerDetails() {
-    if (!this.targetEvent) return;
-    
+    const side=document.querySelector('.countdown-timer-side');
+    const row=side?.querySelector('.timer-units-row');
+    let precision=document.getElementById('timer-precision-note');
+    if(side&&!precision){precision=document.createElement('p');precision.id='timer-precision-note';precision.className='timer-precision-note';side.prepend(precision);}
+    const exact=!!this.targetEvent && this.targetEvent.verification==='verified' && this.targetEvent.datePrecision==='time';
+    if(row)row.hidden=!exact;
+    if(precision){precision.hidden=exact;precision.textContent=this.targetEvent?'Calendar date confirmed. The organizer has not supplied an exact start time, so no seconds countdown is shown.':'No confirmed upcoming date is available. Explore the directory and check organizer sources.';}
+    if(!this.targetEvent){
+      const title=document.getElementById('countdown-event-title');if(title)title.textContent='Check the next confirmed program date';
+      ['countdown-event-subtitle','countdown-event-venue','countdown-event-date'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent='See the programs directory for source-reviewed information.';});
+      ['countdown-rsvp-btn','countdown-official-link','countdown-unpin-btn'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='none';});
+      return;
+    }
     const titleEl = document.getElementById('countdown-event-title');
     const subtitleEl = document.getElementById('countdown-event-subtitle');
     const venueEl = document.getElementById('countdown-event-venue');
@@ -80,7 +91,7 @@ class CountdownEngine {
 
     if (titleEl) titleEl.textContent = this.targetEvent.title;
     if (subtitleEl) subtitleEl.textContent = this.targetEvent.subtitle || this.targetEvent.description;
-    if (venueEl) venueEl.innerHTML = `<span class="icon">📍</span> ${this.targetEvent.venue}`;
+    if (venueEl) venueEl.textContent = this.targetEvent.venue || 'See organizer';
     
     if (dateBadgeEl) {
       if (this.targetEvent.dateBadge) {
@@ -100,7 +111,8 @@ class CountdownEngine {
     if (rsvpBtn) {
       const user = window.clubStore ? window.clubStore.getCurrentUser() : null;
       const isRsvpd = user && user.rsvps && user.rsvps.includes(this.targetEvent.id);
-      rsvpBtn.innerHTML = isRsvpd ? `View sample pass` : `Try demo RSVP`;
+      rsvpBtn.style.display = 'inline-flex';
+      rsvpBtn.innerHTML = isRsvpd ? `View sample pass` : `Try sample pass`;
       rsvpBtn.className = isRsvpd ? 'btn btn-glow-success' : 'btn btn-glow-primary';
       rsvpBtn.onclick = () => {
         if (window.eventsManager) {
@@ -111,7 +123,7 @@ class CountdownEngine {
 
     const officialLinkEl = document.getElementById('countdown-official-link');
     if (officialLinkEl) {
-      const targetUrl = this.targetEvent.registrationUrl || this.targetEvent.officialUrl;
+      const targetUrl = window.PortalUI.safeUrl(this.targetEvent.sourceUrl || this.targetEvent.officialUrl);
       if (targetUrl) {
         officialLinkEl.href = targetUrl;
         officialLinkEl.style.display = 'inline-flex';
@@ -126,7 +138,7 @@ class CountdownEngine {
   start() {
     if (this.timerInterval) clearInterval(this.timerInterval);
     this.update();
-    this.timerInterval = setInterval(() => this.update(), 1000);
+    this.timerInterval = setInterval(() => this.update(), this.targetEvent?.datePrecision === 'time' ? 1000 : 60000);
   }
 
   stop() {
@@ -152,7 +164,13 @@ class CountdownEngine {
         window.clubStore.clearPinnedEventId();
       }
       const nextEvent = window.clubStore.getFlagshipEvent();
-      if (nextEvent && nextEvent.id !== this.targetEvent.id) {
+      if (!nextEvent) {
+        this.targetEvent = null;
+        this.renderEventBannerDetails();
+        this.displayZero();
+        return;
+      }
+      if (nextEvent.id !== this.targetEvent.id) {
         this.setTargetEvent(nextEvent, false);
         if (window.eventsManager) {
           window.eventsManager.renderEvents();
@@ -161,6 +179,7 @@ class CountdownEngine {
       }
     }
 
+    if (this.targetEvent.datePrecision !== 'time' || this.targetEvent.verification !== 'verified') { this.renderEventBannerDetails(); this.displayZero(); return; }
     const isOngoing = window.clubStore ? window.clubStore.isEventOngoing(this.targetEvent, now) : Boolean(this.targetEvent.isOngoing || this.targetEvent.status === 'ongoing');
     const startMs = this.targetEvent.startDate ? new Date(this.targetEvent.startDate).getTime() : new Date(this.targetEvent.targetDate).getTime();
     const endMs = this.targetEvent.endDate ? new Date(this.targetEvent.endDate).getTime() : startMs;

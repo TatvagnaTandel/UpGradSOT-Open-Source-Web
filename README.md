@@ -6,7 +6,7 @@ A student community portal for discovering open-source programs, following event
 
 [Visit the GitHub Pages preview](https://tatvagnatandel.github.io/UpGradSOT-Open-Source-Web/) · [Production deployment plan](docs/DEPLOYMENT.md) · [Browser audit](docs/SITE-AUDIT.md) · [Merged-site evaluation](docs/MERGED-SITE-REVIEW.md) · [Improvement prompt](docs/IMPROVEMENT-PROMPT.md)
 
-**Current status: static demo.** Profiles, rankings, RSVPs, admin changes and passes are browser-local samples. There is no connected authentication provider or shared database. Event schedules and rewards are seed content; confirm details on organizers' official sites before applying. The demo does not collect passwords.
+**Current status: static demo.** Profiles, rankings, RSVPs, admin changes and passes are browser-local samples. There is no connected authentication provider or shared database. Program records include organizer-source review dates. Unconfirmed cycles, dates and rewards are explicitly withheld; confirm eligibility and application details on organizer sites. The demo does not collect passwords.
 
 ## Explore
 
@@ -19,6 +19,14 @@ A student community portal for discovering open-source programs, following event
 | [Admin demo](admin.html) | Edit browser-local sample events, sections and roster |
 
 Choose **Explore demo** to try a sample student or admin profile. The admin demo is publicly accessible and must never contain real student records.
+
+## Program sources and sample profiles
+
+The directory distinguishes source-reviewed facts, unverified dates, historical programs and browser-local edits. Source notes and check dates appear in details. Calendar export and date tracking require a confirmed date; date-only announcements never produce a fabricated seconds countdown. Google Season of Docs is archived.
+
+Sample profiles support saved programs, 2D/3D pass previews and persistent sign-out. Repeated cancel/save actions cannot award extra sample XP. Dialogs contain keyboard focus, isolate the background and restore the opening control. Local edits and deletions survive data-version updates.
+
+Review facts in `data/program-reviews.json`, then run `node scripts/build-program-data.mjs` to regenerate the browser catalog. The `legacy` snapshot detects locally customized records; do not replace it when refreshing organizer facts.
 
 ## Program artwork
 

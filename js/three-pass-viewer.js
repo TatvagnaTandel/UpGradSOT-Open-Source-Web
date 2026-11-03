@@ -44,7 +44,7 @@
       ctx.fillStyle = '#e4ded0'; ctx.fillRect(36,396,568,2);
       ctx.fillStyle = '#5b625e'; ctx.font = '18px monospace'; ctx.fillText('YOUR NEXT CHAPTER',36,452);
       ctx.fillStyle = '#121212'; ctx.font = 'bold 28px sans-serif'; ctx.fillText(event.title,36,509,568);
-      ctx.font = '22px sans-serif'; ctx.fillText(new Date(event.targetDate).toLocaleDateString('en-IN'),36,554);
+      ctx.font = '22px sans-serif'; ctx.fillText((event.targetDate ? new Date(event.targetDate).toLocaleDateString('en-IN') : 'Dates not verified'),36,554);
       ctx.fillText(event.venue.split(',')[0],36,596,568);
       ctx.fillStyle = '#386b80'; ctx.font = 'bold 92px monospace'; ctx.fillText('< / >',36,754);
       ctx.fillStyle = '#121212'; ctx.font = 'bold 20px monospace'; ctx.fillText('DEMO ONLY / NO VENUE ENTRY',36,881,568);

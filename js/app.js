@@ -213,34 +213,8 @@ class App {
     }
   }
 
-  bindGlobalModals() {
-    // Close modal on backdrop click or close button
-    document.querySelectorAll('.modal').forEach(modal => {
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-          this.closeAllModals();
-        }
-      });
-      const closeBtn = modal.querySelector('.modal-close-btn');
-      if (closeBtn) {
-        closeBtn.addEventListener('click', () => this.closeAllModals());
-      }
-    });
-
-    // ESC key closes modals
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        this.closeAllModals();
-      }
-    });
-  }
-
-  closeAllModals() {
-    document.querySelectorAll('.modal').forEach(m => m.classList.remove('active'));
-    if (window.threePassViewer && typeof window.threePassViewer.destroy === 'function') {
-      window.threePassViewer.destroy();
-    }
-  }
+  bindGlobalModals() { window.PortalUI.install(); }
+  closeAllModals() { window.PortalUI.closeAll(); }
 
   syncHacktoberfestVisibility() {
     const isEnded = window.clubStore ? !window.clubStore.isHacktoberfestActive() : (Date.now() >= new Date('2026-11-01T00:00:00+05:30').getTime());

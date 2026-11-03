@@ -1,638 +1,77 @@
-/**
- * upGrad School of Technology - Open Source Events
- * Events Hub: Filtering, Card Rendering, Details Modal, Calendar Export & Hacker Pass Generator
- */
-
+/** Program discovery, source provenance and explicitly browser-local sample passes. */
 class EventsManager {
-  constructor() {
-    this.currentCategory = 'all';
-    this.currentStatus = 'all';
-    this.searchQuery = '';
+  constructor(){this.currentCategory='all';this.currentStatus='all';this.searchQuery='';}
+  init(){
+    this.restoreFilters();this.bindFilters();this.renderEvents();
+    window.addEventListener('popstate',()=>{this.restoreFilters();this.renderEvents();const id=new URLSearchParams(window.location.search).get('program');if(id)this.openDetailsModal(id,false);else window.PortalUI.closeAll();});
+    window.PortalUI.onClose=modal=>{if(modal.id==='event-details-modal'){const url=new URL(window.location.href);url.searchParams.delete('program');window.history.replaceState(null,'',url);}};
+    const id=new URLSearchParams(window.location.search).get('program');if(id)this.openDetailsModal(id,false);
   }
-
-  init() {
-    this.bindFilters();
-    this.renderEvents();
+  restoreFilters(){const p=new URLSearchParams(window.location.search);this.searchQuery=p.get('q')||'';const categories=['all','opensource','hackathon','fellowship','winterofcode','mentorship'];const statuses=['all','open','ongoing','upcoming','unannounced','past'];this.currentCategory=categories.includes(p.get('category'))?p.get('category'):'all';this.currentStatus=statuses.includes(p.get('status'))?p.get('status'):'all';}
+  saveFilters(){const url=new URL(window.location.href);for(const[key,value]of Object.entries({q:this.searchQuery,category:this.currentCategory,status:this.currentStatus})){if(!value||value==='all')url.searchParams.delete(key);else url.searchParams.set(key,value);}window.history.replaceState(null,'',url);}
+  bindFilters(){
+    document.querySelectorAll('[data-category]').forEach(b=>b.addEventListener('click',()=>{this.currentCategory=b.dataset.category;this.saveFilters();this.renderEvents();}));
+    document.querySelectorAll('[data-status]').forEach(b=>b.addEventListener('click',()=>{this.currentStatus=b.dataset.status;this.saveFilters();this.renderEvents();}));
+    document.getElementById('event-search-input')?.addEventListener('input',e=>{this.searchQuery=e.target.value;this.saveFilters();this.renderEvents();});
+    document.getElementById('clear-program-filters')?.addEventListener('click',()=>this.resetFilters());
+    document.getElementById('events-grid-container')?.addEventListener('click',e=>{const b=e.target.closest('[data-action]');if(!b)return;this.action(b.dataset.action,b.dataset.id);});
   }
-
-  bindFilters() {
-    const filterBtns = document.querySelectorAll('.filter-pill');
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        e.currentTarget.classList.add('active');
-        this.currentCategory = e.currentTarget.dataset.category;
-        this.renderEvents();
-      });
-    });
-
-    const statusBtns = document.querySelectorAll('.status-toggle-btn');
-    statusBtns.forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        statusBtns.forEach(b => b.classList.remove('active'));
-        e.currentTarget.classList.add('active');
-        this.currentStatus = e.currentTarget.dataset.status;
-        this.renderEvents();
-      });
-    });
-
-    const searchInput = document.getElementById('event-search-input');
-    if (searchInput) {
-      searchInput.addEventListener('input', (e) => {
-        this.searchQuery = e.target.value.toLowerCase().trim();
-        this.renderEvents();
-      });
-    }
+  categoryLabel(category){return({opensource:'Open source',hackathon:'Hackathon',fellowship:'Fellowship',winterofcode:'Winter of Code',mentorship:'Mentorship'})[category]||'Community program';}
+  hasDate(e){return e.verification==='verified'&&!!e.targetDate&&Number.isFinite(new Date(e.targetDate).getTime());}
+  applicationsOpen(e){if(!e.applicationsOpen)return false;const today=new Date().toLocaleDateString('en-CA',{timeZone:'Asia/Kolkata'});return !e.applicationDeadline||today<=e.applicationDeadline;}
+  statusLabel(e){if(window.clubStore.isEventPast(e))return'Archived';if(this.applicationsOpen(e))return'Applications advertised open';if(e.verification==='local')return'Local sample';if(e.verification==='unverified')return'Needs review';if(!this.hasDate(e))return'Dates not verified';if(window.clubStore.isEventOngoing(e))return'Program period';return'Upcoming date';}
+  getFilteredEvents(){const query=this.searchQuery.trim().toLowerCase();return window.clubStore.getEvents().filter(e=>{
+    const past=window.clubStore.isEventPast(e);if(this.currentStatus==='past'?!past:past)return false;
+    if(this.currentCategory!=='all'&&e.category!==this.currentCategory)return false;
+    if(this.currentStatus==='open'&&!this.applicationsOpen(e))return false;
+    if(this.currentStatus==='ongoing'&&(!this.hasDate(e)||!window.clubStore.isEventOngoing(e)))return false;
+    if(this.currentStatus==='upcoming'&&!this.hasDate(e))return false;
+    if(this.currentStatus==='unannounced'&&this.hasDate(e))return false;
+    return !query||[e.title,e.description,e.venue,...(e.tags||[])].join(' ').toLowerCase().includes(query);
+  }).sort((a,b)=>Number(this.applicationsOpen(b))-Number(this.applicationsOpen(a))||Number(this.hasDate(b))-Number(this.hasDate(a))||(this.hasDate(a)&&this.hasDate(b)?new Date(a.targetDate)-new Date(b.targetDate):a.title.localeCompare(b.title)));}
+  getEventBanner(e){const fallback='assets/programs/program-default.svg';if(!e)return fallback;const banner=typeof e.banner==='string'?e.banner:'';if(!banner||['assets/flagship_banner.jpg','assets/workshop_banner.jpg','assets/codesprint_banner.jpg'].includes(banner)||/^https?:/.test(banner))return DEFAULT_EVENTS.find(p=>p.id===e.id)?.banner||fallback;return banner;}
+  renderEvents(){
+    const grid=document.getElementById('events-grid-container');if(!grid)return;
+    const esc=window.PortalUI.escape,events=this.getFilteredEvents();
+    document.querySelectorAll('[data-category]').forEach(b=>{const active=b.dataset.category===this.currentCategory;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));});
+    document.querySelectorAll('[data-status]').forEach(b=>{const active=b.dataset.status===this.currentStatus;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));});
+    const input=document.getElementById('event-search-input');if(input&&input.value!==this.searchQuery)input.value=this.searchQuery;
+    const summary=document.getElementById('program-results-summary');if(summary)summary.textContent=`${events.length} ${events.length===1?'program':'programs'}${this.searchQuery?' matching “'+this.searchQuery+'”':''}${this.currentCategory!=='all'?' · '+this.categoryLabel(this.currentCategory):''} · ${this.currentStatus==='past'?'Archives':'Source status shown on every card'}`;
+    grid.innerHTML=events.length?events.map(e=>{
+      const source=window.PortalUI.safeUrl(e.sourceUrl||e.officialUrl);return `<article class="event-card bento-card"><div class="event-card-media"><img src="${esc(this.getEventBanner(e))}" alt="" loading="lazy" decoding="async" width="960" height="480" class="event-card-img" onerror="this.onerror=null;this.src='assets/programs/program-default.svg'"><div class="card-top-badges"><span class="category-badge">${esc(this.categoryLabel(e.category))}</span></div></div><div class="event-card-content"><span class="program-state">${esc(this.statusLabel(e))}</span><h2 class="event-card-title">${esc(e.title)}</h2><p class="program-cycle">${esc(e.cycleLabel||'Sample entry')} · ${esc(e.mode||'See organizer')}</p><p class="program-date">${esc(e.applicationDeadline?'Apply by '+this.formatDate(e.applicationDeadline)+' · time not provided':e.dateBadge||'Dates not verified')}</p><p class="program-checked">${e.checkedOn?'Source checked '+esc(this.formatDate(e.checkedOn)):'Not independently verified'}</p><div class="card-actions">${source?`<a class="btn btn-primary btn-sm" href="${esc(source)}" target="_blank" rel="noopener noreferrer">Official site ↗</a>`:''}<button class="btn btn-outline btn-sm" data-action="details" data-id="${esc(e.id)}">Details</button></div></div></article>`;
+    }).join(''):'<div class="empty-events-state"><h2>No matching programs</h2><p>Try another search or clear the category and date filters.</p></div>';
   }
-
-  getFilteredEvents() {
-    const all = window.clubStore.getEvents();
-    const now = new Date();
-
-    return all.filter(event => {
-      const isPast = window.clubStore.isEventPast(event, now);
-      const isOngoing = window.clubStore.isEventOngoing(event, now);
-      const isUpcoming = window.clubStore.isEventUpcoming(event, now);
-      
-      // Status filter: In 'all' (Active) default view, do NOT show archived events!
-      if (this.currentStatus === 'all' && isPast) return false;
-      if (this.currentStatus === 'ongoing' && !isOngoing) return false;
-      if (this.currentStatus === 'upcoming' && !isUpcoming) return false;
-      if (this.currentStatus === 'past' && !isPast) return false;
-
-      // Category filter
-      if (this.currentCategory !== 'all' && event.category !== this.currentCategory) return false;
-
-      // Search query
-      if (this.searchQuery) {
-        const titleMatch = event.title.toLowerCase().includes(this.searchQuery);
-        const descMatch = (event.description || '').toLowerCase().includes(this.searchQuery);
-        const tagMatch = (event.tags || []).some(t => t.toLowerCase().includes(this.searchQuery));
-        const venueMatch = (event.venue || '').toLowerCase().includes(this.searchQuery);
-        if (!titleMatch && !descMatch && !tagMatch && !venueMatch) return false;
-      }
-
-      return true;
-    }).sort((a, b) => {
-      if (this.currentStatus === 'past') {
-        return new Date(b.targetDate) - new Date(a.targetDate);
-      }
-      // Ongoing first, then upcoming by targetDate
-      const aOngoing = window.clubStore.isEventOngoing(a, now) ? 1 : 0;
-      const bOngoing = window.clubStore.isEventOngoing(b, now) ? 1 : 0;
-      if (aOngoing !== bOngoing) return bOngoing - aOngoing;
-      return new Date(a.targetDate) - new Date(b.targetDate);
-    });
+  resetFilters(){this.currentCategory='all';this.currentStatus='all';this.searchQuery='';this.saveFilters();this.renderEvents();document.getElementById('event-search-input')?.focus();}
+  formatDate(value){if(!value)return'Dates not verified';const date=new Date(value);return Number.isFinite(date.getTime())?date.toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric',timeZone:'Asia/Kolkata'}):'Dates not verified';}
+  action(action,id){if(action==='details')this.openDetailsModal(id);if(action==='sample')this.handleRsvpClick(id);if(action==='calendar')this.downloadIcs(id);if(action==='pin')this.pinToTimer(id);}
+  pinToTimer(id){const e=window.clubStore.getEventById(id);if(!e||!this.hasDate(e)||window.clubStore.isEventPast(e)){window.app?.showToast('Only a confirmed upcoming date can be tracked.','info');return false;}window.clubStore.setPinnedEventId(id);window.PortalUI.closeAll();if(document.getElementById('countdown-section')){window.countdownEngine.setTargetEvent(e,true);document.getElementById('countdown-section').scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});}else window.location.href='index.html#countdown-section';return true;}
+  handleRsvpClick(id){const user=window.clubStore.getCurrentUser();if(!user){window.authManager.openAuthModal();return;}if(!user.rsvps?.includes(id)){const result=window.clubStore.rsvpToEvent(id,user.id);if(!result.success){window.app.showToast(result.message,'info');return;}window.app.updateHeaderUser();}this.openHackerPassModal(id,window.clubStore.getCurrentUser());}
+  openDetailsModal(id,save=true){
+    const e=window.clubStore.getEventById(id),modal=document.getElementById('event-details-modal'),content=document.getElementById('event-details-content');if(!e||!modal||!content)return;const esc=window.PortalUI.escape,url=window.PortalUI.safeUrl(e.sourceUrl||e.officialUrl);
+    content.innerHTML=`<div class="modal-event-hero program-detail-hero"><img class="modal-hero-img" src="${esc(this.getEventBanner(e))}" alt="" width="960" height="480"><div class="modal-hero-overlay"><span class="category-badge">${esc(this.categoryLabel(e.category))}</span><h2 id="program-detail-title" tabindex="-1" data-modal-heading>${esc(e.title)}</h2><p>${esc(e.cycleLabel||'Sample program')}</p></div></div><div class="program-official-action">${url?`<a href="${esc(url)}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Visit official program ↗</a>`:'<p>No verified organizer link is available.</p>'}<p>Applications are handled by the organizer. Saving a sample pass here does not apply.</p></div><div class="program-detail-body"><p class="program-state">${esc(this.statusLabel(e))}</p><p class="source-note">${esc(e.sourceNote||'This entry needs source review.')}${e.checkedOn?' Checked '+esc(this.formatDate(e.checkedOn))+'.':''}</p><dl class="program-facts"><div><dt>Schedule</dt><dd>${esc(e.dateBadge||'Dates not verified')}</dd></div><div><dt>Format</dt><dd>${esc(e.mode||'See organizer')}</dd></div><div><dt>Location</dt><dd>${esc(e.venue||'See organizer')}</dd></div>${e.stipend?`<div><dt>Funding</dt><dd>${esc(e.stipend)} · check eligibility with the organizer</dd></div>`:''}</dl><p>${esc(e.description||'See the organizer for program details.')}</p>${e.timelineInfo?'<h3>Published milestones</h3><ul>'+Object.values(e.timelineInfo).map(text=>'<li>'+esc(text)+'</li>').join('')+'</ul>':''}<div class="program-secondary-actions">${this.hasDate(e)?`<button class="btn btn-outline" data-action="calendar" data-id="${esc(e.id)}">Add confirmed date to calendar</button>${!window.clubStore.isEventPast(e)?`<button class="btn btn-outline" data-action="pin" data-id="${esc(e.id)}">Track confirmed date</button>`:''}`:''}<button class="btn btn-outline" data-action="sample" data-id="${esc(e.id)}">Try sample pass</button></div><p class="scene-footnote">Sample profiles, passes and XP stay in this browser. No admission, application or attendance is verified by this portal.</p></div>`;
+    content.querySelectorAll('[data-action]').forEach(b=>b.addEventListener('click',()=>this.action(b.dataset.action,b.dataset.id)));
+    modal.setAttribute('aria-labelledby','program-detail-title');window.PortalUI.openModal(modal);
+    if(save){const url=new URL(window.location.href);url.searchParams.set('program',id);window.history.pushState(null,'',url);}
   }
-
-  getEventBanner(evt) {
-    const fallback = 'assets/programs/program-default.svg';
-    if (!evt) return fallback;
-    const banner = typeof evt.banner === 'string' ? evt.banner : '';
-    const legacy = ['assets/flagship_banner.jpg', 'assets/workshop_banner.jpg', 'assets/codesprint_banner.jpg'];
-    if (!banner || legacy.includes(banner) || /^https?:/.test(banner)) {
-      // Refresh saved seed imagery without resetting local events or custom text.
-      return DEFAULT_EVENTS.find(program => program.id === evt.id)?.banner || fallback;
-    }
-    return banner;
+  openHackerPassModal(id,user){
+    const e=window.clubStore.getEventById(id),modal=document.getElementById('hacker-pass-modal'),content=document.getElementById('hacker-pass-render');if(!e||!user||!modal||!content)return;
+    window.threePassViewer?.destroy();this.currentPassEvent=e;this.currentPassUser=user;const esc=window.PortalUI.escape;
+    content.innerHTML=`<div class="pass-view-switch-bar"><button id="btn-view-2d" class="pass-view-switch-btn active" aria-pressed="true">2D sample pass</button><button id="btn-view-3d" class="pass-view-switch-btn" aria-pressed="false">3D pass preview</button></div><div id="pass-3d-viewport"><canvas id="pass-3d-canvas" tabindex="0" role="img" aria-label="Sample pass. Arrow keys rotate; Home resets."></canvas><div class="pass-3d-controls-hint">Drag or use arrow keys · Home resets</div></div><div id="printable-ticket" class="sample-pass"><span class="program-state">SAMPLE ONLY / NO VENUE ENTRY</span><h3>${esc(e.title)}</h3><p>${esc(user.name)}</p><p>${esc(e.dateBadge||'Dates not verified')}</p><div class="sample-pass-mark" aria-hidden="true">&lt; / &gt;</div><p>Decorative preview. No scannable code or admission validity.</p></div><div class="program-secondary-actions">${this.hasDate(e)?'<button class="btn btn-outline" data-calendar>Export confirmed date</button>':''}<button class="btn btn-outline" data-print>Print sample</button><button class="btn btn-danger-ghost" data-cancel>Remove sample save</button></div>`;
+    content.querySelector('#btn-view-2d').addEventListener('click',()=>this.switchPassView('2d'));content.querySelector('#btn-view-3d').addEventListener('click',()=>this.switchPassView('3d'));
+    content.querySelector('[data-calendar]')?.addEventListener('click',()=>this.downloadIcs(id));content.querySelector('[data-print]').addEventListener('click',()=>window.print());content.querySelector('[data-cancel]').addEventListener('click',()=>this.cancelRsvp(id));window.PortalUI.openModal(modal);
   }
-
-  renderEvents() {
-    const container = document.getElementById('events-grid-container');
-    if (!container) return;
-
-    const events = this.getFilteredEvents();
-    const currentUser = window.clubStore.getCurrentUser();
-
-    if (events.length === 0) {
-      container.innerHTML = `
-        <div class="empty-events-state">
-          <div class="empty-icon">⚡</div>
-          <h3>No Events Found</h3>
-          <p>Try tweaking your filters or search keywords, or check back soon for newly announced UGSOT open source events.</p>
-          <button class="btn btn-secondary" onclick="window.eventsManager.resetFilters()">Reset All Filters</button>
-        </div>
-      `;
-      return;
-    }
-
-    container.innerHTML = events.map(evt => {
-      const targetDate = new Date(evt.targetDate);
-      const isRsvpd = currentUser && currentUser.rsvps && currentUser.rsvps.includes(evt.id);
-      const percentFull = Math.min(100, Math.round(((evt.spotsFilled || 0) / (evt.spotsTotal || 100)) * 100));
-      const now = new Date();
-      const isOngoing = window.clubStore.isEventOngoing(evt, now);
-      const isPast = window.clubStore.isEventPast(evt, now);
-
-      // Relative calculation
-      const daysDiff = Math.ceil((targetDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
-      let relativeLabel = '';
-      if (isOngoing) {
-        relativeLabel = '🔴 LIVE & ONGOING';
-      } else if (isPast) {
-        relativeLabel = '📁 Archived Event';
-      } else if (daysDiff === 0) {
-        relativeLabel = '🔥 Happening Today!';
-      } else if (daysDiff === 1) {
-        relativeLabel = '⚡ Tomorrow!';
-      } else if (daysDiff < 7) {
-        relativeLabel = `In ${daysDiff} days`;
-      } else {
-        const weeks = Math.floor(daysDiff / 7);
-        const remDays = daysDiff % 7;
-        relativeLabel = `In ${weeks}w ${remDays}d`;
-      }
-
-      const formattedDate = targetDate.toLocaleDateString('en-US', {
-        weekday: 'short',
-        month: 'short',
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit'
-      });
-
-      return `
-        <div class="event-card bento-card ${evt.isFlagship ? 'flagship-card-glow' : ''}">
-          <div class="event-card-media">
-            <img src="${this.getEventBanner(evt)}" alt="" loading="lazy" decoding="async" width="960" height="480" class="event-card-img" onerror="this.onerror=null; this.src='assets/programs/program-default.svg';" />
-            <div class="media-overlay"></div>
-            <div class="card-top-badges">
-              <span class="category-badge cat-${evt.category}">${evt.category.toUpperCase()}</span>
-              <span class="countdown-mini-badge ${isOngoing ? 'badge-ongoing-pulse' : (isPast ? 'badge-past' : '')}">${relativeLabel}</span>
-            </div>
-          </div>
-
-          <div class="event-card-content">
-            <div class="event-time-meta">
-              <span class="calendar-icon">📅</span>
-              <span class="time-string">${evt.dateBadge || formattedDate}</span>
-              <span class="dot-separator">•</span>
-              <span class="mode-pill">${evt.mode || 'Online / global'}</span>
-            </div>
-
-            ${evt.stipend ? `<div class="stipend-card-badge">💰 ${evt.stipend}</div>` : ''}
-
-            <h3 class="event-card-title">${evt.title}</h3>
-            <p class="event-card-desc">${evt.description ? evt.description.slice(0, 110) + '...' : ''}</p>
-
-            <div class="event-venue-meta">
-              <span class="venue-icon">📍</span>
-              <span class="venue-text">${evt.venue || 'Online / global'}</span>
-            </div>
-
-            <div class="spots-meter-wrapper">
-              <div class="spots-label">
-                <span>Registration Capacity</span>
-                <span class="spots-count">${evt.spotsFilled}/${evt.spotsTotal} (${percentFull}%)</span>
-              </div>
-              <div class="meter-bar">
-                <div class="meter-fill" style="width: ${percentFull}%"></div>
-              </div>
-            </div>
-
-            <div class="card-tags">
-              ${(evt.tags || []).map(tag => `<span class="tag-pill">#${tag}</span>`).join('')}
-            </div>
-
-            <div class="card-actions">
-              ${!isPast ? `
-                <button class="btn btn-sm ${isRsvpd ? 'btn-success-active' : 'btn-primary'}" onclick="window.eventsManager.handleRsvpClick('${evt.id}')">
-                  ${isRsvpd ? '✓ Hacker Pass' : '⚡ RSVP Now'}
-                </button>
-              ` : `
-                <button class="btn btn-sm btn-ghost" onclick="window.eventsManager.openDetailsModal('${evt.id}')">
-                  View Recap
-                </button>
-              `}
-              <button class="btn btn-sm btn-outline" onclick="window.eventsManager.openDetailsModal('${evt.id}')">
-                Details & Agenda
-              </button>
-              <button class="btn-icon-pin" title="Track on Countdown Timer" onclick="window.eventsManager.pinToTimer('${evt.id}')">
-                ⏱️
-              </button>
-            </div>
-          </div>
-        </div>
-      `;
-    }).join('');
+  cancelRsvp(id){const user=window.clubStore.getCurrentUser();if(!user)return;window.clubStore.cancelRsvp(id,user.id);window.app.updateHeaderUser();window.app.closeAllModals();window.app.showToast('Removed the browser-local sample save.','info');}
+  buildIcs(e){
+    if(!this.hasDate(e))return null;
+    const escape=value=>String(value||'').replace(/\\/g,'\\\\').replace(/\r?\n|\r/g,'\\n').replace(/;/g,'\\;').replace(/,/g,'\\,');
+    const date=value=>new Date(value).toISOString().replace(/[-:]|\.\d+/g,'');
+    const lines=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//UGSOT//Program directory//EN','BEGIN:VEVENT',`UID:${escape(e.id)}@ugsot-portal`,`DTSTAMP:${date(new Date())}`];
+    if(e.datePrecision==='day'){lines.push('DTSTART;VALUE=DATE:'+e.targetDate.replace(/-/g,''));const end=new Date(e.endDate||e.targetDate);end.setUTCDate(end.getUTCDate()+1);lines.push('DTEND;VALUE=DATE:'+end.toISOString().slice(0,10).replace(/-/g,''));}
+    else{lines.push('DTSTART:'+date(e.targetDate));if(e.endDate)lines.push('DTEND:'+date(e.endDate));}
+    lines.push('SUMMARY:'+escape(e.title),'DESCRIPTION:'+escape(e.sourceNote||e.description),'URL:'+escape(window.PortalUI.safeUrl(e.sourceUrl||e.officialUrl)||''),'END:VEVENT','END:VCALENDAR');
+    const encoder=new TextEncoder();return lines.map(line=>{let result='',length=0;for(const char of line){const bytes=encoder.encode(char).length;if(length+bytes>74){result+='\r\n ';length=1;}result+=char;length+=bytes;}return result;}).join('\r\n')+'\r\n';
   }
-
-  resetFilters() {
-    this.currentCategory = 'all';
-    this.currentStatus = 'all';
-    this.searchQuery = '';
-    const searchInput = document.getElementById('event-search-input');
-    if (searchInput) searchInput.value = '';
-    
-    document.querySelectorAll('.filter-pill').forEach(b => {
-      b.classList.toggle('active', b.dataset.category === 'all');
-    });
-    document.querySelectorAll('.status-toggle-btn').forEach(b => {
-      b.classList.toggle('active', b.dataset.status === 'all');
-    });
-    this.renderEvents();
-  }
-
-  pinToTimer(eventId) {
-    const event = window.clubStore.getEventById(eventId);
-    if (!event) return;
-    
-    if (window.clubStore) {
-      window.clubStore.setPinnedEventId(eventId);
-    }
-    if (window.countdownEngine) {
-      window.countdownEngine.setTargetEvent(event, true);
-    }
-
-    // Scroll smoothly to countdown section if present on current page
-    const countdownSec = document.getElementById('countdown-section');
-    if (countdownSec) {
-      countdownSec.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      if (window.app && window.app.showToast) {
-        window.app.showToast(`📌 Pinned "${event.title.slice(0, 25)}..." to live countdown timer!`, 'success');
-      }
-    } else {
-      // We are in events.html (dedicated directory) -> store notification & redirect to index.html#countdown-section
-      try {
-        sessionStorage.setItem('ugsot_toast', `📌 Pinned "${event.title.slice(0, 30)}" to live countdown tracker!`);
-      } catch (e) {}
-      window.location.href = 'index.html#countdown-section';
-    }
-  }
-
-  handleRsvpClick(eventId) {
-    const currentUser = window.clubStore.getCurrentUser();
-    if (!currentUser) {
-      window.authManager.openAuthModal('login');
-      return;
-    }
-
-    const isAlreadyRsvpd = currentUser.rsvps && currentUser.rsvps.includes(eventId);
-    if (isAlreadyRsvpd) {
-      // Show Digital Ticket / Hacker Pass modal!
-      this.openHackerPassModal(eventId, currentUser);
-    } else {
-      // Execute RSVP
-      const result = window.clubStore.rsvpToEvent(eventId, currentUser.id || currentUser.studentId);
-      if (result.success) {
-        window.app.showToast(result.message, 'success');
-        this.renderEvents();
-        window.countdownEngine.renderEventBannerDetails();
-        window.app.updateHeaderUser();
-        // Immediately show off their new Hacker Pass!
-        setTimeout(() => {
-          this.openHackerPassModal(eventId, window.clubStore.getCurrentUser());
-        }, 300);
-      } else {
-        window.app.showToast(result.message, 'warning');
-      }
-    }
-  }
-
-  openDetailsModal(eventId) {
-    const event = window.clubStore.getEventById(eventId);
-    if (!event) return;
-
-    const modal = document.getElementById('event-details-modal');
-    const content = document.getElementById('event-details-content');
-    if (!modal || !content) return;
-
-    const currentUser = window.clubStore.getCurrentUser();
-    const isRsvpd = currentUser && currentUser.rsvps && currentUser.rsvps.includes(eventId);
-    const targetDate = new Date(event.targetDate);
-
-    content.innerHTML = `
-      <div class="modal-event-hero program-detail-hero">
-        <img src="${this.getEventBanner(event)}" alt="" decoding="async" width="960" height="480" class="modal-hero-img" onerror="this.onerror=null; this.src='assets/programs/program-default.svg';"/>
-        <div class="modal-hero-overlay">
-          <span class="category-badge cat-${event.category}">${event.category.toUpperCase()}</span>
-          <h2>${event.title}</h2>
-          <p class="modal-hero-sub">${event.subtitle || ''}</p>
-        </div>
-      </div>
-
-      <div class="modal-body-grid">
-        <div class="modal-main-info">
-          <div class="meta-row">
-            <div class="meta-item">
-              <span class="meta-icon">📅</span>
-              <div>
-                <strong>Program Timeline & Cycle</strong>
-                <p style="color:var(--brand-red); font-weight:800; font-size:1.05rem;">${event.dateBadge || ''}</p>
-                <p style="font-size:0.8rem; color:var(--text-muted);">Upcoming Target: ${targetDate.toLocaleDateString('en-US', { dateStyle: 'full' })}</p>
-              </div>
-            </div>
-            <div class="meta-item">
-              <span class="meta-icon">📍</span>
-              <div>
-                <strong>Format & Mode</strong>
-                <p>${event.venue} (${event.mode || 'Online / global'})</p>
-              </div>
-            </div>
-            <div class="meta-item">
-              <span class="meta-icon">🏆</span>
-              <div>
-                <strong>Stipend & Rewards</strong>
-                <p>${event.prizePool || 'Certificates & Swag'}</p>
-              </div>
-            </div>
-          </div>
-
-          ${event.timelineInfo ? `
-            <div class="timeline-info-card">
-              <div class="timeline-info-title"><span>🕒</span> Program Milestone Timeline · Confirm with Organizer</div>
-              <div class="timeline-info-row">
-                <div class="timeline-info-item"><span class="timeline-info-label">📝 Applications:</span><span>${event.timelineInfo.registration || 'Check official site'}</span></div>
-                <div class="timeline-info-item"><span class="timeline-info-label">🚀 Active Phase:</span><span>${event.timelineInfo.activePhase || event.dateBadge}</span></div>
-                <div class="timeline-info-item"><span class="timeline-info-label">🏁 Evaluation:</span><span>${event.timelineInfo.reviewPhase || 'Milestone reviews'}</span></div>
-              </div>
-            </div>
-          ` : ''}
-
-          <h4>About this Open Source Program</h4>
-          <p class="modal-description">${event.description}</p>
-
-          <h4>Event Agenda & Roadmap</h4>
-          <ul class="agenda-timeline">
-            ${(event.agenda || []).map((step, idx) => `
-              <li class="agenda-item">
-                <span class="agenda-marker">${idx + 1}</span>
-                <span class="agenda-text">${step}</span>
-              </li>
-            `).join('')}
-          </ul>
-
-          <h4>Speakers & Mentors</h4>
-          <div class="speakers-grid">
-            ${(event.speakers || []).map(s => `
-              <div class="speaker-pill">
-                <div class="speaker-avatar">${s.avatar || 'UGSOT'}</div>
-                <div class="speaker-info">
-                  <strong>${s.name}</strong>
-                  <span>${s.role}</span>
-                </div>
-              </div>
-            `).join('')}
-          </div>
-        </div>
-
-        <div class="modal-sidebar-card">
-          <div class="sidebar-box">
-            <h4>Registration Status</h4>
-            <div class="spots-status">
-              <span class="spots-num">${event.spotsFilled} / ${event.spotsTotal}</span>
-              <span>spots filled</span>
-            </div>
-            <div class="meter-bar">
-              <div class="meter-fill" style="width: ${Math.round((event.spotsFilled/event.spotsTotal)*100)}%"></div>
-            </div>
-
-            <div class="sidebar-actions">
-              ${event.officialUrl ? `
-                <a href="${event.officialUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-block btn-secondary" style="margin-bottom: 10px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 6px; font-weight: 800;">
-                  🌐 Official Program Site ↗
-                </a>
-              ` : ''}
-
-              <button class="btn btn-block ${isRsvpd ? 'btn-success-active' : 'btn-primary'}" onclick="window.eventsManager.handleRsvpClick('${event.id}')">
-                ${isRsvpd ? '✓ View My Hacker Pass' : '⚡ RSVP Instant Entry'}
-              </button>
-              
-              <button class="btn btn-block btn-outline" onclick="window.eventsManager.downloadIcs('${event.id}')">
-                📅 Add to Calendar (.ics)
-              </button>
-
-              <button class="btn btn-block btn-ghost" onclick="window.eventsManager.pinToTimer('${event.id}')">
-                ⏱️ Pin to Live Countdown
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
-
-    modal.classList.add('active');
-  }
-
-  openHackerPassModal(eventId, user) {
-    const event = window.clubStore.getEventById(eventId);
-    if (!event || !user) return;
-
-    this.currentPassEvent = event;
-    this.currentPassUser = user;
-
-    const modal = document.getElementById('hacker-pass-modal');
-    const container = document.getElementById('hacker-pass-render');
-    if (!modal || !container) return;
-
-    const dateStr = new Date(event.targetDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-    const ticketHash = 'UGSOT-' + Math.abs(event.id.split('').reduce((a, b) => { a = ((a << 5) - a) + b.charCodeAt(0); return a & a; }, 0)).toString(16).toUpperCase().padStart(6, 'X');
-
-    container.innerHTML = `
-      <div class="pass-view-switch-bar">
-        <button id="btn-view-2d" class="pass-view-switch-btn active" onclick="window.eventsManager.switchPassView('2d')">
-          2D sample pass
-        </button>
-        <button id="btn-view-3d" class="pass-view-switch-btn" onclick="window.eventsManager.switchPassView('3d')">
-          3D pass preview
-        </button>
-      </div>
-
-      <div id="pass-3d-viewport">
-        <canvas id="pass-3d-canvas" tabindex="0" role="img" aria-label="Sample 3D pass. Drag or use arrow keys to rotate. Home resets."></canvas>
-        <div class="pass-3d-controls-hint">Drag or use arrow keys · Home to reset</div>
-      </div>
-
-      <div class="hacker-ticket-badge" id="printable-ticket">
-        <div class="ticket-header">
-          <div class="ticket-brand">
-            <img src="assets/upgrad_sot_official.png" alt="UGSOT" class="ticket-logo" onerror="this.onerror=null; this.src='assets/logo.jpg';" />
-            <div>
-              <span class="ticket-school">upGrad School of Technology</span>
-              <span class="ticket-club">Open Source Events • Sample Pass</span>
-            </div>
-          </div>
-          <div class="ticket-chip">DEMO · NO ENTRY</div>
-        </div>
-
-        <div class="ticket-body">
-          <div class="ticket-event-name">${event.title}</div>
-          <div class="ticket-meta-grid">
-            <div>
-              <span class="t-label">ATTENDEE</span>
-              <span class="t-val">${user.name}</span>
-            </div>
-            <div>
-              <span class="t-label">STUDENT ID</span>
-              <span class="t-val">${user.studentId || 'UGSOT-MEMBER'}</span>
-            </div>
-            <div>
-              <span class="t-label">DATE & TIME</span>
-              <span class="t-val">${dateStr}</span>
-            </div>
-            <div>
-              <span class="t-label">LOCATION</span>
-              <span class="t-val">${event.venue.split(',')[0]}</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="ticket-footer">
-          <div class="ticket-qr-box">
-            <canvas id="ticket-qr-canvas" width="90" height="90"></canvas>
-          </div>
-          <div class="ticket-barcodes">
-            <span class="t-label">DEMO REFERENCE</span>
-            <span class="barcode-font">${ticketHash}</span>
-            <span class="ticket-instruction">Decorative code · not scannable or valid for entry</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="pass-modal-actions">
-        <button class="btn btn-primary" onclick="window.eventsManager.downloadIcs('${event.id}')">
-          📅 Export to Apple / Google Calendar
-        </button>
-        <button class="btn btn-outline" onclick="window.print()">
-          🖨️ Print / Save Pass
-        </button>
-        <button class="btn btn-danger-ghost" onclick="window.eventsManager.cancelRsvp('${event.id}')">
-          Cancel Reservation
-        </button>
-      </div>
-    `;
-
-    modal.classList.add('active');
-
-    // Draw high tech pixel QR pattern
-    setTimeout(() => {
-      this.drawTechQrPattern('ticket-qr-canvas', `${event.id}:${user.studentId}`);
-    }, 50);
-  }
-
-  drawTechQrPattern(canvasId, seed) {
-    const canvas = document.getElementById(canvasId);
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    const size = canvas.width;
-    ctx.clearRect(0, 0, size, size);
-
-    // Clean white background
-    ctx.fillStyle = '#ffffff';
-    ctx.fillRect(0, 0, size, size);
-
-    // Matrix dots
-    const grid = 15;
-    const cellSize = size / grid;
-
-    // Seeded pseudo random
-    let hash = 0;
-    for (let i = 0; i < seed.length; i++) hash = (hash << 5) - hash + seed.charCodeAt(i);
-
-    for (let r = 0; r < grid; r++) {
-      for (let c = 0; c < grid; c++) {
-        // Corner squares (standard QR locator anchors)
-        const isAnchor1 = r < 4 && c < 4;
-        const isAnchor2 = r < 4 && c >= grid - 4;
-        const isAnchor3 = r >= grid - 4 && c < 4;
-
-        if (isAnchor1 || isAnchor2 || isAnchor3) {
-          ctx.fillStyle = '#e62529'; // upGrad scarlet red
-          ctx.fillRect(c * cellSize + 1, r * cellSize + 1, cellSize - 2, cellSize - 2);
-        } else {
-          const bit = (Math.sin(hash + r * 13 + c * 7) + 1) / 2;
-          if (bit > 0.45) {
-            ctx.fillStyle = '#121212'; // stark black
-            ctx.fillRect(c * cellSize + 1.2, r * cellSize + 1.2, cellSize - 2.4, cellSize - 2.4);
-          }
-        }
-      }
-    }
-  }
-
-  cancelRsvp(eventId) {
-    const user = window.clubStore.getCurrentUser();
-    if (!user) return;
-    
-    if (confirm('Are you sure you want to cancel your registration? Your spot will be released.')) {
-      window.clubStore.cancelRsvp(eventId, user.id);
-      window.app.showToast('Reservation cancelled.', 'info');
-      window.app.closeAllModals();
-      this.renderEvents();
-      window.countdownEngine.renderEventBannerDetails();
-      window.app.updateHeaderUser();
-    }
-  }
-
-  downloadIcs(eventId) {
-    const event = window.clubStore.getEventById(eventId);
-    if (!event) return;
-
-    const startDate = new Date(event.targetDate);
-    const endDate = new Date(startDate.getTime() + 3 * 60 * 60 * 1000); // 3 hours duration
-
-    const formatIcsDate = (date) => {
-      return date.toISOString().replace(/-|:|\.\d+/g, '');
-    };
-
-    const icsContent = [
-      'BEGIN:VCALENDAR',
-      'VERSION:2.0',
-      'PRODID:-//upGrad School of Technology//Open Source Events//EN',
-      'CALSCALE:GREGORIAN',
-      'METHOD:PUBLISH',
-      'BEGIN:VEVENT',
-      `UID:${event.id}@ugsot.upgrad.edu`,
-      `DTSTAMP:${formatIcsDate(new Date())}`,
-      `DTSTART:${formatIcsDate(startDate)}`,
-      `DTEND:${formatIcsDate(endDate)}`,
-      `SUMMARY:${event.title}`,
-      `DESCRIPTION:${(event.description || '').replace(/\n/g, ' ')}`,
-      `LOCATION:${event.venue}`,
-      'STATUS:CONFIRMED',
-      'END:VEVENT',
-      'END:VCALENDAR'
-    ].join('\r\n');
-
-    const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
-    const link = document.createElement('a');
-    link.href = window.URL.createObjectURL(blob);
-    link.setAttribute('download', `${event.title.replace(/[^a-zA-Z0-9]/g, '_')}.ics`);
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    window.app.showToast('Calendar invite (.ics) downloaded!', 'success');
-  }
-
-  switchPassView(view) {
-    const printable = document.getElementById('printable-ticket');
-    const viewport3d = document.getElementById('pass-3d-viewport');
-    const btn2d = document.getElementById('btn-view-2d');
-    const btn3d = document.getElementById('btn-view-3d');
-    if (!printable || !viewport3d) return;
-
-    if (view === '3d') {
-      printable.style.display = 'none';
-      viewport3d.classList.add('active');
-      if (btn2d) btn2d.classList.remove('active');
-      if (btn3d) btn3d.classList.add('active');
-      if (window.threePassViewer && this.currentPassEvent && this.currentPassUser) {
-        const ready = window.threePassViewer.render3dPass(this.currentPassEvent, this.currentPassUser);
-        if (!ready) {
-          this.switchPassView('2d');
-          window.app.showToast('3D is unavailable on this device. Your 2D preview is still available.', 'info');
-        }
-      }
-    } else {
-      printable.style.display = 'block';
-      viewport3d.classList.remove('active');
-      if (btn2d) btn2d.classList.add('active');
-      if (btn3d) btn3d.classList.remove('active');
-      if (window.threePassViewer) {
-        window.threePassViewer.destroy();
-      }
-    }
-  }
+  downloadIcs(id){const e=window.clubStore.getEventById(id),ics=e&&this.buildIcs(e);if(!ics){window.app.showToast('No confirmed calendar date is available.','info');return;}const url=URL.createObjectURL(new Blob([ics],{type:'text/calendar;charset=utf-8'})),link=document.createElement('a');link.href=url;link.download=e.id+'.ics';document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+  switchPassView(view){const printable=document.getElementById('printable-ticket'),viewport=document.getElementById('pass-3d-viewport');if(!printable||!viewport)return;const is3d=view==='3d';printable.hidden=is3d;viewport.classList.toggle('active',is3d);for(const mode of['2d','3d']){const b=document.getElementById('btn-view-'+mode);b?.classList.toggle('active',mode===view);b?.setAttribute('aria-pressed',String(mode===view));}if(is3d){if(!window.threePassViewer?.render3dPass(this.currentPassEvent,this.currentPassUser)){this.switchPassView('2d');window.app.showToast('3D unavailable. The 2D preview is still available.','info');}}else window.threePassViewer?.destroy();}
 }
-
-window.eventsManager = new EventsManager();
+window.eventsManager=new EventsManager();

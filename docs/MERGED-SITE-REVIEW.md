@@ -1,10 +1,18 @@
 # Review of the merged site — 3 November 2026
 
-## Verdict
+## Follow-up implementation — 3 November 2026
+
+The findings below describe the PR #2 baseline. The follow-up now includes program artwork and the broader fixes: a working sample profile/sign-out flow; source notes and check dates across the 27 records; concluded-program archives; unknown-date safeguards; concise cards; wrapped phone filters; result counts, URL state and clear search; a prominent official action; focus-contained dialogs; preserved local edits; and one-time sample XP awards.
+
+Primary-source checks corrected [ETHIndia](https://ethindia.co/) to the 4 November Mumbai conference and [Social Winter of Code](https://www.swoc.in/) to the published Winter 2026–27 schedule. Accessible pages do not always verify the next cycle; unreadable or incomplete sources remain explicitly marked, with no inferred dates or rewards. This is a review of public source content on the stated check date, not an organizer guarantee.
+
+Validation: 40 automated regressions pass; syntax, 171 local references and unique page IDs pass. Browser checks covered all five pages at actual 390, 1024 and 1280px widths, with zero document overflow and no broken images. Search/empty results, back navigation, profile/pass/sign-out, calendar download and phone detail actions were exercised. An independent screenshot review found no clipping or overlap blockers. Real authentication, shared student records and authorization remain future backend work described in [DEPLOYMENT.md](DEPLOYMENT.md).
+
+## Original verdict
 
 The portal has a more coherent visual foundation after the 3D and motion changes. The main remaining work is task clarity and content trust: program discovery is busy, some sample values look authoritative, and the sample profile button is broken. It is still a browser-local demonstration, not a connected student/admin service.
 
-The program imagery replacement in this branch is complete. The wider improvements below are recommendations for a separate implementation, captured in [the reusable prompt](IMPROVEMENT-PROMPT.md).
+The program imagery replacement in this branch is complete. The recommendations below formed the implementation brief captured in [the reusable prompt](IMPROVEMENT-PROMPT.md). See the follow-up status above.
 
 ## What was actually evaluated
 
@@ -66,4 +74,4 @@ Passes are limited to the interactions observed. Broader recommendations remain 
 - Detail artwork and text use separate surfaces. Phone details omit the decorative image and allow the full heading to determine header height.
 - The new SVG set totals 35,906 bytes; the three previous JPGs total 2,854,332 bytes. This is an asset-size comparison, not a measured page-speed result.
 
-Program dates, rewards, capacities, profile behavior and backend integration are intentionally unchanged by this imagery update. Read [IMPROVEMENT-PROMPT.md](IMPROVEMENT-PROMPT.md) for the next implementation brief.
+The artwork-only change was followed by the functional and source-data fixes described at the top of this document. [IMPROVEMENT-PROMPT.md](IMPROVEMENT-PROMPT.md) preserves the original implementation brief; backend integration remains future work.

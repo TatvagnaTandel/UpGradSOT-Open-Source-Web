@@ -1184,37 +1184,10 @@ const STORE_DATA_VERSION = 'ugsot_v2026_10_29_02';
 
 class ClubStore {
   constructor() {
-    // Force cache bust: if stored version is older, reset events and sections to default 27 open source events
-    const storedVersion = localStorage.getItem('ust_store_data_version');
-    if (storedVersion !== STORE_DATA_VERSION) {
-      localStorage.setItem(STORAGE_KEYS.EVENTS, JSON.stringify(DEFAULT_EVENTS));
-      localStorage.setItem(STORAGE_KEYS.SECTIONS, JSON.stringify(DEFAULT_SECTIONS));
-      localStorage.setItem('ust_store_data_version', STORE_DATA_VERSION);
-    }
-
+    // Preserve existing edits and deliberate deletions across releases.
     this.events = this.load(STORAGE_KEYS.EVENTS, DEFAULT_EVENTS);
     this.sections = this.load(STORAGE_KEYS.SECTIONS, DEFAULT_SECTIONS);
-    this.sections.forEach(section => {
-      if (section.subtitle) section.subtitle = section.subtitle.replace('and claim your verified hacker pass.', 'and explore sample event passes.');
-    });
     this.students = this.load(STORAGE_KEYS.STUDENTS, DEFAULT_STUDENTS);
-    
-    // Auto-migrate events: ensure all 27 verified open source events (including AIDN finale & 2026-2027 calendar programs) are loaded
-    const hasAidnPuneFlagship = this.events && this.events.some(e => e.id === 'evt-hacktoberfest-pune-aidn' && e.isFlagship);
-    const hasSwocSeason7 = this.events && this.events.some(e => e.id === 'evt-swoc-2027' && e.title.includes('Season 7'));
-    if (!hasAidnPuneFlagship || !hasSwocSeason7 || this.events.length < 27) {
-      this.events = DEFAULT_EVENTS;
-      this.save(STORAGE_KEYS.EVENTS, this.events);
-    }
-
-    // Auto-migrate sections
-    const evtSec = this.sections.find(s => s.id === 'events');
-    if (evtSec && evtSec.title !== "Open Source Events You'll Take Part In") {
-      evtSec.title = "Open Source Events You'll Take Part In";
-      evtSec.subtitle = "Mark your calendar for global open source programs, winter of codes, and developer fellowships.";
-      this.save(STORAGE_KEYS.SECTIONS, this.sections);
-    }
-
     // Auto-migrate any cached localStorage student records to Academic Year & valid RSVPs
     const validEventIds = new Set(this.events.map(e => e.id));
     const yearFallbacks = ['2nd Year', '3rd Year', '1st Year', '3rd Year', '2nd Year', '4th Year (Lead)'];
@@ -1225,7 +1198,7 @@ class ClubStore {
       }
       if (s.rsvps) {
         s.rsvps = s.rsvps.filter(id => validEventIds.has(id));
-        if (s.rsvps.length === 0) s.rsvps = ['evt-hacktoberfest-2026'];
+
       }
     });
     this.save(STORAGE_KEYS.STUDENTS, this.students);
@@ -1237,7 +1210,7 @@ class ClubStore {
       if (!this.currentUser.year) this.currentUser.year = '2nd Year';
       if (this.currentUser.rsvps) {
         this.currentUser.rsvps = this.currentUser.rsvps.filter(id => validEventIds.has(id));
-        if (this.currentUser.rsvps.length === 0) this.currentUser.rsvps = ['evt-hacktoberfest-2026'];
+
       }
       this.save(STORAGE_KEYS.USER, this.currentUser);
     }
@@ -1263,14 +1236,14 @@ class ClubStore {
 
   // Event getters & mutations
   getEvents() {
-    return this.events;
+    return this.events.map(event => window.programCatalog ? window.programCatalog.present(event) : event);
   }
 
   getEventById(id) {
     if (!id) return null;
     if (this.events) {
       const found = this.events.find(e => e.id === id);
-      if (found) return found;
+      if (found) return window.programCatalog ? window.programCatalog.present(found) : found;
     }
     if (typeof HACKTOBERFEST_FESTS_DATA !== 'undefined' && Array.isArray(HACKTOBERFEST_FESTS_DATA)) {
       const foundFest = HACKTOBERFEST_FESTS_DATA.find(e => e.id === id);
@@ -1305,6 +1278,7 @@ class ClubStore {
       this.clearPinnedEventId();
       return null;
     }
+    if (window.programCatalog && (event.verification !== 'verified' || !event.targetDate)) { this.clearPinnedEventId(); return null; }
     // If the pinned event has expired, auto-clear it
     if (this.isEventPast(event)) {
       this.clearPinnedEventId();
@@ -1316,7 +1290,7 @@ class ClubStore {
   getAllEvents() {
     const festEvents = (window.hacktoberfestFestsManager && window.hacktoberfestFestsManager.events) || [];
     const existingIds = new Set(this.events.map(e => e.id));
-    return [...this.events, ...festEvents.filter(e => !existingIds.has(e.id))];
+    return [...this.getEvents(), ...festEvents.filter(e => !existingIds.has(e.id))];
   }
 
   /**
@@ -1332,6 +1306,10 @@ class ClubStore {
   isEventPast(evt, now = new Date()) {
     if (!evt) return true;
     if (evt.status === 'past') return true;
+    if (evt.datePrecision === 'day') {
+      const day=now.toLocaleDateString('en-CA',{timeZone:'Asia/Kolkata'});
+      return !!(evt.endDate || evt.targetDate) && day > (evt.endDate || evt.targetDate);
+    }
     const nowMs = now.getTime();
     if (evt.endDate) {
       return nowMs >= new Date(evt.endDate).getTime();
@@ -1344,6 +1322,10 @@ class ClubStore {
 
   isEventOngoing(evt, now = new Date()) {
     if (!evt || this.isEventPast(evt, now)) return false;
+    if (evt.datePrecision === 'day' && evt.startDate && evt.endDate) {
+      const day=now.toLocaleDateString('en-CA',{timeZone:'Asia/Kolkata'});
+      return day >= evt.startDate && day <= evt.endDate;
+    }
     if (evt.isOngoing || evt.status === 'ongoing') return true;
     if (evt.startDate && evt.endDate) {
       const nowMs = now.getTime();
@@ -1361,6 +1343,8 @@ class ClubStore {
   getFlagshipEvent() {
     const now = new Date();
     // 1. Prioritize designated unexpired flagship event (e.g. AIDN Hack Day until Nov 1st)
+    const reviewed = this.getEvents().filter(e => e.verification === 'verified' && e.targetDate && !this.isEventPast(e, now));
+    if (window.programCatalog) return reviewed.sort((a,b)=>new Date(a.targetDate)-new Date(b.targetDate))[0] || null;
     const flagship = this.events.find(e => e.isFlagship && !this.isEventPast(e, now));
     if (flagship) return flagship;
 
@@ -1431,14 +1415,18 @@ class ClubStore {
   }
 
   rsvpToEvent(eventId, studentId) {
-    const event = this.getEventById(eventId);
+    const event = this.events.find(event => event.id === eventId) || this.getEventById(eventId);
     const student = this.students.find(s => s.id === studentId || s.studentId === studentId);
     
     if (!event || !student) return { success: false, message: 'Event or Student not found' };
 
     if (!student.rsvps.includes(eventId)) {
       student.rsvps.push(eventId);
-      student.devXp = (student.devXp || 0) + 150; // Award XP for registering!
+      student.xpAwards ||= [...student.rsvps.filter(id => id !== eventId)];
+      if (!student.xpAwards.includes(eventId)) {
+        student.devXp = (student.devXp || 0) + 150;
+        student.xpAwards.push(eventId);
+      }
       event.spotsFilled = Math.min((event.spotsFilled || 0) + 1, event.spotsTotal || 100);
       
       this.save(STORAGE_KEYS.STUDENTS, this.students);
@@ -1448,7 +1436,7 @@ class ClubStore {
         this.currentUser = student;
         this.save(STORAGE_KEYS.USER, this.currentUser);
       }
-      return { success: true, message: `RSVP Confirmed! +150 Dev XP awarded!` };
+      return { success: true, message: `Saved to sample profile. This is not organizer registration.` };
     }
     return { success: false, message: 'Already registered for this event!' };
   }
@@ -1474,7 +1462,17 @@ class ClubStore {
 
   // Section Management
   getSections() {
-    return this.sections.sort((a, b) => a.order - b.order);
+    const copy = {
+      countdown: {title:'Dates from the organizers',subtitle:'Track a confirmed date. Date-only listings do not imply a confirmed start time.'},
+      events: {title:'Explore open-source programs',subtitle:'Find a program, review its source status, and apply directly with the organizer.'},
+      manifesto: {title:'Build your next chapter',subtitle:'Explore opportunities and choose the community that fits your goals.'},
+      leaderboard: {title:'Sample community rankings',subtitle:'Illustrative profiles and browser-local XP, not verified contribution records.'}
+    };
+    return [...this.sections].sort((a,b)=>a.order-b.order).map(section=>{
+      const original=DEFAULT_SECTIONS.find(s=>s.id===section.id),updated=copy[section.id];
+      if(!updated||!original)return section;
+      return {...section,title:section.title===original.title?updated.title:section.title,subtitle:section.subtitle===original.subtitle?updated.subtitle:section.subtitle};
+    });
   }
 
   updateSection(id, updates) {

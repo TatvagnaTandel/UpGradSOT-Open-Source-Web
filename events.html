@@ -16,10 +16,10 @@
   <meta http-equiv="Expires" content="0">
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/style.css?v=20261103v2">
-  <link rel="stylesheet" href="css/components.css?v=20261103v4">
-  <link rel="stylesheet" href="css/three-webgl.css?v=20261103v3">
-  <link rel="stylesheet" href="css/admin.css?v=20261103v2">
+  <link rel="stylesheet" href="css/style.css?v=20261103v5">
+  <link rel="stylesheet" href="css/components.css?v=20261103v5">
+  <link rel="stylesheet" href="css/three-webgl.css?v=20261103v5">
+  <link rel="stylesheet" href="css/admin.css?v=20261103v5">
 </head>
 <body class="page-events">
   <div class="demo-notice">Community portal preview · Sample profiles, rankings and passes · Changes stay in this browser.</div>
@@ -88,7 +88,7 @@
 
         <div class="section-header" style="margin-top: 10px;">
           <span class="section-tag">MARK YOUR CALENDAR</span>
-          <h1 class="section-header-title" style="font-size: 2.2rem;">Open Source Programs & Fellowships Directory</h1>
+          <h1 class="section-header-title" style="font-size: 2.2rem;">Explore open-source programs</h1>
           <p class="section-header-sub">
             The official open-source and fellowship roadmap for upGrad School of Technology builders. Filter by track, inspect verified timelines and stipends, claim your hacker pass, or pin any event to the live countdown.
           </p>
@@ -109,20 +109,22 @@
             <!-- Search -->
             <div class="search-box">
               <span class="search-icon">🔍</span>
-              <input type="text" id="event-search-input" class="search-input" placeholder="Search events, topics, tech...">
+              <input aria-label="Search programs" type="search" id="event-search-input" class="search-input" placeholder="Search events, topics, tech...">
             </div>
 
             <!-- Ongoing vs Upcoming vs Past -->
-            <div class="status-toggle-group">
-              <button class="status-toggle-btn active" data-status="all">⚡ Active</button>
-              <button class="status-toggle-btn" data-status="ongoing">🔴 Ongoing</button>
-              <button class="status-toggle-btn" data-status="upcoming">⚡ Upcoming</button>
-              <button class="status-toggle-btn" data-status="past">📁 Archives</button>
+            <div class="status-toggle-group" aria-label="Program date and application status">
+              <button class="status-toggle-btn active" data-status="all">All programs</button>
+              <button class="status-toggle-btn" data-status="open">Applications open</button>
+              <button class="status-toggle-btn" data-status="upcoming">Confirmed dates</button>
+              <button class="status-toggle-btn" data-status="unannounced">Dates unverified</button>
+              <button class="status-toggle-btn" data-status="past">Archives</button>
             </div>
           </div>
         </div>
 
         <!-- Events Grid -->
+        <div class="program-result-bar"><p id="program-results-summary" role="status" aria-live="polite" aria-atomic="true"></p><button id="clear-program-filters" class="btn btn-outline btn-sm">Clear filters</button></div>
         <div id="events-grid-container" class="events-grid">
           <!-- Populated by js/events.js -->
         </div>
@@ -178,6 +180,7 @@
     </div>
   </div>
 
+  <div id="user-profile-modal" class="modal" aria-labelledby="sample-profile-title"><div class="modal-dialog"><button class="modal-close-btn" aria-label="Close sample profile">×</button><div id="user-profile-content"></div></div></div>
   <div id="auth-modal" class="modal">
     <div class="modal-dialog" style="max-width: 440px;">
       <button class="modal-close-btn" aria-label="Close modal">✕</button>
@@ -192,18 +195,20 @@
   <script src="vendor/gsap.min.js"></script>
 
   <!-- Scripts -->
-  <script src="js/store.js?v=20261103v4"></script>
-  <script src="js/countdown.js?v=20261103v2"></script>
-  <script src="js/events.js?v=20261103v4"></script>
-  <script src="js/hacktoberfest-fests.js?v=20261103v2"></script>
-  <script src="js/auth.js?v=20261103v2"></script>
-  <script src="js/admin.js?v=20261103v4"></script>
+  <script src="js/ui.js?v=20261103v5"></script>
+  <script src="js/program-data.js?v=20261103v5"></script>
+  <script src="js/store.js?v=20261103v5"></script>
+  <script src="js/countdown.js?v=20261103v5"></script>
+  <script src="js/events.js?v=20261103v5"></script>
+  <script src="js/hacktoberfest-fests.js?v=20261103v5"></script>
+  <script src="js/auth.js?v=20261103v5"></script>
+  <script src="js/admin.js?v=20261103v5"></script>
 
   <!-- Three.js WebGL & GSAP Controllers -->
-  <script src="js/three-stage.js?v=20261103v2"></script>
-  <script src="js/three-pass-viewer.js?v=20261103v2"></script>
-  <script src="js/gsap-effects.js?v=20261103v3"></script>
+  <script src="js/three-stage.js?v=20261103v5"></script>
+  <script src="js/three-pass-viewer.js?v=20261103v5"></script>
+  <script src="js/gsap-effects.js?v=20261103v5"></script>
 
-  <script src="js/app.js?v=20261103v3"></script>
+  <script src="js/app.js?v=20261103v5"></script>
 </body>
 </html>
