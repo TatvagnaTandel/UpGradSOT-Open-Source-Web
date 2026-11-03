@@ -1,6 +1,6 @@
 const {test}=require('node:test');const assert=require('node:assert/strict');const fs=require('node:fs');const vm=require('node:vm');
 class Target {
-  constructor(candidate=false){this.listeners={};this.candidate=candidate;this.isConnected=true;this.nodeType=1;this.animations=[];this.children=[];this.classList={contains:()=>false};this.textContent='01';}
+  constructor(candidate=false,top=1000){this.listeners={};this.top=top;this.candidate=candidate;this.isConnected=true;this.nodeType=1;this.animations=[];this.children=[];const classes=new Set();this.classList={contains:c=>classes.has(c),add:c=>classes.add(c),remove:c=>classes.delete(c)};this.textContent='01';}
   addEventListener(type,fn){(this.listeners[type] ||= new Set()).add(fn);}
   removeEventListener(type,fn){this.listeners[type]?.delete(fn);}
   emit(type,event={}){for(const fn of this.listeners[type]||[])fn(event);}
@@ -8,11 +8,11 @@ class Target {
   querySelectorAll(){return this.children;}
   querySelector(){return null;}
   contains(target){return target===this||this.children.includes(target);}
-  getBoundingClientRect(){return {top:100,bottom:200};}
+  getBoundingClientRect(){return {top:this.top,bottom:this.top+100};}
   animate(frames,options){const a={frames,options,cancelled:false,paused:false,cancel(){this.cancelled=true;},pause(){this.paused=true;},play(){this.paused=false;},addEventListener(){}};this.animations.push(a);return a;}
 }
-function setup(reduced=false){
-  const card=new Target(true),second=new Target(true),document=new Target(),window=new Target(),media=new Target();
+function setup(reduced=false,top=1000){
+  const card=new Target(true,top),second=new Target(true,top+120),document=new Target(),window=new Target(),media=new Target();
   document.getElementById=()=>null;document.documentElement={dataset:{}};document.body=new Target();document.querySelectorAll=selector=>selector==='.modal'||selector.startsWith('#timer-')?[]:[card,second];
   document.hidden=false;window.innerHeight=800;media.matches=reduced;window.matchMedia=()=>media;
   const intersections=[],mutations=[];
@@ -51,4 +51,26 @@ test('hidden tabs pause in-flight effects and resume when visible',()=>{
 });
 test('an already-focused card stays still when it first enters the viewport',()=>{
   const e=setup();e.document.activeElement=e.card;e.enter(e.card);assert.equal(e.card.animations.length,0);
+});
+
+test('below-fold content stays hidden until it enters the viewport',()=>{
+  const e=setup();assert.equal(e.card.classList.contains('scroll-reveal-pending'),true);assert.equal(e.card.animations.length,0);
+  e.intersections[0].callback([{target:e.card,isIntersecting:false}]);assert.equal(e.card.classList.contains('scroll-reveal-pending'),true);
+  e.enter(e.card);assert.equal(e.card.classList.contains('scroll-reveal-pending'),false);assert.equal(e.card.animations.length,1);
+});
+test('opening viewport content is visible immediately without an entrance animation',()=>{
+  const e=setup(false,100);assert.equal(e.card.classList.contains('scroll-reveal-pending'),false);assert.equal(e.card.animations.length,0);assert.equal(e.intersections[0].observed.has(e.card),false);
+});
+test('keyboard focus immediately exposes a pending card without motion',()=>{
+  const e=setup();e.document.activeElement=e.card;e.document.emit('focusin',{target:e.card});assert.equal(e.card.classList.contains('scroll-reveal-pending'),false);assert.equal(e.intersections[0].observed.has(e.card),false);assert.equal(e.card.animations.length,0);
+});
+test('reduced motion and teardown expose all pending content',()=>{
+  const e=setup();e.media.matches=true;e.media.emit('change');assert.equal(e.card.classList.contains('scroll-reveal-pending'),false);
+  e.media.matches=false;e.media.emit('change');assert.equal(e.card.classList.contains('scroll-reveal-pending'),true);e.engine.destroy();assert.equal(e.card.classList.contains('scroll-reveal-pending'),false);
+});
+test('returning to a visible tab reveals entries whose intersection happened while hidden',()=>{
+  const e=setup();e.document.hidden=true;e.card.top=100;e.enter(e.card);assert.equal(e.card.animations.length,0);e.document.hidden=false;e.document.emit('visibilitychange');assert.equal(e.card.classList.contains('scroll-reveal-pending'),false);assert.equal(e.card.animations.length,1);
+});
+test('new content remains visible when the animation API is unavailable',()=>{
+  const e=setup(),card=new Target(true);card.animate=undefined;e.mutations[0].callback([{addedNodes:[card]}]);assert.equal(card.classList.contains('scroll-reveal-pending'),false);assert.equal(e.intersections[0].observed.has(card),false);
 });

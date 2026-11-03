@@ -524,3 +524,11 @@ html { max-width: 100%; }
   .nav-links { display: none; }
   .mobile-menu-btn { display: flex; }
 }
+/* Armed by JavaScript only for content below the current viewport.
+   Opacity keeps keyboard targets available; focus exposes them immediately. */
+html[data-motion="full"] .scroll-reveal-pending {
+  opacity: 0;
+}
+@media (prefers-reduced-motion: reduce), print {
+  html[data-motion="full"] .scroll-reveal-pending { opacity: 1; }
+}

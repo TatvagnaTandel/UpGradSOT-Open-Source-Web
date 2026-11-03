@@ -34,9 +34,9 @@ Programs use 27 distinct local SVG covers and a neutral fallback, with no embedd
 
 ## Motion across the website
 
-All five pages share staggered entrances for headings, cards and rankings; on-scroll reveals; dialog, mobile menu and admin-tab transitions; button feedback; and visible-only countdown digit updates. New search/filter cards are picked up automatically. Supported browsers also cross-fade between pages while the header stays steady.
+All five pages reveal below-the-fold headings, cards, rankings and 3D panels once as they enter the viewport while scrolling. Opening content appears immediately. They also share dialog, mobile menu and admin-tab transitions; button feedback; and visible-only countdown digit updates. New search/filter cards are picked up automatically. Supported browsers also cross-fade between pages while the header stays steady.
 
-Motion uses the browser animation API, cancels when keyboard focus enters a moving element, pauses in hidden tabs, and responds immediately to changes in reduced-motion preferences. Content stays accessible if JavaScript or animation support is unavailable.
+Motion uses the browser animation API, cancels when keyboard focus enters a moving element, pauses in hidden tabs, and responds immediately to changes in reduced-motion preferences. Content stays accessible if JavaScript or animation support is unavailable. Keyboard focus exposes pending content immediately; reduced-motion and print views show all content without waiting for a scroll.
 
 ## 3D with a purpose
 

@@ -1,8 +1,8 @@
-/** Site-wide motion, using the browser animation API with visible-by-default content. */
+/** Scroll-triggered reveals; content stays visible without motion support. */
 (function () {
   'use strict';
   const REVEALS = [
-    '.hero-pill-badge', '.hero-title', '.hero-description', '.hero-cta-group',
+    '.hero-pill-badge', '.hero-title', '.hero-description', '.hero-cta-group', '.hero-webgl-wrapper',
     '.section-header', '.admin-top-bar', '.events-filter-bar', '.table-toolbar',
     '.countdown-container-card', '.gateway-card', '.event-card', '.fest-card',
     '.manifesto-card', '.leaderboard-item', '.podium-card', '.metric-card',
@@ -24,7 +24,7 @@
             if (!entry.isIntersecting || this.media.matches || document.hidden) return;
             this.reveal(entry.target, Math.min(stagger++ * 45, 180));
           });
-        }, { threshold: 0.06 });
+        }, { threshold: 0.06, rootMargin: '0px 0px -6% 0px' });
       }
       // Observe inserted cards as search/filter/admin results are rendered.
       this.dom = new MutationObserver(records => {
@@ -32,7 +32,7 @@
           record.addedNodes.forEach(node => { if (node.nodeType === 1) this.scan(node); });
         });
         for (const node of this.pending) {
-          if (!node.isConnected) { this.pending.delete(node); this.reveals?.unobserve(node); }
+          if (!node.isConnected) this.expose(node);
         }
         for (const [node] of this.active) if (!node.isConnected) this.cancel(node);
       });
@@ -40,10 +40,17 @@
       this.bind(this.media, 'change', () => this.syncPreference());
       this.bind(document, 'visibilitychange', () => {
         this.active.forEach(animation => document.hidden ? animation.pause() : animation.play());
-        if (!document.hidden) this.scan(document);
+        if (!document.hidden) {
+          for (const node of this.pending) {
+            const bounds = node.getBoundingClientRect();
+            if (bounds.bottom > 0 && bounds.top < window.innerHeight * 0.94) this.reveal(node);
+          }
+          this.scan(document);
+        }
       });
       this.bind(document, 'focusin', event => {
         // Never animate a control away from a keyboard user's current focus.
+        for (const node of this.pending) if (node.contains(event.target)) this.expose(node);
         for (const [node] of this.active) if (node.contains(event.target)) this.cancel(node);
       });
       this.bind(window, 'pagehide', event => { if (!event.persisted) this.destroy(); });
@@ -58,6 +65,7 @@
       document.documentElement.dataset.motion = this.media.matches ? 'reduced' : 'full';
       if (this.media.matches) {
         for (const [node] of this.active) this.cancel(node);
+        for (const node of this.pending) node.classList.remove('scroll-reveal-pending');
         this.pending.clear(); this.reveals?.disconnect();
       } else this.scan(document);
     }
@@ -67,13 +75,26 @@
       if (root.nodeType === 1 && root.matches(REVEALS)) nodes.unshift(root);
       nodes.forEach(node => {
         if (!this.seen.has(node) && !this.pending.has(node)) {
+          // Opening content, restored scroll positions and live filter results
+          // should paint immediately. Only content below the screen is staged.
+          if (node.getBoundingClientRect().top < window.innerHeight ||
+              node.contains(document.activeElement) || node.closest?.('.modal') ||
+              typeof node.animate !== 'function') {
+            this.seen.add(node);
+            return;
+          }
+          node.classList.add('scroll-reveal-pending');
           this.pending.add(node); this.reveals.observe(node);
         }
       });
     }
+    expose(node) {
+      this.seen.add(node); this.pending.delete(node); this.reveals?.unobserve(node);
+      node.classList.remove('scroll-reveal-pending');
+    }
     reveal(node, delay = 0) {
       if (this.seen.has(node)) return;
-      this.seen.add(node); this.pending.delete(node); this.reveals?.unobserve(node);
+      this.expose(node);
       if (node.contains(document.activeElement)) return;
       this.play(node, [
         { opacity: 0, translate: '0 14px' },
@@ -111,6 +132,7 @@
     }
     destroy() {
       for (const [node] of this.active) this.cancel(node);
+      for (const node of this.pending) node.classList.remove('scroll-reveal-pending');
       this.reveals?.disconnect(); this.dom.disconnect();
       this.observers.forEach(observer => observer.disconnect());
       this.listeners.forEach(remove => remove()); this.pending.clear();
